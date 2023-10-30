@@ -1,0 +1,31 @@
+ 
+html, body {
+    height: 100%;
+    font-family: Arial,Tahoma,Verdana,Helvetica,sans-serif;
+    color: #1E1E1E;
+    font-size: 14px;
+    line-height: 15px;
+    color: #1E1E1E;
+   
+}
+
+.errorMessage{
+    color: red !important;
+}
+.alert {
+    color: red;
+}
+
+.loginInner1{
+    width : 30%  !important
+}
+
+
+.alert {
+    position: relative;
+    padding: 5px 0 0;
+    margin-bottom: 0;
+    border: 1px solid transparent;
+    border-radius: 0;
+    display: block;
+}

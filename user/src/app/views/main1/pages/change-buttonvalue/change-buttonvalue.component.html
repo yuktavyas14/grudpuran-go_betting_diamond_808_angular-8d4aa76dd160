@@ -1,0 +1,38 @@
+<div class="featured-box">
+  <section class="card">
+    <header class="card-header">
+      <h2 class="card-title">Set Button Value</h2>
+    </header>
+    <div class="card-body">
+      <div class="table-responsive">
+        <form [formGroup]="updateForm" method="post" action="?action=update">
+          <table id="button-value" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Button Value</th>
+                <th style="width: 70%">Button Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let p of value.controls;let i=index">
+                <ng-container [formGroup]="p">
+                <td>{{i + 1}}</td>
+                <td class="form-group"><input class="form-control" formControlName="button_value" type="number" min="1" max="99999999" maxlength="9" name="val_10098981" value="1000" required></td>
+                <td class="form-group"><input class="form-control" formControlName="button_name" type="text" maxlength="7" name="name_10098981" value="1000" required></td>
+            </ng-container>
+              </tr>
+
+            </tbody>
+          </table>
+          <div class="form-group">
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="update" value="update">
+            <input type="hidden" name="_token" value="YH49Kfwuz70qUS0zLUcRVM7tqsLIztrQQaexbUPd">
+            <button class="btn btn-success" (click)="setButtonValue()" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

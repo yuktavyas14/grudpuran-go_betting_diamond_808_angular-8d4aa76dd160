@@ -1,0 +1,137 @@
+ 
+
+.errorMessage{
+    // ::ng-deep {
+    // background-color : red !important;
+    color :red
+    // }
+  }
+  .featured-box-login {
+    background: #fff;
+  }
+  .featured-box-login.sign-up {
+    width:300px;
+  }
+  .featured-box-login.sign-up h4{
+    margin-bottom:15px;
+  }
+  .featured-box-login {
+    background: #fff;
+  }
+  .featured-box-login {
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 4px;
+  }
+  .login-page .form-control{
+    display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  
+  
+  // .loginInner1 {
+  //   width: 21.5%;
+  //   margin: 10% auto;
+  //   display: table;
+  // }
+  // *, ::after, ::before {
+  //   box-sizing: border-box;
+  // }
+  .loginInner1 {
+      width: 30%;
+      margin: 10% auto;
+      display: table
+  }
+  .featured-box-login {
+      box-sizing: border-box;
+      padding: 20px;
+      border-radius: 4px
+  }
+  .featured-box-login h4 {
+      color: #08c
+  }
+  .text-center {
+      text-align: center!important
+  }
+  
+  .btn-login {
+      width: 100%
+  }
+  .login .form-group {
+      position: relative
+  }
+  .login .loginInner1 button.form-group i {
+    display: inline-block !important;
+    /* top: 12px !important; */
+    /* right: 5px !important; */
+    position: static;
+    margin-left: 10px;
+}
+  .login {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(#0088cc, #2c3e50);
+    justify-content: center;
+    align-items: center;
+}
+  .featured-box-login {
+      background: #fff
+  }
+  
+  .btn-submit
+  {
+      background-color: #08c;
+      border-color: #08c;
+      color: #fff;
+  }
+  
+  .blinking span i {
+    animation: blinkingText 0.8s infinite;
+    margin-left: 10px !important;
+}
+  .featured-box-login
+  {
+      background: #fff;
+  }
+  @media only screen and (min-width:320px) and (max-width:767px) {
+    .loginInner1 {
+      width: 100% !important;
+      margin: auto !important
+    }
+    }
+    @media only screen and (min-width:768px) and (max-width:991px) {
+    .loginInner1 {
+      width: 100% !important;
+      margin: auto !important
+    }
+  }
+  
+  
+  .container-fluid {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto
+  }
+  
+  
+  
+  .alert {
+    position: relative;
+    padding: 5px 0 0;
+    margin-bottom: 0;
+    border: 1px solid transparent;
+    border-radius: 0;
+    display: block;
+}

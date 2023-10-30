@@ -1,0 +1,63 @@
+<div class="featured-box">
+
+    <div class="">
+      <section class="card">
+        <header class="card-header">
+          <h2 class="card-title">Exposure-Details</h2>
+        </header>
+        <div class="card-body">
+        
+        
+            <table id="example" class="table table-bordered datatable dataTable table-pad no-footer" style="width:100%" role="grid"
+              aria-describedby="example_info">
+              <thead>
+                <tr role="row">
+  
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Event Name: activate to sort column ascending" style="width: 50px;">Date</th>
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="item Type: activate to sort column ascending" style="width: 50px;">Credit</th>
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="User Rate: activate to sort column ascending" style="width: 50px;">Debit</th>
+                    <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 50px;">Balance</th>
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 146px;">Remark</th>
+  
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="exposureDetailList != null && exposureDetailList .length != 0;else NoData">
+             
+                  <ng-container *ngFor="let item of exposureDetailList | paginate: config;trackBy: trackByFn;let i=index;">
+                    <tr class="odd">
+                      
+                        <td style="text-align: left !important;">{{item?.date| formatDate: 'YYYY-MM-DD h:mm'}}
+                        
+                        </td>
+                      <td>{{item?.credit_debit > 0 ? item?.credit_debit : 0}}</td>
+                      <td>{{item?.credit_debit < 0 ? item?.credit_debit : 0}}</td>
+                      <td>{{item?.balance}}</td>
+                      <td>
+                        
+                         {{item?.description}} 
+                      </td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                <ng-template #NoData>
+                  <tr>
+                    <td valign="top" colspan="10" class="dataTables_empty">No data available in table</td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          
+        </div>
+      </section>
+ 
+    </div>
+  </div>
+  
+  
+  

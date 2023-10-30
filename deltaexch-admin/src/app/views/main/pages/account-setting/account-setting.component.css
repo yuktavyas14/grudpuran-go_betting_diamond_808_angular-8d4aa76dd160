@@ -1,0 +1,14 @@
+input[type=color], input[type=date], input[type=datetime-local],input[type=file], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea {
+    display: inline-block;
+    height: auto;
+    padding: 4px 6px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    line-height: 35px;
+    color: #555;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+.table-qr-image{
+    max-width: 200px !important;
+}

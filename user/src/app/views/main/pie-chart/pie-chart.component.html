@@ -1,0 +1,27 @@
+<div>
+  <div class="row my-2 text-center">
+    <div class="col-4">
+      <span class="player"> Player</span>
+    </div>
+    <div class="col-4">
+      <span class="banker">Banker</span>
+    </div>
+    <div class="col-4">
+      <span class="tie">Tie</span>
+    </div>
+   
+  
+  </div>
+</div>
+
+<div style="display: block;">
+    <canvas baseChart 
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    [plugins]="pieChartPlugins"
+    [colors]="pieChartColors"
+    [legend]="pieChartLegend">>
+    </canvas>
+  </div>

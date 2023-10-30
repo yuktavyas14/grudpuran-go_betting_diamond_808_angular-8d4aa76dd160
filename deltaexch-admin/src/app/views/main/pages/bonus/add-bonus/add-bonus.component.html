@@ -1,0 +1,165 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+      <form method="post" action="" [formGroup]="createForm"   class="ajaxFormSubmit">
+      <div class="detail-row">
+        <h2>Add Bonus</h2>
+        <div class="row">
+          <div class="col-12">
+            <h3 class="heading-text">Add New Bonus</h3>
+                  <div class="m-t-20">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Bonus Name:</label>
+                          <!-- <input id="" formControlName="bonus_name"   placeholder="Bonus Name" class="form-control"
+                           name="" type="text" value=""> -->
+
+                           <select  formControlName="bonus_name" placeholder="Bonus Type" class="form-control" >
+                            <option *ngFor="let type of bounsName" value="{{type.bonus_type}}">{{type.bonus_type}}</option>
+                          </select>
+                           <p class="error-text" *ngIf="createForm.get('bonus_name').hasError('required') 
+                          && createForm.get('bonus_name').touched">Bonus Name must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" >Event Name:</label>
+                          <input id="" formControlName="event_name" placeholder="Event Name" class="form-control" name="" type="text" value="">
+                          <p class="error-text" *ngIf="createForm.get('event_name').hasError('required') 
+                          && createForm.get('event_name').touched">Event Name must be required</p>  
+  
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Event Id:</label>
+                          <input id="" formControlName="event_id"   placeholder="Event Id" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('event_id').hasError('required') 
+                          && createForm.get('event_id').touched">event id must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" >Event Min Bet Stack:</label>
+                          <input id="" formControlName="event_min_bet_stack" placeholder="Event Min Bet Stack" class="form-control" name="" type="text" value="">
+                          <p class="error-text" *ngIf="createForm.get('event_min_bet_stack').hasError('required') 
+                          && createForm.get('event_min_bet_stack').touched">Event Min Bet Stack must be required</p>  
+  
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Sender Share:</label>
+                          <input id="" formControlName="sender_share"   placeholder="Sender Share" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('sender_share').hasError('required') 
+                          && createForm.get('sender_share').touched">Sender Share must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" >Receiver Share:</label>
+                          <input id="" formControlName="receiver_share" placeholder="Receiver Share" class="form-control" name="" type="text" value="">
+                          <p class="error-text" *ngIf="createForm.get('receiver_share').hasError('required') 
+                          && createForm.get('receiver_share').touched">Receiver Share must be required</p>  
+  
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Bonus Percentage:</label>
+                          <input id="" formControlName="bonus_percentage"   placeholder="Bonus Percentage" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('bonus_percentage').hasError('required') 
+                          && createForm.get('bonus_percentage').touched">Bonus Percentage must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" >Bonus Amount:</label>
+                          <input id="" formControlName="bonus_amount" placeholder="Bonus Amount" class="form-control" name="" type="text" value="">
+                          <p class="error-text" *ngIf="createForm.get('bonus_amount').hasError('required') 
+                          && createForm.get('bonus_amount').touched">Bonus Amount must be required</p>  
+  
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Bonus Duration:</label>
+                          <input id="" formControlName="bonus_duration"   placeholder="Bonus Duration" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('bonus_duration').hasError('required') 
+                          && createForm.get('bonus_duration').touched">Bonus Duration must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" >Bonus Type:</label>
+                          <select  formControlName="bonus_type" placeholder="Bonus Type" class="form-control" (change)="onChangeType($event.target.value)" >
+                            <option  value="fixed">fixed</option>
+                            <option  value="percentage">percentage</option>
+                             </select>
+                          
+                          <p class="error-text" *ngIf="createForm.get('bonus_type').hasError('required') 
+                          && createForm.get('bonus_type').touched">Bonus Type must be required</p>  
+  
+                        </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="text-right">
+                                <button class="add-btn"type="button" (click)="addCoupons()">Add More Coupons</button>
+                          </div>
+                          <ng-container formArrayName="coupons">
+                            <ng-container *ngFor="let coupon of coupons.controls; let i=index">
+                          <div class="row my-3" [formGroupName]="i">
+                              <div class="col-3">
+                                <label for="" >Coupon Name:</label>
+                                <input id="" formControlName="coupon_name" placeholder="Coupon Name" class="form-control" name="" type="text" value="">
+                              </div>
+                              <div class="col-2">
+                                <label for="" >From:</label>
+                                <input id="" formControlName="from" placeholder="from" class="form-control" name="" type="number" value="">
+                              </div>
+                              <div class="col-3">
+                                <label for="" >To:</label>
+                                <input id="" formControlName="to" placeholder="to" class="form-control" name="" type="number" value="">
+                              </div>
+                              <div class="col-3">
+                                <label for="" >Expired Date:</label>
+                                <input formControlName="expired_at" type="Expired Date" class="form-control" #dp="bsDatepicker" bsDatepicker>
+                                
+                              </div>
+                              <div class="col-1" >
+                                  <img class=" delete-coupon" *ngIf="i != '0'" src="assets/images/delete.png" (click)="deleteAddressGroup(i)" alt="delete">
+</div>
+                             
+                          </div>
+                        </ng-container>
+                        </ng-container>
+                      </div>
+                    
+                    </div>
+                  </div>
+          </div>
+        
+        </div>
+      </div>
+  
+      <div id="example_filter" class="dataTables_filter">
+        <label>
+          <!-- [disabled]="creatUserForm.invalid" -->
+          <!-- <input type="search" class="form-control datatable-search" placeholder="" aria-controls="example"> -->
+          <button type="submit" class="btn btn-success" [disabled]="createForm.invalid"  (click)="createUser()">Create Bonus</button>
+        </label>
+      </div>
+    </form>
+    </div>
+  </div>
+  

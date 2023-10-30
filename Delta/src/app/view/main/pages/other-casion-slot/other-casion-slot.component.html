@@ -1,0 +1,58 @@
+<div class="tab-content">
+    <div class="tab-pane active casino-tables">
+
+ 
+            <ul class="nav nav-tabs bs slot-nav-bar livecasinos1">
+              <li class="nav-item">
+                <a data-toggle="tab"  class="nav-link" (click) ="flagCasino = 'matka'" >Matka</a>
+              </li>  
+     </ul>
+
+
+
+        <div *ngIf="flagCasino == 'matka'" class="container-fluid">
+            <div class="row row5">
+                <div class="col-12">
+                    <h4 class="text-uppercase mt-3">Matka</h4>
+                </div>
+            </div>
+           
+        </div>
+
+
+        <div *ngIf="flagCasino == 'matka' && casinoSports" class="container-fluid">
+            <div class="gamehall-wrap-simple1">
+
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 mb-2">
+
+                      <ng-container  *ngFor="let data of casinoSports">
+
+                        <a *ngIf="data?.sport_id == 'matka' && data?.is_active == '1'" (click)="navigateToGame(data.name , data.show_chip_value_popup)">
+                            <div class="d-inline-block m-t-10 m-b-10">
+                              <img src="assets/images/casino/{{data.sport_id}}.png" class="img-fluid" />
+                              <div class="casinoicons-title">{{data.name}}</div>
+                            </div>
+                          </a>
+                      </ng-container>
+                     
+
+                    </div>
+
+                </div>
+            </div>
+
+          </div>
+
+         
+
+          <div *ngIf="flagCasino != 'matka'" class=" no-record">
+
+            <div class="card">
+              <div class="card-body no-record" style="text-align: center;">
+                No records found !
+                </div>
+            </div>
+          </div>
+    </div>
+</div>

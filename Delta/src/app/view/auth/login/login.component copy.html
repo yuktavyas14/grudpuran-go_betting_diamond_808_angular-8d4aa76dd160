@@ -1,0 +1,65 @@
+<body class="login">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class=" row">
+                <div class="main col-md-12">
+
+                    <div class="loginInner1">
+                        <div class="login-logo"><img src="{{logo}}"></div>
+                        <!-- <div class="login-logo"><img src="assets/images/logo.png"></div> -->
+                        <div class="featured-box-login featured-box-secundary default">
+                            <div class="errorMessage" *ngIf="errorMessage"> {{errorMessage}}</div>
+
+                            <h4 class="text-center mb-2">LOGIN <i class="fas fa-hand-point-down"></i></h4>
+                            <form [formGroup]="loginForm" id="frm_lgn" method="POST" (ngSubmit)="login(loginForm.value)" autocomplete novalidate>
+
+                                <!-- <form action="" id="frm_lgn" method="POST"> -->
+                                <div class="form-group m-b-20">
+                                    <input name="inputUserid" formControlName="user_name" placeholder="Username" class="form-control login-username" required value="" type="text">
+                                    <i class="fas fa-user"></i>
+                                    <!-- <span id="username-error" class="error">please fill the username</span>  -->
+                                    <span *ngIf="loginForm.controls['user_name'].invalid && (loginForm.controls['user_name'].dirty || loginForm.controls['user_name'].touched)" class="alert">
+                          <span  class="errorMessage" *ngIf="loginForm.controls['user_name'].errors?.required">
+                          Please enter username
+                          </span>
+                                    </span>
+                                </div>
+                                <div class="form-group m-b-20">
+                                    <input name="inputPassword" formControlName="password" id="inputPassword" placeholder="Password "  value="" class="form-control" required autocomplete="off" type="password">
+                                    <i class="fas fa-key"></i>
+
+                                    <span *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert">
+                          <span class="errorMessage" *ngIf="loginForm.controls['password'].errors?.required">
+                          Please enter password
+                          </span>
+                                    </span>
+
+                                </div>
+                                <div id="div_msg" style="display: none;"><span id="msg" class="msg error" style="display: block"></span></div>
+                                <div class="form-group text-center mb-0">
+                                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" value="">
+                                    <input type="hidden" name="_token" value="">
+                                    <button type="submit" class="btn btn-submit btn-login mb-0">Login<i class="fas fa-sign-in-alt"></i></button>
+
+                                </div>
+                            </form>
+
+                            <div class="recaptchaTerms">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>
+
+                            <div class="form-group text-center">
+                               <button *ngIf="isSignUp =='1'" type="btn" class=" m-t-10 btn btn-submit btn-login" routerLink="/auth/signup">Signup<i class="fas fa-user-plus"></i></button>  
+
+                                <div class="mt-1 text-center download-apk" *ngIf="isApk =='1'">
+                                    <a href="#" class="blinking btn btn-submit btn-login"><span><b>Download Apk</b>
+                                      <i class="fa fa-android" ></i>
+
+                                    </span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

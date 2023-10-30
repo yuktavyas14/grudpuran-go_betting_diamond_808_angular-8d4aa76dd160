@@ -1,0 +1,32 @@
+
+<body class="login">
+  <meta name="viewport" content="width=device-width, initial-scale=0.4">
+    <div class="wrapper1">
+        <section class="login-mn">
+
+                      <!-- <div class="log-logo"> <img src="assets/images/godslogo.png" style="max-width: 250px; max-height: 100px;"> </div> -->
+
+            <div class="log-logo"> <img src={{url}} style="max-width: 250px; max-height: 100px;"> </div>
+            <div class="log-fld">
+                <h2 class="text-center">Sign In</h2>
+                <form [formGroup]="loginForm" class="form-horizontal" role="form" method="post" action="" id="loginform">
+                    <div class="form-group m-b-20">
+                        <input formControlName="user_name" placeholder="Username" id="username" name="username" value="" class="form-control" type="text">
+                        <span id="username-error" class="error"></span>
+                    </div>
+                    <div class="form-group m-b-20">
+                        <input formControlName="password" placeholder="Password" id="Password" name="password" value="" class="form-control" type="password">
+                        <span id="password-error" class="error"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-submit btn-login" (click)="Login()"  >Login<i class="fas fa-sign-in-alt"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="log-copy">
+                <p>© {{getUrlReplace(origin)}}</p>
+                <!-- <p> © DIAMỌNDEXCH.COM info@diamọndexch.com</p> -->
+            </div>
+        </section>
+    </div>
+</body>

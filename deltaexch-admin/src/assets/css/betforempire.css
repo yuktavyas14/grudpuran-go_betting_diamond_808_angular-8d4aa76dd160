@@ -1,0 +1,259 @@
+
+.login .wrapper1 {
+    background: unset !important;
+    /* fallback for old browsers */
+    background: unset !important;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: unset !important;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.login {
+    background-image: linear-gradient(#ffd200, #ffc700);
+    height: 100vh;
+}
+.log-fld h2 {
+    color: #000 !important;
+}
+.log-fld h2:after, .log-fld h2:before {
+    background:#000 !important;
+}
+.header-bottom {
+    background-color: #ffd200;
+}
+.btn-submit.btn-login {
+    background-color: #ffd200 !important;
+    border-color: #ffd200 !important;
+    color: #000 !important;
+}
+
+.btco-hover-menu .collapse ul>li:hover>a {
+    background: #ffd200;
+}
+.btn-diamond {
+    color: #000!important;
+}
+.master-balance {
+    background-color: #ffc700;
+}
+.data-table table td.actions  a {
+    background-color: #444 !important;
+}
+
+/* .ngx-pagination .disabled {
+    padding: 0.1875rem 0.625rem;
+    background: #ffd200 !important;
+    color: #fefefe;
+    cursor: default;
+} */
+.fa-arrow-alt-circle-down, .fa-arrow-alt-circle-up {
+    color: #000;
+}
+
+.btn-diamond {
+    background-color: #ffd200;
+    border-color: #ffd200;
+    color:#000;
+}
+
+.ngx-pagination .current {
+    background: #ffd200 !important;
+}
+.data-table table td a {
+    background: #ffd200 !important;
+    color: #000 !important;
+}
+.btn-success, .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #ffd200 !important;
+    border-color: #ffd200 !important;
+}
+.ngx-pagination a, .ngx-pagination button {
+    padding: 3px 10px !important;
+    background-color: #ffc700 !important;
+}
+
+input:checked~.checkmark {
+    background-color: #444;
+    border: solid 1px #444;
+}
+.btco-hover-menu .collapse ul li a:hover {
+    background-color: #ffc700;
+    color: #000 !important;
+
+}
+.game-heading {
+    background-color: #ffc700 !important;
+    color: #000 !important;
+}
+.uname .btn-success, .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #444 !important;
+    border-color: #444 !important;
+}
+.card-header {
+    background-color: #ffc700;
+    line-height: 1.6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.log-copy{
+    text-transform: uppercase !important;
+}
+.lastResultPart h3 {
+    background-color: #ffc700 !important;
+    color: #000 !important;
+}
+.nav-pills .show>.nav-link, .tab_betslip .nav-pills .nav-link.active {
+    color: #000;
+    background-color: #ffd200;
+    border-top: 3px solid #ffd200;
+    border-radius: 0;
+    outline: 0;
+}
+.btn-back {
+    background-color: #ffc700 !important;
+    border-color: #ffc700;
+    color: #000 !important;
+}
+.tab_betslip .nav.nav-pills {
+    background: #ffc700b3;
+    color: #000 !important;
+}
+.card-title {
+    color: #000 !important;
+}
+.game-heading .card-header-title {
+    color:  #000 !important;
+}
+.user-search .username ul {
+    background-color: #ffd200;
+    color: 000 !important;
+}
+.header-bottom li a {
+    color: #000 !important;
+}
+h3.heading-text {
+    font-size: 15px;
+    background-color: #ffd200;
+    color: #000;
+}
+.table thead th {
+    background-color: #FFF;
+    color: #666;
+}
+.modal-header .close {
+    background-color: #ffd200;
+}
+.modal-header {
+    border-bottom: 0;
+    background-color: transparent;
+}
+h4.modal-title {
+    color: #ffd200;
+}
+button.close i {
+    font-size: 17px;
+    color: #000;
+    text-shadow: none;
+}
+.btn-submit {
+    background-color: #ffd200;
+    border-color: #ffd200;
+    color: #000;
+}
+#view-more .nav-tabs .nav-item.show .nav-link, #view-more .nav-tabs .nav-link.active {
+    color: #000;
+    background-color: #ffd200;
+    border: 0;
+}
+.modal-header {
+    padding: 10px;
+    background: transparent !important;
+    color: #000;
+    border-radius: 0;
+    border: 0;
+}
+
+.table thead th {
+    background-color: transparent;
+    color: #333;
+}
+.btco-hover-menu .collapse ul ul, .btco-hover-menu .collapse ul ul.dropdown-menu {
+    background: #ffd200 !important;
+}
+/*.header-bottom li a{color: #000 !important;}*/
+.header-bottom li a:hover{color: #000 !important;}
+.user-search .username{color: #000;}
+
+
+
+
+.bar1, .bar2, .bar3 {
+
+  background-color: #000 !important;
+
+}
+.navbar-nav .dropdown-menu a{color: #fff !important;}
+
+.list-unstyled .navbar-nav .header-bottom li a  {
+  color: #000!important;
+}
+.header-bottom ul.whiteColor li a  {
+    color: #000!important;
+  }
+.navbar-nav .dropdown-menu a {
+  color: #000 !important;
+}
+.blinking span {
+    animation: blinkingText 1.2s infinite !important;;
+}
+
+.blinking:hover span {
+    animation: blinkingHoverText 1.2s infinite !important;
+}
+.log-copy p {
+    color: #000 !important;
+}
+
+@keyframes blinkingText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+
+@keyframes blinkingHoverText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+
+

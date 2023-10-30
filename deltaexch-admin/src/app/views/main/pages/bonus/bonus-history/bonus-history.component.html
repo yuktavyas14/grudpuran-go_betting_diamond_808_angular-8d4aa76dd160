@@ -1,0 +1,60 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+      <div class="detail-row">
+        <h2>Bonus History</h2>
+     
+      </div>
+      <div class="table-responsive data-table" id="tbldata">
+        <div id="example_wrapper" class="dataTables_wrapper no-footer">
+    
+         
+          <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%"
+            role="grid" aria-describedby="example_info">
+            <thead>
+              <tr role="row">
+               
+                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Credit"
+                  style="width: 173px;">Bonus Name</th>
+                  <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Credit"
+                  style="width: 173px;">Bonus Type</th>
+                  <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Credit"
+                  style="width: 173px;">Bonus Amount</th>
+                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Debit" style="width: 173px;">
+                  User Name</th>
+                  <th width="10%" class="sorting_asc" rowspan="1" colspan="1" aria-label="Date" style="width: 173px;">Date
+                </th>
+             
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="bounsStatementList.length != 0">
+        
+                <ng-container *ngFor="let report of bounsStatementList;let i = index">
+                  <tr role="row" class="odd">
+                    <td class="sorting_1"> {{report?.bonus_name}}</td>
+                    <td class="sorting_1"> {{report?.bonus_type}}</td>
+                    <td class="sorting_1"> {{report?.bonus_amount}}</td>
+                    <td class="sorting_1"> {{report?.user_name}}</td>
+                    <td class="sorting_1"> {{report?.created_at  | formatDate: 'MMMM Do YYYY, h:mm a'}}</td>
+  
+                  </tr>
+                </ng-container>
+              </ng-container>
+              <ng-container  *ngIf="bounsStatementList.length === 0">
+                <tr>
+                  <td colspan="6" style="text-align: center;">No Record Found !</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+ 
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+ 
+  

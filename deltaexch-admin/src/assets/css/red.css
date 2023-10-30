@@ -1,0 +1,151 @@
+.login {
+    /*background-image: linear-gradient(#c86a6a,#33656a) !important;*/
+
+    background-image: linear-gradient(#c86a6a, #33656a) !important;
+    height: 100vh;
+}
+ .login .wrapper1 {
+    background-image: unset !important;
+}
+.log-fld h2 {
+    color: #000 !important;
+}
+.log-fld h2:after, .log-fld h2:before {
+    background:#000 !important;
+}
+.header-bottom {
+    background-color: #c86a6a !important;
+}
+.btn-login {
+    background-color: #c86a6a !important;
+    border-color: #c86a6a !important;
+    color: #fff !important;
+}
+.btn-submit.btn-login {
+    background-color: #c86a6a !important;
+    border-color: #c86a6a !important;
+    color: var(--primary-color);
+}
+
+.btco-hover-menu .collapse ul>li:hover>a {
+    background: #33656a;
+}
+
+.master-balance {
+    background-color: #33656a;
+}
+
+.fa-arrow-alt-circle-down, .fa-arrow-alt-circle-up {
+    color: #FFF;
+}
+
+.btn-diamond {
+    background-color: #c86a6a !important;
+    border-color: #c86a6a !important;
+    color:#FFF;
+}
+
+.ngx-pagination .current {
+    background: #c86a6a !important;
+}
+.data-table table td a {
+    background: #c86a6a !important;
+    color: #FFF;
+}
+.btn-success, .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #444 !important;
+    border-color: #444 !important;
+}
+.ngx-pagination a, .ngx-pagination button {
+    padding: 3px 10px !important;
+    background-color: #bdad4c !important;
+}
+
+input:checked~.checkmark {
+    background-color: #444;
+}
+.data-table table td a {
+    background: #444;
+    color: #FFF;
+}
+.game-heading {
+    background-color: #33656a !important;
+}
+.card-header {
+    background-color: #c78787 !important;
+    line-height: 1.6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.nav-pills .show>.nav-link, .tab_betslip .nav-pills .nav-link.active {
+    color: #FFF;
+    background-color: #c86a6a !important;
+    border-top: 3px solid #c86a6a !important;
+    border-radius: 0;
+    outline: 0;
+}
+.btn-back {
+    background-color: #d17f7f !important;
+    border-color: #c78787 !important;
+}
+
+.user-search .username ul {
+    background-color: #c86a6a !important;
+}
+h3.heading-text {
+    font-size: 15px;
+    background-color: #33656a;
+    color: #FFF;
+}
+.table thead th {
+    background-color: #FFF;
+    color: #666;
+}
+.modal-header .close {
+    background-color: #c86a6a !important;
+}
+.modal-header {
+    border-bottom: 0;
+    background-color: transparent;
+}
+h4.modal-title {
+    color: #424242;
+}
+button.close i {
+    font-size: 17px;
+    color: #FFF;
+    text-shadow: none;
+}
+.btn-submit {
+    background-color: #c86a6a !important;
+    border-color: #c86a6a !important;
+    color: #000;
+}
+#view-more .nav-tabs .nav-item.show .nav-link, #view-more .nav-tabs .nav-link.active {
+    color: #fff;
+    background-color: #c86a6a !important;
+    border: 0;
+}
+.modal-header {
+    padding: 10px;
+    background: transparent !important;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+}
+
+.table thead th {
+    background-color: transparent;
+    color: #333;
+}
+.btco-hover-menu .collapse ul ul, .btco-hover-menu .collapse ul ul.dropdown-menu {
+    background: #c86a6a !important;
+}
+a:not([href]):not([tabindex]) {
+    color: #fff;
+    text-decoration: none;
+}
+a:not([href]):not([tabindex]):hover {
+    color: #fff;
+    text-decoration: none;
+}

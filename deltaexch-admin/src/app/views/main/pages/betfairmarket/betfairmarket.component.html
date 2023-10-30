@@ -1,0 +1,42 @@
+<div class="col-md-12 report-main-content m-t-20">
+    <div class="">
+      <section class="card">
+        <header class="card-header">
+          <h2 class="card-title">Markets</h2>
+        </header>
+        <div class="card-body">
+          <div class="widget-body form">
+            <div class="usertable_area">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>SERIAL NO</th>
+                                <th>RUNNER NAME</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr *ngFor="let market of marketList;let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{market.market_name}}</td>
+                                <td>
+                            
+                                <span *ngIf="market.is_active == '0'">
+                                    <button type="button" (click)="createMarket(market)" title="add market"
+                                      class="btn btn-success">Add</button>
+                                  </span>
+                                  <span *ngIf="market.is_active == '1'">
+                                    <button type="button" title="add market" class="btn btn-success"
+                                      disabled>Added</button>
+                                  </span>
+                                 </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  

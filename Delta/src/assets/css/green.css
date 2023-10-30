@@ -1,0 +1,96 @@
+/*Blue-Green Theme*/
+
+
+.login {
+    background-image:linear-gradient(#180a48, #249181) !important;
+}
+.btn-submit {
+    background-color: #180a48 !important;
+    border-color: #180a48 !important;
+    color: #fff;
+}
+button.time-btn {
+    background-color: #249181 !important;
+    color: #fff !important;
+}
+.header {
+    background-color: #180a48 !important;
+}
+.sidebar-title {
+    background-color: #180a48;
+}
+.home-tabs .nav-tabs .nav-link {
+    border-right: 1px solid #249181;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #249181;
+}
+.header-bottom {
+    background-color: #249181;
+}
+.casinoicons-title {
+    background-image:linear-gradient(#180a48, #249181);
+}
+.card-header {
+    background-color: #249181;
+}
+.game-heading {
+    background-color: #249181;
+}
+.market-title {
+    background-color: #3fad9d;
+}
+.game-page .nav-tabs .nav-link {
+    /* background-color: #249181; */
+    background-color: unset !important;
+}
+.main-content .nav-tabs .nav-link {
+    border: 0;
+    border-radius: 0;
+    border-top: 3px solid #180a48;
+}
+.game-page .nav-tabs .nav-link.active {
+    background-color: #180a48;
+}
+
+.featured-box .nav-tabs li a {
+    background-color: #249181 !important;
+}
+.fancy-nav ul li.active a, .fancy-nav ul li a, 
+.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-link.active {
+    background-color: #180a48 !important;
+}
+.lastResultPart h3, .fancy-marker-title h4 {
+    background-color: #249181d9 !important;
+}
+.low-high-btn, ul.other-table-box li, .btn-theme {
+    background-image: linear-gradient(90deg,#180a48,#249181) !important;
+}
+.modal-header {
+    background: #180a48;
+}
+
+.main-content .nav-tabs {
+    background-color: #180a48;
+}
+.sports .nav-tabs {
+    background-color: #249181;
+}
+.sports .nav-tabs .nav-link.active, .sports .nav-tabs .nav-link:hover {
+    background-color: #180a48;
+}
+.main-content .nav-tabs .nav-item:after {
+    background: #ffffff;
+    top: 12px;
+    width: 1px;
+    content:none;
+}
+.casinoicons .casino-name {
+    background-image: linear-gradient(#180a48, #249181);
+}
+
+footer {
+    background-color: #180a48;
+    border-top: 2px solid #249181;
+}

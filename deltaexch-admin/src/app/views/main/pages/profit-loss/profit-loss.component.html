@@ -1,0 +1,148 @@
+<div class="col-md-12 main-container" data-select2-id="11">
+  <div class="listing-grid" data-select2-id="10">
+    <div class="detail-row" data-select2-id="9">
+      <h2>Profit Loss</h2>
+      <div class="m-t-20 row" data-select2-id="8">
+        <div class="col-md-7" data-select2-id="7">
+          <form [formGroup]="profitLossForm" id="gamereport" action="" method="post" class="ajaxFormSubmit" data-select2-id="gamereport">
+            <div class="row" data-select2-id="6">
+              <div class="col-md-4" data-select2-id="5">
+                <div class="form-group" data-select2-id="4">
+                  <label for="dataAmounts">Search By Client Name</label>
+
+                  <input class="form-control client-search" autocomplete="off" list="dataAmount"   placeholder="search client"
+                        [formControl]="search_client" />
+                        <datalist id="dataAmount">
+                           <option *ngFor="let user of userlist" [value]='user'>{{user}}
+                          </option>
+                          <option  disabled *ngIf="!userlist">No records found</option>
+                        </datalist>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="fromdate">From</label>
+                  <input formControlName="from_date" type="text" class="form-control" #dp="bsDatepicker" bsDatepicker>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="todate">To</label>
+                  <input formControlName="to_date" type="text" class="form-control" #dp="bsDatepicker" bsDatepicker>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <label>&nbsp;</label>
+                <br>
+                <input type="hidden" name="_token" value="">
+                <button class="btn btn-diamond" type="submit" (click)="getProfitLoss()">Load</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <!-- <div class="col-md-12">
+          <div class="form-group" id="profitLossStats"></div>
+        </div> -->
+        <div class="col-md-12" *ngIf=" profitlossreport?.sum_data">
+          <div class="form-group"  id="profitLossStats">
+            <h5 class="mb-0">Profit &amp; Loss for Event type</h5>
+            <div class="mt-1 mb-1 profit-loss-box-wrapper" >
+              <ng-container *ngFor = "let item of profitlossreport?.sum_data">
+
+              <div  [ngClass]="item?.profit_loss >= 0 ? 'bg-success' : 'bg-danger'  " class=" profit-loss-box" >{{item?.game}} : {{item?.profit_loss}}</div>
+              </ng-container>
+
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="table-responsive data-table" style="overflow: hidden" id="tbldata">
+      <table id="example" class="custom-table table table-bordered table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>Game Name</th>
+            <th>Game Type</th>
+            <th>Profit &amp; Loss</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="profitlossreport?.data">
+          <ng-container *ngFor = "let item of profitlossreport?.data">
+          <tr>
+          <td>{{item?.game}}</td>
+          <td><button class="btn-success" data-toggle="modal" data-target="#view-more"> {{item?.game_type}}</button></td>
+          <td [ngClass]="item?.profit_loss >= 0 ? 'text-success' : 'text-danger'  ">{{item?.profit_loss}}</td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="view-more">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="viewMoreMatchedDataModal">
+
+          <div class="tab-content m-t-20">
+            <div id="matched-bet2" class="tab-pane  active ">
+
+              <div class="table-responsive" id="view-more-matched-tbl">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Sr.No</th>
+                      <th>TraneDate</th>
+                      <th>Credit</th>
+                      <th>Debit</th>
+                      <th>Closing </th>
+                      <th>Remark</th>
+
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <ng-container *ngFor = "let bet of userListData;let i = index">
+                      <tr [ngClass]="bet?.is_back === '1' ?  'back-color ':'lay-color'">
+                        <td>{{bet?.parent_user_name}}</td>
+                        <td>{{bet?.user_name}}</td>
+                        <td>{{bet?.selection_name}}</td>
+                        <td>{{bet?.is_back == 1 ? 'Back' : 'Lay'}}</td>
+                        <td>{{bet?.odds}}</td>
+                        <td>{{bet?.stack}}</td>
+                        <td [ngClass]="checkNumberPositvie(bet?.profit_loss) ? 'text-success' : 'text-danger'  ">{{bet?.profit_loss}}</td>
+
+                        <td>{{bet?.placed}}</td>
+                        <td>{{bet?.bet_matched_at}}</td>
+
+                        <td>{{bet?.ip_address}}</td>
+                        <td>{{bet?.device_info}}</td>
+                    </ng-container>
+                    <tr *ngIf="!userListData">
+                      <td colspan="10">No records found</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
+          </div>
+         </div>
+      </div>
+      <div class="modal-footer"> </div>
+    </div>
+  </div>
+</div>

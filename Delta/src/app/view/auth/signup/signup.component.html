@@ -1,0 +1,94 @@
+<app-auth-header></app-auth-header>
+
+<section class="py-5 signup-section">
+  <div class="container">
+      <h3 class="text-center">Signup</h3>
+      <div class="row mt-md-4 mt-3">
+          <div class="col-lg-6 mx-auto">
+              <div class="signup-form">
+                  <form [formGroup]= "signupForm" id="frm_lgn" method="POST">
+                      <div class="form-group">
+                        <label for="" class="form-label">Name</label>
+                        <input type="text" class="form-control" placeholder="Name" formControlName="name" required>
+                        <span *ngIf="signupForm.controls['name'].invalid && (signupForm.controls['name'].dirty || signupForm.controls['name'].touched)" class="alert">
+                          <span  class="errorMessage" *ngIf="signupForm.controls['name'].errors?.required">
+                          Please enter name
+                          </span>
+                        </span>
+                      </div>
+                      <div class="form-group">
+                        <label for="" class="form-label">User Name</label>
+                        <input type="text"  (focusout)="checkUserExist()" formControlName="user_name" required class="form-control"  placeholder="User Name">
+                        <span *ngIf="signupForm.controls['user_name'].invalid && (signupForm.controls['user_name'].dirty || signupForm.controls['user_name'].touched)" class="alert">
+                          <span  class="errorMessage" *ngIf="signupForm.controls['user_name'].errors?.required">
+                          Please enter user name
+                          </span>
+                        </span>
+                        
+                        <span *ngIf="flagExits" class="errorMessage">Usermane already taken</span>
+                        <!-- <span *ngIf="signupForm.controls['user_name'].invalid && (signupForm.controls['user_name'].dirty || signupForm.controls['user_name'].touched)" class="alert"> -->
+                          <span style="margin: 0px;" class="errorMessage" *ngIf="signupForm.controls['user_name'].errors?.pattern">
+                           minimum four characters required , Space and special characters are not allowed
+                          </span>
+                      
+                      </div>
+                      <div class="form-group">
+                          <label for="" class="form-label">Mobile</label>
+                          <input type="text" (keypress)="keyPressNumbers($event)" formControlName="mobile" required class="form-control"  placeholder="Mobile">
+                          <span *ngIf="signupForm.controls['mobile'].invalid && (signupForm.controls['mobile'].dirty || signupForm.controls['mobile'].touched)" class="alert">
+                            <span  class="errorMessage" *ngIf="signupForm.controls['mobile'].errors?.required">
+                            Please enter contact number
+                            </span>
+                            <span  class="errorMessage" *ngIf="signupForm.controls['mobile'].errors?.minlength">
+                              please enter minimum 10 digits 
+                              </span>
+                              <span  class="errorMessage" *ngIf="signupForm.controls['mobile'].errors?.maxlength">
+                                Mobile no can't  be greater then sixteen digit
+                                </span>
+                          </span>
+         
+                      
+                        </div>
+                        <div class="form-group">
+                          <label for="" class="form-label">Password</label>
+                          <input type="password" formControlName="password"  required autocomplete="off" class="form-control"  placeholder="Password">
+                          <span *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)" class="alert">
+                            <span  class="errorMessage" *ngIf="signupForm.controls['password'].errors?.required">
+                            Please enter password
+                            </span>
+                            <span  class="errorMessage" *ngIf="signupForm.controls['password'].errors?.pattern">
+                              Password Minimum eight characters, at least one letter and one number!
+                              </span>
+                          </span>
+                        </div>
+                        <div class="form-group">
+                          <label for="" class="form-label">Confirm Password</label>
+                          <input type="password" formControlName="confirm_password" required autocomplete="off" class="form-control"  placeholder="Confirm Password">
+                          <span *ngIf="signupForm.controls['confirm_password'].invalid && (signupForm.controls['confirm_password'].dirty || signupForm.controls['password'].touched)" class="alert">
+                            <span  class="errorMessage" *ngIf="signupForm.controls['confirm_password'].errors?.required">
+                            Please enter confirm password
+                            </span>
+                            
+                          </span> 
+                          <span  class="errorMessage" *ngIf="signupForm.hasError('passwordNotMatch') && !signupForm.controls['confirm_password'].errors?.required">
+                            password not matched
+                          </span>
+                        </div>
+                        <div class="form-group">
+                          <label for="" class="form-label">Referal Code</label>
+                          <input type="text" formControlName="referal_code"
+                             autocomplete="off" class="form-control"  placeholder="Referal Code">
+                         
+                         
+                        </div>
+                        <div class="col-12 text-center">
+                          <button type="submit" class="btn1"  (click)="Signup()">Signup</button>
+                        </div>
+                  </form> 
+              </div>                   
+          </div>
+      </div>
+  </div>
+</section>
+
+<app-auth-footer></app-auth-footer>

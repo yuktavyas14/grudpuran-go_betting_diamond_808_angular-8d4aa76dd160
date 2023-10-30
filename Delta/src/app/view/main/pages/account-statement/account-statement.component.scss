@@ -1,0 +1,86 @@
+
+.main-content .table th, .main-content .table td {
+    padding: 5px 3px !important;
+}
+// .bootstrap-datetimepicker-widget {
+//     position: inherit;
+//     z-index:1 !important;
+//     }
+
+    // @m
+    
+    .bootstrap-datetimepicker-widget{
+        position:relative
+    }
+
+    .custom-pagination .page-number{
+        display: inline-block;
+        /* padding: 5px 12px; */
+        background: #afffe6;
+        margin: 0px 4px;
+        border-radius: 25px;
+    }
+    
+    .page-number.current{
+        background: #ffffff!important;
+        border: 2px solid #458873;
+    }
+    
+    .page-number span{
+        display: block;
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .entries{
+        position: absolute;
+        top: 52px;
+        color: #000;
+        font-weight: 500;
+    }
+    .pagination-previous,.pagination-next{
+        display: inline-block;
+        font-weight: bold;
+    }
+
+// bs-datepicker-container{
+//   left: 20px !important;
+// }
+
+
+    // @media screen and (max-width:600px){
+    //      bs-datepicker-container{
+    //         transform: translate3d(0px, 647px, 0px)!important;
+    //     }
+    //  }
+
+    // .table-responsive{-sm -md -lg -xl}
+
+    .custom-pagination .paginator-nav-btns {
+        margin: 0px 10px;
+        font-weight: bold;
+      }
+      
+      .custom-pagination > div.current {
+        background-color: #3dffaf;
+      }
+      
+      .custom-pagination > div {
+        border: 2px solid #3dffaf;
+        margin-right: 3px;
+        border-radius: 50px;
+        cursor: pointer;
+        flex: 1;
+        font-size: 18px;
+        text-align: center;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+      
+      .custom-pagination {
+        display: flex;
+        max-width: 300px;
+        margin: auto;
+      }

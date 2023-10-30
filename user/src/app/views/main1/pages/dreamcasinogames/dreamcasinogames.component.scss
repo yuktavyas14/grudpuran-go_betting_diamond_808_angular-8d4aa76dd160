@@ -1,0 +1,123 @@
+.featured-game1{
+    margin-top: 1.5rem!important;
+    margin-bottom :.5rem!important;
+    padding-right: 20px;
+      padding-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  
+  .col-12, .featured-game1 .col-6, .featured-game1 .col-md-3, .featured-game1 .col-sm-3 {
+    padding: 0 6px!important;
+  }
+  
+  .img-fluid, .img-thumbnail {
+    max-width: 100% !important;
+    height: auto;
+  }
+  .featured-game2{
+  max-width: 16.666667%
+  }
+  
+  .featured-game1 .img-pos {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .game-title-main {
+    text-align: center;
+    font-size: 14px;
+    color: #20194d;
+    padding: 8px 0;
+    font-weight: 700;
+  }
+  
+  
+  .featured-game1 img {
+    border-radius: 10px;
+    border: 3px solid#045662;
+    cursor: pointer;
+  }
+  
+  
+  
+  .englishcasino {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .gametopnav {
+    background-color: #3f88cc;
+    // background-image: linear-gradient(#5ecbdd,#146578);
+    // background-image: linear-gradient(to right, #9a346f, #833772, #6b3871, #54396c, #3f3764);
+  
+    width: 100%;
+    float: left;
+    border-radius: 0;
+    font-family: "Poppins",sans-serif;
+    margin-top: 0;
+  }
+  .gametopnav.englishcasino a:not(:first-child) {
+    display: inline-block;
+  }
+  .gametopnav a.active, .gametopnav a:hover {
+    background-color: #065f6e;
+    // background-image: linear-gradient(#087e91,#065f74);
+  
+   
+    //   background-image: linear-gradient(to right, #9a346f, #833772, #6b3871, #54396c, #3f3764);
+      
+  
+  }
+  .englishcasino .new-scrollmenu.ball-images-tab {
+    width: 40px;
+    height: 40px;
+  }
+  .englishcasino .new-scrollmenu {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .englishcasino a {
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    padding: 8px 15px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: tahomabd;
+    font-size: 14px;
+    position: relative;
+    float: none;
+  }
+  .gametopnav.englishcasino a:not(:first-child) {
+    display: inline-block;
+  }
+  .englishcasino a {
+    border-right: 1px solid #047e91;
+  }
+  .new-scrollmenu.ball-images-tab {
+    width: 20px;
+    height: 20px;
+  }
+  .drem-games {
+    padding-left: 10px;
+  }
+
+  .supenova{
+height: 100vh;
+width: 100%;
+  }
+
+  iframe {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .gametopnav {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

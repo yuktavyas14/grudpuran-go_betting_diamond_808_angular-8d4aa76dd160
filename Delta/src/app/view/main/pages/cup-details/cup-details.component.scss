@@ -1,0 +1,178 @@
+/* -----------------modal classes------ */
+
+.winner-icon i {
+    font-size: 26px;
+    box-shadow: 0 0 0 var(--secondary-bg);
+    -webkit-animation: winnerbox 2s infinite;
+    animation: winnerbox 1.5s infinite;
+    border-radius: 50%;
+    color: #169733;
+}
+.red{
+    color: red !important;
+
+}
+.green{
+    color: green !important;
+
+}
+.scrool-game{
+    overflow: scroll;
+    height: 90vh;
+    padding-bottom: 100px;
+}
+.winner-icon {
+    position: absolute;
+    right: 0;
+    bottom: 15%;
+}
+
+.modal-dialog {
+    margin: 1% auto;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}
+
+.modal-lg {
+    max-width: 96%;
+}
+
+.modal-open .modal {
+    padding-right: 0 !important;
+}
+
+.modal-header {
+    padding: 10px;
+    background: #0088cc;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+}
+
+.img-card-result {
+    width: 50px !important;
+    border-radius: 3px;
+    padding: 2px;
+    border: solid 2px #fbff00;
+    margin: 5px;
+}
+
+.winner-text {
+    font-size: 16px;
+    color: #000;
+}
+
+.intsta-worli-card-value {
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+.card-title {
+    color: #000 !important;
+}
+
+.total-secvalue-top {
+    line-height: 30px !important;
+}
+
+.total-secvalue {
+    display: block;
+    font-size: 11px;
+    line-height: 20px;
+    font-weight: 300 !important;
+}
+
+
+.andar-bahar2-card {
+	width:150px;
+	display:flex;
+	overflow:hidden;
+	overflow-x:scroll;
+}
+.andar-bahar2-card span{
+	margin-right:2px;
+}
+.tv-icon.tv-iconScore {
+    color: #FFF;
+    position: absolute;
+    right: 40px;
+    top: 11px;
+    cursor: pointer;
+}
+
+.borderScoreBoard{
+    border: solid 2px #1e7ea2;
+}
+
+
+.fancytest span.div.only-show-on-hover {
+  visibility: hidden;
+}
+.fancytest:hover span.div.only-show-on-hover  {
+  visibility: visible;
+}
+
+
+.fancytest .info-block span.only-show-on-hover {
+  visibility: hidden;
+}
+.fancytest .info-block:hover span.only-show-on-hover  {
+  visibility: visible;
+}
+
+.testfans span.only-show-on-hover {
+  visibility: hidden;
+}
+.testfans:hover span.only-show-on-hover  {
+  visibility: visible;
+}
+
+.fancy1test .info-block span.only-show-on-hover {
+  visibility: hidden;
+}
+.fancy1test .info-block:hover span.only-show-on-hover  {
+  visibility: visible;
+}
+.ball-by-ball img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50px;
+    margin-left: 4px;
+    margin-bottom: 15px;
+}
+
+
+.slick-slider {
+    width: 88%;
+    margin: auto;
+     
+  }
+  
+body .slick-prev, 
+body .slick-next {
+    height: 45px;
+    width: 40px;
+    background: grey !important;
+    z-index: 100;
+}
+

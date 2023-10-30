@@ -1,0 +1,98 @@
+<div class="featured-box">
+    <div class="home-products-container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="game-heading">{{seriesName}}</h2>
+            </div>
+            <div class="col-4" *ngFor="let match of gameList">
+                <a (click)="onMatchDetails(match)" class="zoom-effect-container " *ngIf="match.match_id != '-153'">
+                    <div class="d-inline-block   m-t-10 m-b-10 m-r-20 " style="cursor: pointer;"> <img src="assets/images/games-icon/{{match.match_id}}.jpg" alt="{{match.match_name}}" class="img-fluid image-zoom">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="gamehall-wrap-simple" *ngIf="seriesName == 'Live Casino' ">
+    <div class="row">
+      <ng-container  *ngFor="let data of casinoSports">
+        <div class="col-4" *ngIf="data.sport_id != 'brinofantasy'">
+            <a (click)="navigateToGame(data.sport_id , data.show_chip_value_popup)">
+                <div class="d-inline-block m-t-10 m-b-10 m-r-20">
+                  <img src="assets/images/casino/{{data.sport_id.toLowerCase()}}.png" class="img-fluid" />
+                  <div class="casinoicons-title">{{data.name}}</div>
+                </div>
+              </a>
+        </div>
+        </ng-container>
+
+
+        <!-- <div class="col-4" >
+          <a routerLink="/main/game/dreamcasino">
+              <div class="d-inline-block m-t-10 m-b-10 m-r-20">
+                <img src="assets/images/casino/Dreamcasino.jpg" class="img-fluid" />
+                <div class="casinoicons-title">Dreamcasino </div>
+              </div>
+            </a>
+        </div> -->
+
+        <div class="col-4" >
+          <a >
+              <div class="d-inline-block m-t-10 m-b-10 m-r-20">
+                <img src="assets/images/casino/evolution-game-img.jpg" class="img-fluid" />
+                <div class="casinoicons-title">evolution</div>
+              </div>
+            </a>
+      </div>
+
+      <div class="col-4" >
+        <a >
+            <div class="d-inline-block m-t-10 m-b-10 m-r-20">
+              <img src="assets/images/casino/gamepool-gmae-img.jpg" class="img-fluid" />
+              <div class="casinoicons-title">Gamepool</div>
+            </div>
+          </a>
+    </div>
+    <div class="col-4" >
+      <a >
+          <div class="d-inline-block m-t-10 m-b-10 m-r-20">
+            <img src="assets/images/casino/livecasinogaming super.jpg" class="img-fluid" />
+            <div class="casinoicons-title">livecasinogaming</div>
+          </div>
+        </a>
+  </div>
+  <div class="col-4" >
+    <a >
+        <div class="d-inline-block m-t-10 m-b-10 m-r-20">
+          <img src="assets/images/casino/fawk.jpg" class="img-fluid" />
+          <div class="casinoicons-title">Live casino</div>
+        </div>
+      </a>
+</div>
+     
+
+        
+    </div>
+  
+   
+  
+   
+   </div>
+  
+
+   <!-- <ng-container  *ngFor="let data of casinoSports">
+    <a href="JavaScript:Void(0);" style="cursor: pointer" *ngIf="data.name != 'Brino Fantasy'"  (click)="navigateToGame(data.name , data.show_chip_value_popup)">
+    <dl class="entrance-title">
+    <dt>
+      <ng-container *ngIf="data?.name == 'Fawk'" >Live Casino</ng-container>
+      <ng-container *ngIf="data?.name !=='Fawk'" >{{data?.name}}</ng-container>   
+    </dt>
+    <dd>Play Now</dd>
+    </dl>
+    <img src="assets/images/casino/{{data.name}}.jpg" alt="" draggable="false"> 
+  </a>
+  </ng-container> -->

@@ -1,0 +1,604 @@
+<div class="col-md-12 main-container">
+  <style type="text/css">
+.back2 {
+  background-color: rgba(114,187,239,.5);
+}
+.back1 {
+  background-color: rgba(114,187,239,.75);
+}
+.lay1 {
+  background-color: rgba(250,169,186,.75);
+}
+.lay2 {
+  background-color: rgba(250,169,186,.5);
+}
+.bookmaker-container .box-w1
+{
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+}
+#bm-section .suspended::after{
+  width: 360px;
+  font-size: 14px;
+}
+#bm1-section .suspended::after{
+  width: 120px;
+  font-size: 14px;
+}
+.coupon-table button span {
+  font-size: 10px;
+}
+span.odd{
+  display: block;
+}
+#matched-bet th, #unmatched-bet th{
+  min-width: 100px;
+}
+.mtree table td, .mtree table th{
+  width: 33.3%;
+}
+#openFancyBook{
+
+}
+.fancyBookModal .modal-body {
+  background: none;
+  padding-right: 15px;
+}
+#playStopButton {
+  height:30px;
+  width:70px;
+  font-weight:bold;
+  border-radius:8px;
+  border:none;
+  color:black;
+  background-color:lightsteelblue;
+  outline:none;
+  cursor:pointer;
+  font-size:12px;
+  font:Arial, Helvetica, sans-serif;
+}
+/*Scorecard Design*/
+.scorecard {
+  background-color: #f2f2f2;
+  /* box-shadow: 0px 1px 5px rgba(0,0,0,0.5); */
+  width: 100%;
+  /* border: 2px solid #C3C3C3; */
+  padding: 5px;
+  font-size: 12px;
+
+  background-image:url(images/scorecard-bg.png);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color:#fff;
+}
+.scorecard:before
+{
+  content: "";
+  background-color: rgba(0,0,0,0.55);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.ball-runs {
+  background: #0088CC;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+.ball-runs.four {
+  background: #087F23;
+}
+
+.ball-runs.six {
+  background: #883997;
+}
+
+.ball-runs.wicket {
+  background: #ff0000;
+}
+.bookmaker-market .suspended::after{
+  width: 170px;
+}
+.coupon-table button{
+  min-height: 30px;
+}
+
+</style>
+  <div class="listing-grid">
+    <div class="table-top-buttons row">
+      <div class="col-md-6"> </div>
+      <div class="col-md-6 float-right text-right">
+        <form>
+          <ul class="d-inline-block">
+            <li class="form-group active-button m-l-20 d-inline-block BetActives"> <a href="javascript:void(0)" class="btn btn-back active">Bet Lock</a>
+              <ul class="sub-button">
+                <li> <a >All Deactive</a> </li>
+                <li> <a href="javascript:void(0)"  data-toggle="modal" data-target="#bet-lock" (click)="getBetLockUsers('B')">Userwise</a> </li>
+              </ul>
+            </li>
+            <li class="form-group active-button m-l-20 d-inline-block FancyActive"> <a href="javascript:void(0)" class="btn btn-back active">Session Lock</a>
+              <ul class="sub-button">
+                <li> <a href="javascript:void(0)">All Deactive</a> </li>
+                <li> <a   data-toggle="modal" data-target="#fancy-lock" (click)="getBetLockUsers('F')">Userwise</a> </li>
+              </ul>
+            </li>
+            <li class="form-group active-button m-l-20 d-inline-block"> <a (click)="getUserBookList()" href="javascript:void(0)" class="btn btn-back active" data-toggle="modal" data-target="#user-book">User Book</a> </li>
+            <li class="form-group active-button m-l-20 d-inline-block"> <a href="javascript:void(0)" class="btn btn-back active" data-toggle="modal" data-target="#user-book">Bookmarkers Book</a> </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+    <div class="coupon-card row">
+      <div class="col-md-8 main-content">
+        <div class="game-heading"> <span class="card-header-title"><span>Assembly Election -&gt;</span> <span>Assembly Election -&gt;</span> <span>MATCH_ODDS -&gt;</span> <span>11/25/2019 11:30:00 PM</span></span> </div>
+        <div class="card-content">
+          <div id="div_gamedata" class="table-responsive m-b-10 main-market">
+            <table class="table coupon-table table table-bordered m-t-10 " border="0">
+              <thead>
+                <tr>
+                  <th>Runners</th>
+                  <th class="box-w1"></th>
+                  <th class="box-w1"></th>
+                  <th class="back box-w1">Back</th>
+                  <th class="lay box-w1">lay</th>
+                  <th class="box-w1"></th>
+                  <th class="box-w1"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bet-info sec-1 suspended" data-title="ACTIVE">
+                  <td><span class="team-name">BJP</span>
+                    <p class="box-w4"> <span class="float-left profit " style="color: rgb(0, 128, 0);">0</span> </p></td>
+                  <td class="box-w1 back2"><button> <span class="odd"></span> <span></span> </button></td>
+                  <td class="box-w1 back1"><button> <span class="odd"></span> <span></span> </button></td>
+                  <td class="back box-w1"><button class="back"> <span class="odd"></span> <span></span> </button></td>
+                  <td class="lay box-w1"><button class="lay"> <span class="odd"></span> <span></span> </button></td>
+                  <td class="box-w1 lay1"><button> <span class="odd"></span> <span></span> </button></td>
+                  <td class="box-w1 lay2"><button> <span class="odd"></span> <span></span> </button></td>
+                </tr>
+                <tr class="bet-info sec-2 suspended" data-title="ACTIVE">
+                  <td><span class="team-name">CONG</span>
+                    <p class="box-w4"> <span class="float-left profit " style="color: rgb(0, 128, 0);">0</span> </p></td>
+                  <td class="box-w1 back2"><button> <span class="odd"></span> <span></span> </button></td>
+                  <td class="box-w1 back1"><button> <span class="odd"></span> <span></span> </button></td>
+                  <td class="back box-w1"><button class="back"> <span class="odd"></span> <span></span> </button></td>
+                  <td class="lay box-w1"><button class="lay"> <span class="odd"></span> <span></span> </button></td>
+                  <td class="box-w1 lay1"><button> <span class="odd"></span> <span></span> </button></td>
+                  <td class="box-w1 lay2"><button> <span class="odd"></span> <span></span> </button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--<div>
+            <div class="row row5 bookmaker-container">
+              <div class="fancy-marker-title col-xl-8" id="bm-head" style="display:none;">
+                <h4>Bookmaker Market 0% commission fast bet confirm</h4>
+                <div class="m-b-10 bookmaker-market">
+                  <div id="bm-section"> </div>
+                </div>
+              </div>
+              <div class="fancy-marker-title col-xl-4" id="bm1-head" style="display:none;">
+                <h4>Bookmaker Market</h4>
+                <div class="m-b-10 bookmaker-market">
+                  <div id="bm1-section"> </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 fancy-market" id="fancy-market" style="display: none;">
+                <div class="fancy-marker-title">
+                  <h4>Fancy Market</h4>
+                </div>
+                <div id="div_fancy"></div>
+              </div>
+              <div class="col-md-6 fancy-market">
+                <div class="fancy-marker-title" id="ballsection-market" style="display: none;">
+                  <h4>Ball by Ball Session Market</h4>
+                  <div id="div_ballsection"></div>
+                </div>
+                <div class="fancy-marker-title" id="meter-market" style="display: none;">
+                  <h4>Meter Market</h4>
+                  <div id="div_metersection"></div>
+                </div>
+                <div class="fancy-marker-title" id="khado-market" style="display: none;">
+                  <h4>Khado Market</h4>
+                  <div id="div_khadosection"></div>
+                </div>
+                <div class="fancy-marker-title" id="fancy1-market" style="display: none;">
+                  <h4>Fancy1 Market</h4>
+                  <div id="div_fancy1"></div>
+                </div>
+              </div>
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="col-md-4 sidebar-right" id="sidebar-right">
+        <div class="card m-b-10">
+          <div class="card-header" data-toggle="collapse" data-target=".video-tv" id="showtv">
+            <h6 class="card-title"> Live Match </h6>
+          </div>
+          <div id="video-tv" class="video-tv collapse "> </div>
+        </div>
+        <div class="card m-b-10" id="scoreboard-main">
+          <div class="card-header">
+            <h6 class="card-title">Score Card</h6>
+          </div>
+          <div class="card-body scoreboard-detail collapse" id="scoreboard-box"> </div>
+        </div>
+        <div class="card m-b-10 my-bet">
+          <div class="card-header">
+            <ul class="nav nav-tabs d-inline-block" role="tablist ">
+              <li class="nav-item d-inline-block"> <a class="nav-link active" (click)="betList = []; getMarketnFancyBet('M')" data-toggle="tab" href="#matched-bet">Matched <span id="matchedCount"></span></a> </li>
+              <li class="nav-item d-inline-block"> <a class="nav-link " (click)="betList = [];getMarketnFancyBet('U')" data-toggle="tab" href="#unmatched-bet">Unmatched <span id="unmatchedCount">(0)</span></a> </li>
+            </ul>
+            <a href="javascript:void(0)" (click)="getBetHistory('M')" class="btn btn-back float-right" data-toggle="modal" data-target="#view-more">View More</a> </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div id="matched-bet" class="tab-pane active">
+                <div class="table-responsive">
+                  <table id="matched" class="table coupon-table table-bordered table-stripted">
+                    <thead>
+                      <tr>
+                        <th style="min-width: 50px">UserName</th>
+                        <th style="min-width: 200px">Nation</th>
+                        <th style="min-width: 50px">Rate</th>
+                        <th style="min-width: 70px;">Amount</th>
+                        <th>PlaceDate</th>
+                        <th>MatchDate</th>
+                        <th style="min-width:70px">Gametype</th>
+                      </tr>
+                      <ng-container *ngFor="let bet of betList;let i= index">
+                       <td>{{bet?.user_name}}</td>
+                       <td>{{bet?.selection_name}}</td>
+                       <td>{{bet?.odds}}</td>
+                       <td>{{bet?.stack}}</td>
+                       <td>{{bet?.placed}}</td>
+                       <td>{{bet?.bet_matched_at}}</td>
+                       <td>{{bet?.game_type}}</td>
+
+                      </ng-container>
+                      <tr *ngIf ="betList.length === 0" >
+                        <td colspan="6">No Record Found</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div id="unmatched-bet" class="tab-pane ">
+                <div class="table-responsive">
+                  <table id="unmatched" class="table coupon-table table-bordered table-stripted">
+                    <thead>
+                      <tr>
+                        <th>UserName</th>
+                        <th style="min-width: 200px">Nation</th>
+                        <th style="min-width: 50px">Rate</th>
+                        <th style="min-width: 70px;">Amount</th>
+                        <th>MatchDate</th>
+                        <th>Gametype</th>
+                      </tr>
+                      <ng-container *ngFor="let bet of betList;let i= index">
+                        <td>{{bet?.user_name}}</td>
+                        <td>{{bet?.selection_name}}</td>
+                        <td>{{bet?.odds}}</td>
+                        <td>{{bet?.stack}}</td>
+                        <!-- <td>{{bet?.placed}}</td> -->
+                        <td>{{bet?.bet_matched_at}}</td>
+                        <td>{{bet?.game_type}}</td>
+
+                       </ng-container>
+                       <tr *ngIf ="betList.length === 0" >
+                         <td colspan="6">No Record Found</td>
+                       </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade fancyBookModal" id="fancyBookModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Books</h4>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="book-pop"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="userwise">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Active User</h4>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="usertypewiseactive-container"></div>
+        </div>
+        <div class="modal-footer"> </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="user-book">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">User Book</h4>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="modal-body ">
+          <div class="userBookContainer">
+            <div class="mtree-main"><ul class="mtree transit bubba mtree-header">
+              <li class="mtree-node mtree-closed"> <a href="javascript:void(0)">
+                <table class="table m-b-0">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <ng-container *ngFor="let selection of userBooklist?.market_selections">
+                      <th>{{selection?.name}}</th>
+                    </ng-container>
+                    </tr>
+                    <ng-container *ngFor="let data of userBooklist?.market_data">
+                      <tr>
+                         <td>
+                           {{data?.user_name}}
+                         </td>
+                         <ng-container *ngFor="let item of data?.market_selections_winloss | keyvalue">
+                           <td>
+                           {{item?.value}}
+                           </td>
+                         </ng-container>
+                    </tr>
+                    </ng-container>
+                  </thead>
+                </table>
+                </a> </li>
+            </ul></div>
+          </div>
+        </div>
+        <div class="modal-footer"> </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="bet-lock">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Active User</h4>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="modal-body ">
+          <table class="table table-bordered table-striped table-responsive-md">
+            <thead>
+              <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">User</th>
+                <th scope="col">Checked</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let  user of userList;let i = index">
+              <tr>
+              <td>{{i + 1}}</td>
+                <td>{{user?.user_name}}</td>
+                <td>
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="x" class="custom-control-input" [id]=i-1 [checked]="user?.bet_lock" (click)="lockUnlockBet(user)">
+                      <label class="custom-control-label" [for]=i-1>&nbsp;bet</label>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer"> </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="fancy-lock">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Active User</h4>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="modal-body ">
+          <table class="table table-bordered table-striped table-responsive-md">
+            <thead>
+              <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">User</th>
+                <th scope="col">Checked</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let  item of userList;let i = index">
+              <tr>
+              <td>{{i + 1}}</td>
+                <td>{{item?.user_name}}</td>
+                <td>
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="x" class="custom-control-input" [id]=i+1 [checked]="item?.fancy_lock" (click)="lockUnlockFancy(item)">
+                      <label class="custom-control-label" [for]=i+1>fancy&nbsp;</label>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer"> </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="view-more">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">View More Bet</h4>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="viewMoreMatchedDataModal">
+            <ul class="nav nav-tabs d-inline-block" role="tablist ">
+              <li class="nav-item d-inline-block"> <a class="nav-link  active " data-toggle="tab" href="#matched-bet2" id="matchedDataLink">Matched Bets</a> </li>
+              <li class="nav-item d-inline-block"> <a class="nav-link " data-toggle="tab" href="#unmatched-bet2" id="unMatchedDataLink">Unmatched Bets</a> </li>
+              <li class="nav-item d-inline-block"> <a class="nav-link " data-toggle="tab" href="#deleted-bet2" id="deletedMatchedDataLink">Deleted Bets</a> </li>
+            </ul>
+            <div class="tab-content m-t-20">
+              <div id="matched-bet2" class="tab-pane  active ">
+                <form method="POST" action="" accept-charset="UTF-8" id="viewMoreMatchForm">
+                  <input name="_token" type="hidden" value="">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group m-t-20">
+                        <label class="d-inline-block">Enter Code</label>
+                        <!-- <input type="text" name="userid" id="userid"  class="form-control d-inline-block"> -->
+                        <select name="list" id="userid" class="select-2-clientlist form-control select2-hidden-accessible" data-select2-id="userid" tabindex="-1" aria-hidden="true">
+                        </select>
+                        <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="4" style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-userid-container"><span class="select2-selection__rendered" id="select2-userid-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder"></span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span> </div>
+                      <div class="form-group m-t-20">
+                        <label class="d-inline-block">IP Address</label>
+                        <input type="text" name="ipaddress" id="ipaddress" class="form-control d-inline-block">
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="form-group m-t-20">
+                        <label class="d-inline-block">Amount</label>
+                        <input type="text" [(ngModel)]="fromAmt" name="amount1" id="amount1" class="form-control d-inline-block">
+                        <input type="text" [(ngModel)]="toAmt" name="amount2" id="amount2" class="form-control d-inline-block">
+                      </div>
+                      <div class="form-group m-t-20">
+                        <label class="d-inline-block">Type</label>
+                        <select name="bettype" class="form-control d-inline-block" id="bettype" [(ngModel)]="type">
+                          <option value="all">All</option>
+                          <option value="back">Back</option>
+                          <option value="lay">Lay</option>
+                        </select>
+                        <button class="btn btn-back">Search</button>
+                        <button type="button" class="btn btn-back viewAllMatched">View All</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="table-responsive" id="view-more-matched-tbl">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>UserName</th>
+                        <th>Nation</th>
+                        <th>Bet Type</th>
+                        <th>Amount</th>
+                        <th>User Rate</th>
+                        <th>Place Date</th>
+                        <th>Match Date</th>
+                        <th>IP</th>
+                        <th>Browser Details</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor = "let bet of betListHistory;let i = index">
+                        <tr>
+                          <td>{{i + 1}}</td>
+                          <td>{{bet?.user_name}}</td>
+                          <td>{{bet?.selection_name}}</td>
+                          <td>{{bet?.bet_type}}</td>
+                          <td>{{bet?.stack}}</td>
+                          <td>{{bet?.odds}}</td>
+                          <td>{{bet?.placed}}</td>
+                          <td>{{bet?.bet_matched_at}}</td>
+                          <td>{{bet?.ip_address}}</td>
+                          <td>{{bet?.ip_address}}</td>
+                        </tr>
+                      </ng-container>
+                      <tr *ngIf="betListHistory?.length === 0">
+                        <td colspan="10">No records found</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div id="unmatched-bet2" class="tab-pane  ">
+                <div class="table-responsive">
+
+                  <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>UserName</th>
+                                <th>Nation</th>
+                                <th>Bet Type</th>
+                                <th>Amount</th>
+                                <th>User Rate</th>
+                                <th>Place Date</th>
+                                            <th>IP</th>
+                                <th>Browser Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              <tr><td colspan="10">No records found</td></tr>
+                        </tbody>
+                    </table>
+
+                  </div>
+              </div>
+              <div id="deleted-bet2" class="tab-pane  ">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>UserName</th>
+                                <th>Nation</th>
+                                <th>Bet Type</th>
+                                <th>Amount</th>
+                                <th>User Rate</th>
+                                <th>Place Date</th>
+                                            <th>IP</th>
+                                <th>Browser Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              <tr><td colspan="10">No records found</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        <div class="modal-footer"> </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<header class="main-navbar">
+    <nav class="navbar">
+        <div class="container">
+          <a class="navbar-brand" routerLink="/auth/login"><img src="{{logo}}" alt="logo"></a>
+          <form class="d-flex" [formGroup]="loginForm" id="frm_lgn" method="POST" (ngSubmit)="Login(loginForm.value)">
+            <div class="desktop-form d-md-flex d-none">
+                <div class="form-group">
+                    <input type="text" formControlName="user_name" class="form-control" id="floatingInput" placeholder="User Name">                    
+                </div>
+                <div class="form-group">
+                    <input type="password" formControlName="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn "  class="btn1 login-btn">Login</button>
+                <a *ngIf="isSignUp =='1'" routerLink="/auth/signup" class="btn1 ml-1">Signup</a>
+            </div>
+            <div class="mobile-buttonns d-md-none d-flex">
+                <a href="javascript:void(0);" class="btn1" (click)="openLoginModal()" >Login</a>
+                <a *ngIf="isSignUp =='1'"  routerLink="/auth/signup" class="btn1 ml-1">Signup</a>
+            </div>
+          </form>
+        </div>
+      </nav>
+</header>
+
+<!-- Modal -->
+<div class="modal fade" id="loginpopup" data-bs-backdrop="loginpopup" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginpopuplable" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header border-0 pb-0 justify-content-end">                
+        <button type="button" class="btn-close"  (click)="closeLoginModal()">
+            <img src="assets/img/close-image.png" alt="Close" class="w-100">
+        </button>
+        </div>
+        <div class="modal-body pb-4 pt-0">    
+            <h4 class="text-center mb-4">Login</h4>                
+            <form [formGroup]="loginForm" id="frm_lgn" method="POST" (ngSubmit)="Login(loginForm.value)">
+                <div class="form-group mb-4">
+                    <input type="text" class="form-control" placeholder="User Name" formControlName="user_name" required>
+                    <span *ngIf="loginForm.controls['user_name'].invalid && (loginForm.controls['user_name'].dirty || loginForm.controls['user_name'].touched)" class="alert">
+                        <span  class="errorMessage" *ngIf="loginForm.controls['user_name'].errors?.required">
+                        Please enter username
+                        </span>
+                                          </span>
+                  </div>
+                  <div class="form-group mb-3">
+                    <input type="password" formControlName="password" class="form-control"placeholder="Password" required autocomplete="off">
+                    <span *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert">
+                        <span class="errorMessage" *ngIf="loginForm.controls['password'].errors?.required">
+                        Please enter password
+                        </span>
+                                          </span>
+                  </div>
+                  <button class="btn1" type="submit">LOGIN</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

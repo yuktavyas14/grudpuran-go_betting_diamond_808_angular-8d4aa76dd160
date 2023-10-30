@@ -1,0 +1,77 @@
+<div class="col-md-12 main-container" data-select2-id="11">
+    <div class="listing-grid" data-select2-id="10">
+      <div class="detail-row" data-select2-id="9">
+        <h2>Signup User List</h2>
+        <hr style="border: 1px solid black;" >
+        <div class="m-t-20 row" data-select2-id="8">
+          <div class="col-md-12" data-select2-id="7">
+            <form  id="gamereport" action="" method="post" class="ajaxFormSubmit" data-select2-id="gamereport">
+              <div class="row" data-select2-id="6">
+                <div class="col-md-4" data-select2-id="5">
+                  <div class="form-group" data-select2-id="4">
+                    <label for="list-ac">User Name</label>
+                   <input type="text" [formControl]="search_client">
+                </div>
+                </div>
+                <span class="col-md-2" style="float: right;">
+                    <label>&nbsp;</label>
+                    <br>
+                
+                    <button class="btn btn-diamond" type="submit" (click)="getSignupUserList()">Load</button>
+                  </span>
+                
+               
+              </div>
+             
+            </form>
+            
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-md-12">
+            <div class="form-group" id="profitLossStats"></div>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive data-table" style="overflow: hidden" id="tbldata">
+        <table id="example" class="custom-table table table-bordered table-striped" style="width:100%">
+          <thead>
+            <tr>
+              <th>S No</th>
+              <th>User Name</th>
+              <th>Name</th>
+              <th>Mobile</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor = "let item of signupUserList | paginate: {
+              itemsPerPage: itemPerPage,
+              currentPage: page,
+              totalItems: totalItems
+             }; let i = index;">
+            <tr>
+            <td>{{i+1}}</td>
+            <td>{{item?.user_name}}</td>
+            <td>{{item?.name}}</td>
+            <td>{{item?.mobile}}</td>
+
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+          <ng-container *ngIf="signupUserList!=null">
+            <div class="col-sm-12">
+              <pagination-controls
+                style="display: flex; justify-content: center;"
+                (pageChange)="pageChange($event)"
+                class="my-pagination"
+              >
+              </pagination-controls>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,253 @@
+@import '~ngx-toastr/toastr';
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.lay-color {
+    background-color: #FAA9BA !important;
+}
+
+.errorMessage {
+    // background-color : red !important;
+    color: red !important
+}
+.game-page .nav-tabs .nav-link {
+    font-size: 12px !important;
+    font-weight: bold !important;
+}
+.total-points {
+    color: #fff;
+    padding: 10px;
+    width: 116px;
+    border: solid 2px #e4de11;
+}
+
+.modal-body th,
+.modal-body td {
+    padding: 10px !important;
+}
+
+.Books-Part button.close span {
+    padding: 0 11px 5px !important;
+    background-color: #08c;
+    border-radius: 50px;
+    font-weight: 300;
+}
+
+.andar-bahar2 .ab-2-container {
+    width: 100%;
+    // display: flex;
+    justify-content: center;
+    color: #000;
+    font-size: 14px;
+}
+
+.andar-bahar2 .bet-a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0%;
+    margin-bottom: 0;
+    /* perspective: 45rem; */
+}
+
+.andar-bahar2 .a-title {
+    width: 10%;
+    text-align: center;
+    padding: 5px 0;
+    padding-top: 15px;
+    /* transform: rotateX(45deg); */
+    font-size: 20px;
+}
+
+.andar-bahar2 .sa {
+    width: 20%;
+    margin-left: 2%;
+}
+
+.andar-bahar2 .first-bet,
+.second-bet {
+    width: 25%;
+    margin: 0 2%;
+    line-height: 15px;
+}
+
+.andar-bahar2 .second-bet {
+    margin-right: 0;
+}
+
+.andar-bahar2 .sa>div:first-child {
+    text-align: center;
+    padding: 5px 0;
+    border: 3px solid yellow;
+    border-radius: 8px;
+    /* transform: rotateX(45deg); */
+    line-height: 15px;
+}
+
+.andar-bahar2 .ab-2-container .book {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.andar-bahar2 .mt-1,
+.my-1 {
+    margin-top: .25rem!important;
+}
+
+.andar-bahar2 .first-bet>div:first-child,
+.andar-bahar2 .second-bet>div:first-child {
+    text-align: center;
+    padding: 5px 0;
+    border: 3px solid yellow;
+    border-radius: 8px;
+    /* transform: rotateX(45deg); */
+    background-color: #086CB8;
+    color: #fff;
+}
+
+.andar-bahar2 .ab-2-container .book {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.andar-bahar2 .suspended {
+    position: relative;
+}
+
+.andar-bahar2 .ab-2-container .suppend-part img {
+    width: 41px;
+    padding: 10px;
+    vertical-align: middle;
+    margin-top: 2px;
+}
+
+.andar-bahar2 label.img-icon img {
+    width: 25px;
+}
+
+.video-overlay .card-inner.card-scroll{
+     width: 200p;
+      overflow-x: auto;
+      
+    }
+    .scrollRulesimg{
+        overflow: scroll;
+        height: 75vh;
+        padding-bottom: 50px !important;
+    }
+    
+    .result-patt h4{ 
+        font-size: 20px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .result-patti ul {
+        display: flex; justify-content: center;
+    }
+
+    .result-patti ul li img{ width: 40px;}
+    
+    .result-patt h4 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .result-patti ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+    
+    .result-patti ul li img {
+        width: 40px;
+    }
+
+.table-pad.table td{ padding: 7px !important;}
+.mat-typography h5 {
+    line-height: 17px;
+}
+
+.mat-typography h2 {
+    margin-bottom: 5px;
+}
+.modal-header {
+    padding: 0.4rem 1rem !important;
+}
+.rules-heading{
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center !important;
+
+}
+  .main-content .table.table-rules-20-20 td {
+    text-align: left !important;
+    padding: 6px 10px;
+}
+.lastResultPart h3.rules {
+    margin-bottom: 0px !important;
+}
+.mat-dialog-container {
+    padding: 0px !important;
+}
+.custom_radio{
+    margin: 10px;
+ }
+ .custom_radio input[type="radio"]{
+   display: none;
+ }
+ .custom_radio input[type="radio"] + label{
+   position: relative;
+   display: inline-block;
+   padding-left: 1.5em;
+   margin-right: 2em;
+   cursor: pointer;
+   line-height: 1em;
+   -webkit-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+ }
+ .custom_radio input[type="radio"] + label:before,
+ .custom_radio input[type="radio"] + label:after{
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 1em;
+   height: 1em;
+   text-align: center;
+   color: white;
+   font-family: Times;
+   border-radius: 50%;
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+ }
+ .custom_radio input[type="radio"] + label:before {
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+   box-shadow: inset 0 0 0 0.1em #b1abab, inset 0 0 0 1em white;
+ }
+ .custom_radio input[type="radio"] + label:hover:before {
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+   box-shadow: inset 0 0 0 0.3em white, inset 0 0 0 1em #c6c6c6;
+ }
+ .custom_radio input[type="radio"]:checked + label:before {
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+   box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #4CAF50;
+ }
+ bs-datepicker-container, bs-daterangepicker-container {
+    z-index: 1080;
+    transform: translate3d(0px, 203px, 0px) !important;
+}
+.bs-datepicker-container {
+    padding: 5px !important;
+}

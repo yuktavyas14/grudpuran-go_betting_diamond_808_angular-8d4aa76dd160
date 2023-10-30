@@ -1,0 +1,119 @@
+<div class="sidebar">
+    <div class="sidebar-title" data-toggle="collapse" data-target=".casino">
+        <h5 class="d-inline-block m-b-0">Others</h5>
+    </div>
+    <nav class="collapse casino show">
+        <!-- <ng-container *ngFor="let  series of seriesList">
+        <li class="nav-item">
+            <a [routerLink]="['/main/casino',series?.series_id,series?.name]"> <b>{{series?.name}}</b> </a>
+        </li>
+
+    </ng-container> -->
+        <ul class="" *ngIf="seriesList">
+            <ng-container *ngFor="let  series of seriesList">
+                <li class="nav-item" *ngIf="series?.series_id != '-16' && series?.series_id != '-19' && series?.series_id != '-24'">
+                    <a class="nav-link" [routerLink]="['/main/casino',series?.series_id,series?.name]"> <span [ngClass]=" series?.series_id == '-12' || series?.series_id == '-10'  ? 'newlacunch-menu' : 'abc'">{{series?.name}}</span> </a>
+
+                </li>
+                <li class="nav-item" *ngIf="series?.series_id == '-24'">
+
+                    <a class="nav-link" [routerLink]="['/main/game/casino/dreamcasino']"> <span class=" newlacunch-menu" >{{series?.name}}</span> </a>
+                </li>
+                <li class="nav-item" *ngIf="series?.series_id == '-16'">
+
+                    <a class="nav-link" [routerLink]="['/main/matchdetails/-1019']"> <span>{{series?.name}}</span> </a>
+                </li>
+                <li class="nav-item" *ngIf="series?.series_id == '-19'">
+
+                    <a class="nav-link" [routerLink]="['/main/matchdetail/-1029']"> <span>{{series?.name}}</span> </a>
+                </li>
+
+             
+
+            </ng-container>
+            <!-- <li class="nav-item" *ngIf="dreamCasinoFlag">
+
+                <a class="nav-link" [routerLink]="['/main/game/casino/dreamcasino']"> <span>Casino</span> </a>
+            </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link"> <span>3 Cards Judgement</span> </a>
+            </li>
+            <li class="nav-item">
+                <a class="blinking nav-link"> <span>Election</span> </a>
+            </li>
+            <li class="nav-item">
+                <a class="blinking nav-link"> <span>Big Bash League</span> </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"> <span>Binary</span> </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"> <span>Live Casino</span> </a>
+            </li>
+            <li class="nav-item"> <a class="nav-link"> Slotgame </a> </li>
+            <li class="nav-item">
+                <a class="nav-link"> <span>Virtual Sports</span> </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"> <span>Cricket Casino</span> </a>
+            </li> -->
+        </ul>
+    </nav>
+    <div class="sidebar-title" data-toggle="collapse" data-target=".allsports">
+        <h5 class="d-inline-block m-b-0">All Sports</h5>
+    </div>
+    <!-- <nav class="allsports collapse show" style="position: relative;">
+    <div id="sidebar-loader" class="sidebar-loading" style="display: none;"><img src="assets/images/loader.gif" alt="" class="mCS_img_loaded"></div>
+    <ul class="mtree transit bubba" id="treeMenu">
+      <li class="mtree-node mtree-closed game contentContainer Football" id="game^1"> <a href="javascript:void(0)"><span>Football</span></a> </li>
+      <li class="mtree-node mtree-closed game contentContainer Tennis" id="game^2"> <a href="javascript:void(0)"><span>Tennis</span></a> </li>
+      <li class="mtree-node mtree-closed game contentContainer Cricket" id="game^4"> <a href="javascript:void(0)"><span>Cricket</span></a> </li>
+      <li class="mtree-node mtree-closed game contentContainer Boxing" id="game^6"> <a href="javascript:void(0)"><span>Boxing</span></a> </li>
+      <li class="mtree-node mtree-closed game contentContainer Motor Sport" id="game^8"> <a href="javascript:void(0)"><span>Motor Sport</span></a> </li>
+      <li class="mtree-node mtree-closed game contentContainer Kabaddi" id="game^52"> <a href="javascript:void(0)"><span>Kabaddi</span></a> </li>
+      <li class="mtree-node mtree-closed game contentContainer Mixed Martial Arts" id="game^26420387"> <a href="javascript:void(0)"><span>Mixed Martial Arts</span></a> </li>
+    </ul>
+  </nav> -->
+
+    <nav class="allsports collapse show" style="position: relative;" *ngIf="menuList.length > 0">
+        <div class="mtree-main" id="treeMenu">
+            <ul class="mtree transit bubba">
+                <ng-container *ngFor="let sport of menuList; trackBy:trackByArtNo">
+                    <li *ngIf="sport?.sport_name !=='Casino' && sport?.sport_name !=='Horse Racing' && sport?.sport_name !=='Greyhound Racing'" class="mtree-node mtree-closed"><a style="cursor: pointer;">{{sport?.sport_name}}</a>
+                        <ul class="mtree-level-1" style="overflow: hidden; height: auto;">
+                            <ng-container *ngFor="let series of sport?.series_list;">
+
+                                <li class="mtree-node mtree-closed"><a style="cursor: pointer;">{{series?.series_name}}</a>
+                                    <ul class="mtree-level-2" style="overflow: hidden; height: auto;">
+                                        <li *ngFor="let matchdate of series?.match_dates" class="mtree-node mtree-closed"><a style="cursor: pointer;">{{matchdate?.match_date}}</a>
+                                            <ul class="mtree-level-3" style="overflow: hidden; height: auto;">
+                                                <li *ngFor="let match of matchdate?.matches" class="mtree-node mtree-active mtree-closed"><a style="cursor: pointer;">{{match?.match_name}}</a>
+                                                    <ul class="mtree-level-4" style="overflow: hidden; height: auto;">
+                                                        <li *ngFor="let market of match?.markets"><a [routerLink]="['/main/matchdetails',match.match_id, market?.market_id]">{{market?.market_name}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ng-container>
+
+
+                        </ul>
+                    </li>
+                    <li *ngIf="sport?.sport_name ==='Horse Racing'" class="mtree-node mtree-closed">
+                        <a style="cursor: pointer;" [routerLink]="['/main/inplay',7,sport?.sport_name]" >{{sport?.sport_name}}</a>
+                       
+                    </li>
+                    <li *ngIf="sport?.sport_name ==='Greyhound Racing'" class="mtree-node mtree-closed">
+                        <a [routerLink]="['/main/inplay',4339,sport?.sport_name]" style="cursor: pointer;" >{{sport?.sport_name}}</a>
+                       
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </nav>
+    
+
+</div>

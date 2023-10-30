@@ -1,0 +1,56 @@
+<!-- Menu tabs-->
+
+
+<!-- Tab-content -->
+
+<div class="main-content">
+       <!-- <app-cup-menu-list></app-cup-menu-list> -->
+
+    <ul class="nav nav-tabs bs  game-nav-bar">
+        <li class="nav-item"><a class="nav-link" routerLink="/main/inPlay"> In-play </a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/main/sports"> Sports </a></li>
+        <li class="nav-item sdmexchshow"><a class="nav-link "> Casino + Slot </a></li>
+        <!-- <li class="nav-item"><a class="nav-link"> Election </a></li> -->
+        <li class="nav-item"><a class="nav-link" routerLink="/main/other-casino"> Others </a></li>
+    </ul>
+</div>
+<!-- Menu -->
+
+
+<!-- Tab-content -->
+
+<!-- <div class="tab-content">
+    <div class="tab-pane sports active">
+        <ul class="nav nav-tabs game-nav-bar">
+
+            <ng-container *ngFor="let sport of sportList">
+                <li class="nav-item text-center" *ngIf="sport?.is_active && sport?.sport_id >0">
+                    <a data-toggle="tab" class="nav-link" [class.active]="sport?.sport_id == selectedID" (click)="getSportMatch(sport?.sport_id)">
+                        <div *ngIf="sport?.sport_id ==4"><img src="assets/images/4.png"></div>
+                        <div *ngIf="sport?.sport_id ==2"><img src="assets/images/2.png"></div>
+                        <div *ngIf="sport?.sport_id ==1"><img src="assets/images/1.png"></div>
+                        <div *ngIf="sport?.sport_id ==6"><img src="assets/images/boxing.svg"></div>
+                        <div *ngIf="sport?.sport_id ==4339"><img src="assets/images/grayhound.svg"></div>
+                        <div *ngIf="sport?.sport_id ==7"><img src="assets/images/horserace.svg"></div>
+                        <div *ngIf="sport?.sport_id ==8"><img src="assets/images/motor-sport.png"></div>
+                        <div *ngIf="sport?.sport_id ==2593174"><img src="assets/images/tabletannis.svg"></div>
+                        <div *ngIf="sport?.sport_id ==7522"><img src="assets/images/basketball.svg"></div>
+                        <div *ngIf="sport?.sport_id ==7524"><img src="assets/images/ice-hocky.svg"></div>
+                        <div *ngIf="sport?.sport_id ==998917"><img src="assets/images/vollyball.svg"></div>
+                        <div *ngIf="sport?.sport_id ==3503"><img src="assets/images/dart.png"></div>
+                        <div *ngIf="sport?.sport_id ==2378961"><img src="assets/images/dart.png"></div>
+                        <div *ngIf="sport?.sport_id ==627555"><img src="assets/images/badminton.svg"></div>
+                        <div *ngIf="sport?.sport_id ==26420387"><img src="assets/images/mixmatrial.png"></div>
+                        <div>{{sport?.name}}</div>
+                    </a>
+                </li>
+            </ng-container>
+
+        </ul>
+    </div>
+</div> -->
+<!-- Tab-content -->
+
+<!-- Casiono -->
+<app-live-casion-slot></app-live-casion-slot>
+<!-- Casiono -->

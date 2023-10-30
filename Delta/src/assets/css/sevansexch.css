@@ -1,0 +1,177 @@
+.login {
+	background-image: linear-gradient(#ffb80c, #2b2926) !important;
+}
+
+.btn-submit {
+    background-color: #ffb80c !important;
+    border-color: #ffb80c !important;
+    color: #000 !important;
+}
+
+.featured-box-login h4 {
+    color: #ffb80c;
+}
+
+.modal-header, .popup21white .modal-header {
+    background: #ffb80c;
+}
+.header.header {
+    background-color: #ffb80c;
+}
+.header-bottom {
+    background-color: #006760;
+}
+.main-content .nav-tabs {
+    background-color: #ffb80c;
+}
+.main-content .nav-tabs .nav-link {
+    border-top: 3px solid #ffb80c;
+}
+.main-content .nav-tabs .nav-item:after {
+    background: #ffffff;
+    top: 12px;
+    width: 1px;
+    content:none;
+}
+.main-content .sports .nav-tabs {
+    background-color: #ffb80c;
+}
+.sports .nav-tabs {
+    background-color: #ffb80c;
+}
+.sports .nav-tabs .nav-link.active, .sports .nav-tabs .nav-link:hover {
+    background-color: #ffb80c;
+}
+
+.main-content .nav-tabs .nav-link {
+    border-top: 0;
+}
+.casinoicons .casino-name {
+    background-image: linear-gradient(#ffb80c, #2b2926); color: #000; font-size: 11px;
+}
+.sidebar-title {
+    background: #ffb80c;
+}
+.casinoicons-title {
+    background-image: linear-gradient(#ffb80c, #006760);
+}
+.btn-theme {
+    background-image: linear-gradient(to right, #ffb80c, #006760) !important;
+}
+.card-header {
+    background-color: #006760;
+}
+.game-heading {
+    background-color: #006760;
+}
+.lastResultPart h3 {
+    background-color:#006760;
+}
+ul.other-table-box li {
+    background: linear-gradient(90deg,#ffb80c,#2c3e50);
+    background-image: linear-gradient(90deg,#ffb80c,#2c3e50)!important;
+}
+.game-heading {
+    background-color: #249181;
+}
+.market-title {
+    background-color: #50504f;
+}
+.game-page .nav-tabs .nav-link {
+    /* background-color: #249181; */
+}
+.game-page .nav-tabs .nav-link.active {
+    background-color: #180a48;
+}
+
+.featured-box .nav-tabs li a {
+    background-color: #249181 !important;
+}
+.fancy-nav ul li.active a,
+.fancy-nav ul li a,
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    background-color: #ffb80c!important;
+}
+button.time-btn {
+    background-color: #ffb80c !important;
+    color: #fff !important;
+  }
+.tab-pane.sports ul {
+    background-color: #2b2926;
+}
+.main-content ul.nav.nav-tabs.game-nav-bar li.nav-item.text-center {
+    background-color: #2b2926;
+}
+.lastResultPart h3, .fancy-marker-title h4 {
+    background-color: #249181d9 !important;
+}
+.low-high-btn, ul.other-table-box li, .btn-theme {
+    background-image: linear-gradient(90deg,#180a48,#249181) !important;
+}
+footer {
+    background-color: #ffb80c;
+    border-top: 2px solid #006760;
+}
+
+.game-page .nav-tabs .nav-link {
+  /* background-color: #249181; */
+}
+
+
+.login .form-group i.fa.fa-android{color: #000 !important;}
+.loginInner1 input.form-control{border-bottom: 1px solid #3c3c3c !important;}
+.header.header{color: #0a0a0a;}
+
+
+.fancy-markets .fancy-nav.nav-tabs .nav-item{background-color: #ffb80c;}
+.game-page .fancy-markets .nav-tabs .nav-link.active{background-color: #000 !important;}
+
+.modal-header{background-color: #ffb80c !important}
+
+
+#backpopup .btn-primary {
+  color: #fff;
+  background-color: #ffb80c;
+  border-color: #ffb80c;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{background-color: #f4b80e !important;}
+
+.btn-primary{background-color: #f4b80e; color: #000;  border-color: #f4b80e;}
+
+.card-header, .report-container .table thead tr{background-color: #2b2926 !important;}
+
+#modalBookmarker .card-title, #rules-container .card-title {color: #fff !important;}
+
+
+
+
+.match-title {
+  background-color: #2b2926;
+
+}
+
+.header-bottom marquee {
+  /* width: 97%;
+  position: absolute;
+  margin-top: 5px;
+  padding-left: 5px;
+  font-weight: bold;
+  right: 0; */
+}
+
+.marque, marquee {
+  /* display: block;
+  height: 24px;
+  padding-left: 45px;
+  padding-top: 12px; */
+  width: 97% !important;
+  position: absolute !important;
+  margin-top: 5px !important;
+  padding-left: 5px !important;
+  font-weight: bold !important;
+  right: 0 !important;
+}
+
+
+

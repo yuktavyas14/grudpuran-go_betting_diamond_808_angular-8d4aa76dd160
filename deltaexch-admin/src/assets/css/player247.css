@@ -1,0 +1,185 @@
+
+.login .wrapper1 {
+    background: unset !important;
+    /* fallback for old browsers */
+    background: unset !important;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: unset !important;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.login {
+    background-image: linear-gradient(#252321, #8aff61);
+    height: 100vh;
+}
+.log-fld h2 {
+    color: #000 !important;
+}
+.log-fld h2:after, .log-fld h2:before {
+    background:#000 !important;
+}
+.header-bottom {
+    background-color: #252321;
+}
+.btn-submit.btn-login {
+    background-color: #252321 !important;
+    border-color: #252321 !important;
+    color: #fff !important;
+}
+
+.btco-hover-menu .collapse ul>li:hover>a {
+    background: #252321;
+}
+.btn-diamond {
+    color: #000!important;
+}
+.master-balance {
+    background-color: #8aff61;
+}
+.data-table table td.actions  a {
+    background-color: #252321 !important;
+    color: #fff !important;
+}
+.header-bottom li a {
+    color: #000;
+}
+
+.header-bottom li a:hover {
+    color: #000 ;
+}
+.user-settingdrop li a{
+    color: #fff !important;
+}
+.user-settingdrop li a:hover {
+    color: #fff !important;
+}
+
+h3.heading-text {
+    font-size: 15px;
+    background-color: #252321;
+    color: #fff;
+}
+.table thead th {
+    background-color: #FFF;
+    color: #666;
+}
+.modal-header .close {
+    background-color: #252321;
+}
+.modal-header {
+    border-bottom: 0;
+    background-color: transparent;
+}
+h4.modal-title {
+    color: #252321;
+}
+button.close i {
+    font-size: 17px;
+    color: #fff;
+    text-shadow: none;
+}
+.btn-submit {
+    background-color: #252321;
+    border-color: #252321;
+    color: #fff;
+}
+#view-more .nav-tabs .nav-item.show .nav-link, #view-more .nav-tabs .nav-link.active {
+    color: #fff;
+    background-color: #252321;
+    border: 0;
+}
+.modal-header {
+    padding: 10px;
+    background: transparent !important;
+    color: #000;
+    border-radius: 0;
+    border: 0;
+}
+
+.table thead th {
+    background-color: transparent;
+    color: #333;
+}
+.btco-hover-menu .collapse ul ul, .btco-hover-menu .collapse ul ul.dropdown-menu {
+    background: #252321 !important;
+}
+/*.header-bottom li a{color: #000 !important;}*/
+
+.user-search .username{color: #fff;}
+
+
+
+
+.bar1, .bar2, .bar3 {
+
+  background-color: #fff !important;
+
+}
+.navbar-nav .dropdown-menu a{color: #fff !important;}
+
+.list-unstyled .navbar-nav .header-bottom li a  {
+  color: #fff!important;
+}
+.header-bottom ul.whiteColor li a  {
+    color: #fff!important;
+  }
+.navbar-nav .dropdown-menu a {
+  color: #000 !important;
+}
+.blinking span {
+    animation: blinkingText 1.2s infinite !important;;
+}
+
+.blinking:hover span {
+    animation: blinkingHoverText 1.2s infinite !important;
+}
+.log-copy p {
+    color: #000 !important;
+}
+.master-balance ul li {
+    color: #000 !important;
+}
+
+@keyframes blinkingText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+
+@keyframes blinkingHoverText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+
+

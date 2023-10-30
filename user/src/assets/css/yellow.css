@@ -1,0 +1,92 @@
+
+
+.login {
+	background-image: linear-gradient(#9b8813, #1e7ea2);
+}
+
+.btn-submit {
+    background-color: #9b8813;
+    border-color: #9b8813;
+    color: #fff;
+}
+
+.featured-box-login h4 {
+    color: #9b8813;
+}
+
+.modal-header, .popup21white .modal-header {
+    background: #9b8813;
+}
+.header {
+    background-color: #9b8813;
+}
+.header-bottom {
+    background-color: #1e7ea2;
+}
+.sidebar-title {
+    background: #9b8813;
+}
+.casinoicons-title {
+    background-image: linear-gradient(#9b8813, #1e7ea2);
+}
+.btn-theme {
+    background-image: linear-gradient(to right, #9b8813, #1e7ea2) !important;
+}
+.card-header {
+    background-color: #1e7ea2;
+}
+.game-heading {
+    background-color: #1e7ea2;
+}
+.lastResultPart h3 {
+    background-color:#1e7ea2;
+}
+ul.other-table-box li {
+    background: linear-gradient(90deg,#9b8813,#2c3e50);
+    background-image: linear-gradient(90deg,#9b8813,#2c3e50)!important;
+}
+.game-heading {
+    background-color: #249181;
+}
+.market-title {
+    background-color: #3fad9d;
+}
+.game-page .nav-tabs .nav-link {
+    background-color: #249181;
+}
+.game-page .nav-tabs .nav-link.active {
+    background-color: #180a48;
+}
+
+.featured-box .nav-tabs li a {
+    background-color: #cacbcb !important;
+}
+.fancy-nav ul li.active a, .fancy-nav ul li a, 
+.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-link.active {
+    background-color: #1e7ea2!important;
+}
+.game-heading{
+    background-color: #1e7ea2!important;
+}
+.modal-header{
+    background: #9b8813 !important;
+}
+.lastResultPart h3, .fancy-marker-title h4 {
+    background-color: #249181d9 !important;
+}
+.low-high-btn, ul.other-table-box li, .btn-theme {
+    background-image: linear-gradient(90deg,#180a48,#249181) !important;
+}
+footer {
+    background-color: #9b8813;
+    border-top: 2px solid #1e7ea2;
+}
+button.time-btn {
+    background-color: #9b8813 !important;
+    color: #fff !important;
+  }
+  button.time-btn:hover {
+    background-color: #180a48 !important;
+    color: #FFF !important;
+  }

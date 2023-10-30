@@ -1,0 +1,109 @@
+       <body class="login">
+        <div class="wrapper">
+          <div class="container-fluid">
+            <div class=" row">
+              <div class="main col-md-12">
+
+                <div class="loginInner1">
+
+                  <div class="featured-box-login featured-box-secundary default sign-up">
+                    <div  class ="errorMessage" *ngIf="errorMessage"> {{errorMessage}}</div>
+
+                    <h4 class="text-center">Signup <i class="fas fa-hand-point-down"></i></h4>
+                    <form  [formGroup]= "signupForm" id="frm_lgn" method="POST" (ngSubmit)="Signup()" autocomplete novalidate>
+
+                      <div class="form-group m-b-20">
+                        <input name="inputUserid" formControlName="name" placeholder="Name" class="form-control" required   type="text">
+                        <i class="fas fa-user"></i> 
+                        <span *ngIf=" signupForm.controls['name'].invalid && ( signupForm.controls['name'].dirty ||  signupForm.controls['name'].touched)" class="alert">
+                          <span  class="errorMessage" *ngIf=" signupForm.controls['name'].errors?.required">
+                          Please enter name
+                          </span>
+                        </span>
+                      </div>
+                      <div class="form-group m-b-20">
+                        <input name="inputUserid" (focusout)="checkUserExist()" formControlName="user_name" placeholder="User Name" class="form-control" required   type="text">
+                        <i class="fas fa-user"></i> 
+                        <span *ngIf=" signupForm.controls['user_name'].invalid && ( signupForm.controls['user_name'].dirty ||  signupForm.controls['user_name'].touched)" class="alert">
+                          <span  class="errorMessage" *ngIf=" signupForm.controls['user_name'].errors?.required">
+                          Please enter username
+                          </span>
+                        </span>
+                        <span *ngIf="flagExits" class="errorMessage">Usermane already taken</span>
+                            <span style="margin: 0px;" class="errorMessage" *ngIf="signupForm.controls['user_name'].errors?.pattern">
+                     minimum four characters required , Space and special characters are not allowed
+                    </span>
+                      </div>
+
+                      <div class="form-group m-b-20">
+                        <input name="inputUserid" (keypress)="keyPressNumbers($event)" formControlName="mobile" placeholder="Mobile" class="form-control" required  type="text">
+                        <i class="fas  fa-phone"></i> 
+                        <span *ngIf="signupForm.controls['mobile'].invalid && (signupForm.controls['mobile'].dirty || signupForm.controls['mobile'].touched)" class="alert">
+                          <span  class="errorMessage" *ngIf="signupForm.controls['mobile'].errors?.required">
+                          Please enter contact number
+                          </span>
+                          <span  class="errorMessage" *ngIf="signupForm.controls['mobile'].errors?.minlength">
+                            please enter minimum 10 digits 
+                            </span>
+                            <span  class="errorMessage" *ngIf="signupForm.controls['mobile'].errors?.maxlength">
+                              Mobile no can't  be greater then sixteen digit
+                              </span>
+                        </span>
+       
+                    </div>
+
+                      <div class="form-group m-b-20">
+                        <input name="inputPassword" formControlName="password" id="inputPassword" placeholder="Password  "   class="form-control" required autocomplete="off" type="password">
+                        <i class="fas fa-key"></i> 
+                        
+                        <span *ngIf=" signupForm.controls['password'].invalid && ( signupForm.controls['password'].dirty ||  signupForm.controls['password'].touched)" class="alert">
+                          <span class="errorMessage" *ngIf=" signupForm.controls['password'].errors?.required">
+                          Please enter  password
+                          </span> 
+                      </span>
+                      
+                      </div>
+                      <div class="form-group m-b-20">
+                        <input name="inputPassword1" formControlName="confirm_password" id="inputPassword1" placeholder="Confirm password  "  class="form-control" required autocomplete="off" type="password">
+                        <i class="fas fa-key"></i> 
+                        
+                        <span *ngIf="signupForm.controls['confirm_password'].invalid && ( signupForm.controls['confirm_password'].dirty ||  signupForm.controls['confirm_password'].touched)" class="alert">
+                          <span class="errorMessage" *ngIf=" signupForm.controls['confirm_password'].errors?.required">
+                          Please enter Confirm password
+                          </span> 
+                      </span>
+                      <div class="errorMessage" *ngIf="signupForm.get('confirm_password')?.errors?.confirmPasswordValidator">Passsword and
+                        Confirm Password didn't match. </div>
+                      </div>
+                     
+                      <div id="div_msg" style="display: none;"><span id="msg" class="msg error" style="display: block"></span></div>
+                      <div class="form-group text-center">
+                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response"  >
+                        <input type="hidden" name="_token"  >
+                        <button type="submit" class="btn btn-submit btn-login" >Signup
+                          <i class="fas fa-user-plus" style="
+                          right: 45px !important;
+                      "></i>
+                        </button>
+                      </div>
+                    </form>
+                    
+                    <button type="button" class="text-center form-group btn btn-submit btn-login" routerLink="/auth/login">Login
+                      <i class="fas fa-sign-in-alt"></i></button>
+                    <div class="mt-1 text-center download-apk" *ngIf="isApk =='1'">
+                      <a href="#" class="blinking btn btn-submit btn-login"><span><b>Download Apk</b>
+                        <i class="fa fa-android" ></i>
+
+                      </span></a>
+                  </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </body> 
+
+

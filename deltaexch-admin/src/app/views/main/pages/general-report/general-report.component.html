@@ -1,0 +1,111 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+        <div class="detail-row">
+            <h2>General Report</h2>
+            <div class="m-t-20">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="" method="post">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="password" class="text-black">Select Type</label>
+                                        <select id="generaltype" class="form-control" name="generaltype" [(ngModel)]="reportType">
+                      <option value="GR">General Report</option>
+                      <option value="CR">Credit Refrance Report</option>
+                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>&nbsp;</label>
+                                    <br>
+                                    <input type="hidden" name="_token" value="">
+                                    <button type="submit" class="btn btn-diamond" (click)="getGeneralReport()">Load</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="table-responsive data-table " style="overflow: hidden">
+                    <table class="custom-table table table-striped" style="width:100%">
+                        <thead>
+
+                            <tr>
+                                <th style="width: 10%">Sr. No</th>
+                                <th style="width: 20%">Name</th>
+                                <th style="width: 20%">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="generalReportList.length != 0">
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><b>Upper Level Total<b> </b></b>
+                                    </td>
+                                    <td class="text-right"><b>-{{total}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><b>General Total</b></td>
+                                    <td class="text-right"><b>-{{total}}</b></td>
+                                </tr>
+
+                            </ng-container>
+                            <ng-container *ngIf="generalReportList.length === 0">
+                                <tr>
+                                    <td colspan="3" style="text-align: center;">No Record Found !</td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="table-responsive data-table " style="overflow: hidden">
+                    <table class="custom-table table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">Sr. No</th>
+                                <th style="width: 20%">Name</th>
+                                <th style="width: 20%">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="generalReportList.length != 0">
+                                <ng-container *ngFor="let item of generalReportList; let i = index">
+                                    <tr>
+                                        <td>{{i+1}}</td>
+                                        <td>{{item?.user_name}}</td>
+                                        <td class="text-right">{{item?.amount | number: '1.2-2'}}</td>
+                                    </tr>
+                                </ng-container>
+
+
+                                <tr>
+                                    <td></td>
+                                    <td><b>General Total</b></td>
+                                    <td class="text-right"><b>{{total}}</b></td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngIf="generalReportList.length === 0">
+                                <tr>
+                                    <td colspan="3" style="text-align: center;">No Record Found !</td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

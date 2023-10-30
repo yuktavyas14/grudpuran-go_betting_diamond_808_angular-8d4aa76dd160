@@ -1,0 +1,122 @@
+<!-- Main Content -->
+  
+<div class="main-content"> 
+  
+    <!-- Tab-content -->
+    
+    <div class="report-container"><!---->
+      <div class="card">
+        <div class="card-header page-header-sab">
+          <h4 class="mb-0">Payment Statement</h4>
+        </div>
+        <div class="card-body container-fluid container-fluid-5">
+            <form class="navbar-form clearfix" [formGroup]= "AccountStatementSearchForm" id="frm_lgn" method="POST" (ngSubmit)="getAccountStatment(AccountStatementSearchForm.value)" autocomplete novalidate>
+
+          
+          <div class="row row5">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <select name="reportType" class="custom-select"  formControlName="status">
+                  <option value="">All</option>
+                  <option value="pending">Pending</option>
+                  <option value="completed">Completed</option>
+                  <option value="rejected">Rejected</option>
+                  <option value="processing">Processing</option>
+                  <option value="failed">Failed</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-primary btn-block btn-sm" type="submit">Submit</button>
+            </div>
+          </div>
+  
+          <div class="row row5 mt-2">
+            <div class="col-12">
+              <div class="table-responsive table-responsive-sm table-responsive-md table-responsive-lg">
+                <table role="table" aria-busy="false" aria-colcount="6" class="table  b-table table-striped table-pad table-bordered" id="">
+                  <thead role="rowgroup" class="">
+                    <tr role="row" class="">
+                      <th role="columnheader" scope="col" aria-colindex="1" class="text-center">Date</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="text-right">Account number</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="text-right">Ifsc</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="text-right">Amount</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="text-right">Phone</th>
+                      <th role="columnheader" scope="col" aria-colindex="4" class="text-right">Email</th>
+                      <th role="columnheader" scope="col" aria-colindex="5" class="text-right">Status</th>
+                      <th role="columnheader" scope="col" aria-colindex="5" class="text-right">Description</th>
+                      <th role="columnheader" scope="col" aria-colindex="6" class="text-center">Remark</th>
+                    </tr>
+                  </thead>
+                  <!-- <tbody role="rowgroup">
+                  </tbody> -->
+                  <tbody >
+                    <ng-container *ngIf="accountReportList != null && accountReportList .length != 0;else NoData">
+                     
+                      <ng-container *ngFor="let item of accountReportList | paginate: config;trackBy: trackByFn;let i=index;">
+                        <tr class="odd">
+                          <td>{{item?.created_at|  formatDate: 'MMMM Do YYYY, h:mm a'}}
+                          </td>
+                          <td>{{item?.account_number}}</td>
+                          <td>{{item?.ifsc}}</td>
+                          <td>{{item?.amount}}</td>
+                          <td>{{item?.phone}}</td>
+                          <td>{{item?.email}}</td>
+                          <td>
+                              <span [ngClass]="getStatusClass(item?.status)">
+                                {{item?.status}}
+                              </span>
+                          </td>
+                          <td>{{item?.description}}</td>
+                          <td>
+                            <a href="javascript:void(0)"   
+                            class="open-clickmodal">
+                      {{item?.reject_reason ? item?.reject_reason : 'N/A' }}</a>
+                            </td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                    <!-- <div class="row" *ngIf="accountReportList != null">
+                      <div class="col-sm-12">
+            
+                        <ng-container *ngIf="config.totalItems>this.config.itemsPerPage">
+                          <pagination-controls  (pageChange)="pageChange($event)"
+                                                class="my-pagination">
+                          </pagination-controls>
+                        </ng-container>
+            
+                      </div>
+            
+                    </div> -->
+
+                    <ng-template #NoData>
+                      <tr>
+                        <td valign="top" colspan="10" class="dataTables_empty">No data available in table</td>
+                      </tr>
+                    </ng-template>
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+
+                  <ng-container *ngIf="totalrecored">
+                    <div class="col-sm-12">
+
+                    <pagination-controls  
+
+                    (pageChange)="pageChange($event)"    class="my-pagination"> </pagination-controls>
+                  </div>
+                  </ng-container>
+                
+                 </div>
+              </div>
+            </div>
+          </div>
+          <!---->
+        </form>
+        </div>
+          
+      </div>
+    </div>
+  </div>
+
+ 

@@ -1,0 +1,69 @@
+<div class="featured-box">
+       <section class="card">
+        <header class="card-header">
+          <h2 class="card-title">Profit Loss Report</h2>
+        </header>
+        <div class="card-body">
+          <form method="POST" action="" accept-charset="UTF-8">
+            <input name="_token" type="hidden" value="">
+            <div class="datepicker-wrapper form-group">
+              <div class="form-group">
+                <label for="fromdate">From</label>
+                <input type="text" class="form-control" #dp="bsDatepicker" [ngModelOptions]="{standalone: true}"
+                  bsDatepicker [(ngModel)]="fromDate">
+              </div>
+            </div>
+            <div class="datepicker-wrapper form-group">
+              <div class="form-group">
+                <label for="toDate">To</label>
+                <input type="text" class="form-control" #dp="bsDatepicker" [ngModelOptions]="{standalone: true}"
+                  bsDatepicker [(ngModel)]="toDate">
+              </div>
+            </div>
+
+            <div class="d-inline-block m-l-20">
+              <input type="hidden" name="_token" value="">
+              <button class="btn btn-primary" value="submit" (click)="getProfitLossList()" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        <table id="example" class="table table-bordered datatable dataTable table-pad no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+          <thead>
+            <tr role="row">
+              <th class="sorting" tabindex="0" aria-controls="example" aria-label="Event Name: activate to sort column ascending" style="width: 216px;">Event Name</th>
+              <th class="sorting" tabindex="0" aria-controls="example" aria-label="Event Type: activate to sort column ascending" style="width: 197px;">Event Type</th>
+              <th class="sorting" tabindex="0" aria-controls="example" aria-label="item Type: activate to sort column ascending" style="width: 160px;">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="accountList && accountList.length != 0;else NoData">
+              <ng-container *ngFor="let item of accountList;let i=index;">
+            <tr class="odd">
+              <td>{{item?.game}}</td>
+              <td>{{item?.game_type}}</td>
+              <td>{{item?.profit_loss}}</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+          <ng-template #NoData>
+            <tr>
+              <td valign="top" colspan="10" class="dataTables_empty">No data available in table</td>
+            </tr>
+          </ng-template>
+          </tbody>
+        </table>
+      </section>
+      <div id="modal-statement" class="modal fade show">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Details</h4>
+              <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body" id="modelbind"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+

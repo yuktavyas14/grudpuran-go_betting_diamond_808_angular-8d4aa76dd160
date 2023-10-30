@@ -1,0 +1,69 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+      <form method="post" action="" [formGroup]="createForm"   class="ajaxFormSubmit">
+      <div class="detail-row">
+        <h2>Add Affiliate</h2>
+        <div class="row">
+          <div class="col-12">
+            <h3 class="heading-text">Add New Affiliate</h3>
+                  <div class="m-t-20">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Referral Name:</label>
+                          <input id="" formControlName="referral_name"   placeholder="Referral Name" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('referral_name').hasError('required') 
+                          && createForm.get('referral_name').touched">Referral Name must be required</p>  
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Referral Percentage:</label>
+                          <input id="" formControlName="referral_percentage"   placeholder="referral Percentage" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('referral_percentage').hasError('required') 
+                          && createForm.get('referral_percentage').touched">referral Percentage must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Range From:</label>
+                          <input id="" formControlName="range_from"   placeholder="range from" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('range_from').hasError('required') 
+                          && createForm.get('range_from').touched">range_from must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Range To:</label>
+                          <input id="" formControlName="range_to"   placeholder="range_to" class="form-control" name="" type="text" value="">
+                           <p class="error-text" *ngIf="createForm.get('range_to').hasError('required') 
+                          && createForm.get('range_to').touched">Range to must be required</p>  
+  
+                          
+                        </div>
+                      </div>
+                 
+                    
+                    </div>
+                  </div>
+          </div>
+        
+        </div>
+      </div>
+  
+      <div id="example_filter" class="dataTables_filter">
+        <label>
+          <!-- [disabled]="creatUserForm.invalid" -->
+          <!-- <input type="search" class="form-control datatable-search" placeholder="" aria-controls="example"> -->
+          <button type="submit" class="btn btn-success" [disabled]="createForm.invalid"  (click)="createUser()">Create</button>
+        </label>
+      </div>
+    </form>
+    </div>
+  </div>
+  

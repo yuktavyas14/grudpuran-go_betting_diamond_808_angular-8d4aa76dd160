@@ -1,0 +1,42 @@
+.featured-game1{
+    margin-top: 1.5rem!important;
+    margin-bottom :.5rem!important;
+    padding-right: 20px;
+      padding-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  
+  .col-12, .featured-game1 .col-6, .featured-game1 .col-md-3, .featured-game1 .col-sm-3 {
+    padding: 0 6px!important;
+  }
+  
+  .img-fluid, .img-thumbnail {
+    max-width: 100% !important;
+    height: auto;
+  }
+  .featured-game2{
+  max-width: 16.666667%
+  }
+  
+  .featured-game1 .img-pos {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .game-title-main {
+    text-align: center;
+    font-size: 14px;
+    color: #20194d;
+    padding: 8px 0;
+    font-weight: 700;
+  }
+  
+  
+  .featured-game1 img {
+    border-radius: 10px;
+    border: 3px solid#045662;
+    cursor: pointer;
+  }
+  
+  

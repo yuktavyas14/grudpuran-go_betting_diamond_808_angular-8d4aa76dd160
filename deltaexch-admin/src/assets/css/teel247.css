@@ -1,0 +1,143 @@
+ 
+.login .wrapper1 {
+    background: unset !important;
+    /* fallback for old browsers */
+    background: unset !important;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: unset !important;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.login {
+    background-image: linear-gradient(#72958f, #6e7776);
+    height: 100vh;
+}
+.log-fld h2 {
+    color: #000 !important;
+}
+.log-fld h2:after, .log-fld h2:before {
+    background:#000 !important;
+}
+.header-bottom {
+    background-color: #72958f;
+}
+.btn-submit.btn-login {
+    background-color: #72958f !important;
+    border-color: #72958f !important;
+    color: var(--primary-color);
+}
+
+.btco-hover-menu .collapse ul>li:hover>a {
+    background: #006760;
+}
+
+.master-balance {
+    background-color: #006760;
+}
+
+.fa-arrow-alt-circle-down, .fa-arrow-alt-circle-up {
+    color: #FFF;
+}
+
+.btn-diamond {
+    background-color: #72958f;
+    border-color: #72958f;
+    color:#FFF;
+}
+
+.ngx-pagination .current {
+    background: #72958f !important;
+}
+.data-table table td a {
+    background: #444 !important;
+    color: #FFF !important;
+}
+.btn-success, .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #444 !important;
+    border-color: #444 !important;
+}
+.ngx-pagination a, .ngx-pagination button {
+    padding: 3px 10px !important;
+    background-color: #bdad4c !important;
+}
+
+input:checked~.checkmark {
+    background-color: #444;
+}
+ 
+.game-heading {
+    background-color: #006760 !important;
+}
+ 
+.card-header {
+    background-color: #97b7b1;
+    line-height: 1.6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.nav-pills .show>.nav-link, .tab_betslip .nav-pills .nav-link.active {
+    color: #FFF;
+    background-color: #72958f;
+    border-top: 3px solid #72958f;
+    border-radius: 0;
+    outline: 0;
+}
+.btn-back {
+    background-color: #1e7ea2;
+    border-color: #1e7ea2;
+}
+
+.user-search .username ul {
+    background-color: #72958f;
+}
+h3.heading-text {
+    font-size: 15px;
+    background-color: #72958f;
+    color: #FFF;
+}
+#user-book .mtree.mtree-header>li {
+    background-color: #72958f;
+}
+.table thead th {
+    background-color: #FFF;
+    color: #666;
+}
+.modal-header .close {
+    background-color: #72958f;
+}
+.modal-header {
+    border-bottom: 0;
+    background-color: transparent;
+}
+h4.modal-title {
+    color: #424242;
+}
+button.close i {
+    font-size: 17px;
+    color: #FFF;
+    text-shadow: none;
+}
+.btn-submit {
+    background-color: #72958f;
+    border-color: #72958f;
+    color: #000;
+}
+#view-more .nav-tabs .nav-item.show .nav-link, #view-more .nav-tabs .nav-link.active {
+    color: #fff;
+    background-color: #72958f;
+    border: 0;
+}
+.modal-header {
+    padding: 10px;
+    background: transparent !important;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+}
+
+.table thead th {
+    background-color: transparent;
+    color: #333;
+}
+.btco-hover-menu .collapse ul ul, .btco-hover-menu .collapse ul ul.dropdown-menu {
+    background: #72958f !important;
+}

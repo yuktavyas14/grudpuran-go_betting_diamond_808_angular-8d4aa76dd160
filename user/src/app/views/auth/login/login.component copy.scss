@@ -1,0 +1,31 @@
+.login, .login .main {
+    /*background-color: #6a9a1f;*/
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial,Tahoma,Verdana,Helvetica,sans-serif;
+    color: #1E1E1E;
+    font-size: 14px;
+    line-height: 15px;
+    color: #1E1E1E;
+    /*background-color: #6a9a1f;*/
+}
+
+/* You can add global styles to this file, and also import other style files */
+.errorMessage{
+    // ::ng-deep {
+    // background-color : red !important;
+    color :red
+    // }
+  }
+
+  .login-logo img {
+    // width: 270px !important; // delta
+    width: 180px !important; //gods
+    height: auto;
+}
+
+.alert{
+  padding: 0px !important;
+}

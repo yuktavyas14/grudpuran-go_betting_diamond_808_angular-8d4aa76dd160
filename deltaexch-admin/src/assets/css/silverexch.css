@@ -1,0 +1,228 @@
+
+.login .wrapper1 {
+    background: unset !important;
+    /* fallback for old browsers */
+    background: unset !important;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: unset !important;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.login {
+    background-image: linear-gradient(#04a1a6, #04a1a6);
+    height: 100vh;
+}
+.log-fld h2 {
+    color: #000 !important;
+}
+.log-fld h2:after, .log-fld h2:before {
+    background:#000 !important;
+}
+.header-bottom {
+    background-color: #04a1a6;
+}
+.btn-submit.btn-login {
+    background-color: #04a1a6 !important;
+    border-color: #04a1a6 !important;
+    color: #000 !important;
+}
+
+.btco-hover-menu .collapse ul>li:hover>a {
+    background: #04a1a6;
+}
+ 
+.master-balance {
+    background-color: #0f696e;
+}
+
+.fa-arrow-alt-circle-down, .fa-arrow-alt-circle-up {
+    color: #fff;
+}
+.master-balance ul li {
+    color: #fff;
+}
+.header-bottom li a {
+    color: #000!important;
+}
+.btn-diamond {
+    background-color: #04a1a6;
+    border-color: #04a1a6;
+    color:#000 !important;
+}
+
+.ngx-pagination .current {
+    background: #04a1a6 !important;
+}
+.data-table table td a {
+    background: #444 !important;
+    color: #FFF !important;
+}
+.btn-success, .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #444 !important;
+    border-color: #444 !important;
+}
+.ngx-pagination a, .ngx-pagination button {
+    padding: 3px 10px !important;
+    background-color: #bdad4c !important;
+}
+
+input:checked~.checkmark {
+    background-color: #444;
+}
+
+.game-heading {
+    background-color: #04a1a6 !important;
+    color: #000 !important;
+}
+
+.card-header {
+    background-color: #04a1a6;
+    line-height: 1.6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.lastResultPart h3 {
+    background-color: #04a1a6 !important;
+    color: #fff !important;
+}
+.nav-pills .show>.nav-link, .tab_betslip .nav-pills .nav-link.active {
+    color: #000;
+    background-color: #04a1a6;
+    border-top: 3px solid #04a1a6;
+    border-radius: 0;
+    outline: 0;
+}
+.btn-back {
+    background-color: #04a1a6 !important;
+    border-color: #04a1a6;
+    color: #000 !important;
+}
+
+.user-search .username ul {
+    background-color: #04a1a6;
+}
+h3.heading-text {
+    font-size: 15px;
+    background-color: #04a1a6;
+    color: #FFF;
+}
+.table thead th {
+    background-color: #FFF;
+    color: #666;
+}
+.modal-header .close {
+    background-color: #04a1a6;
+}
+.modal-header {
+    border-bottom: 0;
+    background-color: transparent;
+}
+h4.modal-title {
+    color: #04a1a6;
+}
+button.close i {
+    font-size: 17px;
+    color: #000;
+    text-shadow: none;
+}
+.btn-submit {
+    background-color: #04a1a6;
+    border-color: #04a1a6;
+    color: #000;
+}
+#view-more .nav-tabs .nav-item.show .nav-link, #view-more .nav-tabs .nav-link.active {
+    color: #000;
+    background-color: #04a1a6;
+    border: 0;
+}
+.modal-header {
+    padding: 10px;
+    background: transparent !important;
+    color: #000;
+    border-radius: 0;
+    border: 0;
+}
+
+.table thead th {
+    background-color: transparent;
+    color: #333;
+}
+.btco-hover-menu .collapse ul ul, .btco-hover-menu .collapse ul ul.dropdown-menu {
+    background: #04a1a6 !important;
+}
+/*.header-bottom li a{color: #000 !important;}*/
+.header-bottom li a:hover{color: #000 !important;}
+.user-search .username{color: #000;}
+
+
+
+
+.bar1, .bar2, .bar3 {
+
+  background-color: #000 !important;
+
+}
+.navbar-nav .dropdown-menu a{color: #000 !important;}
+
+.list-unstyled .navbar-nav .header-bottom li a  {
+  color: #000!important;
+}
+.header-bottom ul.whiteColor li a  {
+    color: #000!important;
+  }
+.navbar-nav .dropdown-menu a {
+  color: #000 !important;
+}
+.blinking span {
+    animation: blinkingText 1.2s infinite !important;;
+}
+
+.blinking:hover span {
+    animation: blinkingHoverText 1.2s infinite !important;
+}
+.ngx-pagination .current {
+    background: #46a29f !important;
+}
+
+@keyframes blinkingText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+
+@keyframes blinkingHoverText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+ 
+

@@ -1,0 +1,29 @@
+.banker:before {
+    content:"\A";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background: #831924;
+    display:inline-block;
+    padding-right: 3px;
+
+}
+.player:before {
+    content:"\A";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background: #06518a;
+    display:inline-block;
+    padding-right: 3px;
+}
+.tie:before {
+    content:"\A";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background: #1d7026;
+    display:inline-block;
+    padding-right: 3px;
+
+}

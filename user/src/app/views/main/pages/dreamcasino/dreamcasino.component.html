@@ -1,0 +1,27 @@
+
+
+<div  class="supenova">
+
+    
+   
+   
+    
+    <div class="row mt-4 mb-2 featured-game1">
+      <ng-container *ngFor="let data of dreamCasinoGames">
+      <div class="col-6 col-sm-3 col-md-3 col-lg-2 col-xl-2 featuregames2" (click)="getdreamcasinoGamesUrl(data?.game_id, data?.game_code)">
+        <div class="img-pos">
+          <img alt="" *ngIf="data?.url_thumb" [src]="data?.url_thumb" class="img-fluid">
+          <img alt="" *ngIf="!data?.url_thumb" src="https://images.staticcontents.com/ecasino/2147.evo_salonpriveroulette1.jpg" class="img-fluid">
+        </div>
+        <div class="text-center game-title-main">{{data.name}}</div>
+      </div>
+      </ng-container>
+      
+    </div>
+    
+    </div>
+ 
+    
+    
+    
+    

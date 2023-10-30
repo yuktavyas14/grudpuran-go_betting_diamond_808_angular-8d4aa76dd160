@@ -1,0 +1,115 @@
+.login {
+	background-image: linear-gradient(#72958f, #006760) !important;
+}
+
+.btn-submit {
+    background-color: #72958f !important;
+    border-color: #72958f !important;
+    color: #fff;
+}
+
+.featured-box-login h4 {
+    color: #72958f;
+}
+
+.modal-header, .popup21white .modal-header {
+    background: #72958f;
+}
+.header.header {
+    background-color: #72958f;
+}
+.header-bottom {
+    background-color: #006760;
+}
+.main-content .nav-tabs {
+    background-color: #72958f;
+}
+.main-content .nav-tabs .nav-link {
+    border-top: 3px solid #72958f;
+}
+.main-content .nav-tabs .nav-item:after {
+    background: #ffffff;
+    top: 12px;
+    width: 1px;
+    content:none;
+}
+.main-content .sports .nav-tabs {
+    background-color: #72958f;
+}
+.sports .nav-tabs {
+    background-color: #72958f;
+}
+.sports .nav-tabs .nav-link.active, .sports .nav-tabs .nav-link:hover {
+    background-color: #72958f;
+}
+
+.main-content .nav-tabs .nav-link {
+    border-top: 0;
+}
+.casinoicons .casino-name {
+    background-image: linear-gradient(#72958f, #006760);
+}
+.sidebar-title {
+    background: #72958f;
+}
+.casinoicons-title {
+    background-image: linear-gradient(#72958f, #006760);
+}
+.btn-theme {
+    background-image: linear-gradient(to right, #72958f, #006760) !important;
+}
+.card-header {
+    background-color: #006760;
+}
+.game-heading {
+    background-color: #006760;
+}
+.lastResultPart h3 {
+    background-color:#006760;
+}
+ul.other-table-box li {
+    background: linear-gradient(90deg,#72958f,#2c3e50);
+    background-image: linear-gradient(90deg,#72958f,#2c3e50)!important;
+}
+.game-heading {
+    background-color: #249181;
+}
+.market-title {
+    background-color: #3fad9d;
+}
+.game-page .nav-tabs .nav-link {
+    /* background-color: #249181; */
+}
+.game-page .nav-tabs .nav-link.active {
+    background-color: #180a48;
+}
+
+.featured-box .nav-tabs li a {
+    background-color: #249181 !important;
+}
+.fancy-nav ul li.active a,
+.fancy-nav ul li a,
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    background-color: #72958f!important;
+}
+.tab-pane.sports ul {
+    background-color: #006760;
+}
+.main-content ul.nav.nav-tabs.game-nav-bar li.nav-item.text-center {
+    background-color: #223577;
+}
+.lastResultPart h3, .fancy-marker-title h4 {
+    background-color: #249181d9 !important;
+}
+.low-high-btn, ul.other-table-box li, .btn-theme {
+    background-image: linear-gradient(90deg,#180a48,#249181) !important;
+}
+footer {
+    background-color: #72958f;
+    border-top: 2px solid #006760;
+}
+
+.game-page .nav-tabs .nav-link {
+  /* background-color: #249181; */
+}

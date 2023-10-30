@@ -1,0 +1,4 @@
+<app-header *ngIf="userDetails?.is_change_password !='1'"></app-header>
+<app-cup-menu-list *ngIf="userDetails?.is_change_password !='1'"></app-cup-menu-list>
+
+<router-outlet></router-outlet>

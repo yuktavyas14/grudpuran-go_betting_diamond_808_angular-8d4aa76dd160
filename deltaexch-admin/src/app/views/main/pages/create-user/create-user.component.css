@@ -1,0 +1,32 @@
+
+.detail-row {
+    position: relative;
+}
+
+.add-account-popup .modal-dialog {
+    max-width: 1200px;
+}
+.modal-content input {
+    width: 100%;
+    border: 1px solid #d4d4d4;
+    height: 38px;
+    padding: 0 10px;
+}
+span.mt-2 {
+    margin-top: 5px;
+    display: block;
+}
+.modal-footer {
+	border-top: 1px solid #999;
+}
+.error-text{
+    color : red
+}
+h3.heading-text {
+    font-size: 19px;
+    background-color: #2c3e50;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #fff;
+}

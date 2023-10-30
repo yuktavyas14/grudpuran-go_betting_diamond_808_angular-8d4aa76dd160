@@ -1,0 +1,185 @@
+.serachfoucs{
+
+    display: block
+}
+.search-game-ul {
+    // background: var(--primary-bg);
+    // color: white;
+    padding: 10px;
+    width: 500px;
+    max-height: 450px;
+    overflow: auto;
+    // box-shadow: 1px 0px 10px var(--secondary-bg);
+    position: absolute;
+    top: 100%;
+}
+
+
+
+.blink {
+  display: inline;
+  color: inherit;
+  animation: blink-animation .8s steps(5, start) infinite;
+  -webkit-animation: blink-animation .8s steps(5, start) infinite;
+
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+// @keyframes blink-animation { 50% { color: bisque; } }
+// @-webkit-keyframes blink-animation { 50% { color: red; } }
+
+
+
+.quadrat {
+  animation: NAME-YOUR-ANIMATION .8s steps(5, start) infinite;
+  -webkit-animation: NAME-YOUR-ANIMATION .8s steps(5, start) infinite;
+}
+.quadrat1 {
+  animation: NAME-YOUR-ANIMATION .8s steps(5, start) infinite;
+  -webkit-animation: NAME-YOUR-ANIMATION .8s steps(5, start) infinite;
+}
+
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+  // 0%, 49% {
+  //   background-color: #ffc01a;
+  //   // border: 3px solid #e50000;
+  // }
+  // 50%, 100% {
+  //   background-color: #e50000;
+  //   // border: 3px solid rgb(117, 209, 63);
+  // }
+
+
+  0% {
+    color: #ffc01a;
+}
+
+49% {
+    color: #ffc01a;
+}
+
+50% {
+    color: #ffc01a;
+}
+
+99% {
+    color: #e50000;
+}
+
+100% {
+    color: #e50000;
+}
+}
+
+.galleryImg{
+  // height:150px;
+  // width:100%;
+   animation:move 1s infinite ease-in-out;
+}
+
+.galleryImg1{
+  // height:150px;
+  // width:100%;
+   animation:move 1s infinite ease-in-out;
+}
+
+
+
+@keyframes move{
+  0% {
+    transform: scale(1,1);
+}
+50% {
+    transform: scale(1.2,1.2);
+}
+100% {
+    transform: scale(1,1);
+}
+  }
+
+  a.logo {
+    display: block;
+    text-align: left;
+}
+
+
+
+
+#casinoGameModal {
+  padding-right: 50px;
+  padding-left: 166px;
+  padding-top: 90px;
+}
+
+#marketbetspopup{
+  // padding-top: 157px !important;
+}
+
+
+.engcasinomodalbgimg {
+  background: url("/assets/images/engcasinomodalbgimg.jpg") no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 200px;
+}
+.f-18 {
+  font-size: 18px!important;
+}
+
+// #marketbetspopup .modal-dialog {
+//   position: relative;
+//   width: auto;
+//   margin: .5rem;
+//   pointer-events: none;
+// }
+
+#marketbetspopup .hirizontal-line {
+  border: 1px dashed #42c2e2;
+  height: 1px;
+  margin: 5px 0;
+}
+
+// #marketbetspopup .modal-dialog-centered:before {
+//   display: block;
+//   height: calc(100vh - 1rem);
+//   content: "";
+// }
+
+// #marketbetspopup * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   font-family: Tahoma;
+//   -webkit-print-color-adjust: exact;
+// }
+
+#marketbetspopup .change-pass .btn.disabled, .change-pass .btn:disabled, .login_ftrmy .btn.btn-primary.disabled, .login_ftrmy .btn.btn-primary:disabled, .place-bet-btn {
+  background-color: #000;
+  background-image: linear-gradient(#545454,#000);
+  border: 1px solid #000;
+  color: #fff;
+}
+
+#marketbetspopup button.btn.place-bet-btn.waves-effect.mx-auto.ecasinoclose {
+  margin-top: 51px !important;
+}
+
+
+
+
+.casinoinfo {
+  margin-bottom: 40px;
+  font-size: 20px;
+}
+
+#marketbetspopup {
+  margin-top: 150px;
+}

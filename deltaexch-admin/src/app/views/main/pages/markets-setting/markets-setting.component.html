@@ -1,0 +1,120 @@
+<div class="col-md-12 report-main-content m-t-20">
+  <div class="">
+    <section class="card">
+      <header class="card-header">
+        <h2 class="card-title">Market Setting</h2>
+      </header>
+      <div class="card-body">
+        <div class="widget-body">
+          <div class="portlet-body">
+            <form novalidate name="BetPlayer" method="post" action="">
+              <table width="100%" class="table table-striped table-hover table-bordered">
+                <tbody>
+                  <tr>
+                    <td width="15%" class="TableHeading">Sport Name</td>
+                    <td width="15%" class="TableHeading">Series Name</td>
+                    <td width="15%" height="25" class="TableHeading">Match Name</td>
+                    <td width="15%" height="25" class="TableHeading"></td>
+
+                  </tr>
+                  <tr>
+                    <td><select name="AgentName" id="AgentName"
+                      (change)="onChange($event.target.value )" [(ngModel)]="sportId">
+                      <option value="0">All</option>
+                      <option *ngFor="let sport of sportList" [value]="sport.sport_id">
+                          {{sport.name}}
+                      </option>
+                  </select></td>
+                    <td><select name="AgentName" id="AgentName"
+                      (change)="onSeriesSelect($event.target.value)"
+                      [(ngModel)]="seriesId">
+                      <option value="0">All</option>
+                      <option *ngFor="let series of seriesList"
+                          [value]="series.series_id">
+                          {{series.name}}
+                      </option>
+                  </select></td>
+                    <td height="30"><select name="Collection" id="Collection"
+                      style="width: 100%;" [(ngModel)]="matchId" (change)="changeMatch($event.target.value)">
+                      <option value="0">All</option>
+                      <option  *ngFor="let match of MatchList" [value]="match.match_id">{{match?.name}}</option>
+                   
+                  </select></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <div style="display: block; float: right; margin-bottom: 10px;"><button type="button" (click)="autoResult()" class="btn btn-success">Auto Result Declare</button></div>
+
+              <table width="100%" class="table table-striped table-hover table-bordered">
+                <tbody>
+                  <tr>
+                    <td width="4%" height="25" class="TableHeading"><strong>Sr.No.</strong></td>
+                    <td width="15%" class="TableHeading"><strong>Series Name </strong></td>
+                    <td width="15%" class="TableHeading"><strong>Match Name</strong></td>
+                    <td width="15%" class="TableHeading"><strong>Match Date</strong></td>
+
+                    <td width="15%" class="TableHeading"><strong>Market Name</strong></td>
+                    <td width="15%" class="TableHeading"><strong>Market Id</strong></td>
+                    <td class="TableHeading"><strong>Action</strong></td>
+                    <td width="20%" class="TableHeading"><strong>Declare Result</strong></td>
+                  </tr>
+                  <tr bgcolor="#FFFFFF" *ngFor="let market of marketList;let i = index">
+                    <td height="20" class="FontText">{{i + 1}}.</td>
+                    <td class="FontText">{{market?.series_name}}</td>
+                    <td class="FontText">{{market?.match_name}}</td>
+                    <td class="FontText">{{market?.match_date}}</td>
+
+                    <td class="FontText">{{market?.market_name}}</td>
+                    <td class="FontText">{{market?.market_id}}</td>
+                    <td class="FontText">
+                        <ui-switch
+                            (change)="onTogalChange(market?.match_id,market?.market_id, $event)"
+                            size="small" color="green" [checked]="market.is_active == 1">
+                        </ui-switch>
+                    </td>
+                    <td class="FontText"><button type="button" class="btn btn-success"
+                            (click)="resultDeclarepop(market)">Declare</button>&nbsp;
+                        <button type="button" class="btn btn-success" (click)="marketAbandon(market)">Abandoned</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center;" *ngIf="marketList?.length == 0">
+                        No
+                        Records Found !</td>
+                </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal fade declareMatch" id="declareMatch" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+              <div  class="modal-content">
+                <div  class="modal-header">
+                    <h5  class="modal-title">Declare Match Result</h5><button 
+                        type="button" data-dismiss="modal" aria-label="Close" class="close"><span 
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div  class="modal-body popup-form">
+                    <p >Choose your team to declare result</p>
+                    <div class="from-to-input"><select 
+                            class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="selection_id" (change)="selectionChange($event.target.value)">
+                            <option value="" disabled="" selected="">Select Team</option>
+                            <option *ngFor="let match of popUpMatchList"  [value]="match?.selection_id" >{{match.name}}</option>
+                            <!---->
+                        </select></div>
+                </div>
+                <div class="modal-footer"><button  data-dismiss="modal"
+                        class="btn btn-danger">Cancel</button><button 
+                        class="btn btn-dark" (click)="resultDeclare();"  [disabled]="!selection_id">Yes</button></div>
+            </div>
+        </div>
+    </div>
+</div>

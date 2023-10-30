@@ -1,0 +1,21 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+        <div class="detail-row">
+            <h2 class="game-heading">{{seriesName}}</h2>
+            <div class="row m-t-20">
+                <div class="col-md-4 m-b-30 div-figure" *ngFor="let match of gameList">
+                    <a (click)="onMatchDetails(match.match_id)" class="zoom-effect-container ">
+                        <div class="d-inline-block   m-t-10 m-b-10 m-r-20 " style="cursor: pointer;">
+                            <img src="assets/images/games-icon/{{match.match_id}}.jpg" alt="{{match.match_name}}" class="img-fluid image-zoom">
+                            <!-- // <div class="casinoicons-title">{{match.match_name}}</div> -->
+                        </div>
+                    </a>
+                </div>
+                <!-- <div class="col-md-4 m-b-30 div-figure">
+                    <a href="#">
+                        <img class="img-fluid" src="assets/images/worli/instant-worli.jpg">
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>

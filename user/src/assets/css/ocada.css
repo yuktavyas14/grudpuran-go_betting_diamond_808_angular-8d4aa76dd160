@@ -1,0 +1,131 @@
+@font-face
+{
+  	font-family: 'CasinoNumFont';
+	src: url('fonts/casino3dmarquee-webfont.woff2') format('woff2'),
+    url('fonts/casino3dmarquee-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+.casino-numfont{
+	font-family: 'CasinoNumFont';
+	font-size: 270px;
+	line-height: 0.8;
+	color:#6A0015;
+}
+.center-cropped {
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    min-height: 105px;
+}
+.left_half li.show
+{
+	display: block !important;
+}
+.left_half li.hide
+{
+	display: none !important;
+}
+.left_half
+{
+	margin: 0;
+}
+.ocada-sidebar
+{
+	background-color: rgba(44,62,80,0.85);
+	border-radius: 4px;
+	box-shadow: 1px 1px 10px rgba(0,136,204,0.4);
+}
+.ocada-sidebar li
+{
+	padding: 10px 25px;
+	position: relative;
+	cursor: pointer;
+	border-bottom: 1px solid #555;
+}
+.ocada-sidebar li:before
+{
+	background-color: #fff;
+	position: absolute;
+	content: "";
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+	left: 5px;
+	top: 12px;
+}
+.ocada-sidebar li:hover,.ocada-sidebar li.active
+{
+	background-color: #0088CC;
+}
+.casino-numbers img
+{
+    width: 180px;
+}
+.casino-bet.place-bet .card-body
+{
+	display: block;
+}
+.casino-stake
+{
+	height: 30px;
+	border: 2px solid #ddd;
+	padding: 0 10px;
+	font-size: 14px;
+	width: 100%;
+}
+/*.criccasino-select,.criccasino-select:focus
+{
+	background-color: #fff;
+	color: #ddd;
+	border: 0;
+	outline: 0;
+	box-shadow:none;
+}*/
+.criccasino-bet-header
+{
+	background-color: #333;
+	color: #fff;
+	padding: 6px 10px;
+}
+.criccasino-left-sidebar
+{
+	max-width: 30%;
+	-ms-flex: 0 0 30%;
+	flex: 0 0 30%;
+	padding-right: 0;
+}
+.criccasino-main-content
+{
+	max-width: 70%;
+	-ms-flex: 0 0 70%;
+	flex: 0 0 70%;	
+}
+.btn_up,.btn_down,.btn_up:hover,.btn_down:hover,.btn_up:focus,.btn_down:focus
+{
+	width: 100px;
+	color: #fff !important;
+	background-color: rgba(44,62,80,0.85);
+	border: 1px solid #2C3E50;
+}
+.criccasino-main-content .game-heading
+{
+	padding: 8px;
+	background-color: rgba(44,62,80,0.85);
+}
+
+.bet-stake input {
+    width: 70px;
+}
+
+#casino-bet-tbl th{
+	width: 33%;
+}
+
+.rules-warning{
+	float: right;
+    /* color: red; */
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

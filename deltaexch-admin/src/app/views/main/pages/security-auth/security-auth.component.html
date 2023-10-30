@@ -1,0 +1,124 @@
+<div class="featured-box">
+
+    <div class="">
+      <section class="card">
+        <header class="card-header">
+          <h2 class="card-title">Secure Auth Verification</h2>
+        </header>
+        <div class="card-body security-auth">
+            <div class="row justify-content-center mt-5 mb-5">
+               <div class="col-6" *ngIf="isTelegramEnabled =='0'">
+                  <div class="setting-box"><span class="mr-3">Secure Auth Verification Status:</span>
+                     <span *ngIf="isTelegramEnabled =='1'" class="badge badge-success">Enabled</span>
+                     <span *ngIf="isTelegramEnabled =='0'" class="badge badge-danger">Disabled</span>
+                    </div>
+                  <div class="mt-2 text-center">
+                     <fieldset class="form-group">
+                        <legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0" id="__BVID__45__BV_label_">
+                            Please select below option to enable secure auth verification</legend>
+                        <div tabindex="-1" role="group" class="bv-no-focus-ring">
+                           <div id="radio-group-1" role="radiogroup" tabindex="-1" class="btn-group-toggle btn-group btn-group-lg bv-no-focus-ring">
+                               <!-- <label class="btn btn-lg {{isTelegramEnabled =='0'?'btn-outline-success':'btn-outline-danger'}}">
+                                   <input type="radio" name="auth-options" autocomplete="off" class="" (change)="onChangeMode(1)" value="1">
+                                   <span  *ngIf="isTelegramEnabled =='0'">Enable Using Mobile App</span>
+                                   <span  *ngIf="isTelegramEnabled =='1'">Disable Using Mobile App</span>
+                                </label> -->
+                                   <label *ngIf="isTelegramEnabled =='0'" class="btn btn-lg {{isTelegramEnabled =='0'?'btn-outline-success':'btn-outline-danger'}}">
+                                       <input type="text" name="auth-options" autocomplete="off" class="" (change)="onChangeMode(2)" value="2">
+                                    <span  *ngIf="isTelegramEnabled =='0'">Enable Using Telegram</span>
+                                    <span  *ngIf="isTelegramEnabled =='1'">Disable Using Telegram</span>
+                                </label>
+                                <label *ngIf="isTelegramEnabled =='1'" class="btn btn-lg {{isTelegramEnabled =='0'?'btn-outline-success':'btn-outline-danger'}}">
+                                    <input type="text" name="auth-options" autocomplete="off" class="" (change)="onRequestDisable()" value="2">
+                                 <span  *ngIf="isTelegramEnabled =='0'">Enable Using Telegram</span>
+                                 <span  *ngIf="isTelegramEnabled =='1'">Disable Using Telegram</span>
+                             </label>
+                            </div>
+                           <!----><!----><!---->
+                        </div>
+                     </fieldset>
+                  </div>
+
+                 <div class="text-center mt-3" *ngIf="isMobile">
+                    <!----> 
+                    <h6 class="mb-2">Please enter below auth code in your 'Secure Auth Verification App'.</h6>
+                    <div class="text-center row mt-2 mb-2 align-items-center">
+                       <div class="col-12 d-flex justify-content-center align-items-center">
+                          <div class="verify-code d-inline-block">990776</div>
+                       </div>
+                    </div>
+                    <h4 class="mb-2">If you haven't downloaded,<br> please download 'Secure Auth Verification App' from below link. </h4>
+                    <h6 class="mb-2">Using this app you will receive auth code during login authentication</h6>
+                    <a href="https://dzm0kbaskt4pv.cloudfront.net/v2/static/img/SecureAuthApp-1.7.apk" class="btn btn-download btn-lg mt-3">
+                       <div class="row5 row align-items-center">
+                          <div class="col-4 text-center"><i class="fab fa-android"></i></div>
+                          <div class="col-8 text-left">
+                             <h4 class="mb-0">Download</h4>
+                             <div class="mt-0 dtext">on the android</div>
+                          </div>
+                       </div>
+                    </a>
+                 </div>
+                 <div class="text-center mt-3" *ngIf="isTelegram">
+                   
+                    <div>
+                       <p class="mb-3">Please enter your login password to continue</p>
+                       <form class="form-inline">
+                          <label for="inline-form-input-name" class="sr-only">Password</label>
+                          <input id="inline-form-input-name" type="password" name="masterPassword"   [(ngModel)]="masterPassword"
+                             placeholder="Enter Your Login Password" class="mb-2 mr-sm-2 mb-sm-0 form-control"> 
+                          <button type="submit" class="btn btn-primary" (click)="getConnectionId()">Get Connection Id</button>
+                       </form>
+
+                       <div class="mt-3 small-box" *ngIf="isOpenTelegrameInstructions">
+                        <h4>Please follow below instructions for the telegram 2-Step veriication:</h4>
+                        <p>Find <a target="_blank" href="https://t.me/{{getTelegramData?.telegram_bot_username}}?start" class="text-primary">@{{getTelegramData?.telegram_bot_username}}</a> in your telegram and type <kbd>/start</kbd> command. Bot will respond you.</p>
+                        <p class="text-dark">After this type <kbd>/connect {{getTelegramData?.telegram_connection_id}}</kbd> and send it to BOT.</p>
+                        <p>Now your telegram account will be linked with your website account and 2-Step veriication will be enabled.</p>
+                        <hr>
+                        <div class="font-hindi mt-4">
+                           <h4>कृपया टेलीग्राम 2-Step verification के लिए नीचे दिए गए निर्देशों का पालन करें:</h4>
+                           <p>अपने टेलीग्राम में <a target="_blank" href="https://t.me/{{getTelegramData?.telegram_bot_username}}?start" class="text-primary">@{{getTelegramData?.telegram_bot_username}}</a> खोजें और कमांड <kbd>/start</kbd> टाइप करें. BOT आपको जवाब देगा.</p>
+                           <p class="text-dark">इसके बाद <kbd>/connect {{getTelegramData?.telegram_connection_id}}</kbd> टाइप करें और इसे BOT पर भेजें.</p>
+                           <p>अब आपका टेलीग्राम account आपके वेबसाइट account से जुड़ जाएगा और 2-Step veriication चालू हो जाएगा.</p>
+                        </div>
+                     </div>
+                       
+                    </div>
+                 </div>
+                 
+               </div>
+               <div class="col-8" *ngIf="isTelegramEnabled =='1'">
+                <div class="setting-box"><h3 class="mr-3">Secure Auth Verification Status:</h3>
+                     <a href="javascript:void(0)" (click)="onRequestDisable()" title="Click here to disable secure auth verification" class="btn btn-success">Enabled</a>
+                    </div>
+                
+                 
+                
+                 <div class="text-center mt-3" *ngIf="isVerifyDisableOtp">
+                    <div class="otp">
+                        <div class="loginInner1 authentication">
+                    <div class="featured-box-login featured-box-secundary default">
+                        <h3 class="text-center">Security Code Verification using Telegram</h3>
+                        <div class="my-3 text-center">Enter 6-digit code received in  
+                           <span><a href="https://t.me/{{telegramBotUsername}}?start" target="_blank">@{{telegramBotUsername}}</a></span>
+                           Bot
+                        </div>
+              <input  *ngIf="showOtpComponent"  type="number" class="formControl" (input)="onOtpChange($event.target)">
+
+                        <!-- <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)"
+                        *ngIf="showOtpComponent" [config]="config"></ng-otp-input> -->
+                     </div>
+                     </div>
+                     </div>
+                 </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      
+    </div>
+  </div>
+  
+   
+  

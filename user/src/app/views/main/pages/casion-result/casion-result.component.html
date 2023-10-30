@@ -1,0 +1,1501 @@
+<div class="featured-box">
+  <div class="">
+      <section class="card">
+          <header class="card-header">
+              <h2 class="card-title">Casino Result</h2>
+          </header>
+          <div class="card-body">
+              <form method="POST" action="">
+                  <div class="select-report d-inline-block ml-0 form-group">
+                      <select class="form-control" name="eventTypeIds" id="eventTypeIds" required="required" [(ngModel)]='sportId'>
+                   <option value="undefined" disabled>Casino Type</option>
+            <ng-container *ngFor="let sport of sportList" >
+
+                   <option [value]='sport?.match_id'>{{sport.match_name}}</option>
+
+          </ng-container>
+
+          </select>
+                  </div>
+
+
+                  <!-- <span>to</span> -->
+                  <div class="datepicker-wrapper form-group ml-2 mr-2">
+                      <div class="form-group">
+                          <!-- <label for="todate">To</label> -->
+                          <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [ngModelOptions]="{standalone: true}" [(ngModel)]="toDate">
+                          <i class="fas fa-calendar"></i>
+                      </div>
+                  </div>
+                  <div class="d-inline-block">
+                      <input type="hidden" name="_token" value="">
+                      <button class="btn btn-primary" value="submit" type="submit" (click)="getCasinoResult()">Submit</button>
+                  </div>
+                  <!-- <div class="col-6"> -->
+                    <div   id="profit-loss_filter" class="dataTables_filter float-right">
+                      <label>Search:
+                        <span>
+                          <input type="search" [formControl]="searchKey" placeholder="Type to Search" aria-controls="profit-loss" class="form-control form-control-sm">
+
+                        </span>
+                  </label>
+                </div>
+                  <!-- </div> -->
+
+                  <table id="example" class="table b-table table-striped table-bordered" style="width:100%" role="grid" aria-describedby="example_info">
+                      <thead>
+                          <tr role="row">
+                              <th class="sorting" tabindex="0" aria-controls="example" aria-label="Event Type: activate to sort column ascending" style="width: 20%;">Round ID	</th>
+                              <th class="sorting" tabindex="0" aria-controls="example" aria-label="Event Name: activate to sort column ascending" style="width: 70%;">Winner</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <ng-container *ngIf="betlist != null && betlist .length != 0;else NoData">
+                              <ng-container *ngFor="let bet of betlist | paginate: config;trackBy: trackByFn;let i=index;">
+
+                                  <tr role="row" aria-rowindex="1" class="">
+                                    <td aria-colindex="1" role="cell" class="text-left">
+                                      <a href="javascript:void(0)" (click)="openResult({market_id: bet?.market_id, match_id : bet?.match_id})" >{{bet?.market_id}}</a>
+                                    </td>
+                                    <td aria-colindex="2" role="cell" class="text-left">Player {{bet?.winner_name}} - {{bet?.match_name}}</td>
+                                  </tr>
+                              </ng-container>
+                          </ng-container>
+                          <ng-template #NoData>
+                              <tr>
+                                  <td valign="top" colspan="10" class="dataTables_empty">No data available in table</td>
+                              </tr>
+                          </ng-template>
+                      </tbody>
+                  </table>
+                  <div class="pagin-cls">
+                      <ng-container *ngIf="totalrecored">
+                          <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"> </pagination-controls>
+                      </ng-container>
+                  </div>
+              </form>
+          </div>
+      </section>
+  </div>
+</div>
+
+
+
+
+<div aria-hidden="true" class="modal" id="modalLastResults">
+  <div class="modal-dialog modal-lg" *ngIf="cardResultArray">
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-1010' || matchDetails?.match_id == '-1012'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+
+                  <ng-container *ngFor="let x of cardResultArray;let i= index">
+                      <div class="col-12 text-center">
+                          <h3 class="text-black" *ngIf="i==0 && x !='1'">Player 8:<span class="text-info-point">{{x.cardsTotal[0]}}</span>
+                          </h3>
+                          <div>
+                              <ng-container *ngFor="let card of x.cards[0];let ind= index">
+                                  <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                              </ng-container>
+                          </div>
+                          <span *ngIf="x.winner=='8'">
+
+                              <div class="winner-icon mt-3" *ngIf="i==0 && x !='1'"><i
+                                      class="fas fa-trophy mr-2"></i></div>
+                          </span>
+
+                      </div>
+                      <div class="col-12 text-center">
+                          <h3 class="text-black" *ngIf="i==0 && x !='1'">Player 9:<span class="text-info-point">{{x.cardsTotal[1]}}</span>
+                          </h3>
+                          <div>
+                              <ng-container *ngFor="let card of x.cards[1];let ind= index">
+                                  <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                              </ng-container>
+                          </div>
+                          <span *ngIf="x.winner=='9'">
+
+                              <div class="winner-icon mt-3" *ngIf="i==0 && x !='1'"><i
+                                      class="fas fa-trophy mr-2"></i></div>
+                          </span>
+
+                      </div>
+                      <div class="col-12 text-center">
+                          <h3 class="text-black" *ngIf="i==0 && x !='1'">Player 10:<span class="text-info-point">{{x.cardsTotal[2]}}</span>
+                          </h3>
+                          <div>
+                              <ng-container *ngFor="let card of x.cards[2];let ind= index">
+                                  <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                              </ng-container>
+                          </div>
+                          <span *ngIf="x.winner=='10'">
+
+                              <div class="winner-icon mt-3" *ngIf="i==0 && x !='1'"><i
+                                      class="fas fa-trophy mr-2"></i></div>
+                          </span>
+
+                      </div>
+                      <div class="col-12 text-center">
+                          <h3 class="text-black" *ngIf="i==0 && x !='1'">Player 11:<span class="text-info-point">{{x.cardsTotal[3]}}</span>
+                          </h3>
+                          <div>
+                              <ng-container *ngFor="let card of x.cards[3];let ind= index">
+                                  <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                              </ng-container>
+                          </div>
+                          <span *ngIf="x.winner=='11'">
+
+                              <div class="winner-icon mt-3" *ngIf="i==0 && x !='1'"><i
+                                      class="fas fa-trophy mr-2"></i></div>
+                          </span>
+
+                      </div>
+                  </ng-container>
+              </div>
+
+
+
+          </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-1' || matchDetails?.match_id =='-2'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container *ngFor="let x of cardResultArray;let i= index">
+                          <div class="col-6 text-center {{[cardResultArray.length - 1]==i?'':'border-right'}}">
+                              <h3 class="text-black">{{x.name}}
+                              </h3>
+                              <div>
+                                  <ng-container *ngFor="let card of x.cards;let ind= index">
+                                      <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                                  </ng-container>
+                              </div>
+                              <span *ngIf="x.winner=='1'">
+
+                                  <div class="winner-icon mt-3"><i class="fas fa-trophy mr-2"></i></div>
+                              </span>
+
+                          </div>
+                          <!--<div class="col-6 text-center">
+                          <h3 class="text-black" *ngIf="i==0 && x !='1'">Player 9:<span class="text-info-point">{{x.cardsTotal[1]}}</span>
+                          </h3>
+                          <div>
+                              <ng-container *ngFor="let card of x.cards[1];let ind= index">
+                                  <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                              </ng-container>
+                          </div>
+                          <span *ngIf="x.winner=='9'">
+
+                           <div class="winner-icon mt-3" *ngIf="i==0 && x !='1'" ><i class="fas fa-trophy mr-2"></i></div>        </span>
+
+                      </div> -->
+
+                      </ng-container>
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-3'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container *ngFor="let x of cardResultArray;let i= index">
+                          <div class="col-4 text-center {{[cardResultArray.length - 1]==i?'':'border-right'}}">
+                              <h3 class="text-black">{{x.name}}
+                              </h3>
+                              <div>
+                                  <ng-container *ngFor="let card of x.cards;let ind= index">
+                                      <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                                  </ng-container>
+                              </div>
+                              <span *ngIf="x.winner=='1'">
+
+                                  <div class="winner-icon mt-3"><i class="fas fa-trophy mr-2"></i></div>
+                              </span>
+
+                          </div>
+                          <!--<div class="col-6 text-center">
+                          <h3 class="text-black" *ngIf="i==0 && x !='1'">Player 9:<span class="text-info-point">{{x.cardsTotal[1]}}</span>
+                          </h3>
+                          <div>
+                              <ng-container *ngFor="let card of x.cards[1];let ind= index">
+                                  <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                              </ng-container>
+                          </div>
+                          <span *ngIf="x.winner=='9'">
+
+                           <div class="winner-icon mt-3" *ngIf="i==0 && x !='1'" ><i class="fas fa-trophy mr-2"></i></div>        </span>
+
+                      </div> -->
+
+                      </ng-container>
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-4' || matchDetails?.match_id =='-5'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container *ngFor="let x of cardResultArray;let i= index">
+                          <ng-container *ngIf="i<2">
+                              <div class="col-6 text-center {{[cardResultArray.length - 1]==i?'':'border-right'}}">
+                                  <h3 class="text-black">{{x.name}}
+                                  </h3>
+                                  <div>
+                                      <ng-container *ngFor="let card of x.cards;let ind= index">
+                                          <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                                      </ng-container>
+                                  </div>
+                                  <span *ngIf="x.winner=='1'">
+
+                                      <div class="winner-icon mt-3"><i class="fas fa-trophy mr-2"></i></div>
+                                  </span>
+
+                              </div>
+                          </ng-container>
+                          <ng-container *ngIf="i==2">
+                              <div class="col-12 text-center {{[cardResultArray.length - 1]==i?'':'border-right'}}">
+                                  <h3 class="text-black">{{x.name}}
+                                  </h3>
+                                  <div>
+                                      <ng-container *ngFor="let card of x.cards[0];let ind= index">
+                                          <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                                      </ng-container>
+                                  </div>
+                                  <span *ngIf="x.winner=='1'">
+
+                                      <div class="winner-icon mt-3"><i class="fas fa-trophy mr-2"></i></div>
+                                  </span>
+
+                              </div>
+                          </ng-container>
+
+                      </ng-container>
+                      <div class="col-12">
+                          <h3><span class="text-success">Winner :</span> Player {{cardResult.winner_name}}
+                          </h3>
+                      </div>
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-145'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container *ngFor="let x of cardResultArray;let i= index">
+                          <ng-container>
+                              <div class="col-12 text-center">
+                                  <h3 class="text-black">{{x.name}}
+                                  </h3>
+                                  <div>
+                                      <img src="assets/CARDS/{{x.cards}}.png" class="img-card-result">
+                                  </div>
+
+
+                              </div>
+                              <div class="col-12 my-2 text-center">
+                                  <h4> <span class="text-success">Result:</span>
+                                      <span class="winner-text"> {{x.winner}}</span>
+                                  </h4>
+                              </div>
+                          </ng-container>
+
+
+                      </ng-container>
+
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-1013'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container *ngFor="let x of cardResultArray;let i= index">
+
+                          <div class="col-12 text-center">
+
+                              <div>
+                                  <ng-container *ngFor="let card of x.cards[0];let ind= index">
+                                      <img *ngIf="card !='1'" src="assets/CARDS/{{card}}.png" class="img-card-result">
+                                  </ng-container>
+                                  <div class="text-center my-4">
+                                      <span class="intsta-worli-card-value">
+                                      {{x?.number?.cardValue}} -{{x?.number?.cardSum}}
+                                  </span>
+                                  </div>
+                              </div>
+
+
+                          </div>
+
+
+
+                      </ng-container>
+
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-1011' || matchDetails?.match_id =='-1014'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container>
+
+                          <div class="col-12 text-center">
+
+                              <div>
+                                  <ng-container *ngFor="let card of cardResultArray.cards;let ind= index">
+                                      <img src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                                  </ng-container>
+                                  <!-- <ng-container *ngFor="let card of x.cards[1];let ind= index">
+                                      <img *ngIf="card !='1'" src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                                  </ng-container> -->
+
+                              </div>
+                              <div class="col-12 my-2 text-center">
+                                  <h4> <span class="text-success">Result:</span>
+                                      <span class="winner-text"> {{cardResultArray.winner}}</span>
+                                  </h4>
+                                  <h4> <span class="text-success">dragon:</span>
+                                      <span class="winner-text"> {{cardResultArray.dragon}}</span>
+                                  </h4>
+                                  <h4> <span class="text-success">tiger:</span>
+                                      <span class="winner-text"> {{cardResultArray.tiger}}</span>
+                                  </h4>
+                              </div>
+
+
+                          </div>
+
+
+
+                      </ng-container>
+
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-1015'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container>
+
+                          <div class="col-12 text-center">
+
+                              <div>
+                                  <ng-container *ngFor="let card of cardResultArray.cards;let ind= index">
+                                      <img src="assets/CARDS/{{card}}.png" class="img-card-result">
+                                  </ng-container>
+                                  <!-- <ng-container *ngFor="let card of x.cards[1];let ind= index">
+                                      <img *ngIf="card !='1'" src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                                  </ng-container> -->
+
+                              </div>
+                              <div class="col-12 my-2 text-center">
+                                  <h4> <span class="text-success">Result:</span>
+                                      <span class="winner-text"> {{cardResultArray.winner}}</span>
+                                  </h4>
+                                  <h4>
+                                      <span class="winner-text"> {{cardResultArray.Odd== 'No'?'Odd':'Odd'}} | {{cardResultArray.Color}} |  {{cardResultArray.DulhaDulhan_Barati}} | Card{{cardResultArray.Card}}</span>
+                                  </h4>
+
+                              </div>
+
+
+                          </div>
+
+
+
+                      </ng-container>
+
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-1016'">
+          <div class="modal-header">
+              <h4 class="modal-title">{{cardResult.match_name}} </h4>
+              <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+          </div>
+          <div class="modal-body">
+
+              <div>
+                  <h6 class="text-right round-id">
+                      <b>Round Id:</b> {{cardResult.market_id}}
+                  </h6>
+                  <div class="row">
+                      <ng-container>
+
+                          <div class="col-12 text-center">
+
+                              <div>
+                                  <ng-container *ngFor="let card of cardResultArray.cards;let ind= index">
+                                      <img src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                                  </ng-container>
+                                  <!-- <ng-container *ngFor="let card of x.cards[1];let ind= index">
+                                      <img *ngIf="card !='1'" src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                                  </ng-container> -->
+
+                              </div>
+                              <div class="col-12 my-2 text-center">
+                                  <h4> <span class="text-success">Result:</span>
+                                      <span class="winner-text"> {{cardResultArray.winner}}</span>
+                                  </h4>
+                                  <!-- <h4>
+                                      <span class="winner-text"> {{cardResultArray.Odd== 'No'?'Odd':'Odd'}} | {{cardResultArray.Color}} |  {{cardResultArray.DulhaDulhan_Barati}} | Card{{cardResultArray.Card}}</span>
+                                  </h4> -->
+
+                              </div>
+
+
+                          </div>
+
+
+
+                      </ng-container>
+
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+
+      <div class="modal-content" *ngIf="matchDetails?.match_id =='-1017'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+
+            <div>
+                <h6 class="text-right round-id">
+                    <b>Round Id:</b> {{cardResult.market_id}}
+                </h6>
+                <div class="row scrollRulesimg">
+                    <ng-container>
+                      <div class="col-12 text-center">
+                        <div >
+                          <div class="row oepn-dtl-result">
+                            <div class="col-2 text-left">
+                              {{ cardResultArray[0].selection_name }} Card
+                            </div>
+                            <div class="col-7 text-left">
+                              <img *ngFor="let card of cardResultArray[0].cards; let ind = index"  src="assets/CARDS/{{ card }}.png" class="img-card-result" />
+                            </div>
+                            <div class="col-3 text-left">
+                              <img *ngIf="cardResultArray[0]?.winner == 1" src="assets/images/winnerimg.png" alt="" style="max-width: 50px" />
+                            </div>
+                          </div>
+                          <div class="row oepn-dtl-result">
+                            <div class="col-2 text-left">
+                              {{ cardResultArray[1].selection_name }} Card
+                            </div>
+                            <div class="col-7 text-left">
+                              <img *ngFor="let card of cardResultArray[1].cards; let ind = index"  src="assets/CARDS/{{ card }}.png" class="img-card-result" />
+                            </div>
+                            <div class="col-3 text-left">
+                              <img *ngIf="cardResultArray[1]?.winner == 1" src="assets/images/winnerimg.png" alt="" style="max-width: 50px" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+            </div>
+
+
+
+        </div>
+    </div>
+      <div class="modal-content " *ngIf="matchDetails?.match_id =='-1019'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="row  m-t-10 custome-20-race-result">
+                <ng-container *ngIf="cardResultArray.cards?.length>0">
+                    <div class="mb-1 d-block col-12">
+                        <span><img src="assets/images/spade.png"></span>
+                        <ng-container *ngFor="let x of cardResultArray.cards[0].cards">
+                            <span>
+                                <img src="assets/CARDS/{{x}}.png">
+                            </span>
+                        </ng-container>
+
+                    </div>
+                    <div class="mb-1 d-block col-12">
+                        <span><img src="assets/images/heart.png"></span>
+                        <ng-container *ngFor="let x of cardResultArray.cards[1].cards">
+                            <span>
+                                <img src="assets/CARDS/{{x}}.png">
+                            </span>
+                        </ng-container>
+                    </div>
+                    <div class="mb-1 d-block col-12">
+                        <span><img src="assets/images/club.png"></span>
+                        <ng-container *ngFor="let x of cardResultArray.cards[2].cards">
+                            <span>
+                                <img src="assets/CARDS/{{x}}.png">
+                            </span>
+                        </ng-container>
+                    </div>
+                    <div class="mb-1 d-block col-12">
+                        <span><img src="assets/images/diamond.png"></span>
+                        <ng-container *ngFor="let x of cardResultArray.cards[3].cards">
+                            <span>
+                                <img src="assets/CARDS/{{x}}.png">
+                            </span>
+                        </ng-container>
+                    </div>
+                </ng-container>
+
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <strong class="text-success">Result</strong>: {{cardResultArray?.winner}} |
+                    <span>Point: {{cardResultArray?.points}}</span> |
+                    <span>Cards: {{cardResultArray?.totalCards}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content" *ngIf="matchDetails?.match_id =='-1020'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="row  m-t-10 custome-20-race-result">
+                <ng-container *ngIf="cardResultArray?.length>0">
+                    <div class="mb-1 text-center col-12">
+                        <span>
+                            <img src="assets/CARDS/{{cardResultArray[0]}}.png">
+                        </span>
+                    </div>
+
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-content" *ngIf="matchDetails?.match_id =='-1022'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+
+            <div>
+                <h6 class="text-right round-id">
+                    <b>Round Id:</b> {{cardResult.market_id}}
+                </h6>
+                <div class="row">
+                    <ng-container *ngFor="let x of cardResultArray;let i= index">
+                        <ng-container>
+                            <div class="col-12 text-center">
+                                <h3 class="text-black">{{x.name}}
+                                </h3>
+                                <div>
+                                    <img src="assets/CARDS/{{x.cards}}.png" class="img-card-result">
+                                </div>
+                            </div>
+                            <div class="col-12 my-2 text-center">
+                                <h4> <span class="text-success">Result:</span>
+                                    <span class="winner-text"> {{x.winner}}</span>
+                                </h4>
+                            </div>
+                        </ng-container>
+
+
+                    </ng-container>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+     <div class="modal-content" *ngIf="matchDetails?.match_id =='-1018' || matchDetails?.match_id =='-1025'">
+        <div class="modal-header">
+            <h4 class="modal-title">Five Cricket</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body nopading">
+            <div class="container-fluid">
+                <div class="row m-t-10">
+                    <div class="col-md-6">
+                        <span class="float-left round-id"><b>Round ID:</b> {{fiveCricketArray?.market_id}}</span>
+                    </div>
+                    <div class="col-md-6" *ngIf="fiveCricet_data != undefined && fiveCricet_data != null && fiveCricet_data != ''">
+                        <div class="row">
+                           
+                            <div class="col-12">
+                                <span class="float-right round-id"><b>Winner:</b> <span
+                                        class="text-success">{{fiveCricet_data?.Winner}}</span> | AUS:
+                                    {{fiveCricet_data?.AUS}} | IND : {{fiveCricet_data?.IND}}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div *ngIf="fiveCricet_data != undefined && fiveCricet_data != null && fiveCricet_data != ''" class="row" id="rules-container" data-typeid="">
+                    <div class="col-md-12 nopading rules-description">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">First Innings</h5>
+                            </div>
+                            <div class="card-body" *ngIf="fiveCricet_data.inning1">
+                                <div id="rules-loading" class="loading" style="display: none;height: 400px"> <img
+                                        src="images/loader.gif" alt="" class="mCS_img_loaded"> </div>
+                                <table class="table table-bordered">
+                                    <thead *ngIf="fiveCricet_data?.inning1">
+                                        <ng-container
+                                            *ngFor="let x of fiveCricet_data.inning1 | keyvalue; let i= index">
+                                            <tr *ngIf="i==0">
+                                                <th>AUS</th>
+                                                <th *ngFor="let j of x.value | keyvalue">
+                                                    {{j.key}}
+                                                </th>
+                                            </tr>
+                                        </ng-container>
+                                        
+
+                                    </thead>
+                                    <tbody *ngIf="fiveCricet_data?.inning1">
+                                        <tr *ngFor="let x of fiveCricet_data.inning1 | keyvalue; let i= index">
+                                            <td> Over {{i+1}}
+                                            </td>
+                                            <td> {{x.value[1]}}
+                                            </td>
+                                            <td>{{x.value[2]}}</td>
+                                            <td>{{x.value[3]}}</td>
+                                            <td>{{x.value[4]}}</td>
+                                            <td>{{x.value[5]}}</td>
+                                            <td>{{x.value[6]}}</td>
+                                            <td>{{x.value.run}}</td>
+                                            <td>{{x.value.score}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 nopading rules-description">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Second Innings</h5>
+                            </div>
+                            <div class="card-body" *ngIf="fiveCricet_data.inning2">
+                                <div id="rules-loading" class="loading" style="display: none;height: 400px"> <img
+                                        src="images/loader.gif" alt="" class="mCS_img_loaded"> </div>
+                                <table class="table table-bordered">
+                                    <thead *ngIf="fiveCricet_data?.inning2">
+                                        <ng-container
+                                            *ngFor="let x of fiveCricet_data.inning2 | keyvalue; let i= index">
+                                            <tr *ngIf="i==0">
+                                                <th>IND</th>
+                                                <th *ngFor="let j of x.value | keyvalue">
+                                                    {{j.key}}
+                                                </th>
+                                            </tr>
+                                        </ng-container>
+                                         
+
+                                    </thead>
+                                    <tbody *ngIf="fiveCricet_data?.inning2">
+                                        <tr *ngFor="let x of fiveCricet_data.inning2 | keyvalue; let i= index">
+                                            <td> Over {{i+1}}
+
+                                            </td>
+                                            <td> {{x.value[1]}}
+                                            </td>
+                                            <td>{{x.value[2]}}</td>
+                                            <td>{{x.value[3]}}</td>
+                                            <td>{{x.value[4]}}</td>
+                                            <td>{{x.value[5]}}</td>
+                                            <td>{{x.value[6]}}</td>
+                                            <td>{{x.value.run}}</td>
+                                            <td>{{x.value.score}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="fiveCricet_data != undefined || fiveCricet_data != null || fiveCricet_data != ''" class="row" id="rules-container" data-typeid="">
+                    <h1 class="text-center m-5">No Result data Found</h1>
+                    </div>
+            </div>
+        </div>
+    </div>  
+    <div class="modal-content" *ngIf="matchDetails?.match_id =='-1021'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+
+            <div>
+                <h6 class="text-right round-id">
+                    <b>Round Id:</b> {{cardResult.market_id}}
+                </h6>
+
+            </div>
+            <div *ngIf="matchDetails.match_id == -1021" class="andar-bahar-scroll" style="">
+
+
+                <div style="display: inline-block" id="game-cards">
+                    <div class="card-inner">
+                        <h3 class="text-black">A</h3>
+                        <div><img src="assets/CARDS/{{cardResultArray.cards[0].cards[0]}}.png"></div>
+                        <h3 class="text-black">B</h3>
+
+                    </div>
+                </div>
+                 <div style="display: inline-block; margin-top: 15px;
+                 position: absolute;
+                 margin-left: 25px;" id="game-cards">
+                    <div class="card-inner">
+                        <div class="desk-scroll">
+                            <span *ngFor="let cards of cardResultArray.cards[0].cards_total[1]">
+                            <img src="assets/CARDS/{{cards}}.png">
+                        </span>
+                        <span *ngIf="cardResult.winner_name !='Bahar'">
+                            <img src="assets/images/winnerimg.png">
+                        </span>
+                    </div>
+                          <div class="desk-scroll">
+                            <span *ngFor="let cards of cardResultArray.cards[0].cards_total[0]">
+                            <img src="assets/CARDS/{{cards}}.png">
+                        </span>
+                        <span *ngIf="cardResult.winner_name =='Bahar'">
+                            <img src="assets/images/winnerimg.png">
+                            
+                        </span>
+                    </div>  
+                    </div>
+
+
+
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div class="modal-content" *ngIf="matchDetails?.match_id =='-1024'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+
+            <div>
+                <h6 class="text-right round-id">
+                    <b>Round Id:</b> {{cardResult.market_id}}
+                </h6>
+                <div class="row">
+                    <ng-container>
+
+                        <div class="col-12 text-center">
+
+                            <div>
+                                <ng-container *ngFor="let card of cardResultArray.cards;let ind= index">
+                                    <img src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                                </ng-container>
+                                <!-- <ng-container *ngFor="let card of x.cards[1];let ind= index">
+                                  <img *ngIf="card !='1'" src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                              </ng-container> -->
+
+                            </div>
+                            <div class="col-12 my-2 text-center">
+                                <h4> <span class="text-success">Result:</span>
+                                    <span class="winner-text"> {{cardResultArray.winner}}</span>
+                                </h4>
+                                <h4> <span class="text-success">dragon:</span>
+                                    <span class="winner-text"> {{cardResultArray.dragon}}</span>
+                                </h4>
+                                <h4> <span class="text-success">tiger:</span>
+                                    <span class="winner-text"> {{cardResultArray.tiger}}</span>
+                                </h4>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </ng-container>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="modal-content" *ngIf="matchDetails?.match_id == '-1023'">
+        <div class="modal-header">
+          <h4 class="modal-title">{{ cardResult.match_name }}</h4>
+          <button
+            (click)="closeResultModal()"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <h6 class="text-right round-id">
+              <b>Round Id:</b> {{ cardResult.market_id }}
+            </h6>
+            <div class="row">
+              <ng-container>
+                <div class="col-12 text-center">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="result-patti">
+                            <h4 class="mb-2">1</h4>
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let card of cardResultArray[0];
+                                  let ind = index
+                                "
+                              >
+                                <img src="assets/CARDS/{{ card }}.png" alt="" />
+                               
+                              </li>
+                              <img *ngIf="GetWinnerName('1')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+  
+                              <!-- <li><img src="assets/images/cards/3CC.png" alt=""></li>
+                                                          <li><img src="assets/images/cards/3CC.png" alt=""></li>
+                                                          <li><img src="assets/images/cards/3CC.png" alt=""></li> -->
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="result-patti">
+                            <h4 class="mb-2">2</h4>
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let card of cardResultArray[1];
+                                  let ind = index
+                                "
+                              >
+                                <img src="assets/CARDS/{{ card }}.png" alt="" />
+                              </li>
+                              <img *ngIf="GetWinnerName('2')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="result-patti">
+                            <h4 class="mb-2">3</h4>
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let card of cardResultArray[2];
+                                  let ind = index
+                                "
+                              >
+                                <img src="assets/CARDS/{{ card }}.png" alt="" />
+                              </li>
+                              <img *ngIf="GetWinnerName('3')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-3 col-sm-12">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="result-patti">
+                            <h4 class="mb-2">Dealer</h4>
+                            <ul>
+                              <li *ngFor="let card of cardResultArray[8];let ind = index">
+                                <img src="assets/CARDS/{{ card }}.png" alt="" />
+                              </li>
+                              <img *ngIf="GetWinnerName('0')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                              
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 align-items-end">
+                          <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                              <div class="result-patti">
+                                <h4 class="mb-2">4</h4>
+                                <ul>
+                                  <li
+                                    *ngFor="
+                                      let card of cardResultArray[3];
+                                      let ind = index
+                                    "
+                                  >
+                                    <img
+                                      src="assets/CARDS/{{ card }}.png"
+                                      alt=""
+                                    />
+                                  </li>
+                                  <img *ngIf="GetWinnerName('4')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                              <div class="result-patti">
+                                <h4 class="mb-2">5</h4>
+                                <ul>
+                                  <li
+                                    *ngFor="
+                                      let card of cardResultArray[5];
+                                      let ind = index
+                                    "
+                                  >
+                                    <img
+                                      src="assets/CARDS/{{ card }}.png"
+                                      alt=""
+                                    />
+                                  </li>
+                                  <img *ngIf="GetWinnerName('5')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="result-patti">
+                            <h4 class="mb-2">8</h4>
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let card of cardResultArray[7];
+                                  let ind = index
+                                "
+                              >
+                                <img src="assets/CARDS/{{ card }}.png" alt="" />
+                              </li>
+                              <img *ngIf="GetWinnerName('8')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="result-patti">
+                            <h4 class="mb-2">7</h4>
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let card of cardResultArray[6];
+                                  let ind = index
+                                "
+                              >
+                                <img src="assets/CARDS/{{ card }}.png" alt="" />
+                              </li>
+                              <img *ngIf="GetWinnerName('7')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="result-patti">
+                            <h4 class="mb-2">6</h4>
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let card of cardResultArray[5];
+                                  let ind = index
+                                "
+                              >
+                                <img src="assets/CARDS/{{ card }}.png" alt="" />
+                              </li>
+                              <img *ngIf="GetWinnerName('6')"
+                              src="assets/images/winnerimg.png"
+                              alt=""
+                              style="max-width: 30px"
+                            />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="modal-content" *ngIf="matchDetails?.match_id =='-6'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button (click)="closeResultModal()" class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+
+            <div>
+                <h6 class="text-right round-id">
+                    <b>Round Id:</b> {{cardResult.market_id}}
+                </h6>
+                <div class="row">
+                    <ng-container>
+
+                        <div class="col-12 text-center">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="text-center">Board Cards</h2>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center" *ngFor="let cardData of cardResultArray;let i= index">
+                                            <div class="result-patti" *ngIf="cardData.name =='Dealer'">
+                                                <ul>
+                                                        <li *ngFor="let card of cardData.cards;let ind= index">
+                                                            <img src="assets/CARDS/{{card}}.png" alt=""></li>
+                                                          
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="text-center mt-3">Players Cards</h2>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-12" *ngFor="let cardData of cardResultArray;let i= index">
+                                            <div class="result-patti" *ngIf="cardData.name !='Dealer' && i<3">
+                                                <h4 class="mb-2">{{i+1}}</h4>
+                                                <ul>
+                                                        <li *ngFor="let card of cardData.cards;let ind= index">
+                                                            <img src="assets/CARDS/{{card}}.png" alt=""></li>
+                                                            <span *ngIf="cardData.winner=='1'">
+                                                                <img src="assets/images/winnerimg.png" alt="" style="width:50px">
+                                                            </span>
+                                                     </ul>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                             
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-12" *ngFor="let cardData of cardResultArray;let i= index">
+                                            <div class="result-patti" *ngIf="cardData.name !='Dealer'  && i>2">
+                                                <h4 class="mb-2">{{i+1}}</h4>
+                                                <ul>
+                                                        <li *ngFor="let card of cardData.cards;let ind= index">
+                                                            <img src="assets/CARDS/{{card}}.png" alt=""></li>
+                                                            <span *ngIf="cardData.winner=='1'">
+                                                                <img src="assets/images/winnerimg.png" alt="" style="width:50px">
+                                                            </span>
+                                                        
+                                                     </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                              
+
+
+                        </div>
+
+
+
+                    </ng-container>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="modal-content" *ngIf="matchDetails?.match_id =='-1026'">
+        <div class="modal-header">
+            <h4 class="modal-title">{{cardResult.match_name}} </h4>
+            <button class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+  
+            <div>
+                <h6 class="text-right round-id">
+                    <b>Round Id:</b> {{cardResult.market_id}}
+                </h6>
+                <div class="row scrollRulesimg">
+                    <ng-container>
+  
+                        <div class="col-12 text-center">
+  
+                            <div *ngFor="let card of cardResultArray.cards;let ind= index">
+                              <div class="row oepn-dtl-result">
+                                <div class="col-2 text-left">
+                                  {{card.name}}
+                                </div>
+                                <div class="col-7 text-left">
+                                  <img src="assets/CARDS/{{card.cards}}.png" class="img-card-result">
+                                </div>
+                                <div class="col-3 text-left">
+                                    <img *ngIf="card?.winner==1" src="assets/images/winnerimg.png" alt="" style="max-width:50px">
+                                  </div>
+                              </div>
+                                    
+                            </div>
+                            
+                        </div>
+  
+  
+  
+                    </ng-container>
+  
+                </div>
+            </div>
+  
+  
+  
+        </div>
+    </div>
+    <div class="modal-content" *ngIf="matchDetails?.match_id == '-1027'">
+        <div class="modal-header">
+          <h4 class="modal-title">{{ cardResult.match_name }}</h4>
+          <button class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <h6 class="text-right round-id">
+              <b>Round Id:</b> {{ cardResult.market_id }}
+            </h6>
+            <div class="row scrollRulesimg">
+               
+                <div class="col-6 text-center"  *ngFor="let card of cardResultArray; let ind = index">
+                  <div *ngIf="ind ==0">
+                    <div class="row oepn-dtl-result" style="align-items: center;">
+                    
+                      <div class="col-9 text-center">
+                        <div class="text-center">
+                          <h3>{{ card.name }}</h3>
+                        </div> 
+                        <div class="card-left-baccrat">
+                        
+                          <img *ngIf="card.cards[2] !='1'"
+                            src="assets/CARDS/{{card.cards[2]}}.png"
+                            class="img-card-result left-rotated" style="width:45px"
+                          />
+                          <img 
+                          src="assets/CARDS/{{card.cards[0]}}.png"
+                          class="img-card-result" style="width:45px"
+                        />
+                        <img 
+                        src="assets/CARDS/{{card.cards[1]}}.png"
+                        class="img-card-result " style="width:45px"
+                      />
+                        
+                        
+                      </div>
+                      
+                      </div>
+                      <div class="col-3 text-left">
+                        <img *ngIf="card?.winner==1" src="assets/images/winnerimg.png" alt="" style="max-width:50px">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="ind ==1">
+                    <div class="row oepn-dtl-result" style="align-items: center;">
+                    
+                      <div class="col-9 text-center">
+                        <div class="text-center">
+                          <h3>{{ card.name }}</h3>
+                        </div> 
+                        <img 
+                        src="assets/CARDS/{{card.cards[0]}}.png"
+                        class="img-card-result" style="width:45px"
+                      />
+                      <img 
+                      src="assets/CARDS/{{card.cards[1]}}.png"
+                      class="img-card-result" style="width:45px"
+                    />
+                    <img *ngIf="card.cards[2] !='1'"
+                    src="assets/CARDS/{{card.cards[2]}}.png"
+                    class="img-card-result right-rotated" style="width:45px"
+                  />
+                      
+                      </div>
+                      <div class="col-3 text-left">
+                        <img *ngIf="card?.winner==1" src="assets/images/winnerimg.png" alt="" style="max-width:50px">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id == '-1028'">
+        <div class="modal-header">
+          <h4 class="modal-title">{{ cardResult.match_name }}</h4>
+          <button class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <h6 class="text-right round-id">
+              <b>Round Id:</b> {{ cardResult.market_id }}
+            </h6>
+            <div class="row scrollRulesimg">
+               
+                <div class="col-6 text-center"  *ngFor="let card of cardResultArray; let ind = index">
+                  <div *ngIf="ind ==0">
+                    <div class="row oepn-dtl-result" style="align-items: center;">
+                    
+                      <div class="col-9 text-center">
+                        <div class="text-center">
+                          <h3>{{ card.name }}</h3>
+                        </div> 
+                        <div class="card-left-baccrat">
+                        
+                          <img *ngIf="card.cards[2] !='1'"
+                            src="assets/CARDS/{{card.cards[2]}}.png"
+                            class="img-card-result left-rotated" style="width:45px"
+                          />
+                          <img 
+                          src="assets/CARDS/{{card.cards[0]}}.png"
+                          class="img-card-result" style="width:45px"
+                        />
+                        <img 
+                        src="assets/CARDS/{{card.cards[1]}}.png"
+                        class="img-card-result " style="width:45px"
+                      />
+                        
+                        
+                      </div>
+                      
+                      </div>
+                      <div class="col-3 text-left">
+                        <img *ngIf="card?.winner==1" src="assets/images/winnerimg.png" alt="" style="max-width:50px">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="ind ==1">
+                    <div class="row oepn-dtl-result" style="align-items: center;">
+                    
+                      <div class="col-9 text-center">
+                        <div class="text-center">
+                          <h3>{{ card.name }}</h3>
+                        </div> 
+                        <img 
+                        src="assets/CARDS/{{card.cards[0]}}.png"
+                        class="img-card-result" style="width:45px"
+                      />
+                      <img 
+                      src="assets/CARDS/{{card.cards[1]}}.png"
+                      class="img-card-result" style="width:45px"
+                    />
+                    <img *ngIf="card.cards[2] !='1'"
+                    src="assets/CARDS/{{card.cards[2]}}.png"
+                    class="img-card-result right-rotated" style="width:45px"
+                  />
+                      
+                      </div>
+                      <div class="col-3 text-left">
+                        <img *ngIf="card?.winner==1" src="assets/images/winnerimg.png" alt="" style="max-width:50px">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-content" *ngIf="matchDetails?.match_id == '-1029'">
+        <div class="modal-header">
+          <h4 class="modal-title">{{ cardResult.match_name }}</h4>
+          <button class="close" data-dismiss="modal" type="button">×</button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <h6 class="text-right round-id">
+              <b>Round Id:</b> {{ cardResult.market_id }}
+            </h6>
+            <div class="row scrollRulesimg">
+              <ng-container>
+                <div class="col-12 text-center">
+                  
+                    <div class="row oepn-dtl-result text-center">
+                      <div class="col-12 text-center" *ngFor="let card of cardResultArray; let ind = index">
+                        <span *ngIf="ind == 6">
+                          <span class="my-2">{{ card.name }} </span> 
+  
+                        <br>
+                        <img
+                        src="assets/CARDS/{{card.cards[0]}}.png"
+                        class="img-card-result" style="max-width:35px"
+                      />
+                      <img *ngIf="card?.winner==1" src="assets/images/winnerimg.png" alt="" style="max-width:30px">
+                    </span>  
+                    </div>
+                    </div>
+                    <div class="row oepn-dtl-result text-center my-3">
+                      <div class="col-2 text-center" *ngFor="let card of cardResultArray; let ind = index">
+                        <span *ngIf="ind != 6">
+                        <span class="my-2">{{ card.name }} </span> 
+                        <br>
+                        <img
+                        src="assets/CARDS/{{card.cards[0]}}.png"
+                        class="img-card-result" style="max-width:35px"
+                      />
+                      <img *ngIf="card?.winner==1" src="assets/images/winnerimg.png" alt="" style="max-width:30px">
+                    </span>  
+                    </div>
+                    </div>
+                  
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+         
+  </div>
+</div>

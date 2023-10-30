@@ -1,0 +1,89 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+        <div class="detail-row">
+            <h2>Game Report</h2>
+            <div class="m-t-20">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="gamereport" action="" method="post">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fromdate" class="text-black">From</label>
+                                        <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [ngModelOptions]="{standalone: true}" [(ngModel)]="toDate">
+
+                                        <!-- <input id="fromdate" class="form-control " readonly name="fromdate" type="date" value="2019-12-23"> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group ">
+                                        <label for="todate" class="text-black">To</label>
+                                        <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [ngModelOptions]="{standalone: true}" [(ngModel)]="toDate">
+
+                                        <!-- <input id="todate" class="form-control datepicker" readonly name="todate" type="date" value="2019-12-30"> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="type" class="text-black">Type</label>
+                                        <select id="type" class="form-control" name="type">
+                    <option value="all">All</option>
+                    <option value="match">Match</option>
+                    <option value="fancy">Session</option>
+                  </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>&nbsp;</label>
+                                    <br>
+                                    <input type="hidden" name="_token" value="qCtppSlnM7CL2mhArFFDURtUkjfAWRSm8wOjwTZL">
+                                    <input type="hidden" value="0" name="gamecond" id="gamecond">
+                                    <a style="color: #FFFFFF;" class="btn btn-diamond" onclick="if (!window.__cfRLUnblockHandlers) return false; changeGame(3)">Game List</a> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="gameview" id="gameview" class="form-control">
+                    <option value="all">All</option>
+                  </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-diamond" style="margin-right: 5px;">Show Game Report</button>
+                                    <button type="button" class="btn btn-diamond">Master Game Report</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive data-table" style="overflow: hidden">
+            <table class="custom-table table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Sr. No</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Sr. No</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="gamereportvie  w">
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>General Total</b></td>
+                        <td class="text-right"><b>0</b></td>
+                        <td></td>
+                        <td><b>General Total</b></td>
+                        <td class="text-right"><b>0</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

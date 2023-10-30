@@ -1,0 +1,31 @@
+<div class="col-md-12 main-container">
+  <div class="col-md-12 main-container">
+    <div class="listing-grid">
+      <div class="detail-row">
+        <h2>Market Analysis</h2>
+        <div class="m-t-10 m-b-10">You can view your cricket card books from sport menu</div>
+      </div>
+      <div class="table-responsive data-table">
+        <table class="table table-striped">
+          <ng-container *ngFor="let match of inplayMatchList">
+        
+          <tr>
+            <td><a  [routerLink]="['/main/matchdetails',match.match_id, match?.market_id]" >{{match?.match_name}}</a></td>
+
+           <ng-container *ngFor="let item of match?.runner_json">
+            <td >{{item?.name}} <span  [ngClass]="{
+              redbx: item.win_loss < 0,
+              greenbx: item.win_loss > 0
+              }">{{item?.win_loss | number:'1.2-2'}}</span></td>
+
+           </ng-container>
+           <td *ngIf="match?.runner_json?.length == '2'">The Draw <span class="blackbx">0</span></td>
+
+            <td>Total Bets <span class="greenbx">{{match?.total_bet}}</span></td>
+          </tr>
+        </ng-container>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

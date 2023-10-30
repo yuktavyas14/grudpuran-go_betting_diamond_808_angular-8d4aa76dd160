@@ -1,0 +1,140 @@
+
+
+.login {
+	background-image: linear-gradient(#ffb80c, #2b2926);
+}
+
+.btn-submit {
+    background-color: #ffb80c;
+    border-color: #ffb80c;
+    color: #000;
+}
+
+.featured-box-login h4 {
+    color: #ffb80c;
+}
+
+.modal-header, .popup21white .modal-header {
+    background: #ffb80c;
+}
+.header {
+    background-color: #ffb80c;
+}
+.header-bottom {
+    background-color: #2b2926;
+}
+.sidebar-title {
+    background: #ffb80c;
+}
+.casinoicons-title {
+    background-image: linear-gradient(#ffb80c, #2b2926);
+    color: #000;
+    
+}
+
+.btn-theme {
+    background-image: linear-gradient(to right, #72958f, #006760) !important;
+}
+.card-header {
+    background-color: #000000;
+}
+.game-heading {
+    background-color: #000000;
+}
+.lastResultPart h3 {
+    background-color:#000000;
+}
+ul.other-table-box li {
+    background: linear-gradient(90deg,#72958f,#1f3a38);
+    background-image: linear-gradient(90deg,#72958f,#1f3a38)!important;
+}
+.game-heading {
+    background-color: #4c4c4c;
+}
+.market-title {
+    background-color: #3fad9d;
+}
+.game-page .nav-tabs .nav-link {
+    background-color: #2b2926;
+}
+.game-page .nav-tabs .nav-link.active {
+    background-color: #ffb80c;
+}
+
+.featured-box .nav-tabs li a {
+    background-color: #ccc !important;
+}
+.fancy-nav ul li.active a, 
+.fancy-nav ul li a, 
+.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-link.active {
+    background-color: #000000 !important;
+}
+.lastResultPart h3, .fancy-marker-title h4 {
+    background-color: #4c4c4c !important;
+}
+.low-high-btn, ul.other-table-box li, .btn-theme {
+    background-image: linear-gradient(90deg,#72958f,#00645d) !important;
+}
+footer {
+    background-color: #ffb80c;
+    border-top: 2px solid #000000;
+}
+button.time-btn {
+    background-color: #2b2926 !important;
+    color: #fff !important;
+  }
+  button.time-btn:hover {
+    background-color: #72958f !important;
+    color: #FFF !important;
+  }
+
+  #change-pass .modal-header{background-color: #000;}
+  .home-tabs .nav-tabs .nav-link{order: 0; border-right: 1px solid #000;}
+  
+  .header{color: #000;}
+  marquee{color: #000;}
+  #modalrules .nav-tabs .nav-link{    background: #f4b80e; color: #000;}
+
+  
+  .featured-box .nav-tabs li{ background-color: #ccc;}
+  .featured-box .nav-tabs li a{background-color: #ccc !important;}
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{background-color: #2b2926 !important;
+  }
+  
+  .featured-box[_ngcontent-mpc-c90]   .nav-tabs[_ngcontent-mpc-c90]   li[_ngcontent-mpc-c90]   a[_ngcontent-mpc-c90] {
+    background-color: #f4b80e !important ;
+        color: #fff;
+}
+.nav-tabs{border-bottom: none;}
+.featured-box .nav-tabs{box-shadow: none !important;}
+
+
+
+
+.cricket1{background-color: #ffb80c;}
+.cricket4{background-color: #087F23;}
+.cricket6{background-color: #883997;}
+.modal-header{background: #ffb80c !important;}
+
+#modalGmaeRules .card-body{background: #333;}
+
+
+
+.game-heading {
+    background-color: #2b2926 !important;
+}
+
+
+ .featured-box .fancy-markets  .nav-tabs   li  a {
+    background-color: #2b2926 !important;
+}
+
+.featured-box .fancy-markets .nav-tabs .nav-item.show .nav-link, .featured-box .fancy-markets .nav-tabs .nav-link.active {
+    background-color: #ffb80c !important;
+}
+
+footer {
+    color: #000;
+}
+

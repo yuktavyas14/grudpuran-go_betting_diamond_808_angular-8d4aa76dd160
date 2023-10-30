@@ -1,0 +1,38 @@
+<div class="sidebar" style="display: none;">
+
+    <nav *ngIf="menuList.length != 0">
+
+      <h2>Sports</h2>
+      <!-- <i class="fa fa-times side-menu-button"></i> -->
+      <div class="mtree-main">
+        <ul class="mtree transit bubba">
+          <ng-container *ngFor="let sport of menuList; trackBy: trackByFn">
+            <li class="mtree-node mtree-closed"><a href="#" style="cursor: pointer;">{{sport?.sport_name}}</a>
+              <ul class="mtree-level-1" style="overflow: hidden; height: auto;">
+                <ng-container *ngFor="let series of sport?.series_list; trackBy: trackByFn">
+
+                  <li class="mtree-node mtree-closed"><a href="#" style="cursor: pointer;">{{series?.series_name}}</a>
+                    <ul class="mtree-level-2" style="overflow: hidden; height: auto;">
+                      <li *ngFor="let matchdate of series?.match_dates" class="mtree-node mtree-closed"><a href="#"
+                          style="cursor: pointer;">{{matchdate?.match_date}}</a>
+                        <ul class="mtree-level-3" style="overflow: hidden; height: auto;">
+                          <li *ngFor="let match of matchdate?.matches" class="mtree-node mtree-active mtree-closed"><a
+                            style="cursor: pointer;">{{match?.match_name}}</a>
+                            <ul class="mtree-level-4" style="overflow: hidden; height: auto;">
+                              <li *ngFor="let market of match?.markets"><a
+                                  [routerLink]="['/main/matchdetails',match.match_id, market?.market_id]">{{market?.market_name}}</a>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ng-container>
+              </ul>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </nav>
+  </div>

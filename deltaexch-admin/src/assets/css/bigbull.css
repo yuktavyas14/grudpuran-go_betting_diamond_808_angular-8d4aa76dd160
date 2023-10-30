@@ -1,0 +1,270 @@
+
+.login .wrapper1 {
+    background: unset !important;
+    /* fallback for old browsers */
+    background: unset !important;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: unset !important;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.login {
+    background-image: linear-gradient(#548593, #E1D8B3, #548593);
+    height: 100vh;
+}
+.log-fld h2 {
+    color: #000 !important;
+}
+.log-fld h2:after, .log-fld h2:before {
+    background:#000 !important;
+}
+.header-bottom {
+    background-color: #548593;
+}
+.btn-submit.btn-login {
+    background-color: #548593 !important;
+    border-color: #548593 !important;
+    color: #000 !important;
+}
+
+.btco-hover-menu .collapse ul>li:hover>a {
+    background: #548593;
+}
+.btn-diamond {
+    color: #000!important;
+}
+.master-balance {
+    background-color: #E1D8B3;
+}
+.data-table table td.actions  a {
+    background-color: #548593 !important;
+}
+
+/* .ngx-pagination .disabled {
+    padding: 0.1875rem 0.625rem;
+    background: #548593 !important;
+    color: #fefefe;
+    cursor: default;
+} */
+.fa-arrow-alt-circle-down, .fa-arrow-alt-circle-up {
+    color: #000;
+}
+
+.btn-diamond {
+    background-color: #548593;
+    border-color: #548593;
+    color:#fff !important;
+}
+
+.ngx-pagination .current {
+    background: #548593 !important;
+}
+.data-table table td a {
+    background: #548593 !important;
+    color: #000 !important;
+}
+.btn-success, .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #548593 !important;
+    border-color: #548593 !important;
+}
+.ngx-pagination a, .ngx-pagination button {
+    padding: 3px 10px !important;
+    background-color: #E1D8B3 !important;
+}
+
+input:checked~.checkmark {
+    background-color: #548593;
+    border: solid 1px #548593;
+}
+.btco-hover-menu .collapse ul li a:hover {
+    background-color: #E1D8B3;
+    color: #000 !important;
+
+}
+.game-heading {
+    background-color: #E1D8B3 !important;
+    color: #000 !important;
+}
+.uname .btn-success, .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #548593 !important;
+    border-color: #548593 !important;
+}
+.card-header {
+    background-color: #E1D8B3;
+    line-height: 1.6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.log-copy{
+    text-transform: uppercase !important;
+}
+.lastResultPart h3 {
+    background-color: #E1D8B3 !important;
+    color: #000 !important;
+}
+.nav-pills .show>.nav-link, .tab_betslip .nav-pills .nav-link.active {
+    color: #fff;
+    background-color: #548593;
+    border-top: 3px solid #548593;
+    border-radius: 0;
+    outline: 0;
+}
+.btn-back {
+    background-color: #E1D8B3 !important;
+    border-color: #E1D8B3;
+    color: #000 !important;
+}
+.tab_betslip .nav.nav-pills {
+    background: #E1D8B3b3;
+    color: #000 !important;
+}
+.card-title {
+    color: #000 !important;
+}
+.game-heading .card-header-title {
+    color:  #000 !important;
+}
+.user-search .username ul {
+    background-color: #548593;
+    color: #fff !important;
+}
+ 
+.user-search .username ul.user-settingdrop {
+    color: #fff !important;
+}
+.data-table table td.actions  a {
+    background-color: #548593 !important;
+    color: #fff !important;
+}
+.header-bottom li a {
+    color: #000 !important;
+}
+h3.heading-text {
+    font-size: 15px;
+    background-color: #548593;
+    color: #fff;
+}
+.table thead th {
+    background-color: #FFF;
+    color: #666;
+}
+.modal-header .close {
+    background-color: #548593;
+}
+.modal-header {
+    border-bottom: 0;
+    background-color: transparent;
+}
+h4.modal-title {
+    color: #548593;
+}
+button.close i {
+    font-size: 17px;
+    color: #fff;
+    text-shadow: none;
+}
+.btn-submit {
+    background-color: #548593;
+    border-color: #548593;
+    color: #fff;
+}
+#view-more .nav-tabs .nav-item.show .nav-link, #view-more .nav-tabs .nav-link.active {
+    color: #fff;
+    background-color: #548593;
+    border: 0;
+}
+.modal-header {
+    padding: 10px;
+    background: transparent !important;
+    color: #000;
+    border-radius: 0;
+    border: 0;
+}
+
+.table thead th {
+    background-color: transparent;
+    color: #333;
+}
+.btco-hover-menu .collapse ul ul, .btco-hover-menu .collapse ul ul.dropdown-menu {
+    background: #548593 !important;
+}
+/*.header-bottom li a{color: #000 !important;}*/
+.header-bottom li a:hover{color: #000 !important;}
+.user-search .username{color: #fff;}
+
+
+
+
+.bar1, .bar2, .bar3 {
+
+  background-color: #fff !important;
+
+}
+.navbar-nav .dropdown-menu a{color: #fff !important;}
+
+.list-unstyled .navbar-nav .header-bottom li a  {
+  color: #fff!important;
+}
+.header-bottom ul.whiteColor li a  {
+    color: #000!important;
+  }
+.navbar-nav .dropdown-menu a {
+  color: #000 !important;
+}
+.blinking span {
+    animation: blinkingText 1.2s infinite !important;;
+}
+
+.blinking:hover span {
+    animation: blinkingHoverText 1.2s infinite !important;
+}
+.log-copy p {
+    color: #000 !important;
+}
+.master-balance ul li {
+    color: #000 !important;
+}
+
+@keyframes blinkingText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+
+@keyframes blinkingHoverText {
+    0% {
+        color: #ff1b43;
+    }
+    20% {
+        color: #ff1b43;
+    }
+    40% {
+        color: #ff1b43;
+    }
+    60% {
+        color: #ff1b43;
+    }
+    80% {
+        color: #e7ee00;
+    }
+    100% {
+        color: #e7ee00;
+    }
+}
+
+

@@ -1,0 +1,95 @@
+<div class="main-content"> 
+  
+    <!-- Tab-content -->
+    
+    <div class="report-container"><!---->
+      <div class="card">
+        <div class="card-header page-header-sab">
+          <h4 class="mb-0">Profit Loss</h4>
+        </div>
+        <div class="card-body container-fluid container-fluid-5">
+          <form class="navbar-form clearfix" [formGroup]= "profitandLossSearchForm" id="frm_lgn" method="POST" (ngSubmit)="getProfiletLoss(profitandLossSearchForm.value)" autocomplete novalidate>
+
+          <div class="row row5 mt-2">
+            <!-- <div class="col-6"> -->
+              <div class="col-xs-6 col-6 col-sm-6 col-md-4 form-group">
+
+              <div class="form-group mb-0">
+                <div class="mx-datepicker">
+                  <div class="mx-input-wrapper">
+                    <input formControlName="from_date" bsDatepicker name="date" type="text" autocomplete="off" placeholder="Select Date" class="mx-input" class="form-control"  [bsConfig]="{ adaptivePosition: true ,isAnimated: true ,containerClass:'theme-blue'}">
+                    <i class="fas fa-calendar-alt"></i> 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-6"> -->
+              <div class="col-xs-6 col-6 col-sm-6 col-md-4 form-group">
+
+              <div class="form-group mb-0">
+                <div class="mx-datepicker">
+                  <div class="mx-input-wrapper">
+                    <input formControlName="to_date" bsDatepicker name="date" type="text" autocomplete="off" placeholder="Select Date" class="form-control"  [bsConfig]="{ adaptivePosition: true ,isAnimated: true ,containerClass:'theme-blue'}">
+                    <i class="fas fa-calendar-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row5 mt-2">
+            <div class="col-12">
+              <button class="btn btn-primary btn-block btn-sm" type="submit">Submit</button>
+            </div>
+          </div>
+
+        </form>
+
+          <div class="row row5 mt-2">
+            <div class="col-12">
+              <div class="table-responsive-sm">
+                <table role="table" aria-busy="false" aria-colcount="8" class="table b-table table-pad table-bordered" id="">
+                  <thead role="rowgroup" class="">
+                    <tr role="row" class="">
+
+                      <th role="columnheader" scope="col" aria-colindex="1" class="text-center">Event Name</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="text-center">Event Type</th>
+                    
+                      <th role="columnheader" scope="col" aria-colindex="5" class="text-right">Amount</th>
+                   
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngIf="accountList != null && accountList.length != 0;else NoData">
+                      <!-- test -->
+                      <!-- | paginate: config; -->
+                      <ng-container *ngFor="let item of accountList ;trackBy: trackByFn;let i=index;">
+                    <tr class="odd">
+                      <!-- <td>TESt</td> -->
+
+                      <td>{{item?.game}}</td>
+                      <td>{{item?.game_type}}</td>
+                      <td>{{item?.profit_loss}}</td>
+                      <!-- <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td> -->
+
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                  <ng-template #NoData>
+                    <tr>
+                      <td valign="top" colspan="10" class="dataTables_empty">No records found</td>
+                    </tr>
+                  </ng-template>
+                  </tbody>
+                  <!---->
+                </table>
+              </div>
+            </div>
+          </div>
+          <!----></div>
+      </div>
+    </div>
+  </div>
+  

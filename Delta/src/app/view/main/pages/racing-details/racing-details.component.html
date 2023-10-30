@@ -1,0 +1,896 @@
+<div class="main-content">
+  <div class="game-page" style="position: relative">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a data-toggle="tab" href="#odds" class="nav-link active">
+          <span *ngIf="matchDetails?.match_id > 0">Odds</span>
+          <span *ngIf="matchDetails?.match_id < 0">GAME</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          data-toggle="tab"
+          href="#matched-bet"
+          class="nav-link"
+          (click)="getMarketnFancyBet('M')"
+        >
+          <span *ngIf="matchDetails?.match_id > 0">Matched Bet</span>
+          <span *ngIf="matchDetails?.match_id < 0">PLACED BETS</span>
+
+          ( {{ betList?.length ? betList?.length : "0" }} )
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="odds" class="tab-pane active">
+        <div class="horse-racing-section">
+          <div class="new-heading">
+            <div class="match-title1" *ngIf="matchDetails?.match_id > 0">
+              <h3 class="card-header-title">
+                {{ matchDetails?.match_date | date: "h:mm a" }}
+                {{ matchDetails?.match_name }}
+              </h3>
+              <p class="card-header-title">
+                {{ matchDetails?.match_date | formatDate: "MMM Do YYYY" }} |
+                {{ matchDetails?.markets[0]?.name }}
+              </p>
+            </div>
+          </div>
+
+          <div class="horse-tabing">
+            <nav>
+              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <ng-container *ngFor="
+                let market of matchDetails?.markets;
+                let i = index;
+                trackBy: trackByFn
+              ">
+                <a
+                *ngIf="market.market_type == 'WIN'"
+                  (click)="showtabMarket(1)"
+                  class="nav-item nav-link {{
+                    showtabWinMarket ? 'active' : ''
+                  }}"
+                  id="nav-home-tab"
+                  data-toggle="tab"
+                  href="#nav-home"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                >
+                  Win
+                </a>
+                <a
+                *ngIf="market.market_type == 'PLACE'"
+                  (click)="showtabMarket(2)"
+                  class="nav-item nav-link {{
+                    showtabPlaceMarket ? 'active' : ''
+                  }}"
+                  id="nav-profile-tab"
+                  data-toggle="tab"
+                  href="#nav-profile"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                >
+                  Place
+                </a>
+                </ng-container>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade"
+                [ngClass]="showActiveClass1()"
+                id="nav-home"
+                role="tabpanel"
+                aria-labelledby="nav-home-tab"
+              >
+                <ng-container
+                  *ngFor="let market of matchDetails?.markets; let i = index"
+                >
+                  <div
+                    class="match-odd-detail"
+                    *ngIf="market.market_type == 'WIN'"
+                  >
+                    <div class="market-title mt-0">
+                      {{ market?.name }}
+                    </div>
+                    <div class="main-market">
+                      <table
+                        class="tbldsk table table-striped m-b-none text-small"
+                      >
+                        <thead>
+                          <tr>
+                            <th
+                              style="
+                                text-align: left !important;
+                                padding-left: 10px !important;
+                              "
+                            >
+                              <a
+                                style="color: black; font-size: 12px"
+                                id="maxbetlmt"
+                              >
+                                {{ matchDetails?.markets.length }} Selection</a
+                              >
+                            </th>
+                            <th
+                              style="
+                                background-color: #a7d8fd;
+                                border: solid 1px #e0e4e8;
+                                width: 75px;
+                              "
+                              class="text-center"
+                            >
+                              Back
+                            </th>
+                            <th
+                              style="
+                                background-color: #f9c9d4;
+                                border: solid 1px #e0e4e8;
+                                width: 75px;
+                              "
+                              class="text-center"
+                            >
+                              Lay
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody id="records_table">
+                          <ng-container
+                            *ngFor="let runner of market.runner_json"
+                          >
+                            <tr
+                              [ngClass]="
+                                market?.status == 'SUSPENDED' ? 'suspended' : ''
+                              "
+                              data-title="suspended"
+                              id="1"
+                              data-gametype="Match1"
+                            >
+                              <td
+                                id="10301"
+                                style="
+                                  text-align: left !important;
+                                  padding-left: 5px !important;
+                                "
+                              >
+                                <span class="h5">
+                                  <img
+                                    src="assets/images/market-icon.jpg"
+                                    alt=""
+                                  />
+                                  <img
+                                    src="assets/images/icon-design.jpg"
+                                    alt=""
+                                  />
+                                  <strong id="team_10301">{{
+                                    runner?.name
+                                  }}</strong></span
+                                ><br />
+                                <p class="box-w4"><span
+                                  class="float-left book"
+                                  id="book_1" style="color:black"
+                                  [ngClass]="checkNumberPositvie(runner?.win_loss) ? 'text-success' : 'text-danger'  ">{{runner?.win_loss
+                                  | number: '1.2-2'}} </span><span
+                                  class="float-right profit"
+                                  style="color:black"></span></p>
+
+                              </td>
+                              <td
+                                class="bl back text-center"
+                                (click)="
+                                  setBetData(
+                                    {
+                                      match_id: matchDetails?.match_id,
+                                      market_id: market?.market_id,
+                                      market_start_time:market?.market_start_time,
+                                      selection_id: runner?.selection_id,
+                                      is_back: '1',
+                                      odds: runner?.back[0]?.price
+                                    },
+                                    runner?.name,
+                                    'M',
+                                    'bets'
+                                  )
+                                "
+                              >
+                                <a
+                                  href="javascript:void(0)"
+                                  id="B_10301"
+                                  class="showpop bet-sec"
+                                  style="opacity: 1"
+                                  data-toggle="modal"
+                                  data-target="#backpopup"
+                                >
+                                  <span class="h6"
+                                    ><strong
+                                      class="backprice"
+                                      id="bhav_10301"
+                                      >{{ runner?.back[0]?.price }}</strong
+                                    ></span
+                                  ><br />
+                                  <span class="backsize sp">{{
+                                    runner?.back[0]?.size
+                                  }}</span>
+                                </a>
+                              </td>
+                              <td
+                                data-title="suspended"
+                                [ngClass]="
+                                  market?.status != 'SUSPENDED'
+                                    ? runner?.status == 'SUSPENDED'
+                                      ? 'suspended'
+                                      : ''
+                                    : ''
+                                "
+                                class="lb lay text-center"
+                                (click)="
+                                  setBetData(
+                                    {
+                                      match_id: matchDetails?.match_id,
+                                      market_id: market?.market_id,
+                                      market_start_time:market?.market_start_time,
+                                      selection_id: runner?.selection_id,
+                                      is_back: '0',
+                                      odds: runner?.lay[0]?.price
+                                    },
+                                    runner?.name,
+                                    'M',
+                                    'bets'
+                                  )
+                                "
+                              >
+                                <a
+                                  href="javascript:void(0)"
+                                  id="L_10301"
+                                  class="showpop bet-sec"
+                                  style="opacity: 1"
+                                  data-toggle="modal"
+                                  data-target="#laypopup"
+                                >
+                                  <span class="h6"
+                                    ><strong class="layprice" id="lake_10301">{{
+                                      runner?.lay[0]?.price
+                                    }}</strong></span
+                                  ><br />
+                                  <span class="laysize sp">{{
+                                    runner?.lay[0]?.size
+                                  }}</span></a
+                                >
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <div
+                class="tab-pane fade"
+                [ngClass]="showActiveClass()"
+                id="nav-profile"
+                role="tabpanel"
+                aria-labelledby="nav-profile-tab"
+              >
+                <ng-container
+                  *ngFor="let market of matchDetails?.markets; let i = index"
+                >
+                  <div
+                    class="match-odd-detail"
+                    *ngIf="market.market_type != 'WIN'"
+                  >
+                    <div class="market-title mt-0">
+                      {{ market?.name }}
+                    </div>
+                    <div class="main-market">
+                      <table
+                        class="tbldsk table table-striped m-b-none text-small"
+                      >
+                        <thead>
+                          <tr>
+                            <th
+                              style="
+                                text-align: left !important;
+                                padding-left: 10px !important;
+                              "
+                            >
+                              <a style="color: black" id="maxbetlmt">
+                                {{ matchDetails?.markets.length }} Selection</a
+                              >
+                            </th>
+                            <th
+                              style="
+                                background-color: #a7d8fd;
+                                border: solid 1px #e0e4e8;
+                                width: 75px;
+                              "
+                              class="text-center"
+                            >
+                              Back
+                            </th>
+                            <th
+                              style="
+                                background-color: #f9c9d4;
+                                border: solid 1px #e0e4e8;
+                                width: 75px;
+                              "
+                              class="text-center"
+                            >
+                              Lay
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody id="records_table">
+                          <ng-container
+                            *ngFor="let runner of market.runner_json"
+                          >
+                            <tr
+                              [ngClass]="
+                                market?.status == 'SUSPENDED' ? 'suspended' : ''
+                              "
+                              data-title="suspended"
+                              id="1"
+                              data-gametype="Match1"
+                            >
+                              <td
+                                id="10301"
+                                style="
+                                  text-align: left !important;
+                                  padding-left: 10px !important;
+                                "
+                              >
+                                <span class="h5">
+                                  <img
+                                    src="assets/images/market-icon.jpg"
+                                    alt=""
+                                    class="px-1"
+                                  />
+                                  <img
+                                    src="assets/images/icon-design.jpg"
+                                    alt=""
+                                    class="px-1"
+                                  />
+                                  <strong id="team_10301">{{
+                                    runner?.name
+                                  }}</strong></span
+                                ><br />
+                                <p class="box-w4"><span
+                                  class="float-left book"
+                                  id="book_1" style="color:black"
+                                  [ngClass]="checkNumberPositvie(runner?.win_loss) ? 'text-success' : 'text-danger'  ">{{runner?.win_loss
+                                  | number: '1.2-2'}} </span><span
+                                  class="float-right profit"
+                                  style="color:black"></span></p>
+                              </td>
+                              <td
+                                class="bl back text-center"
+                                (click)="
+                                  setBetData(
+                                    {
+                                      match_id: matchDetails?.match_id,
+                                      market_id: market?.market_id,
+                                      market_start_time:market?.market_start_time,
+                                      selection_id: runner?.selection_id,
+                                      is_back: '1',
+                                      odds: runner?.back[0]?.price
+                                    },
+                                    runner?.name,
+                                    'M',
+                                    'bets'
+                                  )
+                                "
+                              >
+                                <a
+                                  href="javascript:void(0)"
+                                  id="B_10301"
+                                  class="showpop bet-sec"
+                                  style="opacity: 1"
+                                  data-toggle="modal"
+                                  data-target="#backpopup"
+                                >
+                                  <span class="h6"
+                                    ><strong
+                                      class="backprice"
+                                      id="bhav_10301"
+                                      >{{ runner?.back[0]?.price }}</strong
+                                    ></span
+                                  ><br />
+                                  <span class="backsize sp">{{
+                                    runner?.back[0]?.size
+                                  }}</span>
+                                </a>
+                              </td>
+                              <td
+                                data-title="suspended"
+                                [ngClass]="
+                                  market?.status != 'SUSPENDED'
+                                    ? runner?.status == 'SUSPENDED'
+                                      ? 'suspended'
+                                      : ''
+                                    : ''
+                                "
+                                class="lb lay text-center"
+                                (click)="
+                                  setBetData(
+                                    {
+                                      match_id: matchDetails?.match_id,
+                                      market_id: market?.market_id,
+                                      selection_id: runner?.selection_id,
+                                      market_start_time:market?.market_start_time,
+                                      is_back: '0',
+                                      odds: runner?.lay[0]?.price
+                                    },
+                                    runner?.name,
+                                    'M',
+                                    'bets'
+                                  )
+                                "
+                              >
+                                <a
+                                  href="javascript:void(0)"
+                                  id="L_10301"
+                                  class="showpop bet-sec"
+                                  style="opacity: 1"
+                                  data-toggle="modal"
+                                  data-target="#laypopup"
+                                >
+                                  <span class="h6"
+                                    ><strong class="layprice" id="lake_10301">{{
+                                      runner?.lay[0]?.price
+                                    }}</strong></span
+                                  ><br />
+                                  <span class="laysize sp">{{
+                                    runner?.lay[0]?.size
+                                  }}</span></a
+                                >
+                              </td>
+                            </tr>
+                            <input
+                              type="hidden"
+                              id="sectionid_10301"
+                              name="sectionid_1"
+                              value="10301"
+                            />
+                            <input
+                              type="hidden"
+                              id="country_1"
+                              name="country_1"
+                              value="undefined"
+                            />
+                            <input
+                              type="hidden"
+                              id="nation_10301"
+                              name="nation_1"
+                              value="England"
+                            />
+                            <input
+                              type="hidden"
+                              id="lastupdate_10301"
+                              name="lastupdate_10301"
+                              value=""
+                            />
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- markets -->
+      </div>
+      <div id="matched-bet" class="tab-pane">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr style="color: #303030">
+                <th class="box-6" class="text-center">Nation</th>
+                <th class="box-2 text-right" class="text-center">Odds</th>
+                <th class="box-2 text-right" class="text-center">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let bet of betList">
+                <tr
+                  [ngClass]="bet?.is_back === '1' ? 'back-color ' : 'lay-color'"
+                >
+                  <td class="text-center">
+                    {{ bet?.selection_name }}
+                  </td>
+                  <td class="text-center">{{ bet?.odds }}</td>
+                  <td class="text-center">{{ bet?.stack }}</td>
+                </tr>
+              </ng-container>
+              <tr *ngIf="!betList">
+                <td colspan="3" class="text-center">No placed bet found !</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+<!-- fancy position modal -->
+
+<!-- <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner> -->
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"  ></ngx-loading>
+
+
+<div
+  class="modal fade place-bet-modal"
+  id="backpopup"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <header class="modal-header">
+          <h5 class="modal-title">Placebet</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <div class="modal-body">
+          <div>
+            <div
+              class="place-bet pt-2 pb-2"
+              [ngClass]="{
+                back: isBetPopUp == 'back',
+                lay: isBetPopUp == 'lay'
+              }"
+            >
+              <div class="container-fluid container-fluid-5">
+                <div class="row row5">
+                  <div class="col-5 text-bold">{{ teamName }}</div>
+                  <div class="col-7 text-right">
+                    <div class="float-right">
+                      <button
+                        class="stakeactionminus btn"
+                        (click)="changeOdssValue('-')"
+                      >
+                        <span class="fa fa-minus"></span>
+                      </button>
+                      <input
+                        type="text"
+                        placeholder="15"
+                        class="stakeinput"
+                        [ngModelOptions]="{ standalone: true }"
+                        [(ngModel)]="odds"
+                        readonly
+                      />
+                      <button
+                        class="stakeactionminus btn"
+                        (click)="changeOdssValue('+')"
+                      >
+                        <span class="fa fa-plus"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row row5 mt-2">
+                  <div class="col-4">
+                    <input
+                      type="number"
+                      placeholder="00"
+                      class="stakeinput w-100"
+                      [ngModelOptions]="{ standalone: true }"
+                      [(ngModel)]="stackValue"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="col-4">
+                    <button
+                      class="btn btn-primary btn-block"
+                      (click)="
+                        betplaceType === 'M'
+                          ? placeMarketBet()
+                          : placeFancyBet()
+                      "
+                    >
+                      Submit
+                    </button>
+                  </div>
+                  <div class="col-4 text-center pt-1" *ngIf="bets == 'bets'">
+                    <span>{{
+                      betdetails?.is_back === "0"
+                        ? stackValue
+                        : ((odds - 1) * stackValue | number: "1.2-2")
+                    }}</span>
+                  </div>
+                </div>
+                <div class="row row5 mt-2">
+                  <ng-container *ngFor="let stack of stackList">
+                    <div class="col-4">
+                      <button
+                        class="btn btn-secondary btn-block mb-2"
+                        (click)="setStack(stack?.button_value)"
+                        [value]="stack?.button_value"
+                      >
+                        {{ stack?.button_name }}
+                      </button>
+                    </div>
+                  </ng-container>
+                </div>
+                <ng-container
+                  *ngIf="
+                    slectedIDteams?.length > 0 &&
+                    matchDetails.match_id > 0 &&
+                    isBetPopUp == 'back'
+                  "
+                >
+                  <!-- <ng-container *ngFor="let item of slectedIDteams"> -->
+                  <div class="row row5 mt-2" *ngIf="slectedIDteams[0]">
+                    <div class="col-4">
+                      <span>{{ slectedIDteams[0]?.index }}</span>
+                    </div>
+                    <div class="col-4 text-center text-success">
+                      <b *ngIf="teamLastPosition[0]"
+                        ><span
+                          [ngClass]="{
+                            'text-danger': teamLastPosition[0]?.winloss < 0,
+                            'text-success': teamLastPosition[0]?.winloss > 0
+                          }"
+                          >{{ teamLastPosition[0]?.winloss }}</span
+                        ></b
+                      >
+                    </div>
+                    <div class="col-4 text-right">
+                      <span
+                        [ngClass]="
+                          slectedIDteams[0]?.index == teamName
+                            ? 'greenClass'
+                            : 'text-danger'
+                        "
+                        ><b>
+                          {{
+                            slectedIDteams[0]?.index == teamName ||
+                            stackValue == 0
+                              ? ""
+                              : "-"
+                          }}
+                          {{
+                            slectedIDteams[0]?.index == teamName
+                              ? ((odds - 1) * stackValue | number: "1.2-2")
+                              : (stackValue | number: "1.2-2")
+                          }}</b
+                        ></span
+                      >
+                    </div>
+                  </div>
+
+                  <!-- </ng-container> -->
+                  <div class="row row5 mt-2" *ngIf="slectedIDteams[1]">
+                    <div class="col-4">
+                      <span>{{ slectedIDteams[1]?.index }}</span>
+                    </div>
+                    <div class="col-4 text-center text-success">
+                      <b *ngIf="teamLastPosition[1]">
+                        <span
+                          [ngClass]="{
+                            'text-danger': teamLastPosition[1]?.winloss < 0,
+                            'text-success': teamLastPosition[1]?.winloss > 0
+                          }"
+                          >{{ teamLastPosition[1]?.winloss }}</span
+                        ></b
+                      >
+                    </div>
+                    <div class="col-4 text-right">
+                      <span
+                        [ngClass]="
+                          slectedIDteams[1]?.index == teamName
+                            ? 'greenClass'
+                            : 'text-danger'
+                        "
+                        ><b>
+                          {{
+                            slectedIDteams[1]?.index == teamName ||
+                            stackValue == 0
+                              ? ""
+                              : "-"
+                          }}
+                          {{
+                            slectedIDteams[1]?.index == teamName
+                              ? ((odds - 1) * stackValue | number: "1.2-2")
+                              : (stackValue | number: "1.2-2")
+                          }}</b
+                        ></span
+                      >
+                    </div>
+                  </div>
+                  <div class="row row5 mt-2" *ngIf="slectedIDteams[2]">
+                    <div class="col-4">
+                      <span>{{ slectedIDteams[2]?.index }}</span>
+                    </div>
+                    <div class="col-4 text-center text-success">
+                      <b *ngIf="teamLastPosition[2]"
+                        ><span style="color: black">{{
+                          teamLastPosition[2]?.winloss
+                        }}</span></b
+                      >
+                    </div>
+                    <div class="col-4 text-right">
+                      <span
+                        [ngClass]="
+                          slectedIDteams[2]?.index == teamName
+                            ? 'greenClass'
+                            : 'text-danger'
+                        "
+                        ><b
+                          >{{
+                            slectedIDteams[2]?.index == teamName ||
+                            stackValue == 0
+                              ? ""
+                              : "-"
+                          }}
+                          {{
+                            slectedIDteams[2]?.index == teamName
+                              ? ((odds - 1) * stackValue | number: "1.2-2")
+                              : (stackValue | number: "1.2-2")
+                          }}</b
+                        ></span
+                      >
+                    </div>
+                  </div>
+                </ng-container>
+
+                <ng-container *ngIf="slectedIDteams && isBetPopUp == 'lay'">
+                  <ng-container *ngIf="slectedIDteams?.length > 0">
+                    <!-- <ng-container *ngFor="let item of slectedIDteams"> -->
+                    <div class="row row5 mt-2" *ngIf="slectedIDteams[0]">
+                      <div class="col-4">
+                        <span>{{ slectedIDteams[0]?.index }}</span>
+                      </div>
+                      <div class="col-4 text-center text-success">
+                        <b
+                          ><span
+                            style="color: black"
+                            [ngClass]="
+                              checkNumberPositvie(slectedIDteams[0]?.winloss)
+                                ? 'text-success'
+                                : 'text-danger'
+                            "
+                            >{{ slectedIDteams[0]?.winloss }}</span
+                          ></b
+                        >
+                      </div>
+                      <div class="col-4 text-right">
+                        <span
+                          [ngClass]="
+                            slectedIDteams[0]?.index == teamName
+                              ? 'text-danger'
+                              : 'text-success'
+                          "
+                          ><b>
+                            {{
+                              slectedIDteams[0]?.index == teamName &&
+                              stackValue != 0
+                                ? "-"
+                                : ""
+                            }}
+                            {{
+                              slectedIDteams[0]?.index == teamName
+                                ? ((odds - 1) * stackValue | number: "1.2-2")
+                                : (stackValue | number: "1.2-2")
+                            }}</b
+                          ></span
+                        >
+                      </div>
+                    </div>
+
+                    <!-- </ng-container> -->
+                    <div class="row row5 mt-2" *ngIf="slectedIDteams[1]">
+                      <div class="col-4">
+                        <span>{{ slectedIDteams[1]?.index }}</span>
+                      </div>
+                      <div class="col-4 text-center text-success">
+                        <b
+                          ><span
+                            style="color: black"
+                            [ngClass]="
+                              checkNumberPositvie(slectedIDteams[1]?.winloss)
+                                ? 'text-success'
+                                : 'text-danger'
+                            "
+                            >{{ slectedIDteams[1]?.winloss }}</span
+                          ></b
+                        >
+                      </div>
+                      <div class="col-4 text-right">
+                        <span
+                          [ngClass]="
+                            slectedIDteams[1]?.index == teamName
+                              ? 'text-danger'
+                              : 'text-success'
+                          "
+                          ><b>
+                            {{
+                              slectedIDteams[1]?.index == teamName &&
+                              stackValue != 0
+                                ? "-"
+                                : ""
+                            }}
+                            {{
+                              slectedIDteams[1]?.index == teamName
+                                ? ((odds - 1) * stackValue | number: "1.2-2")
+                                : (stackValue | number: "1.2-2")
+                            }}</b
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <div class="row row5 mt-2" *ngIf="slectedIDteams[2]">
+                      <div class="col-4">
+                        <span>{{ slectedIDteams[2]?.index }}</span>
+                      </div>
+                      <div class="col-4 text-center text-success">
+                        <b
+                          ><span
+                            style="color: black"
+                            [ngClass]="
+                              checkNumberPositvie(slectedIDteams[2]?.winloss)
+                                ? 'text-success'
+                                : 'text-danger'
+                            "
+                            >{{ slectedIDteams[2]?.winloss }}</span
+                          ></b
+                        >
+                      </div>
+                      <div class="col-4 text-right">
+                        <span
+                          [ngClass]="
+                            slectedIDteams[2]?.index == teamName
+                              ? 'text-danger'
+                              : 'text-success'
+                          "
+                          ><b
+                            >{{
+                              slectedIDteams[2]?.index == teamName &&
+                              stackValue != 0
+                                ? "-"
+                                : ""
+                            }}
+                            {{
+                              slectedIDteams[2]?.index == teamName
+                                ? ((odds - 1) * stackValue | number: "1.2-2")
+                                : (stackValue | number: "1.2-2")
+                            }}</b
+                          ></span
+                        >
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

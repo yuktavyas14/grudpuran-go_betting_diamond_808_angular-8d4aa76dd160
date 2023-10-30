@@ -1,0 +1,86 @@
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN EXAMPLE TABLE widget-->
+        <div class="widget">
+            <div class="widget-title">
+                <!-- <h4><i class="icon-globe"></i>Sport Details</h4> -->
+                <span class="tools"> <a href="javascript:;" class="icon-chevron-down"></a> <a
+                        href="javascript:;" class="icon-remove"></a> </span>
+            </div>
+            <div class="widget-body form">
+                <!-- BEGIN FORM-->
+                <header class="card-header">
+                    <h2 class="card-title"> Series Setting </h2>
+                  </header>
+
+                  <table width="100%" class="table table-striped table-hover table-bordered">
+                    <tbody>
+                      <tr>
+                        <td width="15%" class="TableHeading">Sport Name</td>
+                       
+                      </tr>
+                      <tr>
+                        <td> <select name="AgentName" id="AgentName"
+                    (change)="onChangeSport($event.target.value)" [(ngModel)]="sportId">
+                    <option value="0">All</option>
+                    <option *ngFor="let sport of sportList" [value]="sport.sport_id">
+                       {{sport.name}}
+                    </option>
+                </select></td>
+                      
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div class="card-body">
+                   
+                      </div>
+
+             <form name="BetPlayer" id="BetPlayer" method="post" 
+                    autocomplete="off">
+                    <div class="portlet-body">
+                        <div class="space15"></div>
+                    </div>
+
+
+                    <table width="100%" class="table table-striped table-hover table-bordered">
+                        <tr>
+                            <td width="20" height="25" align="left" class="TableHeading"><strong>SNo.</strong>
+                            </td>
+                            <td width="250" align="left" class="TableHeading"><strong> Series Name</strong></td>
+                            <td width="110" align="left" class="TableHeading"><strong>Action</strong></td>
+
+                        </tr>
+                        <tr bgcolor="#FFFFFF" *ngFor="let item of seriesList;let i = index">
+                            <td height="20" align="left" class="FontText">{{i+1}}</td>
+                            <td align="left" class="FontText">{{item.name}}</td>
+                            <td width="66" align="left" class="FontText">
+                                <ui-switch (change)="onChange(item.series_id,$event)"
+                                    [checked]="item.is_active == 1" size="small" color="green"></ui-switch>
+
+                            </td>
+                        </tr>
+
+
+                        <tr [hidden]="seriesList != null && seriesList.length != 0">
+                            <td colspan="6" style="text-align: center;">No Matches Available !</td>
+                        </tr>
+                    </table>
+                    <input name="ID" type="hidden" id="ID" readonly />
+                    <input name="Status" type="hidden" id="Status" readonly />
+                    <input name="StatusMultiple" type="hidden" id="StatusMultiple" readonly />
+                    <input name="ModifyStatusChk" type="hidden" id="ModifyStatusChk" readonly />
+                    <input name="ModifyStatusMultipleChk" type="hidden" id="ModifyStatusMultipleChk" readonly />
+                    <input name="TotalRecords" type="hidden" id="TotalRecords" value="">
+                    <input name="MCodeBhav" type="hidden" id="MCodeBhav">
+                    <input name="StatusBhav" type="hidden" id="StatusBhav">
+                    <input name="MCodeSessionBhav" type="hidden" id="MCodeSessionBhav">
+                    <input name="SessionStatusBhav" type="hidden" id="SessionStatusBhav">
+                </form> 
+                <!-- END FORM-->
+
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE widget-->
+    </div>
+</div>

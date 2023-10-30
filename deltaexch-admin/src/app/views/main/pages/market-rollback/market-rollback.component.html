@@ -1,0 +1,107 @@
+<section class="card">
+    <header class="card-header">
+      <h2 class="card-title">Market Rollback</h2>
+    </header>
+    <div class="card-body">
+      <div class="widget-body">
+<div class="portlet-body">
+    <form name="BetPlayer" method="post" action="CollectionLedgerDateWise.html">
+        <table width="100%" class="table table-striped table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <td width="15%" class="TableHeading">Sport Name</td>
+                    <td width="15%" class="TableHeading">Series Name</td>
+                    <td width="15%" height="25" class="TableHeading">Match Name</td>
+
+                </tr>
+                <tr>
+
+                    <td><select name="AgentName" id="AgentName"
+                            (change)="onChange($event.target.value)" [(ngModel)]="sportId">
+                            <option value="0">All</option>
+                            <option *ngFor="let sport of sportList" [value]="sport.sport_id">
+                                {{sport.name}}
+                            </option>
+                        </select></td>
+                    <td><select name="AgentName" id="AgentName"
+                            (change)="onSeriesSelect($event.target.value)"
+                            [(ngModel)]="seriesId">
+                            <option value="0">All</option>
+                            <option *ngFor="let series of seriesList"
+                                [value]="series.series_id">
+                                {{series.name}}
+                            </option>
+                        </select></td>
+                    <td height="30">
+                        <select name="Collection" id="Collection"
+                            style="width: 100%;" [(ngModel)]="matchId"  (change)="changeMatch($event.target.value)">
+                            <option value="">All</option>
+                            <option  *ngFor="let match of MatchList" [value]="match.match_id">{{match?.name}}</option>
+                         
+                        </select>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+        <table width="100%" class="table table-striped table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <td width="4%" height="25" class="TableHeading"><strong>Sr.No.</strong></td>
+                    <td width="10%" class="TableHeading"><strong>Sport Name </strong></td>
+
+                    <td width="15%" class="TableHeading"><strong>Series Name </strong></td>
+                    <td width="15%" class="TableHeading"><strong>Match Name</strong></td>
+                    <td width="15%" class="TableHeading"><strong>Market Name</strong></td>
+                    <td width="15%" class="TableHeading"><strong>Market Id</strong></td>
+                    <td width="15%" class="TableHeading"><strong>Selection Name</strong></td>
+                    <td width="15%" class="TableHeading"><strong> Date</strong></td>
+                    <td width="30%" class="TableHeading"><strong>Action</strong></td>
+
+                </tr>
+                <ng-container>
+                <tr bgcolor="#FFFFFF" *ngFor="let market of declaredMarketlist | paginate: {
+                    itemsPerPage: itemPerPage,
+                    currentPage: page,
+                    totalItems: totalItems
+                   } ;let i = index">
+                    <td height="20" class="FontText">{{(page-1)*config.itemsPerPage+i+1}}</td>
+                    <td class="FontText">{{market?.sport_name}}</td>
+                    <td class="FontText">{{market?.series_name}}</td>
+                    <td class="FontText">{{market?.match_name}}</td>
+                    <td class="FontText">{{market?.market_name}}</td>
+                    <td class="FontText">{{market?.market_id}}</td>
+                    <td class="FontText">{{market?.winner_name}}</td>
+                    <td class="FontText">{{market?.created_at}}</td>
+                    <td class="FontText">
+                        <button *ngIf="useradmininfo.user_type_id == 1 && gloabalData?.rollback_allowed == 1" type="button" class="btn btn-success"
+                            (click)="resultRollback(market)">Rollback</button>&nbsp;
+                    </td>
+                </tr>
+            </ng-container>
+                <tr>
+                    <td colspan="9" style="text-align: center;" *ngIf="declaredMarketlist.length == 0">
+                        No
+                        Records Found !</td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                      <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" previousLabel="Previous"
+                        nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                        screenReaderCurrentLabel="You're on page">
+                      </pagination-controls>
+                    </td>
+                  </tr>
+
+            </tbody>
+        </table>
+
+    </form>
+</div>
+</div>
+
+    </div>
+  </section>

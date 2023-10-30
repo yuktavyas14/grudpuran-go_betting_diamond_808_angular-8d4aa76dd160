@@ -1,0 +1,117 @@
+<div class="featured-box">
+    <div class="">
+      <section class="card">
+        <header class="card-header">
+          <h2 class="card-title">Casino Bets  Result     </h2>
+        </header>
+        <div class="card-body">
+          <form >
+            <div class="select-report d-inline-block ml-0 form-group">
+              <select class="form-control" name="eventTypeIds" id="eventTypeIds" required="required" [(ngModel)]='sportId'>
+                       <option value="" disabled>Select Sport</option>
+                <ng-container *ngFor="let sport of casinoSports" >
+  
+                       <option [value]='sport?.sport_id'>{{sport.name}}</option>
+  
+              </ng-container>
+  
+              </select>
+            </div>
+            <div class="select-report ml-2 d-inline-block form-group">
+              <select class="form-control" name="betstype" required="" [(ngModel)]="betType">
+                <option value="" disabled>Select Bet type </option>
+                <option  value="SB">Settled</option>
+                <option value="UB">unsettled</option>
+              </select>
+            </div>
+  
+            <div class="datepicker-wrapper ml-2 mr-2 form-group">
+              <div class="form-group">
+                <!-- <label for="fromdate">From</label> -->
+                <input  type="text" class="form-control"  #dp="bsDatepicker" [ngModelOptions]="{standalone: true}" bsDatepicker [(ngModel)]="fromDate">
+                <i class="fas fa-calendar"></i>
+              </div>
+            </div>
+            <div class="datepicker-wrapper ml-2 mr-2 form-group">
+              <div class="form-group">
+                <!-- <label for="fromdate">From</label> -->
+                <input  type="text" class="form-control"  #dp="bsDatepicker" [ngModelOptions]="{standalone: true}" bsDatepicker [(ngModel)]="toDate">
+                <i class="fas fa-calendar"></i>
+              </div>
+            </div>
+            <!-- <span>to</span> -->
+  
+            <div class="d-inline-block">
+              <input type="hidden" name="_token" value="">
+              <button class="btn btn-primary" value="submit" type="submit" (click)="getCasinoResult()">Submit</button>
+            </div>
+            <div class="row">
+              <!-- <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="account-statement_length">
+                  <label>Show
+                    <select name="account-statement_length" aria-controls="account-statement" class="form-control form-control-sm">
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                    entries</label>
+                </div>
+              </div> -->
+              <!-- <div class="col-sm-12 col-md-6 ml-10" style="    margin-left: 11px;">
+                <div id="account-statement_filter" class="dataTables_filter">
+                  <label>Search:
+                    <input type="search" [formControl]="" class="form-control datatable-search" placeholder="" aria-controls="example">
+                  </label>
+                </div>
+              </div> -->
+            </div>
+  
+            <table id="example" class="table table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+              <thead>
+                <tr role="row">
+                  <th class="sorting" tabindex="0" aria-controls="example" aria-label="Event Type: activate to sort column ascending" style="width: 197px;">Game Name</th>
+                  <th class="sorting" tabindex="0" aria-controls="example" aria-label="Event Name: activate to sort column ascending" style="width: 216px;">Type</th>
+                  <th class="sorting" tabindex="0" aria-controls="example" aria-label="Amount: activate to sort column ascending" style="width: 146px;">Amount</th>
+                  <th class="sorting" tabindex="0" aria-controls="example" aria-label="Username: activate to sort column ascending" style="width: 184px;">Total</th>
+                  <th class="sorting" tabindex="0" aria-controls="example" aria-label="Username: activate to sort column ascending" style="width: 184px;">Date</th>
+  
+  
+                  <th class="sorting" tabindex="0" aria-controls="example" aria-label="Match Date: activate to sort column ascending" style="width: 207px;">Round Id </th>
+                             <th class="sorting" tabindex="0" aria-controls="example" aria-label="Place Date: activate to sort column ascending" style="width: 193px;">  Transaction Id</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="betlist != null && betlist .length != 0;else NoData">
+                  <ng-container *ngFor="let bet of betlist | paginate: config;trackBy: trackByFn;let i=index;">
+                <tr [ngClass]="bet?.is_back == 0 ?'lay':'back'" class="odd">
+                  <td>{{bet?.sport_name}}</td>
+                  <td>{{bet?.type}}</td>
+                  <td>{{bet?.stack}}</td>
+                  <td>{{bet?.total}}</td>
+                  <td>{{bet?.placed}}</td>
+                  <td>{{bet?.round_id}}</td>
+                  <td>{{bet?.transaction_id}}</td>
+                  <!-- <td>{{bet?.bet_matched_at}}</td> -->
+  
+                </tr>
+              </ng-container>
+            </ng-container>
+              <ng-template #NoData>
+                <tr>
+                  <td valign="top" colspan="10" class="dataTables_empty">No data available in table</td>
+                </tr>
+              </ng-template>
+              </tbody>
+            </table>
+            <div class="pagin-cls">
+            <ng-container *ngIf="totalrecored">
+              <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"> </pagination-controls>
+            </ng-container>
+          </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+  

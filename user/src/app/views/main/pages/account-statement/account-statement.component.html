@@ -1,0 +1,275 @@
+<div class="featured-box">
+
+  <div class="">
+    <section class="card">
+      <header class="card-header">
+        <h2 class="card-title">Account Statement</h2>
+      </header>
+      <div class="card-body">
+        <form method="POST" action="" accept-charset="UTF-8">
+          <input name="_token" type="hidden" value="">
+          <div class="datepicker-wrapper form-group">
+            <div class="form-group">
+              <label for="fromdate">From</label>
+              <input type="text" class="form-control" #dp="bsDatepicker" [ngModelOptions]="{standalone: true}"
+                bsDatepicker [(ngModel)]="fromDate">
+            </div>
+          </div>
+          <div class="datepicker-wrapper form-group">
+            <div class="form-group">
+              <label for="toDate">To</label>
+              <input type="text" class="form-control" #dp="bsDatepicker" [ngModelOptions]="{standalone: true}"
+                bsDatepicker [(ngModel)]="toDate">
+            </div>
+          </div>
+          <div class="select-report d-inline-block m-l-20 form-group">
+            <select id="bind_opt_select" class="form-control" name="q" [(ngModel)]="type">
+              <option value="All">All</option>
+              <option value="BR">Deposite/Withdrow Report</option>
+              <option value="GR">Game Report</option>
+            </select>
+          </div>
+          <div class="d-inline-block m-l-20">
+            <input type="hidden" name="_token" value="">
+            <button class="btn btn-primary" value="submit" (click)="getAccountStatment()" type="submit">Submit</button>
+          </div>
+          <table id="example" class="table table-bordered datatable dataTable table-pad no-footer" style="width:100%" role="grid"
+            aria-describedby="example_info">
+            <thead>
+              <tr role="row">
+
+                <th class="sorting" tabindex="0" aria-controls="example"
+                  aria-label="Event Name: activate to sort column ascending" style="width: 50px;">Date</th>
+                <th class="sorting" tabindex="0" aria-controls="example"
+                  aria-label="item Type: activate to sort column ascending" style="width: 50px;">Credit</th>
+                <th class="sorting" tabindex="0" aria-controls="example"
+                  aria-label="User Rate: activate to sort column ascending" style="width: 50px;">Debit</th>
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                  aria-label="Amount: activate to sort column ascending" style="width: 50px;">Balance</th>
+                <th class="sorting" tabindex="0" aria-controls="example"
+                  aria-label="Amount: activate to sort column ascending" style="width: 146px;">Remark</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="accountReportList != null && accountReportList .length != 0;else NoData">
+                 <tr>
+                 
+                    <td style="text-align: left !important;">{{openingList?.date|  formatDate: 'YYYY-MM-DD h:mm'}}
+                     
+                    <!-- {{openingList?.date}} -->
+                  </td>
+                   <td></td>
+                   <td></td>
+                   <td>{{openingList?.balance}}</td>
+                   <td>
+                    <a    class="open-clickmodal" > {{openingList?.description}}</a>
+                   </td>
+
+
+                 </tr>
+                <ng-container *ngFor="let item of accountReportList | paginate: config;trackBy: trackByFn;let i=index;">
+                  <tr class="odd">
+                    
+                      <td style="text-align: left !important;">{{item?.date| formatDate: 'YYYY-MM-DD h:mm'}}
+                      
+                      </td>
+                    <td>{{item?.credit_debit > 0 ? item?.credit_debit : 0}}</td>
+                    <td>{{item?.credit_debit < 0 ? item?.credit_debit : 0}}</td>
+                    <td>{{item?.balance}}</td>
+                    <td>
+                      <a href="javascript:void(0)" data-toggle="modal" data-target="#view-more"   
+                      class="open-clickmodal" (click)="getBetsByMatchId(item?.match_id,item?.market_id , 'M' )">
+                       {{item?.description}}</a>
+                    </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+              <ng-template #NoData>
+                <tr>
+                  <td valign="top" colspan="10" class="dataTables_empty">No data available in table</td>
+                </tr>
+              </ng-template>
+           
+            </tbody>
+         
+          </table>
+          
+        </form>
+      
+      </div>
+      <div style="text-align: center;;" *ngIf="totalrecored > 50">
+        <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"> </pagination-controls>
+      </div>
+    </section>
+    <div id="modal-statement" class="modal fade show">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Details</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <div class="modal-body" id="modelbind"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="view-more">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Client Ledger (Total Win Loss : {{totalSum}}) (Total Count {{userListData?.length}}) (Total Soda {{userListData?.length}} )</h4>
+              <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+              <div class="viewMoreMatchedDataModal">
+                  <ul class="nav nav-tabs d-inline-block" role="tablist ">
+                      <li class="nav-item d-inline-block"> <a class="nav-link  active " data-toggle="tab" href="#matched-bet2" (click)="getBetsByMatchId(match_id, market_id , 'M' )" id="matchedDataLink">Matched </a> </li>
+                      <li class="nav-item d-inline-block"> <a class="nav-link " data-toggle="tab" href="#unmatched-bet2" id="unMatchedDataLink" (click)="getBetsByMatchId(match_id,market_id , 'D' )">Deleted </a> </li>
+                  </ul>
+                  <div class="tab-content m-t-20">
+                      <div id="matched-bet2" class="tab-pane  active ">
+
+                          <div class="table-responsive" id="view-more-matched-tbl">
+                              <table class="table table-bordered table-pad">
+                                  <thead>
+                                      <tr>
+                                          <th>No</th>
+                                          <th>userName</th>
+                                          <th>Nation</th>
+                                          <th>Side</th>
+                                          <th>Rate </th>
+                                          <th>Amount</th>
+                                          <th>Win / Loss</th>
+                                          <th>Place Date</th>
+                                          <th>Match Date</th>
+                                          <th>IP</th>
+                                          <th>Browser Details</th>
+
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <ng-container *ngFor="let bet of userListData;let i = index">
+                                          <tr [ngClass]="bet?.is_back === '1' ?  'back-color ':'lay-color'">
+                                              <td>{{i+1}}</td>
+                                              <td>{{bet?.user_name}}</td>
+                                              <td>{{bet?.selection_name}}</td>
+                                              <td>{{bet?.is_back == 1 ? 'Back' : 'Lay'}}</td>
+                                              <td>{{bet?.odds}}</td>
+                                              <td>{{bet?.stack}}</td>
+                                              <td [ngClass]="checkNumberPositvie(bet?.profit_loss) ? 'text-success' : 'text-danger'  ">{{bet?.profit_loss}}</td>
+
+                                              <td>{{bet?.placed}}</td>
+                                              <td>{{bet?.bet_matched_at}}</td>
+
+                                              <td>{{bet?.ip_address}}</td>
+                                              <td>{{bet?.device_info}}</td>
+                                      </ng-container>
+                                      <tr *ngIf="!userListData">
+                                          <td colspan="10">No records found</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                      <div id="unmatched-bet2" class="tab-pane  ">
+                          <div class="table-responsive">
+
+                              <table class="table table-bordered">
+                                  <thead>
+                                      <tr>
+                                          <th>Uplevel</th>
+                                          <th>userName</th>
+                                          <th>Nation</th>
+                                          <th>Side</th>
+                                          <th>Rate </th>
+                                          <th>Amount</th>
+                                          <th>Win / Loss</th>
+                                          <th>Place Date</th>
+                                          <th>Match Date</th>
+                                          <th>IP</th>
+                                          <th>Browser Details</th>
+
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <ng-container *ngFor="let bet of userListData;let i = index">
+                                          <tr [ngClass]="bet?.is_back === '1' ?  'back-color ':'lay-color'">
+                                              <td>{{bet?.parent_user_name}}</td>
+                                              <td>{{bet?.user_name}}</td>
+                                              <td>{{bet?.selection_name}}</td>
+                                              <td>{{bet?.is_back == 1 ? 'Back' : 'Lay'}}</td>
+                                              <td>{{bet?.odds}}</td>
+                                              <td>{{bet?.stack}}</td>
+                                              <td [ngClass]="checkNumberPositvie(bet?.profit_loss) ? 'text-success' : 'text-danger'  ">{{bet?.profit_loss}}</td>
+
+                                              <td>{{bet?.placed}}</td>
+                                              <td>{{bet?.bet_matched_at}}</td>
+
+                                              <td>{{bet?.ip_address}}</td>
+                                              <td>{{bet?.device_info}}</td>
+
+
+                                          </tr>
+                                      </ng-container>
+                                      <tr *ngIf="!userListData">
+                                          <td colspan="10">No records found</td>
+                                      </tr>
+
+                                  </tbody>
+                              </table>
+
+                          </div>
+                      </div>
+                      <div id="deleted-bet2" class="tab-pane  ">
+                          <div class="table-responsive">
+                              <table class="table table-bordered table-padd">
+                                  <thead>
+                                      <tr>
+                                          <th>No</th>
+                                          <th>UserName</th>
+                                          <th>Nation</th>
+                                          <th>Bet Type</th>
+                                          <th>Amount</th>
+                                          <th>User Rate</th>
+                                          <th>Place Date</th>
+                                          <th>Match Date</th>
+                                          <th>IP</th>
+                                          <th>Browser Details</th>
+                                          <!-- <th *ngIf="useradmininfo?.user_type_id == '1'">Action</th> -->
+
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <!-- <ng-container *ngFor = "let bet of betListHistory;let i = index">
+                        <tr [ngClass]="bet?.is_back === '1' ?  'back-color ':'lay-color'">
+                          <td>{{i + 1}}</td>
+                          <td>{{bet?.user_name}}</td>
+                          <td>{{bet?.selection_name}}</td>
+                          <td>{{bet?.is_back == 1 ? 'Back' : 'Lay'}}</td>
+                          <td>{{bet?.stack}}</td>
+                          <td>{{bet?.odds}}</td>
+                          <td>{{bet?.placed}}</td>
+                          <td>{{bet?.bet_matched_at}}</td>
+                          <td>{{bet?.ip_address}}</td>
+                          <td>{{bet?.device_info  }}</td>
+                          <td *ngIf="useradmininfo?.user_type_id == '1'"><button (click)="confirmBox(bet?.bet_id , bet?.market_id, bet?.bet_type, bet?.delete_status)">Delete</button></td>
+
+                        </tr>
+                      </ng-container>
+                      <tr *ngIf="!betListHistory">
+                        <td colspan="10">No records found</td>
+                      </tr> -->
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer"> </div>
+      </div>
+  </div>
+</div>

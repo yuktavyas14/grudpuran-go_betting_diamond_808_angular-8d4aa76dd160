@@ -1,0 +1,128 @@
+.new-launch-casino.new-launch-animated {
+    -webkit-animation: blinkcasino .8s linear infinite;
+    animation        : blinkcasino .8s linear infinite;
+    display          : flex;
+}
+
+@keyframes blinkcasino {
+    0% {
+        transform: scale(1)
+    }
+
+    100% {
+        transform: scale(1.2)
+    }
+}
+
+.casinoicons {
+    box-shadow: unset !important;
+}
+
+.casinoicons .casino-name {
+    background-image: unset !important;
+    color           : #0a0a0a;
+    position        : unset !important;
+    font-size: 10px;
+}
+.livecasinos ,.livecasinos1{
+background-color: #c86a6a;
+}
+.casinoicons-title {
+    color: #fff ;
+    text-align: center;
+}
+iframe {
+  width: 1px; 
+  min-width: 100%; 
+  border: none; 
+  display: block; 
+  overflow: hidden; 
+  height: 1500px; 
+  min-height: 468px;
+}
+.livecasinos {
+  display: block;
+  white-space: nowrap;
+  overflow-x : auto;
+  flex-wrap: nowrap;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.game-nav-bar.nav-tabs .nav-item {
+
+  display: inline-block;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border-top: 3px solid #fff;
+
+  background-color: #3f88cc;
+}
+.livecasinos1 li a {
+  color: #fff;
+}
+
+
+.nav-tabs.slot-nav-bar {
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  // position: relative;
+}
+
+ .nav-tabs.slot-nav-bar  .nav-link {
+  color: #fff;
+  white-space: nowrap;
+  text-transform: uppercase;
+  border-radius: 0;
+  // padding-top: 0;
+  // padding-bottom: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.no-record{
+  background-color:#d4d4d4
+}
+
+.livecasinos1  li  a {
+  border-right: 1px solid #fff;
+  color: #fff;
+}
+
+
+// iframe#Brino_Iframe{
+//   height: 100vh !important;
+//   min-height: 100% !important;
+// }
+
+// iframe#Brino_Iframe{
+//   height: calc(100vh - 220px) !important;
+//   min-height: 100% !important;
+// }
+
+// @media only screen and (max-width: 1024px) {
+//   iframe#Brino_Iframe{
+//     height: 1065px !important;
+//     min-height: 100% !important;
+//   }
+// }
+// @media only screen and (max-width:576px) {
+//   iframe#Brino_Iframe{
+//     height: calc(100vh - 220px) !important;
+//     min-height: 100% !important;
+//   }
+// }
+
+.super_nova_brino {
+  height: calc(100vh - 220px) !important;
+}
+.super_nova_brino #Brino_Iframe {
+  height:100% !important;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+  

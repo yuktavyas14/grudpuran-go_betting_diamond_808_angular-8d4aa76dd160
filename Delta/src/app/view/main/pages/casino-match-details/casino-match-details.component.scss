@@ -1,0 +1,118 @@
+/* -----------------modal classes------ */
+
+.playersuit {
+    background-color: #d5d5d5;
+    border: 1px solid #626262;
+    line-height: 27px;
+    height: 27px;
+    border-radius: 50%;
+    margin: 5px 3px;
+}
+.iframe-part.superOver {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+.teenpatti-video .superOver iframe {
+    height: 220px;
+    margin: 0px 0 0px;
+}
+.count-part.superover-count {
+    position: absolute;
+    bottom: 73px;
+    right: 8px;
+}
+
+.scoreBord-part.superover-scoreboard{
+    margin-bottom: 0px;
+    padding: 10px 10px 0px;
+    border-top: 1px solid #1a1a1a;
+}
+
+.meter-lh-card img {
+  width: 20px;
+  margin-right: 5px;
+}
+.meter-content img {
+  width: 25px;
+  /* margin-right: 5px; */
+  margin-bottom: 5px;
+}
+
+.cmeter-count {
+  color: #08c;
+}
+.font-size12{
+  font-size: 12px;
+}
+.meter-content img{
+  width: 25px;
+  margin: 2px;
+  margin-bottom: 5px;
+}
+
+ .meter-content h4 {
+  margin-bottom: 4px;
+  margin-top: 2px;
+  font-size:1.5rem;
+}
+.meter-lh-card-container{
+  text-align: center;
+}
+
+.meter-content img {
+  width: 25px;
+  /* margin-right: 5px; */
+  margin-bottom: 5px;
+}
+
+.meter-lh-card-container {
+  background-color: #ccc;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.meter-lh-card-container h5 {
+  vertical-align: middle;
+}
+
+.meter-lh-card img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.cmeter .info-icon {
+  color: #fff;
+}
+
+.cmeter .min-max-info {
+  color: #000;
+}
+
+.cmeter .suspended:after {
+  width: 100%;
+}
+
+.cmeter .info-block a,
+.cmeter .info-block a:hover {
+  color: #fff;
+}
+
+.cmeter-betcards img {
+  width: 25px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.cmeter-runposition {
+  position: absolute;
+  right: 15px;
+  font-weight: bold;
+}
+
+.cmeter-count {
+  color: var(--text-primary);
+}
+.meter-content .btn-theme {
+  padding: 6px !important;
+}

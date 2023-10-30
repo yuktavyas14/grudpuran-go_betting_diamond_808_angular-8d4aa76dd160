@@ -1,0 +1,111 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+      <div class="detail-row">
+        <h2>GGR Report</h2>
+        <form [formGroup]="ggrReportGroup" method="post" action="" class="ajaxFormSubmit">
+          <div class="m-t-20">
+            <div class="row">
+              
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fromdate">From</label>
+                  <input formControlName="from_date" type="text" class="form-control" #dp="bsDatepicker" bsDatepicker>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="todate">To</label>
+                  <input formControlName="to_date" type="text" class="form-control" #dp="bsDatepicker" bsDatepicker>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <input type="hidden" name="_token" value="">
+                <label style="width: 100%">&nbsp;</label>
+                <button type="submit" (click)="getGGRReport()" class="btn btn-diamond"
+                  id="loaddata">Load</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="table-responsive data-table" id="tbldata">
+        <div id="example_wrapper" class="dataTables_wrapper no-footer">
+          <div class="dt-buttons">
+            <button (click)="generatePdf()" class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example" type="button"><span>PDF</span></button>
+        </div>
+          <!-- <div id="example_filter" class="dataTables_filter">
+            <label>Search:
+              <input type="search" [formControl]="searchKey" class="form-control datatable-search" placeholder="" aria-controls="example">
+            </label>
+          </div> -->
+          <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%"
+            role="grid" aria-describedby="example_info">
+            <thead>
+              <tr role="row">
+                <th width="10%" class="sorting_asc" rowspan="1" colspan="1" aria-label="Date" style="width: 173px;">Sport Name
+                </th>
+                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Credit"
+                  style="width: 173px;">Stack</th>
+                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Debit" style="width: 173px;">
+                    Profit</th>
+                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Debit" style="width: 173px;">
+                    Loss</th>
+                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Debit" style="width: 173px;">
+                    GGR 100</th>
+                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Debit" style="width: 173px;">
+                  Customer GGR  %</th>
+                    <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Debit" style="width: 173px;">
+                     Action</th>
+                 
+               
+              </tr>
+            </thead>
+            <tbody *ngIf="GGRRerotList">
+              <ng-container  *ngIf="GGRRerotList.length > 0">
+             
+                <ng-container *ngFor="let item of GGRRerotList;let ind= index">
+                  <tr role="row" class="odd">
+                    <td class="sorting_1"> {{item.sport_name}}</td>
+                    <td class="text-right" [ngClass]="getPositive(item.stack)">{{item.stack}}</td>
+                    <td class="text-right" [ngClass]="getPositive(item.profit)">{{item.profit}}</td>
+                    <td class="text-right" [ngClass]="getPositive(item.loss)">{{item.loss}}</td>
+                    <td class="text-right" [ngClass]="getPositive(item.ggr)">{{item.ggr}}</td>
+                    <td class="text-right">
+                      <span [ngClass]="getPositive(item.ggrCutsome)"> {{item.ggrCutsome}}</span>
+                     
+                      <!-- {{userPercentage}} -->
+                    </td>
+                    <td >
+                      <div class="d-flex">
+                      <input type="number" class="custome-input form-control" #inputValue name="userInputValue" [(ngModel)]="item.inputValue">
+                      <button type="button" class="btn btn-diamond btn-ggr-submit" (click)="onCalculateCommision(ind,inputValue.value,item)">Submit</button>
+                    
+                    </div>
+                    </td>
+                    
+                  </tr>
+                  
+                </ng-container>
+                <tr role="row" class="odd">
+                    <td class="sorting_1"> Total</td>
+                    <td class="text-right" [ngClass]="getPositive(totalStack)">{{totalStack}}</td>
+                    <td class="text-right" [ngClass]="getPositive(totalProfit)">{{totalProfit}}</td>
+                    <td class="text-right" [ngClass]="getPositive(totalLoss)">{{totalLoss}}</td>
+                    <td class="text-right" [ngClass]="getPositive(totalGGR)">{{totalGGR}}</td>
+                    <td class="text-right" [ngClass]="getPositive(totalCustomerGGRProfit)">{{totalCustomerGGRProfit}}</td>
+                    <td class="text-right"></td>
+
+
+                  </tr>
+              </ng-container>
+              <ng-container  *ngIf="GGRRerotList.length === 0">
+                <tr>
+                  <td colspan="6" style="text-align: center;">No Record Found !</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+          </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,71 @@
+<div class="">
+    <section class="card">
+      <header class="card-header">
+        <h2 class="card-title">Sessions</h2>
+      </header>
+      <div class="card-body">
+        <div class="usertable_area">
+            <div class="widget-body form form-inline">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table class="table table-bordered table-hover dataTable no-footer">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting_asc"> Serial No.</th>
+                        <th class="sorting"> Selection ID</th>
+                        <th class="sorting"> RunnerName</th>
+                        <th class="sorting"> Status</th>
+                        <th class="sorting"> Add</th>
+                        <th class="sorting"> Result</th>
+                        <th class="sorting"> Abandon</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let fancy of fancyList;let i = index">
+
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">{{i + 1}}
+                          <input type="hidden" name="" id="" value=""></td>
+                        <td>{{fancy?.selection_id}}</td>
+                        <td><div class="fancy-message"> <span>{{fancy?.runner_name}}</span> &nbsp; <span> <i class="fa fa-pencil" id="" title=""></i> </span> </div>
+                          <div id="div_fancy_message">
+                            <div class="form-group">
+                              <input type="text" [id]="i" class="form-control"  placeholder="Message"  [value]="fancy?.super_admin_message">
+                            </div>
+                            <div class="form-group">
+                              <button type="button" class="btn btn-primary" (click)="updateFancymessage(fancy?.fancy_id,i)" id="">Update</button>
+                            </div>
+                          </div></td>
+                        <td><select id="change_status_22816359" [value]='fancy?.active' (change)="updateFancyStatus(fancy?.fancy_id, $event.target.value)">
+                            <option value="">Select Status</option>
+                            <option value="0">Inactive</option>
+                            <option value="1" >Active</option>
+                            <option value="2">Close</option>
+                          </select></td>
+                        <td>
+                          <span *ngIf="fancy.is_active == '0'"><button type="button" class="btn btn-primary" (click)="Savefancy(fancy)" id="">Add</button></span>
+                          <span *ngIf="fancy.is_active == '1'" ><button type="button" disabled =  true class="btn btn-primary" id="">Added</button></span>
+                        </td>
+                        <td><form action="" method="post" id="">
+                          <div *ngIf="fancy?.is_resulted == 0" class="result-update">
+                            <!-- <input type="text"  name="result" [id]="i" [value] class=""> -->
+                            <input type="text" [id]="'result'+ i" class="form-control"  placeholder=""  value="">
+
+                            <!-- <input type="hidden" name="session_id" id="" value=""> -->
+                            <button type="submit" (click)="resultDeclare(fancy,i)" [disabled]="fancy?.is_resulted == 1" class="btn btn-primary">Update</button>
+                          </div>
+                          <div  *ngIf="fancy?.is_resulted != 0" class="result-update">{{fancy?.result}}</div>
+                        </form></td>
+                        <td><button *ngIf="fancy?.is_resulted == 0" type="button" class="btn btn-primary" (click)="fancyAbandon(fancy)" [disabled]="fancy?.is_resulted == 1" id="">Abandon</button></td>
+                      </tr>
+                    </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>

@@ -1,0 +1,16 @@
+<div class="tab-content topRowtab" *ngIf="cupList">
+    <div class="tab-pane sports active">
+        <ul class="nav nav-tabs game-nav-bar">
+            <ng-container *ngFor="let cup of cupList">
+                <li class="nav-item text-center">
+                    <a data-toggle="tab" class="nav-link {{getClass(cup?.match_name)}}" (click)="getCupMatch(cup?.match_id,cup?.match_name)">
+                        <!-- <div><img src="assets/images/mixmatrial.png"></div> -->
+                        <div>{{cup?.match_name}}</div>
+                    </a>
+                </li>
+
+            </ng-container>
+
+        </ul>
+    </div>
+</div>

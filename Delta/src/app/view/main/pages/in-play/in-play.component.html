@@ -1,0 +1,177 @@
+<!-- Menu tabs-->
+
+<div class="main-content">
+    <!-- <app-cup-menu-list></app-cup-menu-list> -->
+
+    <ul class="nav nav-tabs bs game-nav-bar">
+        <li class="nav-item"><a class="nav-link " routerLink="/main/inPlay"> In-play </a></li>
+        <li class="nav-item"><a class="nav-link router-link-exact-active router-link-active active"> Sports </a></li>
+        <li class="nav-item sdmexchshow" ><a class="nav-link" routerLink="/main/casino-slot"> Casino + Slot </a></li>
+        <!-- <li class="nav-item"><a class="nav-link"> Election </a></li> -->
+        <li class="nav-item"><a class="nav-link" routerLink="/main/other-casino"> Others </a></li>
+    </ul>
+</div>
+<!-- Menu -->
+
+
+<!-- Tab-content -->
+
+<div class="tab-content">
+    <div class="tab-pane sports bs active">
+        <ul class="nav nav-tabs game-nav-bar">
+            <!-- <li class="nav-item text-center"><a data-toggle="tab" href="#game1" class="nav-link active">
+              <div><img src="https://dzm0kbaskt4pv.cloudfront.net/v2/static/mobile/img/gameImg/1.png"></div>
+              <div>Football</div>
+              </a>
+            </li>
+            <li class="nav-item text-center"><a data-toggle="tab" href="#game2" class="nav-link">
+              <div><img src="https://dzm0kbaskt4pv.cloudfront.net/v2/static/mobile/img/gameImg/2.png"></div>
+              <div>Tennis</div>
+              </a></li> -->
+            <!-- <ng-container *ngFor="let sport of sportList">
+                <li *ngIf="sport?.is_active" class="nav-item"> <a [routerLink]="['/main/inplay',sport?.sport_id,sport?.name]"> <b>{{sport?.name}}</b> </a> </li>
+              </ng-container> -->
+            <ng-container *ngFor="let sport of sportList">
+                <li class="nav-item text-center" *ngIf="sport?.is_active && (sport?.sport_id>0 || sport?.sport_id == -4)">
+                    <a data-toggle="tab" class="nav-link" [class.active]="sport?.sport_id == selectedID" (click)="getSportMatch(sport?.sport_id)">
+                        <div *ngIf="sport?.sport_id ==-4"><img src="assets/images/-4.png"></div>
+                        <div *ngIf="sport?.sport_id ==4"><img src="assets/images/4.png"></div>
+                        <div *ngIf="sport?.sport_id ==2"><img src="assets/images/2.png"></div>
+                        <div *ngIf="sport?.sport_id ==1"><img src="assets/images/1.png"></div>
+                        <div *ngIf="sport?.sport_id ==6"><img src="assets/images/boxing.svg"></div>
+                        <div *ngIf="sport?.sport_id ==7"><img src="assets/images/horserace.svg"></div>
+                        <div *ngIf="sport?.sport_id ==4339"><img src="assets/images/grayhound.svg"></div>
+                        <div *ngIf="sport?.sport_id ==8"><img src="assets/images/motor-sport.png"></div>
+                        <div *ngIf="sport?.sport_id ==2593174"><img src="assets/images/tabletannis.svg"></div>
+                        <div *ngIf="sport?.sport_id ==7522"><img src="assets/images/basketball.svg"></div>
+                        <div *ngIf="sport?.sport_id ==7524"><img src="assets/images/ice-hocky.svg"></div>
+                        <div *ngIf="sport?.sport_id ==998917"><img src="assets/images/vollyball.svg"></div>
+                        <div *ngIf="sport?.sport_id ==3503"><img src="assets/images/dart.png"></div>
+                        <div *ngIf="sport?.sport_id ==2378961"><img src="assets/images/dart.png"></div>
+                        <div *ngIf="sport?.sport_id ==627555"><img src="assets/images/badminton.svg"></div>
+                        <div *ngIf="sport?.sport_id ==26420387"><img src="assets/images/mixmatrial.png"></div>
+
+                        <div>{{sport?.name}}</div>
+                    </a>
+                </li>
+            </ng-container>
+
+        </ul>
+        <div class="tab-content" *ngIf="sportId != '7' && sportId  !='4339'">
+            <div id="game1" class="tab-pane fade in active">
+                <div class="">
+                    <!-- game-listing-container  -->
+                    <!-- "game-listing-container -->
+                    <ng-container *ngFor="let data of gameList">
+                        <div class="game-list pt-1 pb-1 container-fluid">
+                            <div class="row row5">
+                                <div class="col-8" [routerLink]="['/main/matchdetails',data?.match_id, data?.market_id]" (click)="setSportId(data?.sport_id)">
+                                    <p class="mb-0 game-name"><strong>{{data.match_name ? data.match_name : 'N/A'}}</strong></p>
+                                    <p class="mb-0">
+                                        {{data?.match_date |  formatDate: 'MMMM Do YYYY, h:mm a'}}
+                                        <!-- {{data?.match_date? data?.match_date : 'N/A'} -->
+                                    } (IST)</p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <div class="game-icons">
+                                        <span class="game-icon">
+                              <span class="active-icon" *ngIf=data?.inplay style="vertical-align: bottom;"></span>
+                                        </span>
+
+
+
+                                        <span class="game-icon" *ngIf=data?.is_fancy><img src="assets/images/ic_fancy.png"></span>
+                                        <span class="game-icon" *ngIf=data?.is_bookmaker_market><img src="assets/images/ic_bm.png" class="bookmaker-icon"></span>
+                                        <span class="game-icon" *ngIf=data?.IsTv><span class="bookmaker-icon">
+
+                                          <i _ngcontent-exm-c45="" class="fa fa-tv"></i></span></span>
+                                          <span class="game-icon" *ngIf= "data?.sport_id == '-17'"><img src="assets/images/game-icon-17.png" class="bookmaker-icon"></span>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row5">
+                                <div class="col-12">
+                                    <div class="text-center game-col game-home"><b>1</b></div>
+                                    <div class="text-center game-col game-home"><b>X</b></div>
+                                    <div class="text-center game-col game-home"><b>2</b></div>
+                                </div>
+                            </div>
+
+                            <div class="row row5">
+                                <div class="col-12" [routerLink]="['/main/matchdetails',data?.match_id, data?.market_id]" (click)="setSportId(data?.sport_id)">
+                                    <ng-container *ngIf="data?.runner_json" >
+                                        <div class="text-center game-col game-home">
+                                            <a href="javascript:void(0);" class="btn-back sport-back">{{data?.runner_json[0]?.back[0].price  ? data?.runner_json[0]?.back[0].price : '--'}}</a>
+                                            <a href="javascript:void(0);" class="btn-lay sport-lay">{{data?.runner_json[0]?.lay[0].price ? data?.runner_json[0]?.lay[0].price : '--' }}</a>
+                                        </div>
+                                        <div class="text-center game-col game-home">
+                                            <a href="javascript:void(0);" class="btn-back sport-back">{{data?.runner_json[2]?.back[0].price ? data?.runner_json[2]?.back[0].price : '--' }}</a>
+                                            <a href="javascript:void(0);" class="btn-lay sport-lay">{{data?.runner_json[2]?.lay[0].price ? data?.runner_json[2]?.lay[0].price: '--'}}</a>
+                                        </div>
+                                        <div class="text-center game-col game-home">
+                                            <a href="javascript:void(0);" class="btn-back sport-back">{{data?.runner_json[1]?.back[0].price ? data?.runner_json[1]?.back[0].price : '--'}}</a>
+                                            <a href="javascript:void(0);" class="btn-lay sport-lay">{{data?.runner_json[1]?.lay[0].price ? data?.runner_json[1]?.lay[0].price : '--'}}</a>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <div class="noRecordFound" *ngIf="!gameList">No real-time records founds</div>
+
+                </div>
+            </div>
+
+        </div>
+        <ng-container *ngIf="sportId == '7' || sportId == '4339'">
+
+            <div class="horse-racing-section">
+                <div class="heading-part">
+                   <h3 *ngIf="sportId == '7'">Horse Racing Shedule</h3>
+                   <h3 *ngIf="sportId == '4339' ">Greyhound Racing</h3>
+
+                   <div class="btn-part">
+                    <a (click)="addActiveClass('today');onSelectDay(0)" [class.active]="selectedIndex1 == 'today'">Today</a>
+                    <a (click)="addActiveClass('tomorrow');onSelectDay(1)" [class.active]="selectedIndex1 == 'tomorrow'">Tomorrow</a>
+                    <a (click)="addActiveClass(dayafterTommorowName);onSelectDay(2)" [class.active]="selectedIndex1 == dayafterTommorowName">{{dayafterTommorowName}}</a>
+
+                   </div>
+                </div>
+                <div>
+                    <ul class="racing-ul">
+                        <li *ngFor="let data of gameCountryList;let i= index">
+                            <a class="{{activeCountry ==i?'active':''}}" href="javascript:void(0);" (click)="getMatchVenueListByCountryCodeSportId(i,data)"><span>
+                                <!-- <flag-icon country="{{data.country}}"></flag-icon>   -->
+                                <span class="{{getFlag(data.country)}}"></span>
+
+                            </span><h5>{{data.country}}({{data.venue_count}})</h5></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+               <div class="table-main-bx table-responsive">
+                   <table class="table" *ngIf="gameCountryMatchList?.length > 0">
+                       <tr *ngFor="let data of gameCountryMatchList">
+                           <td class="fs-sp-bx">{{data.match_name}}</td>
+                           <td *ngFor="let slot of data.markets">
+                               <button class="time-btn" (click)="openMarket(data,slot)">{{slot.market_start_time | date:'h:mm a'}}</button>
+                            </td>
+
+                       </tr>
+
+                   </table>
+                   <div *ngIf="gameCountryMatchList?.length == 0">
+                       <div class="racing-no-data">No Data Found</div>
+                   </div>
+               </div>
+
+
+            </div>
+
+
+        </ng-container>
+        <!-- Tab-content -->

@@ -1,0 +1,174 @@
+<div class="featured-box">
+    <div class="" *ngIf="sportId != '7'">
+        <div class="" *ngIf="sportId != '4339'">
+            <ul class="nav nav-tabs m-b-20" role="tablist" id="home-events">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#cricket" data-id="4">{{sportName}}</a>
+                </li>
+            </ul>
+           
+            <div class="tab-content">
+                <div id="cricket" class="tab-pane active">
+                    <div class="coupon-card coupon-card-first">
+                        <div class="card-content" id="home_match_data">
+                            <ng-container *ngIf="gameList != null && gameList.length != 0">
+                                <table class="table coupon-table inplay-match-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 63%"> Game</th>
+                                            <th colspan="2"> 1 </th>
+                                            <th colspan="2"> X </th>
+                                            <th colspan="2"> 2 </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let game of gameList">
+                                            <tr>
+                                                <td>
+                                                    <div class="game-name">
+                                                        <a class="text-dark" (click)="gotoMatchDetails(game)">{{game?.match_name}}/
+                                                            {{game?.match_date |  formatDate: 'MMMM Do YYYY, h:mm a'}}
+                                                            (IST)</a>
+                                                    </div>
+                                                    <div class="game-icons" >
+                                                        <span class="game-icon" *ngIf="game?.inplay"><span class="active"></span></span>
+                                                        <span class="game-icon"></span>
+
+                                                        <span class="game-icon" *ngIf="game?.is_fancy"><img src="assets/images/ic_fancy.png"
+                                class="fancy-icon"></span>
+                                                        <span class="game-icon" *ngIf="game?.is_bookmaker_market"><img src="assets/images/ic_bm.png"
+                                class="bookmaker-icon"></span>
+                                <span class="game-icon" *ngIf="game?.IsTv"><i class="fa fa-tv"></i></span>
+                                <span *ngIf="game.sport_id == '-17'" class="game-icon" ><img src="assets/images/game-icon.svg" class="ic-card"></span>
+                                                        <!-- <span class="game-icon" *ngIf="game?.sport_id <0"><img src="assets/images/ic_vir.png" class="ic-card"></span> -->
+                                                    </div>
+                                                </td>
+                                                <ng-container *ngIf="game?.runner_json">
+                                                    <!-- <div class="text-center game-col game-home"> -->
+
+                                                    <td><button class="back"> <span class="odd"> {{game?.runner_json[0]?.back[0].price ?
+                                game?.runner_json[0]?.back[0].price : '--'}}</span> </button></td>
+                                                    <td><button class="lay"> <span class="odd"> {{game?.runner_json[0]?.lay[0].price ?
+                                game?.runner_json[0]?.lay[0].price : '--' }}</span> </button></td>
+                                                    <td><button class="back"> <span class="odd"> {{game?.runner_json[2]?.back[0].price ?
+                                game?.runner_json[2]?.back[0].price : '--'}}</span> </button></td>
+                                                    <td><button class="lay"> <span class="odd"> {{game?.runner_json[2]?.lay[0].price ?
+                                game?.runner_json[2]?.lay[0].price : '--' }}</span> </button></td>
+                                                    <td><button class="back"> <span class="odd"> {{game?.runner_json[1]?.back[0].price ?
+                                game?.runner_json[1]?.back[0].price : '--'}}</span> </button></td>
+                                                    <td><button class="lay"> <span class="odd"> {{game?.runner_json[1]?.lay[0].price ?
+                                game?.runner_json[1]?.lay[0].price : '--' }}</span> </button></td>
+                                                </ng-container>
+                                                <!-- <ng-container *ngIf="game?.runner_json.length === 3; else twomarket">
+                        <ng-container  *ngFor="let runner of game?.runner_json">
+                          <td><button class="back"> <span class="odd"> {{runner?.back[0].price}} </span> </button></td>
+                          <td><button class="lay"> <span class="odd"> {{runner?.lay[0].price}} </span> </button></td>
+                        </ng-container>
+                      </ng-container>
+
+                        <ng-template #twomarket>
+                          <ng-container  *ngFor="let runner of game?.runner_json;let i = index">
+                            <td ><button class="back"> <span class="odd"> {{runner?.back[0].price}} </span> </button></td>
+                            <td><button class="lay"> <span class="odd"> {{runner?.lay[0].price}} </span> </button></td>
+                           <ng-container *ngIf="i == 0">
+                            <td ><button class="back"> <span class="odd">--</span> </button></td>
+                            <td><button class="lay"> <span class="odd"> --</span> </button></td>
+                          </ng-container>
+                          </ng-container>
+                        </ng-template> -->
+                                        </ng-container>
+
+                                    </tbody>
+                                </table>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <ng-container *ngIf="sportId == '7' || sportId == '4339'">
+ 
+        <div class="horse-racing-section">
+            <div class="heading-part">
+               <h3 *ngIf="sportId == '7'">Horse Racing Shedule</h3>
+               <h3 *ngIf="sportId == '4339' ">Greyhound Racing</h3>
+
+               <div class="btn-part">
+                <a (click)="addActiveClass('today');onSelectDay(0)" [class.active]="selectedIndex1 == 'today'">Today</a>
+                <a (click)="addActiveClass('tomorrow');onSelectDay(1)" [class.active]="selectedIndex1 == 'tomorrow'">Tomorrow</a>
+                <a (click)="addActiveClass(dayafterTommorowName);onSelectDay(2)" [class.active]="selectedIndex1 == dayafterTommorowName">{{dayafterTommorowName}}</a>
+
+               </div> 
+            </div>
+            <div>
+                <ul class="racing-ul">
+                    <li *ngFor="let data of gameCountryList;let i= index">
+                        <a class="{{activeCountry ==i?'active':''}}" href="javascript:void(0);" (click)="getMatchVenueListByCountryCodeSportId(i,data)"><span>
+                            <flag-icon country="{{data.country.toLowerCase()}}" squared></flag-icon>  
+                            <!-- <img src="assets/images/united-states.png" alt="">
+                            <img src="assets/images/united-states.png" alt=""> -->
+                        </span><h5>{{data.country}}({{data.venue_count}})</h5></a>
+                    </li>
+                    <!-- <li>
+                        <a href="javascript:void(0);">AUS</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">AUS</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">AUS</a>
+                    </li>    -->
+                </ul>
+                 
+            </div>
+           <div class="table-main-bx table-responsive">
+               <table class="table" *ngIf="gameCountryMatchList?.length > 0">
+                   <tr *ngFor="let data of gameCountryMatchList">
+                       <td class="fs-sp-bx">{{data.match_name}}</td>
+                       <td *ngFor="let slot of data.markets">
+                           <button class="time-btn" (click)="openMarket(data,slot)">{{slot.market_start_time | date:'h:mm a'}}</button>
+                        </td>
+                       <!-- <td><button class="time-btn">7:18 PM</button></td>
+                       <td><button class="time-btn">7:18 PM</button></td>
+                       <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td> -->
+                   </tr>
+                   <!-- <tr>
+                    <td class="fs-sp-bx">2</td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                </tr>
+                <tr>
+                    <td class="fs-sp-bx">3</td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                </tr>
+                <tr>
+                    <td class="fs-sp-bx">4</td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                    <td><button class="time-btn">7:18 PM</button></td>
+                </tr> -->
+               </table>
+               <div *ngIf="gameCountryMatchList?.length == 0">
+                <div class="racing-no-data">No Data Found</div>
+
+               </div>
+           </div>
+
+             
+        </div>
+
+
+    </ng-container>
+
+</div>

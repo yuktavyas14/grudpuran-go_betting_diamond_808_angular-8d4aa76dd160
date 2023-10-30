@@ -1,0 +1,141 @@
+@media screen and (max-width: 1666px) {
+    /*.mid-panel {
+        max-height:660px !important;
+    }*/
+    .top_table_form.member_listing {
+        max-height:420px;
+        overflow-y: auto;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    /*.mid-panel {
+        max-height:500px !important;
+        padding-bottom: 130px;
+    }*/
+    .top_table_form.member_listing {
+        max-height:320px;
+        overflow-y: auto;
+    }
+}
+@media screen and (max-width: 1280px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 1280px;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+        
+
+    
+    }
+}
+@media screen and (max-width: 1024px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 1024px;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+
+    
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 753px;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+    }
+    .andar-bahar-table td.AndarCard span.Andar-bahar-section, .andar-bahar-table td.AndarCard span{
+        margin: 5px 0px 0px 0px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 422px;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+
+    
+    }
+}
+@media screen and (max-width: 540px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 536px;
+        overflow: hidden;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+    }
+}
+@media screen and (max-width: 414px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 400px;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+
+    
+    }
+}
+@media screen and (max-width: 411px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 397px;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+
+    
+    }
+    
+}
+@media screen and (max-width: 360px) {
+    .fancy-suspend {
+        width: 40% !important;
+
+    
+    }
+}
+@media screen and (max-width: 375px) {
+    .andar-bahar-table td.AndarCard {
+        max-width: 361px;
+    }
+    .fancy-suspend {
+        width: 40% !important;
+
+
+    
+    }
+    
+}
+@media (max-width: 320px){
+    .round span, .round span a {
+        font-size: 10px !important;
+    }
+.andar-bahar-table td.AndarCard {
+    border-bottom: 1px solid #000;
+    max-width: 310px !important;
+}
+.loginInner1 {
+    width: 290px !important;
+    margin: 30% auto 0 !important;
+}
+.fancy-suspend {
+    width: 40% !important;
+
+
+}
+
+}
+@media (max-width: 280px){
+.andar-bahar-table td.AndarCard {
+    max-width: 270px !important;
+}
+.fancy-suspend {
+    width: 40% !important;
+
+
+}
+}

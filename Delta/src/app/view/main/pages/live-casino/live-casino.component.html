@@ -1,0 +1,55 @@
+<div class="tab-content">
+    <div class="tab-pane active casino-tables">
+        <div class="container-fluid">
+            <div class="row row5">
+                <div class="col-12 mb-1">
+                    <h4 class="text-uppercase mt-3" style="font-size: 16px;font-weight: bold;">Live Casino</h4>
+                </div>
+            </div>
+
+            <div class="row row5 mt-2" *ngIf="!isRRR">
+
+
+                <div *ngFor="let games of casinoSportList" (click)="gotoCasinoByMatchId(games.match_id)" class="col-3 text-center">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon//liveCasino/{{games.match_id}}.jpg" class="img-fluid">
+                            <div class="casino-name">
+                                <span>{{games.match_name}}</span>
+                            </div>
+                            <div *ngIf="games.match_id =='-1025'" class="new-launch-casino new-launch-animated">New Launch</div>
+
+                        </a>
+                    </div>
+                </div>
+                </div>
+
+
+                <div *ngIf=" dreamCasinoProductList && isRRR">
+                  <div class="gamehall-wrap-simple1">
+
+                      <div class="row">
+                          <div class="col-sm-6 col-xs-12 my-4">
+
+                            <ng-container  *ngFor="let data of dreamCasinoProductList">
+
+                              <a *ngIf="data?.is_active == '1'" (click)="navigateTocategory(data?.provider_code)" class="my-4">
+                                  <div class="d-inline-block m-t-10 m-b-10">
+                                      <img src="assets/images/casino/{{data.provider_code.toLowerCase()}}.jpg" onError="this.src='assets/images/casino/livecasino.jpg'" class="img-fluid" />
+                                    <!-- <img src="assets/images/casino/{{data.name}}.png" class="img-fluid" /> -->
+                                    <div class="casinoicons-title">{{data?.provider_name}}</div>
+                                  </div>
+                                </a>
+                            </ng-container>
+
+
+
+                          </div>
+
+                      </div>
+                  </div>
+
+                </div>
+
+        </div>
+    </div>
+</div>

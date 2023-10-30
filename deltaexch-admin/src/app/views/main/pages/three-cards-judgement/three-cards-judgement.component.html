@@ -1,0 +1,389 @@
+<div class="col-md-12 main-container">
+  <style type="text/css">
+    .video-overlay {
+      right: 0;
+      left: auto;
+    }
+
+    #result-desc {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+  <div class="listing-grid hv-container">
+    <div class="table-top-buttons row">
+      <div class="col-md-6"> </div>
+      <div class="col-md-6 float-right text-right">
+        <form>
+          <ul class="d-inline-block">
+            <li class="form-group active-button m-l-20 d-inline-block"> <a href="javascript:void(0)" onclick=""
+                class="btn btn-back active" data-toggle="modal" data-target="#user-book">User Book</a> </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+    <div class="coupon-card row">
+      <div class="col-md-8 main-content">
+        <div class="coupon-card">
+          <div class="game-heading"> <span class="card-header-title">3 Cards Judgement</span>
+             <span class="float-right">
+              Round ID: <span id="round-id" >0</span> | Min: <span id="min-bet">100</span> | Max: <span
+                id="max-bet">200000</span> </span></div> </div>
+          <div style="position: relative;">
+            <iframe width="100%" height="400"
+              src="http://www.deltaexch.com/admin/mediaplayer/3cardj/cf6282c01825867bd6bb2f11a0f62fb069d78058"
+              style="border:0px"></iframe>
+            <div class="video-overlay" style="display: none;">
+              <div id="game-cards"></div>
+            </div>
+            <div id="result-desc"></div>
+            <div class="clock clock3digit flip-clock-wrapper">
+              <ul class="flip play">
+                <li class="flip-clock-before"><a href="#">
+                    <div class="up">
+                      <div class="shadow"></div>
+                      <div class="inn">9</div>
+                    </div>
+                    <div class="down">
+                      <div class="shadow"></div>
+                      <div class="inn">9</div>
+                    </div>
+                  </a></li>
+                <li class="flip-clock-active"><a href="#">
+                    <div class="up">
+                      <div class="shadow"></div>
+                      <div class="inn">0</div>
+                    </div>
+                    <div class="down">
+                      <div class="shadow"></div>
+                      <div class="inn">0</div>
+                    </div>
+                  </a></li>
+              </ul>
+              <ul class="flip play">
+                <li class="flip-clock-before"><a href="#">
+                    <div class="up">
+                      <div class="shadow"></div>
+                      <div class="inn">1</div>
+                    </div>
+                    <div class="down">
+                      <div class="shadow"></div>
+                      <div class="inn">1</div>
+                    </div>
+                  </a></li>
+                <li class="flip-clock-active"><a href="#">
+                    <div class="up">
+                      <div class="shadow"></div>
+                      <div class="inn">0</div>
+                    </div>
+                    <div class="down">
+                      <div class="shadow"></div>
+                      <div class="inn">0</div>
+                    </div>
+                  </a></li>
+              </ul>
+              <ul class="flip play">
+                <li class="flip-clock-before"><a href="#">
+                    <div class="up">
+                      <div class="shadow"></div>
+                      <div class="inn">1</div>
+                    </div>
+                    <div class="down">
+                      <div class="shadow"></div>
+                      <div class="inn">1</div>
+                    </div>
+                  </a></li>
+                <li class="flip-clock-active"><a href="#">
+                    <div class="up">
+                      <div class="shadow"></div>
+                      <div class="inn">0</div>
+                    </div>
+                    <div class="down">
+                      <div class="shadow"></div>
+                      <div class="inn">0</div>
+                    </div>
+                  </a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="fancy-marker-title">
+            <h4>Last Result <a href="#" class="text-right" style="font-size: 14px; float: right; color: #fff">View
+                All</a></h4>
+          </div>
+          <div class="m-b-10">
+            <p class="ball-by-ball row m-t-10"> </p>
+            <p class="text-right" id="last-result"><span class="ball-runs playera last-result"
+                data-mid="16.192812173640">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812173436">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812173243">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812172631">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812172428">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812172204">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812171957">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812171741">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812171525">R</span> <span class="ball-runs playera last-result"
+                data-mid="16.192812171325">R</span> </p>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 sidebar-right" id="sidebar-right">
+        <div class="card m-b-10 scorecard" style="margin-bottom: 0px;">
+          <div class="card m-b-10 my-bet">
+            <div class="card-header">
+              <ul class="nav nav-tabs d-inline-block" role="tablist ">
+                <li class="nav-item d-inline-block"> <a class="nav-link active " data-toggle="tab"
+                    href="#matched-bet">Matched <span id="matchedCount">(0)</span></a> </li>
+              </ul>
+              <a href="javascript:void(0)" class="btn btn-back float-right" onclick="" data-toggle="modal"
+                data-target="#view-more">View More</a>
+            </div>
+            <div class="card-body">
+              <div class="tab-content">
+                <div id="matched-bet" class="tab-pane active">
+                  <div class="table-responsive">
+                    <table id="matched" class="table coupon-table table-bordered table-stripted">
+                      <thead>
+                        <tr>
+                          <th>UserName</th>
+                          <th style="min-width: 140px">Nation</th>
+                          <th style="min-width: 50px">Rate</th>
+                          <th>Amount</th>
+                          <th>PlaceDate</th>
+                          <th>MatchDate</th>
+                          <th style="min-width:70px">Gametype</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade fancyBookModal" id="fancyBookModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Books</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="book-pop"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="userwise">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Active User</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="usertypewiseactive-container"></div>
+          </div>
+          <div class="modal-footer"> </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="user-book">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">User Book</h4>
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+          </div>
+          <div class="modal-body ">
+            <div class="userBookContainer">
+              <ul class="mtree transit bubba mtree-header">
+                <li class="mtree-node mtree-closed"> <a href="#">
+                    <table class="table m-b-0">
+                      <thead>
+                        <tr>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </a> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer"> </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="view-more">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">View More Bet</h4>
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <div class="viewMoreMatchedDataModal">
+              <ul class="nav nav-tabs d-inline-block" role="tablist ">
+                <li class="nav-item d-inline-block"> <a class="nav-link  active " data-toggle="tab" href="#matched-bet2"
+                    id="matchedDataLink">Matched Bets</a> </li>
+                <li class="nav-item d-inline-block"> <a class="nav-link " data-toggle="tab" href="#unmatched-bet2"
+                    id="unMatchedDataLink">Unmatched Bets</a> </li>
+                <li class="nav-item d-inline-block"> <a class="nav-link " data-toggle="tab" href="#deleted-bet2"
+                    id="deletedMatchedDataLink">Deleted Bets</a> </li>
+              </ul>
+              <div class="tab-content m-t-20">
+                <div id="matched-bet2" class="tab-pane  active ">
+                  <form method="POST" action="" accept-charset="UTF-8" id="viewMoreMatchForm">
+                    <input name="_token" type="hidden" value="">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group m-t-20">
+                          <label class="d-inline-block">Enter Code</label>
+                          <!-- <input type="text" name="userid" id="userid"  class="form-control d-inline-block"> -->
+                          <select name="list" id="userid"
+                            class="select-2-clientlist form-control select2-hidden-accessible" data-select2-id="userid"
+                            tabindex="-1" aria-hidden="true">
+                          </select>
+                          <span class="select2 select2-container select2-container--default" dir="ltr"
+                            data-select2-id="4" style="width: 200px;"><span class="selection"><span
+                                class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
+                                aria-expanded="false" tabindex="0" aria-labelledby="select2-userid-container"><span
+                                  class="select2-selection__rendered" id="select2-userid-container" role="textbox"
+                                  aria-readonly="true"><span class="select2-selection__placeholder"></span></span><span
+                                  class="select2-selection__arrow" role="presentation"><b
+                                    role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                              aria-hidden="true"></span></span> </div>
+                        <div class="form-group m-t-20">
+                          <label class="d-inline-block">IP Address</label>
+                          <input type="text" name="ipaddress" id="ipaddress" class="form-control d-inline-block">
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="form-group m-t-20">
+                          <label class="d-inline-block">Amount</label>
+                          <input type="text" name="amount1" id="amount1" class="form-control d-inline-block">
+                          <input type="text" name="amount2" id="amount2" class="form-control d-inline-block">
+                        </div>
+                        <div class="form-group m-t-20">
+                          <label class="d-inline-block">Type</label>
+                          <select name="bettype" class="form-control d-inline-block" id="bettype">
+                            <option value="">All</option>
+                            <option value="back">Back</option>
+                            <option value="lay">Lay</option>
+                          </select>
+                          <button class="btn btn-back">Search</button>
+                          <button type="button" class="btn btn-back viewAllMatched">View All</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="table-responsive" id="view-more-matched-tbl">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>UserName</th>
+                          <th>Nation</th>
+                          <th>Bet Type</th>
+                          <th>Amount</th>
+                          <th>User Rate</th>
+                          <th>Place Date</th>
+                          <th>Match Date</th>
+                          <th>IP</th>
+                          <th>Browser Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="10">No records found</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div id="unmatched-bet2" class="tab-pane  ">
+                  <div class="table-responsive">
+
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>UserName</th>
+                          <th>Nation</th>
+                          <th>Bet Type</th>
+                          <th>Amount</th>
+                          <th>User Rate</th>
+                          <th>Place Date</th>
+                          <th>IP</th>
+                          <th>Browser Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="10">No records found</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+                <div id="deleted-bet2" class="tab-pane  ">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>UserName</th>
+                          <th>Nation</th>
+                          <th>Bet Type</th>
+                          <th>Amount</th>
+                          <th>User Rate</th>
+                          <th>Place Date</th>
+                          <th>IP</th>
+                          <th>Browser Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="10">No records found</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer"> </div>
+        </div>
+      </div>
+    </div>
+    <div id="modalrulesteenpatti" class="modal fade teenpatti">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Rules</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <div class="modal-body"> <img src="images/rules.jpg" class="img-fluid"> </div>
+        </div>
+      </div>
+    </div>
+    <div id="modalpokerresult" class="modal fade show" tabindex="-1">
+      <div class="modal-dialog" style="min-width: 650px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">3Cards Judgement Result</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <div class="modal-body nopading" id="result-details" style="min-height: 300px"> </div>
+        </div>
+      </div>
+    </div>
+  </div>

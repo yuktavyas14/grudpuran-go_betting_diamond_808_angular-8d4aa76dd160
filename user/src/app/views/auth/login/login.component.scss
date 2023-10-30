@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+}
+body {font-family: 'Roboto', sans-serif; font-size: 14px;font-weight: 400;line-height: 28px;overflow-x: hidden;background-color: #fff;color: #2e2f35;}
+a { -webkit-transition: all 0.4s ease; -moz-transition: all 0.4s ease; -o-transition: all 0.4s ease; transition: all 0.4s ease; text-decoration:none;}
+a:focus, a:hover {text-decoration: none; -webkit-transition: all 0.4s ease; -moz-transition: all 0.4s ease;-o-transition: all 0.4s ease; transition: all 0.4s ease; text-decoration:none;}
+h1, h2, h3, h4, h5 {font-family: 'Josefin Sans', sans-serif; font-weight:600;}
+
+h2 {
+  font-size:52px;
+}
+h3 {
+  font-size: 34px;
+  color: #0839ee;
+}
+
+
+.welcome_section{   
+  background-repeat:no-repeat; background-size: cover; background-position:center;
+  width: 100%; padding:70px 0px 40px 0px;}
+.sp-img {
+    padding: 0px 44px;
+}
+.welcome_section .container{margin-left:auto; margin-right:auto;}
+.sports-item h4 {
+  color: #4b5372;
+  margin-top: 25px;
+  font-size: 28px;
+}
+.casino-section {margin-top:70px;}
+.casino-section .heading-title {position:relative;}
+.casino-section .heading-title::before {
+  position: absolute;
+  content: '';
+  background: rgb(235,235,235);
+  background: linear-gradient(90deg, rgba(235,235,235,1) 0%, rgba(114,114,114,1) 48%, rgba(235,235,235,1) 100%);
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 0;
+  top: 46%;
+  transform: translateY(-47%);
+}
+.casino-section .heading-title h2 {
+  background: #fff;
+  display: inline-block;
+  z-index: 2;
+  position: relative;
+  padding: 0px 18px;
+}
+.casion-itm {
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s;
+}
+.casion-itm h4 {
+  background: rgb(8 57 238 / 78%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 19px 7px;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+.casion-itm img:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+.casion-itm img {
+  transition: 0.5s;
+}
+
+  .signup-form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 6px 1px #dbdbdb;
+}
+.signup-form label {
+  margin-bottom: 3px;
+  font-size: 16px;
+  color: #898989;
+}
+
+.signup-form .form-control {
+  background-color: transparent;
+  font-size: 16px;
+  height: 46px;
+  border-radius: 5px;
+  color:#333;
+  padding: 15px;
+}
+.signup-form .form-control::placeholder {color:#333;}
+.signup-form .form-control:focus {border-color:#0839ee; box-shadow:none;}
+.signup-form .btn1 {padding: 3px 30px; height: 46px;}
+.signup-form .form-group {
+  margin-bottom: 17px;
+}
+
+@media only screen and (max-width:1140px){
+  .sp-img {
+          padding: 0px 20px;
+  }
+  .brands-logo ul li {
+      margin-right: 22px;
+      padding-bottom: 6px;
+  } 
+  .brands-logo ul li:last-child {margin:0px;}
+  .casion-itm h4 {
+      padding: 14px 7px;
+      font-size: 14px;
+  }
+  .brands-logo ul {
+      justify-content: inherit;
+      white-space: nowrap;
+      overflow-y: hidden;
+      overflow-x: scroll;
+  }
+  h2 {
+      font-size: 40px;
+  }
+  .sports-item h4 {
+      margin-top: 18px;
+      font-size: 24px;
+  }
+  
+  }
+  
+  @media only screen and (max-width:991px){
+      .main-navbar .navbar-brand img {
+          width: 200px;
+      }
+      .main-navbar .form-control {
+          width: 145px;
+      }
+      .btn1 {
+          font-size: 16px;
+          padding: 3px 15px;
+      }
+      .sp-img {
+          padding: 0px 0;
+      }
+      .casion-itm {margin-bottom:15px;}
+      .welcome_section {
+          padding: 45px 0px 40px 0px;
+          background: #fff;
+      }
+  }
+  
+  @media only screen and (max-width:767px){
+      
+      .main-navbar .navbar-brand img {
+          width: 166px;
+      }
+      header.main-navbar {
+          padding: 0px;
+      }
+      .btn1 {
+          font-size: 14px;
+          padding: 2px 14px;
+          height: 32px;
+      }
+      h3 {
+          font-size: 18px;
+      }
+      h2 {
+          font-size: 24px;
+      }
+      .sp-img {
+          padding: 0px 44px;
+      }
+      .sports-item {
+          margin-bottom: 10px;
+      }
+      footer {
+          padding: 30px 0px;
+      }
+      .casino-section {
+          margin-top: 35px;
+      }
+      .signup-form .form-control {
+          height: 40px;
+      }
+    .signup-form .btn1 {
+          height: 40px;
+      }
+      .signup-form .form-group {
+          margin-bottom: 12px;
+      }
+  }
+      
+  @media only screen and (max-width:340px){
+      .btn1.signup {
+          margin-left: 4px;
+      }
+      .btn1 {
+          padding: 0px 9px;
+      }
+      .main-navbar .navbar-brand img {
+          width: 140px;
+      }
+      footer h5 {
+          font-size: 16px;
+      }
+      footer h5 a img {
+          width: 22px;
+      }
+  
+  }
+  @media only screen and (max-width:1140px){
+    .sp-img {
+            padding: 0px 20px;
+    }
+    .brands-logo ul li {
+        margin-right: 22px;
+        padding-bottom: 6px;
+    } 
+    .brands-logo ul li:last-child {margin:0px;}
+    .casion-itm h4 {
+        padding: 14px 7px;
+        font-size: 14px;
+    }
+    .brands-logo ul {
+        justify-content: inherit;
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    h2 {
+        font-size: 40px;
+    }
+    .sports-item h4 {
+        margin-top: 18px;
+        font-size: 24px;
+    }
+    
+    }
+    
+    @media only screen and (max-width:991px){
+        .main-navbar .navbar-brand img {
+            width: 200px;
+        }
+        .main-navbar .form-control {
+            width: 145px;
+        }
+        .btn1 {
+            font-size: 16px;
+            padding: 3px 15px;
+        }
+        .sp-img {
+            padding: 0px 0;
+        }
+        .casion-itm {margin-bottom:15px;}
+        .welcome_section {
+            padding: 45px 0px 40px 0px;
+            background: #fff;
+        }
+    }
+    
+    @media only screen and (max-width:767px){
+        
+        .main-navbar .navbar-brand img {
+            width: 166px;
+        }
+        header.main-navbar {
+            padding: 0px;
+        }
+        .btn1 {
+            font-size: 14px;
+            padding: 2px 14px;
+            height: 32px;
+        }
+        h3 {
+            font-size: 18px;
+        }
+        h2 {
+            font-size: 24px;
+        }
+        .sp-img {
+            padding: 0px 44px;
+        }
+        .sports-item {
+            margin-bottom: 10px;
+        }
+        footer {
+            padding: 30px 0px;
+        }
+        .casino-section {
+            margin-top: 35px;
+        }
+        .signup-form .form-control {
+            height: 40px;
+        }
+      .signup-form .btn1 {
+            height: 40px;
+        }
+        .signup-form .form-group {
+            margin-bottom: 12px;
+        }
+    }
+        
+    @media only screen and (max-width:340px){
+        .btn1.signup {
+            margin-left: 4px;
+        }
+        .btn1 {
+            padding: 0px 9px;
+        }
+        .main-navbar .navbar-brand img {
+            width: 140px;
+        }
+        footer h5 {
+            font-size: 16px;
+        }
+        footer h5 a img {
+            width: 22px;
+        }
+    
+    }

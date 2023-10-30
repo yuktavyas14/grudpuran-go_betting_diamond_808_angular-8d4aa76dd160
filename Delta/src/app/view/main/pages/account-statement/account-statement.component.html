@@ -1,0 +1,570 @@
+<!-- Main Content -->
+
+<div class="main-content">
+  <!-- Tab-content -->
+
+  <div class="report-container">
+    <!---->
+    <div class="card">
+      <div class="card-header page-header-sab">
+        <h4 class="mb-0">Account Statement</h4>
+      </div>
+      <div class="card-body container-fluid container-fluid-5">
+        <form
+          class="navbar-form clearfix"
+          [formGroup]="AccountStatementSearchForm"
+          id="frm_lgn"
+          method="POST"
+          (ngSubmit)="getAccountStatment(AccountStatementSearchForm.value)"
+          autocomplete
+          novalidate
+        >
+          <div class="row row5 mt-2">
+            <div class="col-6 col-md-4">
+              <!-- <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group"> -->
+
+              <div class="form-group">
+                <div class="mx-datepicker">
+                  <div class="mx-input-wrapper">
+                    <input
+                      formControlName="from_date"
+                      [minDate]="minDate"
+                      [maxDate]="maxDate"
+                      name="date"
+                      type="text"
+                      autocomplete="off"
+                      placeholder="Select Date"
+                      class="form-control"
+                      [bsConfig]="{
+                        adaptivePosition: true,
+                        isAnimated: true,
+                        containerClass: 'theme-blue',
+                        dateInputFormat: 'YYYY-MM-DD'
+                      }"
+                      bsDatepicker
+                    />
+                    <!-- </div> -->
+                    <i class="fas fa-calendar-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="form-group">
+                <div class="mx-datepicker">
+                  <div class="mx-input-wrapper">
+                    <input
+                      formControlName="to_date"
+                      [minDate]="minDateTo"
+                      [maxDate]="maxDateTo"
+                      name="date"
+                      type="text"
+                      autocomplete="off"
+                      placeholder="Select Date"
+                      class="form-control mx-input"
+                      [bsConfig]="{
+                        adaptivePosition: true,
+                        isAnimated: true,
+                        dateInputFormat: 'YYYY-MM-DD',
+                        containerClass: 'theme-blue'
+                      }"
+                      bsDatepicker
+                    />
+                    <i class="fas fa-calendar-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row5">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <select
+                  name="reportType"
+                  class="custom-select"
+                  formControlName="account_type"
+                >
+                  <option value="All">All</option>
+                  <option value="BR">Deposit/Withdraw Report</option>
+                  <option value="GR">Game Report</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-primary btn-block btn-sm" type="submit">
+                Submit
+              </button>
+            </div>
+          </div>
+          <div class="row my-2 account-stmt-pageSearch">
+            <div class="col-3 pr-0">
+              <div class="form-group">
+                <mat-form-field appearance="fill">
+                  <mat-label>Show</mat-label>
+                  <mat-select (selectionChange)="onlimitChange($event)">
+                    <mat-option value="10">10</mat-option>
+                    <mat-option value="20">20</mat-option>
+                    <mat-option value="30">30</mat-option>
+                    <mat-option value="50">50</mat-option>
+                    <mat-option value="100">100</mat-option>
+                    <mat-option value="200">200</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="entries">entries</span>
+              </div>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-6">
+              <div class="form-group">
+                <mat-form-field appearance="fill">
+                  <mat-label>Search:</mat-label>
+                  <input
+                    matInput
+                    placeholder="Type of Search"
+                    #myInput
+                    class="Type to Search"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row5 mt-2">
+            <div class="col-12">
+              <div
+                class="table-responsive table-responsive-sm table-responsive-md table-responsive-lg"
+              >
+                <table
+                  role="table"
+                  aria-busy="false"
+                  aria-colcount="6"
+                  class="table b-table table-striped table-pad table-bordered"
+                  id=""
+                >
+                  <thead role="rowgroup" class="">
+                    <tr role="row" class="">
+                      <th
+                        role="columnheader"
+                        scope="col"
+                        aria-colindex="1"
+                        class="text-center"
+                      >
+                        Date
+                      </th>
+                      <th
+                        role="columnheader"
+                        scope="col"
+                        aria-colindex="2"
+                        class="text-right"
+                      >
+                        Sr no
+                      </th>
+                      <th
+                        role="columnheader"
+                        scope="col"
+                        aria-colindex="3"
+                        class="text-right"
+                      >
+                        Credit
+                      </th>
+                      <th
+                        role="columnheader"
+                        scope="col"
+                        aria-colindex="4"
+                        class="text-right"
+                      >
+                        Debit
+                      </th>
+                      <th
+                        role="columnheader"
+                        scope="col"
+                        aria-colindex="5"
+                        class="text-right"
+                      >
+                        Balance
+                      </th>
+                      <th
+                        role="columnheader"
+                        scope="col"
+                        aria-colindex="6"
+                        class="text-center"
+                      >
+                        Remark
+                      </th>
+                    </tr>
+                  </thead>
+                  <!-- <tbody role="rowgroup">
+                  </tbody> -->
+                  <tbody>
+                    <ng-container
+                      *ngIf="
+                        accountReportList != null &&
+                          accountReportList.length != 0;
+                        else NoData
+                      "
+                    >
+                      <tr>
+                        <td style="text-align: left !important">
+                          {{
+                            openingList?.date | formatDate: "YYYY-MM-DD HH:mm"
+                          }}
+                        </td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ openingList?.balance }}</td>
+                        <td>{{ openingList?.description }}</td>
+                      </tr>
+                      <ng-container
+                        *ngFor="
+                          let item of accountReportList | paginate: config;
+                          trackBy: trackByFn;
+                          let i = index
+                        "
+                      >
+                        <tr class="odd">
+                          <td style="text-align: left !important">
+                            {{ item?.date | formatDate: "YYYY-MM-DD HH:mm" }}
+                          </td>
+                          <td>{{ i + 2 }}</td>
+
+                          <td>
+                            <a
+                              href="javascript:void(0)"
+                              [ngClass]="{
+                                'text-success': item?.credit_debit > 0
+                              }"
+                              data-toggle="modal"
+                              data-target="#view-more"
+                              class="open-clickmodal"
+                              (click)="
+                                getBetsByMatchId(
+                                  item?.credit_debit,
+                                  item?.match_id,
+                                  item?.market_id,
+                                  'M'
+                                )
+                              "
+                            >
+                              {{
+                                item?.credit_debit > 0 ? item?.credit_debit : 0
+                              }}</a
+                            >
+                          </td>
+                          <td>
+                            <a
+                              [ngClass]="{
+                                'text-danger': item?.credit_debit < 0
+                              }"
+                              href="javascript:void(0)"
+                              data-toggle="modal"
+                              data-target="#view-more"
+                              class="open-clickmodal"
+                              (click)="
+                                getBetsByMatchId(
+                                  item?.credit_debit,
+                                  item?.match_id,
+                                  item?.market_id,
+                                  'M'
+                                )
+                              "
+                            >
+                              {{
+                                item?.credit_debit < 0 ? item?.credit_debit : 0
+                              }}</a
+                            >
+                          </td>
+                          <td>
+                            <span
+                              [ngClass]="{
+                                'text-danger': item?.balance < 0,
+                                'text-success': item?.balance > 0
+                              }"
+                            >
+                              {{ item?.balance ? item?.balance : "0" }}
+                            </span>
+                          </td>
+                          <td>
+                            <a
+                              href="javascript:void(0)"
+                              data-toggle="modal"
+                              data-target="#view-more"
+                              class="open-clickmodal"
+                              (click)="
+                                getBetsByMatchId(
+                                  1,
+                                  item?.match_id,
+                                  item?.market_id,
+                                  'M'
+                                )
+                              "
+                            >
+                              {{
+                                item?.description ? item?.description : "N/A"
+                              }}</a
+                            >
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                    <!-- <div class="row" *ngIf="accountReportList != null">
+                      <div class="col-sm-12">
+            
+                        <ng-container *ngIf="config.totalItems>this.config.itemsPerPage">
+                          <pagination-controls  (pageChange)="pageChange($event)"
+                                                class="my-pagination">
+                          </pagination-controls>
+                        </ng-container>
+            
+                      </div>
+            
+                    </div> -->
+
+                    <ng-template #NoData>
+                      <tr>
+                        <td valign="top" colspan="10" class="dataTables_empty">
+                          No data available in table
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                  
+                  <ng-container *ngIf="totalCount > 50">
+                    <div class="col-sm-12">
+                      <pagination-controls
+                        directionLinks:true
+                        showFirstLastButtons:true
+                        (pageChange)="pageChange($event)"
+                        class="my-pagination"
+                      >
+                      </pagination-controls>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="view-more">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">
+          Client Ledger (Total Win Loss : {{ totalSum }}) (Total Count
+          {{ userListData?.length }}) (Total Soda {{ userListData?.length }} )
+        </h4>
+        <button type="button" class="close" data-dismiss="modal">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="viewMoreMatchedDataModal">
+          <ul class="nav nav-tabs d-inline-block" role="tablist ">
+            <li class="nav-item d-inline-block">
+              <a
+                class="nav-link active"
+                data-toggle="tab"
+                href="#matched-bet2"
+                (click)="getBetsByMatchId(1, match_id, market_id, 'M')"
+                id="matchedDataLink"
+                >Matched
+              </a>
+            </li>
+            <li class="nav-item d-inline-block">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                href="#unmatched-bet2"
+                id="unMatchedDataLink"
+                (click)="getBetsByMatchId(1, match_id, market_id, 'D')"
+                >Deleted
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content m-t-20">
+            <div id="matched-bet2" class="tab-pane active">
+              <div class="table-responsive" id="view-more-matched-tbl">
+                <table class="table table-bordered table-pad">
+                  <thead></thead>
+                  <tbody>
+                    <ng-container
+                      *ngFor="let bet of userListData; let i = index"
+                    >
+                      <tr
+                        [ngClass]="
+                          bet?.is_back === '1' ? 'back-color ' : 'lay-color'
+                        "
+                      >
+                        <td>
+                          <div>
+                            <p class="text-matchName">{{ bet?.match_name }}</p>
+                            <p><b>Nation:</b> {{ bet?.selection_name }}</p>
+                            <p><b>Placed Date:</b> {{ bet?.placed }}</p>
+                            <p>
+                              <b>Matched Date:</b> {{ bet?.bet_matched_at }}
+                            </p>
+                          </div>
+                        </td>
+
+                        <!-- <td>{{bet?.is_back == 1 ? 'Back' : 'Lay'}}</td> -->
+                        <td style="width: 100px">
+                          <b> User Rate</b> <br />
+                          {{ bet?.odds }}
+                        </td>
+                        <td>
+                          <b>Amount</b> <br />
+                          {{ bet?.stack }}
+                        </td>
+                        <td>
+                          <b>P/L</b> <br />
+                          <span
+                            [ngClass]="
+                              checkNumberPositvie(bet?.profit_loss)
+                                ? 'text-success'
+                                : 'text-danger'
+                            "
+                          >
+                            {{ bet?.profit_loss }}</span
+                          >
+                        </td>
+
+                        <td>
+                          <b>IP</b> <br />
+                          {{ bet?.ip_address }}
+                        </td>
+                        <td>
+                          <b>Browser Details</b> <br />
+                          {{ bet?.device_info }}
+                        </td>
+                      </tr></ng-container
+                    >
+
+                    <tr *ngIf="!userListData">
+                      <td colspan="10">No records found</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div id="unmatched-bet2" class="tab-pane">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <tbody>
+                    <ng-container
+                      *ngFor="let bet of userListData; let i = index"
+                    >
+                      <tr
+                        [ngClass]="
+                          bet?.is_back === '1' ? 'back-color ' : 'lay-color'
+                        "
+                      >
+                        <td>
+                          <div>
+                            <p class="text-matchName">{{ bet?.match_name }}</p>
+                            <p><b>Nation:</b> {{ bet?.selection_name }}</p>
+                            <p><b>Placed Date:</b> {{ bet?.placed }}</p>
+                            <p>
+                              <b>Matched Date:</b> {{ bet?.bet_matched_at }}
+                            </p>
+                          </div>
+                        </td>
+                        <td>
+                          <b> Uplevel</b> <br />
+                          {{ bet?.parent_user_name }}
+                        </td>
+
+                        <td style="width: 100px">
+                          <b> User Rate</b> <br />
+                          {{ bet?.odds }}
+                        </td>
+                        <td>
+                          <b>Amount</b> <br />
+                          {{ bet?.stack }}
+                        </td>
+                        <td>
+                          <b>P/L</b> <br />
+                          <span
+                            [ngClass]="
+                              checkNumberPositvie(bet?.profit_loss)
+                                ? 'text-success'
+                                : 'text-danger'
+                            "
+                          >
+                            {{ bet?.profit_loss }}</span
+                          >
+                        </td>
+
+                        <td>
+                          <b>IP</b> <br />
+                          {{ bet?.ip_address }}
+                        </td>
+                        <td>
+                          <b>Browser Details</b> <br />
+                          {{ bet?.device_info }}
+                        </td>
+                      </tr>
+                    </ng-container>
+                    <tr *ngIf="!userListData">
+                      <td colspan="10">No records found</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div id="deleted-bet2" class="tab-pane">
+              <div class="table-responsive">
+                <table class="table table-bordered table-padd">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>UserName</th>
+                      <th>Nation</th>
+                      <th>Bet Type</th>
+                      <th>Amount</th>
+                      <th>User Rate</th>
+                      <th>Place Date</th>
+                      <th>Match Date</th>
+                      <th>IP</th>
+                      <th>Browser Details</th>
+                      <!-- <th *ngIf="useradmininfo?.user_type_id == '1'">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <ng-container *ngFor = "let bet of betListHistory;let i = index">
+                          <tr [ngClass]="bet?.is_back === '1' ?  'back-color ':'lay-color'">
+                            <td>{{i + 1}}</td>
+                            <td>{{bet?.user_name}}</td>
+                            <td>{{bet?.selection_name}}</td>
+                            <td>{{bet?.is_back == 1 ? 'Back' : 'Lay'}}</td>
+                            <td>{{bet?.stack}}</td>
+                            <td>{{bet?.odds}}</td>
+                            <td>{{bet?.placed}}</td>
+                            <td>{{bet?.bet_matched_at}}</td>
+                            <td>{{bet?.ip_address}}</td>
+                            <td>{{bet?.device_info  }}</td>
+                            <td *ngIf="useradmininfo?.user_type_id == '1'"><button (click)="confirmBox(bet?.bet_id , bet?.market_id, bet?.bet_type, bet?.delete_status)">Delete</button></td>
+  
+                          </tr>
+                        </ng-container>
+                        <tr *ngIf="!betListHistory">
+                          <td colspan="10">No records found</td>
+                        </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

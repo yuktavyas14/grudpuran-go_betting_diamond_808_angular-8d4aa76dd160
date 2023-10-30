@@ -1,0 +1,252 @@
+.table-bordered td, .table-bordered th {
+    border: 1px solid #dee2e6;
+    font-size: medium;
+  }
+  
+  .table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  .text-left {
+    text-align: left!important;
+  }
+  
+  .main-content .table th, .main-content .table td {
+    padding: 5px 3px !important;
+}
+  
+  .modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+  }
+  
+  
+  .result-image img, .player-type img, .sixplayer-image img, .andar-bahar-image {
+    width: 50px;
+  }
+  
+  
+  
+  .modal-dialog {
+    margin: 1% auto;
+  }
+  
+  
+  .modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+  }
+  
+  .modal-lg {
+    max-width: 800px;
+  }
+  
+  .modal-header {
+    padding: 10px;
+    background: #0088cc;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+  }
+  
+  // .DT-One-Day tr.matchbaklay_tr.FullMarketDiv td table td {  border-top: 0; }
+  
+  .winner-icon {
+    position: absolute;
+    right: 0;
+    bottom: 15%;
+  }
+  
+  .winner-icon i {
+    font-size: 26px;
+    box-shadow: 0 0 0 var(--secondary-bg);
+    -webkit-animation: winnerbox 2s infinite;
+    animation: winnerbox 1.5s infinite;
+    border-radius: 50%;
+    color: #169733;
+  }
+  
+  @-webkit-keyframes winnerbox {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(29, 127, 30, .6)
+    }
+  
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(29, 127, 30, 0)
+    }
+  
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(29, 127, 30, 0)
+    }
+  }
+  /* -----------------modal classes------ */
+
+.winner-icon i {
+  font-size: 26px;
+  box-shadow: 0 0 0 var(--secondary-bg);
+  -webkit-animation: winnerbox 2s infinite;
+  animation: winnerbox 1.5s infinite;
+  border-radius: 50%;
+  color: #169733;
+}
+.scrool-game{
+  overflow: scroll;
+  height: 90vh;
+  padding-bottom: 100px;
+}
+.winner-icon {
+  position: absolute;
+  right: 0;
+  bottom: 15%;
+}
+
+.modal-dialog {
+  margin: 1% auto;
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  outline: 0;
+}
+
+.modal-lg {
+  max-width: 96%;
+}
+
+.modal-open .modal {
+  padding-right: 0 !important;
+}
+
+.modal-header {
+  padding: 10px;
+  background: #0088cc;
+  color: #fff;
+  border-radius: 0;
+  border: 0;
+}
+
+.img-card-result {
+  width: 50px !important;
+  border-radius: 3px;
+  padding: 2px;
+  border: solid 2px #fbff00;
+  margin: 5px;
+}
+
+.winner-text {
+  font-size: 16px;
+  color: #000;
+}
+
+.intsta-worli-card-value {
+  background-color: #28a745;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 3px;
+}
+
+.card-title {
+  color: #000 !important;
+}
+
+.total-secvalue-top {
+  line-height: 30px !important;
+}
+
+.total-secvalue {
+  display: block;
+  font-size: 11px;
+  line-height: 20px;
+  font-weight: 300 !important;
+}
+
+
+.andar-bahar2-card {
+width:150px;
+display:flex;
+overflow:hidden;
+overflow-x:scroll;
+}
+.andar-bahar2-card span{
+margin-right:2px;
+}
+.scroll-modal-content{
+  overflow-y: scroll !important;
+  height: 80vh !important;
+  padding-bottom: 50px !important;
+}
+// .main-ab-scroll {
+//     display: flex;
+//     width: 220PX;
+//     overflow-x: auto;
+// }
+
+.card-inner div img.superover {
+  width: 28px !important;
+}
+.card-inner span img {
+  width: 40px;
+  display: inline-block;
+}
+
+.card-inner div img {
+  width: 40px;
+}
+.andar-bahar-scroll {
+  display: flex;
+  width: 300px;
+  overflow-x: auto;
+}
+.mat-h3, .mat-subheading-2, .mat-typography h3{ margin-bottom: 0;}
+.patern-name .card-icon span{
+  font-size: 11px !important;
+}
+.patern-name .card-icon span{
+  font-size: 12px !important;
+}
+.patern-name span.card-icon img{
+  width: 13px !important;
+}
+.coupon-table tr.bet-info1 td:first-child {
+  padding-left: 10px !important;
+  vertical-align: middle;
+  padding-right: 10px !important;
+  text-align: left !important;
+}
+.min-max-th{
+  padding: 7px 1px !important;
+}
+.min-max-th span{
+  font-size: 10px !important;
+}
+ 
+.open-3pattin-lock{
+  position: absolute;
+  top: 14px;
+  left: 46%;
+}
+ 

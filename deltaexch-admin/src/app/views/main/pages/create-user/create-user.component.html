@@ -1,0 +1,260 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+        <form method="post" action="" [formGroup]="creatUserForm" class="ajaxFormSubmit">
+            <div class="detail-row">
+                <h2>Add Account</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="heading-text">Personal Details</h3>
+                        <div class="m-t-20">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="text-black">Client Name:</label>
+                                        <input id="" formControlName="client_name" placeholder="Client Name" class="form-control" name="" type="text" value="" (focusout)="checkUserExist()">
+                                     
+                                        <p class="error-text" *ngIf="creatUserForm.get('client_name').hasError('required') && creatUserForm.get('client_name').touched">Name must be required</p>
+
+                                          <p style="margin: 0px;" class="error-text" *ngIf="creatUserForm.controls['client_name'].errors?.pattern">
+                                            minimum(4) four & maximum twenty(20) characters required , Space and special characters are not allowed
+                                           </p>
+
+                                        <span *ngIf="flagExits" class="error-text">Usermane already taken</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="text-black">User Password:</label>
+                                        <input id="" formControlName="password" placeholder="Password" class="form-control" name="" type="password" value="">
+                                        <p class="error-text" *ngIf="!creatUserForm.get('password').hasError('required') && creatUserForm.controls.password.touched && creatUserForm.controls.password.errors">
+                        Password Minimum eight characters, at least one letter and one number !
+                      </p>
+                                        <p class="error-text" *ngIf="creatUserForm.get('password').hasError('required') && creatUserForm.get('password').touched">Password must be required</p>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="text-black">Retype Password:</label>
+                                        <input id="" formControlName="confirm_pass" placeholder="Re-type Password" class="form-control" name="" type="password" value="">
+                                        <p class="error-text" *ngIf="creatUserForm.get('confirm_pass').hasError('required') && creatUserForm.get('confirm_pass').touched">Password must be required</p>
+                                        <p class="error-text" *ngIf="creatUserForm.get(['password']).value != creatUserForm.get(['confirm_pass']).value && creatUserForm.get('confirm_pass').touched">password does not match</p>
+                                    </div>
+                                    <!-- <div style='color:#ff7355' *ngIf="creatUserForm.get(['password']).value != creatUserForm.get(['confirm_pass']).value && creatUserForm.get(['confirm_pass']).value != null">
+                        Password does not match</div> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="text-black">Full Name:</label>
+                                        <input id="" placeholder="Full Name" formControlName="full_name" class="form-control" name="" type="text" value="">
+                                        <p class="error-text" *ngIf="!creatUserForm.get('full_name').hasError('required') && creatUserForm.controls.full_name.touched && creatUserForm.controls.full_name.errors">Name must be required</p>
+                                        <p class="error-text" *ngIf="creatUserForm.get('full_name').hasError('required') && creatUserForm.get('full_name').touched">Full Name must be required</p>
+                  
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="text-black">City:</label>
+                                        <input id="" placeholder="City" formControlName="city" class="form-control" name="" type="text" value="">
+                                        <p class="error-text" *ngIf="!creatUserForm.get('city').hasError('required') && creatUserForm.controls.city.touched && creatUserForm.controls.city.errors">Space Not Allowed</p>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fromdate" class="text-black">Phone:</label>
+                                        <input placeholder="Phone" formControlName="phone" id="" class="form-control" name="" type="number" value="">
+                                        <p class="error-text" *ngIf="!creatUserForm.get('phone').hasError('required') && creatUserForm.controls.phone.touched && creatUserForm.controls.phone.errors">Space Not Allowed</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3 class="heading-text">Account Details</h3>
+                        <div class="m-t-20">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="type" class="text-black">Account Type</label>
+                                        <select formControlName="account_type" name="type" id="accounttype" class="form-control" (change)="changeType()">
+                          <option value="" >-Select Your A/C Type-</option>
+                          <option *ngIf="useradmininfo?.user_type_id == 1" value="2">Super Admin </option>
+                          <option *ngIf="useradmininfo?.user_type_id == 2" value="3">Admin </option>
+                          <option *ngIf="useradmininfo?.user_type_id != 1 && useradmininfo?.user_type_id != 2 && useradmininfo?.user_type_id != 4 && useradmininfo?.user_type_id < 4"  value="4">SuperMaster</option>
+                          <option *ngIf="useradmininfo?.user_type_id != 1 && useradmininfo?.user_type_id != 2 && useradmininfo?.user_type_id != 5 && useradmininfo?.user_type_id < 5" value="5">Master</option>
+                          <option *ngIf="useradmininfo?.user_type_id != 1 && useradmininfo?.user_type_id != 2 && useradmininfo?.user_type_id != 6 && useradmininfo?.user_type_id < 6" value="6">Agent</option>
+                          <option *ngIf="useradmininfo?.user_type_id != 1 && useradmininfo?.user_type_id != 2 && useradmininfo?.user_type_id != 7 && useradmininfo?.user_type_id < 7" value="7">User</option>
+                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="text-black">Credit Reference:</label>
+                                        <input id="" formControlName="credit_reff" placeholder="Credit Reference" class="form-control" name="fromdate" type="number" value="">
+                                    </div>
+                                </div>
+                                <div *ngIf="creatUserForm.get(['account_type']).value == 7 || creatUserForm.get(['account_type']).value == ''" class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="text-black">Exposer Limit:</label>
+                                        <input id="" formControlName="exposer_limit" placeholder="Exposer Limit" class="form-control" name="fromdate" type="number" value="">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="table-box">
+                <h3 class="heading-text">Commission Setting</h3>
+                <div class="table-responsive data-table" id="tbldata">
+                    <div id="example_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+                            <thead>
+                                <tr role="row">
+                                    <th width="25%" class="sorting_asc" rowspan="1" colspan="1" aria-label="Date">&nbsp;</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Cricket">Cricket</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Football">Football</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Tennis">Tennis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr role="row" class="odd">
+                                    <td>Upline</td>
+                                    <td>{{userDetails?.cricket_commission}}</td>
+                                    <td> {{userDetails?.soccer_commission}} </td>
+                                    <td>{{userDetails?.tennis_commission}}</td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td>Downline</td>
+                                    <td><input formControlName="cricket_comm" type="number" id="crick_comm" class="form-control" [readOnly]="creatUserForm.get(['account_type']).value == 7" (input)="onCricketComm($event.target.value)"></td>
+                                    <td><input formControlName="soccer_comm" type="number" id="soccer_comm" class="form-control" [readOnly]="creatUserForm.get(['account_type']).value == 7" (input)="onSoccerComm($event.target.value)"></td>
+                                    <td><input formControlName="tennis_comm" type="number" id="tennis_comm" class="form-control" [readOnly]="creatUserForm.get(['account_type']).value == 7" (input)="onTennisComm($event.target.value)"></td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td>Our</td>
+                                    <td>{{ourCommionCricket}}</td>
+                                    <td> {{ourCommionSoccer}} </td>
+                                    <td>{{ourCommionTannies}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-box">
+                <h3 class="heading-text">Partnership</h3>
+                <div class="table-responsive data-table" id="tbldata">
+                    <div id="example_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+                            <thead>
+                                <tr role="row">
+                                    <th width="25%" class="sorting_asc" rowspan="1" colspan="1" aria-label="Date">&nbsp;</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Cricket">Cricket</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Football">Football</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Tennis">Tennis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr role="row" class="odd">
+                                    <td>Upline</td>
+                                    <td> {{userDetails?.cricket_partnership}} </td>
+                                    <td> {{userDetails?.soccer_partnership}} </td>
+                                    <td> {{userDetails?.tennis_partnership}} </td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td>Downline</td>
+                                    <td><input type="number" formControlName="cricket_partnership" id="crick_part" class="form-control" [readOnly]="creatUserForm.get(['account_type']).value == 7" (input)="onCricketPartnership($event.target.value)"></td>
+                                    <td><input type="number" formControlName="soccer_partnership" id="soccer_part" class="form-control" [readOnly]="creatUserForm.get(['account_type']).value == 7" (input)="onSoccerPartnership($event.target.value)"></td>
+                                    <td><input type="number" formControlName="tennis_partnership" id="tennis_part" class="form-control" [readOnly]="creatUserForm.get(['account_type']).value == 7" (input)="onTennisPartnership($event.target.value)"></td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td>Our</td>
+                                    <td> {{ourPartnershipCricket}} </td>
+                                    <td> {{ourPartnershipSoccer}} </td>
+                                    <td> {{ourPartnershipTannies}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="table-box" *ngIf="creatUserForm.get(['account_type']).value == 7 || creatUserForm.get(['account_type']).value == ''">
+                <h3 class="heading-text">Min Max Bet</h3>
+                <div class="table-responsive data-table" id="tbldata">
+                    <div id="example_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+                            <thead>
+                                <tr role="row">
+                                    <th width="25%" class="sorting_asc" rowspan="1" colspan="1" aria-label="Date">&nbsp;</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Cricket">Cricket</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Football">Football</th>
+                                    <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Tennis">Tennis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr role="row" class="odd">
+                                    <td rowspan="2" valign="middle">Min</td>
+                                    <td>{{userDetails?.cricket_min_bet}}</td>
+                                    <td> {{userDetails?.soccer_min_bet}} </td>
+                                    <td>{{userDetails?.tennis_min_bet}}</td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td><input [value]="userDetails?.cricket_min_bet" type="number" id="" formControlName="cricket_min_bet" name="" class="table-input"></td>
+                                    <td> <input [value]="userDetails?.soccer_min_bet" type="number" id="" formControlName="soccer_min_bet" name="" class="table-input"> </td>
+                                    <td><input [value]="userDetails?.tennis_min_bet" type="number" id="" formControlName="tennis_min_bet" name="" class="table-input"></td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td rowspan="2" valign="middle">Max</td>
+                                    <td>{{userDetails?.cricket_max_bet}}</td>
+                                    <td> {{userDetails?.soccer_max_bet}} </td>
+                                    <td>{{userDetails?.tennis_max_bet}}</td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td><input [value]="userDetails?.cricket_max_bet" type="number" id="" formControlName="cricket_max_bet" name="" class="table-input"></td>
+                                    <td><input [value]="userDetails?.soccer_max_bet" type="number" id="" formControlName="soccer_max_bet" name="" class="table-input"></td>
+                                    <td><input [value]="userDetails?.tennis_max_bet" type="number" id="" formControlName="tennis_max_bet" name="" class="table-input"></td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td rowspan="2" valign="middle">Delay</td>
+                                    <td>{{userDetails?.cricket_delay}}</td>
+                                    <td>{{userDetails?.soccer_delay}}</td>
+                                    <td>{{userDetails?.tennis_delay}}</td>
+                                </tr>
+                                <tr role="row" class="even">
+                                    <td><input [value]="userDetails?.cricket_delay" type="number" id="" formControlName="cricket_delay" name="" class="table-input"></td>
+                                    <td><input [value]="userDetails?.soccer_delay" type="number" id="" formControlName="soccer_delay" name="" class="table-input"></td>
+                                    <td><input [value]="userDetails?.tennis_delay" type="number" id="" formControlName="tennis_delay" name="" class="table-input"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="example_filter" class="dataTables_filter">
+                <div class="form-group">
+                    <label for="fromdate" class="text-black">Transaction Password:</label>
+                    <input placeholder="Transaction Password" formControlName="trans_pass" id="" class="form-control" name="" type="password" value="">
+                </div>
+            </div>
+
+            <div id="example_filter" class="dataTables_filter">
+                <label>
+        <!-- <input type="search" class="form-control datatable-search" placeholder="" aria-controls="example"> -->
+        <button type="submit" class="btn btn-success" [disabled]="creatUserForm.invalid"  (click)="createUser()">Create User</button>
+      </label>
+            </div>
+        </form>
+    </div>
+</div>

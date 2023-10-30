@@ -1,0 +1,42 @@
+.example-tree-progress-bar {
+  margin-left: 30px;
+}
+
+b, strong {
+  /* font-weight: bolder; */
+  font-size: small;
+
+}
+.btco-hover-menu .collapse ul li {
+  position: relative;
+  margin-left: -5px;
+}
+#scroll1{
+  /* overflow: scroll;
+  position: fixed;
+  width: auto; */
+  /* overflow-x: scroll; */
+}
+#main {
+  /* width: 900px;
+
+  display: flex; */
+  /* flex-wrap: wrap; */
+}
+.search .fa-search-plus {
+  color: #000;
+}
+.sidebar-top-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom:10px;
+}
+.sidebar-top-title span.side-menu-button {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.sidebar-top-title h2 {margin-bottom:0px;}
+.sidebar-top-title i {position:relative; top: inherit; font-size:16px;
+}

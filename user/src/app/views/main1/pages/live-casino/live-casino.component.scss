@@ -1,0 +1,262 @@
+iframe {
+    height: 100vh;
+    width: 100%;
+}
+
+.supenova {
+    margin-top: 1px;
+}
+
+.featured-game1{
+    margin-top: 1.5rem!important;
+    margin-bottom :.5rem!important;
+    padding-right: 20px;
+      padding-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  
+  .col-12, .featured-game1 .col-6, .featured-game1 .col-md-3, .featured-game1 .col-sm-3 {
+    padding: 0 6px!important;
+  }
+  
+  .img-fluid, .img-thumbnail {
+    max-width: 100% !important;
+    height: auto;
+  }
+  .featured-game2{
+  max-width: 16.666667%
+  }
+  
+  .featured-game1 .img-pos {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .game-title-main {
+    text-align: center;
+    font-size: 14px;
+    color: #20194d;
+    padding: 8px 0;
+    font-weight: 700;
+  }
+  
+  
+  .featured-game1 img {
+    border-radius: 10px;
+    border: 3px solid#045662;
+    cursor: pointer;
+  }
+  
+  
+  
+  .englishcasino {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .gametopnav {
+    background-color: #5ecbdd;
+    // background-image: linear-gradient(#5ecbdd,#146578);
+    background-image: linear-gradient(to right, #9a346f, #833772, #6b3871, #54396c, #3f3764);
+  
+    width: 100%;
+    float: left;
+    border-radius: 0;
+    font-family: "Poppins",sans-serif;
+    margin-top: 0;
+  }
+  .gametopnav.englishcasino a:not(:first-child) {
+    display: inline-block;
+  }
+  .gametopnav a.active, .gametopnav a:hover {
+    background-color: #065f6e;
+    // background-image: linear-gradient(#087e91,#065f74);
+  
+   
+      background-image: linear-gradient(to right, #9a346f, #833772, #6b3871, #54396c, #3f3764);
+      
+  
+  }
+  .englishcasino .new-scrollmenu.ball-images-tab {
+    width: 40px;
+    height: 40px;
+  }
+  .englishcasino .new-scrollmenu {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .englishcasino a {
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    padding: 8px 15px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: tahomabd;
+    font-size: 14px;
+    position: relative;
+    float: none;
+  }
+  .gametopnav.englishcasino a:not(:first-child) {
+    display: inline-block;
+  }
+  .englishcasino a {
+    border-right: 1px solid #047e91;
+  }
+  .new-scrollmenu.ball-images-tab {
+    width: 20px;
+    height: 20px;
+  }
+  .drem-games {
+    padding-left: 10px;
+  }
+
+  .gamehall-wrap-simple {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 8px;
+}
+.gamehall-wrap-simple a {
+  position: relative;
+  grid-column: span 2;
+}
+.gamehall-wrap-simple dl, .gamehall-wrap-simple ol, .gamehall-wrap-simple ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.entrance-title dt {
+  flex: 1;
+  font-size: 14px;
+  line-height: 37px;
+  text-indent: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+.entrance-title dd {
+  width: 98px;
+  font-size: 14px;
+  line-height: 42px;
+  text-indent: 25px;
+}
+.entrance-title dd {
+  width: 80px;
+  line-height: 30px;
+  height: 100%;
+  background-image: url('data:image/svg+xml,<svg width="16" height="26" xmlns="http://www.w3.org/2000/svg"><path d="M11.853 0H16v26H0L11.853 0z" fill="rgb(255, 184, 12)" fill-rule="evenodd"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  text-indent: 15px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000 !important;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0;
+}
+
+.gamehall-wrap-simple p img {
+  width: auto;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2px;
+  margin-right: 5px;
+}
+.account-wrap .main-wallet .nums, .account-wrap .a-refresh, .badge-currency, .tag-live, .tag-live strong, .tv-control a, .bets .special_bet .fancy-info, .bets-HS .special_bet .fancy-info, .bets-GH .special_bet .fancy-info, .back-gradient dd, .lay-gradient dd, .age_box li .secondary, .age_box li .btn-send, .on_live .live_icon, .on_live .live_icon span, .on_live dd {
+  justify-content: center;
+  align-items: center;
+}
+.pop-warp .game-name p, .log-wrap .game-name p, .streaming-pop .game-name p, .menu-list a, .path-pop a, .short-amount, .upcome, .live-list a, .live-channel, .game-list-col dt, .game-list-col.predict p, .tab-HS a, .bets th, .bets-HS th, .bets-GH th, .bets th p, .bets-HS th p, .bets-GH th p, .horse-name li, .game-wrap h3 .multi_name, .quick_bet-wrap dt, .quick_bet-wrap .btn span, .quick_bet-wrap .btn-send span, .quick_bet-wrap .pages a span, .pages .quick_bet-wrap a span, .quick_bet-wrap .calendarTable_inputBox input span, .calendarTable_inputBox .quick_bet-wrap input span, .quick_bet-wrap .calendarTable_inputBox textarea span, .calendarTable_inputBox .quick_bet-wrap textarea span, .fancy-th-layout dt, .fancy-th-layout dd, .suggestion-wrap .no-matching, .suggestion-wrap p, .suggestion-wrap a, .filter-list .filter-content, .select-betting .selection, .on_live dd p, .entrance-title dt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.entrance-title {
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-image: linear-gradient(270deg, rgba(69,94,104,0) 4%, #000 97%);
+  border-bottom: 5px solid #FFB80C;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.entrance-title {
+  height: 42px;
+}
+.entrance-title dt {
+  line-height: 42px;
+  font-size: 18px;
+}
+.entrance-title dd {
+  width: 80px;
+  line-height: 30px;
+  height: 100%;
+  background-image: url('data:image/svg+xml,<svg width="16" height="26" xmlns="http://www.w3.org/2000/svg"><path d="M11.853 0H16v26H0L11.853 0z" fill="rgb(255, 184, 12)" fill-rule="evenodd"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  text-indent: 15px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000 !important;
+}
+.entrance-title dd {
+  width: 98px;
+  font-size: 14px;
+  line-height: 42px;
+  text-indent: 25px;
+}
+.entrance-title dd:after {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 64px;
+  height: 100%;
+  background-color: #FFB80C;
+  content: "";
+}
+.entrance-title dd:after {
+  width: 76px;
+}
+.entrance-title dt {
+  flex: 1;
+  font-size: 14px;
+  line-height: 37px;
+  text-indent: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+.gamehall-wrap-simple .entrance-half {
+  grid-column: span 1;
+}
+.gamehall-wrap-simple a:before {
+  content: '';
+  padding-top: 38.35616%;
+  float: left;
+}
+.gamehall-wrap-simple .entrance-half:before {
+  content: '';
+  padding-top: 0px;
+  float: left;
+}
+a.btn-appdl {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+.gamehall-wrap-simple a img {
+  width: 100%;
+}

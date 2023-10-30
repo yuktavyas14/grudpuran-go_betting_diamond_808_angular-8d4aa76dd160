@@ -1,0 +1,387 @@
+.scoreBord-part {
+    /* background-image:url('~src/assets/images/ground-bg.jpg'); */
+    background-image: url("~src/assets/images/ground-bg.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFF !important;
+    width: 100%;
+    margin: 0;
+}
+.livetv_main{
+    height: 100vh;
+    overflow: scroll;
+}
+.coupon-table button span.span1 {
+    font-size: 9px !important;
+}
+.scoreBord-part table {
+    margin-bottom: 0;
+}
+.odds_teamName{
+    font-size: 12px !important;
+}
+.scoreBord-part td.bdr-none {
+    border: none;
+}
+
+.scoreBord-part td {
+    vertical-align: middle;
+}
+
+ul.d-inline-block.All-Dea li {
+    margin-right: 6px;
+}
+
+ul.d-inline-block.All-Dea li:last-child {
+    margin-right: 0;
+}
+
+.scoreBord-part td {
+    color: #FFF;
+}
+
+.coupon-table button.btn {
+    background-color: #d00303;
+    color: #FFF;
+}
+
+.bookmaker-market .suspended:after {
+    width: 510px;
+    right: 0;
+    align-items: center;
+    display: flex;
+    display: -ms-flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+
+/* .scoreBord-p */
+
+ul.ball-part li {
+    display: inline-block;
+    background-color: #6a9a1f;
+    width: 25px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50px;
+    color: #FFF;
+}
+
+.scoreBord-part {
+    /* // background-image:url('./../assets/images/ground-bg.jpg'); */
+    background-image: url("~src/assets/images/ground-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFF;
+    /* // padding: 0 10px; */
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-right: 7px;
+    margin-left: 78;
+}
+
+.scoreBord-part table {
+    margin-bottom: 0;
+}
+
+.scoreBord-part td.bdr-none {
+    border: none;
+}
+
+.scoreBord-part td {
+    vertical-align: middle;
+}
+
+ul.ball-part {
+    margin: 0;
+    padding: 0;
+}
+
+ul.ball-part li {
+    display: inline-block;
+    background-color: #6a9a1f;
+    width: 25px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50px;
+    color: #FFF;
+    margin-left: 5px;
+}
+
+.example-tree-progress-bar {
+    margin-left: 30px;
+}
+
+td.team_name small {
+    display: block;
+    color: #000;
+    font-size: 12px;
+}
+
+td.team_name small strong {
+    color: #000;
+    display: inline-block;
+    text-align: left !important;
+    font-weight: 500;
+}
+
+.number10result {
+    margin: 10px 0px;
+}
+
+.number-system {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    background-color: #71bbf0;
+    border-right: solid 1px #fff;
+    border-bottom: solid 1px #fff;
+    padding: 20px 10px;
+}
+
+.number-top {
+    border: solid 1px #ddd;
+    padding: 10px;
+}
+
+.number-odd {
+    font-size: 40px;
+    display: block;
+    font-weight: 600;
+}
+
+.number-size {
+    font-size: 15px;
+    display: block;
+}
+
+.color-black {
+    color: #000;
+    cursor: pointer;
+}
+
+table.table.market-listing-table th,
+table.table.market-listing-table td {
+    font-size: 12px;
+    padding: 6px;
+    text-align: center;
+}
+
+.modal-dialog.card-32 {
+    max-width: 950px !important;
+}
+
+.text-info-point {
+    color: blue;
+    font-size: 24px !important;
+    font-weight: 600;
+}
+
+.winner-details-info {
+    border: solid 1px #ddd;
+    padding: 10px;
+    background-color: #ddd;
+}
+
+.dragon-section {
+    border-right: solid 2px #848181;
+}
+
+.dragon-text {
+    color: red;
+    font-size: 20px;
+}
+
+.tiger-text {
+    color: #4583a2;
+    font-size: 20px;
+}
+
+.odd-event-text {
+    font-size: 10px;
+}
+
+.min-max-class {
+    text-align: right;
+    margin: 10px 0px;
+}
+
+.min-value {
+    padding-right: 10px;
+    font-size: 17px;
+}
+
+.max-value {
+    padding-left: 10px;
+    font-size: 17px;
+    display: inline-block;
+}
+
+.card-inner.dragon img {
+    width: 30px !important;
+}
+
+.card-dragon-padding {
+    margin-right: 10px;
+}
+
+.card-dragon-padding .number-odd-worli {
+    font-size: 30px;
+    display: block;
+    font-weight: 600;
+}
+
+.number-10-disabled {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    color: #fff;
+    padding-top: 35px;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.number-system-worli {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    background-color: #71bbf0;
+    border-right: solid 1px #fff;
+    border-bottom: solid 1px #fff;
+    padding: 20px 10px;
+}
+
+.number-system-worli2 {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    background-color: #71bbf0;
+    border-right: solid 1px #fff;
+    border-bottom: solid 1px #fff;
+    padding: 20px 10px;
+}
+
+.card-show-casino-meter {
+    text-align: center;
+    padding: 10px;
+    display: block;
+    background-color: #ddd;
+    margin-bottom: 4px;
+}
+
+.card-icon-meter {
+    width: 50px;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.cards-tag {
+    font-size: 20px;
+}
+
+.cards-total-meter {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #0088cc;
+}
+
+
+/* -----------------modal classes------ */
+
+.winner-icon i {
+    font-size: 26px;
+    box-shadow: 0 0 0 var(--secondary-bg);
+    -webkit-animation: winnerbox 2s infinite;
+    animation: winnerbox 1.5s infinite;
+    border-radius: 50%;
+    color: #169733;
+}
+
+.winner-icon {
+    position: absolute;
+    right: 0;
+    bottom: 15%;
+}
+
+.modal-dialog {
+    margin: 1% auto;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}
+
+.modal-lg {
+    max-width: 96%;
+}
+.modal-open .modal {
+    padding-right: 0 !important;
+}
+
+.modal-header {
+    padding: 10px;
+    background: #0088cc;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+}
+
+.img-card-result {
+    width: 50px !important;
+    border-radius: 3px;
+    padding: 2px;
+    border: solid 2px #fbff00;
+    margin: 5px;
+}
+
+.winner-text {
+    font-size: 16px;
+    color: #000;
+}
+
+.intsta-worli-card-value {
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+/* .modal-content {
+    height: 100vh !important;
+    margin-bottom: 10% !important;
+} */
+.mtree-main{
+        overflow: scroll;
+        height: 90vh;
+}
+.ball-part .four {
+  background: #087f23;
+}
+
+.ball-part .six {
+  background: #883997;
+}
+
+.ball-part .wicket {
+  background: red;
+}

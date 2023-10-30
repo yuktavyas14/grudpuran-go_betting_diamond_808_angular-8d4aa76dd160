@@ -1,0 +1,135 @@
+ 
+.errorMessage{
+  // ::ng-deep {
+  // background-color : red !important;
+  color :red
+  // }
+}
+.featured-box-login {
+  background: #fff;
+}
+.featured-box-login {
+  background: #fff;
+}
+.featured-box-login {
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 4px;
+}
+.login-page .form-control{
+  display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control{
+    padding: .375rem .75rem 2px .75rem !important ;
+}
+ 
+.loginInner1 {
+	width: 21.5%;
+	margin: 10% auto;
+	display: table
+}
+.featured-box-login {
+	box-sizing: border-box;
+	padding: 20px;
+	border-radius: 4px
+}
+.featured-box-login h4 {
+	color: #08c;
+  display: none;
+}
+.text-center {
+	text-align: center!important
+}
+
+
+.login .form-group {
+	position: relative
+}
+
+.loginInner1 input.form-control {
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #1f7ea0;
+  background-color: #FFF !important;
+}
+.loginInner1 .form-group {
+  margin-bottom: 15px !important;
+}
+.loginInner1 .form-group.text-center.mb-0 {
+  margin-bottom: 0 !important;
+}
+ 
+.featured-box-login {
+	background: #fff
+}
+.login {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(#0088cc, #2c3e50);
+}
+
+.btn-submit
+{
+    background-color: #08c;
+    border-color: #08c;
+    color: #fff;
+}
+
+.login,.login .main
+{
+    // background-color: #6a9a1f;
+}
+.featured-box-login
+{
+    background: #fff;
+}
+
+@media only screen and (min-width:320px) and (max-width:767px) {
+  .loginInner1 {
+    width: 270px;
+    margin: 15% auto;
+    height: 84vh !important;
+  }
+  }
+  @media only screen and (min-width:768px) and (max-width:991px) {
+  .loginInner1 {
+    width: 300px;
+    margin: 15% auto
+  }
+}
+
+
+.container-fluid {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto
+}
+
+
+.alert {
+  position: relative;
+  padding: 5px 0 0;
+  margin-bottom: 0;
+  border: 1px solid transparent;
+  border-radius: 0;
+  display: block;
+}
+
+.recaptchaTerms {
+  font-size: 12px;
+  line-height: 16px;
+}

@@ -1,0 +1,26 @@
+.profit-loss-box-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 5px;;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px; */
+}
+.mt-1, .my-1 {
+  margin-top: .25rem!important;
+}
+.profit-loss-box {
+  padding: 3px;
+  color: #fff;
+  width: 9.55%;
+  margin-right: 0.5%;
+  margin-bottom: 0.5%;
+  float: left;
+  font-size: 12px;
+}
+
+.client-search {
+  height: 30px !important;
+}

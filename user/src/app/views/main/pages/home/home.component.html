@@ -1,0 +1,315 @@
+<div class="featured-box home-tabs">
+  <div class="" >
+    <div class="">
+      <ul class="nav nav-tabs m-b-20" role="tablist" id="home-events">
+        <ng-container *ngFor="let sport of sportList; let i = index">
+          <li *ngIf="sport?.sport_id > 0" class="nav-item">
+            <a
+              class="nav-link"
+              data-toggle="tab"
+              [class.active]="sport?.sport_id == '4'"
+              (click)="getMatchList(sport?.sport_id)"
+              data-id="i"
+              >{{ sport?.name }}</a
+            >
+          </li>
+        </ng-container>
+         </ul>
+      <div class="tab-content" *ngIf="sportId != '7' && sportId != '4339'">
+        <div id="cricket" class="tab-pane active">
+          <div class="coupon-card coupon-card-first">
+            <div class="card-content" id="home_match_data">
+              <ng-container *ngIf="gameList != null && gameList.length != 0">
+                <table class="table coupon-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 63%">Game</th>
+                      <th colspan="2">1</th>
+                      <th colspan="2">X</th>
+                      <th colspan="2">2</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let game of gameList">
+                      <tr>
+                        <td>
+                          <div class="game-name">
+                            <a
+                              class="text-dark"
+                              [routerLink]="[
+                                '/main/matchdetails',
+                                game.match_id,
+                                game?.market_id
+                              ]"
+                              [state]="{ id: 1 }"
+                              (click)="setSport(game?.sport_id)"
+                            >
+                              {{ game?.match_name }}/
+                              {{
+                                game?.match_date
+                                  | formatDate: "MMMM Do YYYY, h:mm a"
+                              }}
+                              (IST)
+                            </a>
+                          </div>
+                          <div class="game-icons">
+                            <span class="game-icon" *ngIf="game?.inplay"
+                              ><span class="active"></span
+                            ></span>
+                            <span class="game-icon"></span>
+
+                            <span class="game-icon" *ngIf="game?.is_fancy"
+                              ><img
+                                src="assets/images/ic_fancy.png"
+                                class="fancy-icon"
+                            /></span>
+                            <span
+                              class="game-icon"
+                              *ngIf="game?.is_bookmaker_market"
+                              ><img
+                                src="assets/images/ic_bm.png"
+                                class="bookmaker-icon"
+                            /></span>
+                            <span class="game-icon" *ngIf="game?.IsTv"
+                              ><i class="fa fa-tv"></i
+                            ></span>
+                            <span
+                              *ngIf="game.sport_id == '-17'"
+                              class="game-icon"
+                              ><img
+                                src="assets/images/game-icon.svg"
+                                class="ic-card"
+                            /></span>
+
+                            <!-- <span class="game-icon"><img src="assets/images/ic_vir.png" class="ic-card"></span> -->
+                          </div>
+                        </td>
+                        <ng-container
+                          *ngIf="
+                            game?.runner_json?.length === 3;
+                            else twomarket
+                          "
+                        >
+                          <ng-container
+                            *ngFor="let runner of game?.runner_json"
+                          >
+                            <td>
+                              <button class="back">
+                                <span class="odd">
+                                  {{ runner?.back[0].price }}
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button class="lay">
+                                <span class="odd">
+                                  {{ runner?.lay[0].price }}
+                                </span>
+                              </button>
+                            </td>
+                          </ng-container>
+                        </ng-container>
+
+                        <ng-template #twomarket>
+                          <ng-container
+                            *ngFor="
+                              let runner of game?.runner_json;
+                              let i = index
+                            "
+                          >
+                            <td>
+                              <button class="back">
+                                <span class="odd">
+                                  {{ runner?.back[0].price }}
+                                </span>
+                              </button>
+                            </td>
+                            <td>
+                              <button class="lay">
+                                <span class="odd">
+                                  {{ runner?.lay[0].price }}
+                                </span>
+                              </button>
+                            </td>
+                            <ng-container *ngIf="i == 0">
+                              <td>
+                                <button class="back">
+                                  <span class="odd">--</span>
+                                </button>
+                              </td>
+                              <td>
+                                <button class="lay">
+                                  <span class="odd"> --</span>
+                                </button>
+                              </td>
+                            </ng-container>
+                          </ng-container>
+                        </ng-template>
+
+                        <!-- <td><button class="back"> <span class="odd"> - </span> </button></td>
+                        <td><button class="lay"> <span class="odd"> - </span> </button></td>
+                        <td><button class="back"> <span class="odd"> - </span> </button></td>
+                        <td><button class="lay"> <span class="odd"> - </span> </button></td>
+                      </tr> -->
+                      </tr></ng-container
+                    >
+                  </tbody>
+                </table>
+              </ng-container>
+              <ng-container
+                *ngIf="!gameList || gameList?.length == 0 || gameList == null"
+              >
+                <!-- <td colspan="6"> -->
+                <div
+                  class="
+                    card card-body card-content
+                    text-center
+                    no-record-found
+                  "
+                >
+                  No records found!
+                </div>
+                <!-- </td> -->
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="sportId == '7' || sportId == '4339'">
+ 
+        <div class="horse-racing-section">
+            <div class="heading-part">
+               <h3 *ngIf="sportId == '7'">Horse Racing Shedule</h3>
+               <h3 *ngIf="sportId == '4339' ">Greyhound Racing</h3>
+    
+               <div class="btn-part">
+                <a (click)="addActiveClass('today');onSelectDay(0)" [class.active]="selectedIndex1 == 'today'">Today</a>
+                <a (click)="addActiveClass('tomorrow');onSelectDay(1)" [class.active]="selectedIndex1 == 'tomorrow'">Tomorrow</a>
+                <a (click)="addActiveClass(dayafterTommorowName);onSelectDay(2)" [class.active]="selectedIndex1 == dayafterTommorowName">{{dayafterTommorowName}}</a>
+    
+               </div> 
+            </div>
+            <div>
+                <ul class="racing-ul">
+                    <li *ngFor="let data of gameCountryList;let i= index">
+                        <a class="{{activeCountry ==i?'active':''}}" href="javascript:void(0);" (click)="getMatchVenueListByCountryCodeSportId(i,data)"><span>
+                            <flag-icon country="{{data.country.toLowerCase()}}" squared></flag-icon>  
+                          
+                        </span><h5>{{data.country}}({{data.venue_count}})</h5></a>
+                    </li>
+                 
+                </ul>
+                 
+            </div>
+           <div class="table-main-bx table-responsive">
+               <table class="table" *ngIf="gameCountryMatchList?.length > 0">
+                   <tr *ngFor="let data of gameCountryMatchList;let ind= index">
+                       <td class="fs-sp-bx">{{data.match_name}}</td>
+                       <td *ngFor="let slot of data.markets">
+                        <button class="time-btn" (click)="openMarket(data,slot)">{{slot.market_start_time | date:'h:mm a'}}</button>
+                     </td>
+                   </tr>
+                     </table>
+               <div *ngIf="gameCountryMatchList?.length == 0">
+                   <div class="racing-no-data">No Data Found</div>
+               </div>
+           </div>
+    
+             
+        </div>
+    
+    
+    </ng-container>
+    </div>
+    <div class="home-products-container my-5"  *ngIf="!isRRR">
+      <div class="row">
+   
+        <div class="col-12">
+          <a *ngFor="let games of casinoSportList" (click)="gotoCasinoByMatchId(games.match_id)">
+            <div
+              class="d-inline-block casino-group-1 m-t-10  m-r-20 casinoicons">
+              <img
+                src="assets/images/games-icon/liveCasino/{{games.match_id}}.jpg"
+                class="img-fluid"
+              />
+              <div class="casinoicons-title">{{games.match_name}}</div>
+              <div class="new-launch-casino-image" *ngIf="games.match_id =='-1025'">
+                  <img src="assets/images/newlaunch.png" alt="">
+              </div>
+
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row"   *ngIf="isRRR">
+      <ng-container  *ngFor="let data of dreamCasinoProductList">
+        <div class="col-4" *ngIf="data.is_active =='1'">
+          <a (click)="navigateTocategory(data?.provider_code)">
+              <div class="d-inline-block m-t-10 m-b-10 m-r-20">
+        <img src="assets/images/casino/{{data.provider_code.toLowerCase()}}.jpg" onError="this.src='assets/images/casino/livecasino.jpg'"    alt="" draggable="false" class="img-fluid"> 
+        <!-- <img *ngIf="data?.provider_name == 'Super Spade Games'" src="assets/images/casino/superspade.png" alt="" draggable="false" class="img-fluid"> 
+        <img *ngIf="data?.provider_name == 'Ezugi'" src="assets/images/casino/ezugi.png" alt="" draggable="false" class="img-fluid">  -->
+    
+                <!-- <img src="assets/images/casino/{{data.sport_id.toLowerCase()}}.png" class="img-fluid" /> -->
+                <div class="casinoicons-title">{{data?.provider_name}}</div>
+              </div>
+            </a>
+      </div>
+    
+      </ng-container>
+      </div>
+  </div>
+  
+  <div id="myModal" data-backdrop="static" class="modal fade">
+    <div class="modal-dialog popup21white">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="close"
+            (click)="closeBtn()"
+            data-dismiss="modal"
+            aria-hidden="true"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div style="box-shadow: 0px 0px 5px; padding: 10px">
+            <h2>Dear Client,</h2>
+            <h5 class="mb-1">
+              You are requested to login with our official site
+              <a href="javascript:void(0)">{{ hostname }}</a> only. Please check
+              the site name before you login.
+            </h5>
+            <h5 class="mb-1">Thanks for your support.</h5>
+            <h5 class="mb-1">Team diamondexch999</h5>
+          </div>
+          <div
+            class="mt-3 font-hindi"
+            style="box-shadow: 0px 0px 5px; padding: 10px"
+          >
+            <h2>प्रिय ग्राहक,</h2>
+            <h5 class="mb-1">
+              आपसे अनुरोध है कि केवल हमारी आधिकारिक साइट
+              <a href="javascript:void(0)"> {{ hostname }}</a> से लॉगिन करें।
+              लॉगइन करने से पहले साइट का नाम जरूर देख लें।
+            </h5>
+            <h5 class="mb-1">आपके समर्थन के लिए धन्यवाद।</h5>
+            <h5 class="mb-1">टीम diamondexch999</h5>
+          </div>
+          <div class="text-right mt-3">
+            <button
+              (click)="closeBtn()"
+              class="btn btn-primary"
+              style="min-width: 100px"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

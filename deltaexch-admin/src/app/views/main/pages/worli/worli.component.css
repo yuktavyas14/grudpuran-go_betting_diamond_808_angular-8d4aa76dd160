@@ -1,0 +1,17 @@
+.game-heading {
+    color: #fff;
+    font-size: 22px;
+    text-transform: uppercase;
+    padding: 7px 10px;
+    border-radius: 3px;
+}
+
+.image-zoom {
+    -webkit-transition: 0.4s ease;
+    transition: 0.4s ease;
+}
+
+.zoom-effect-container:hover .image-zoom {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+}

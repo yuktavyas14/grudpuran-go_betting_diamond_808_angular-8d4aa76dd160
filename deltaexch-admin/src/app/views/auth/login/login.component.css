@@ -1,0 +1,23 @@
+
+.log-fld {
+    width: 100%;
+    padding: 35px 30px 10px;
+    box-sizing: border-box;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 4px #fff;
+}
+.log-fld h2:after, .log-fld h2:before {
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 23px;
+    width: 20%;
+    background: #0088CC;
+}
+.log-fld h2 {
+    color: #0088CC;
+    position: relative;
+    margin-bottom: 30px;
+}

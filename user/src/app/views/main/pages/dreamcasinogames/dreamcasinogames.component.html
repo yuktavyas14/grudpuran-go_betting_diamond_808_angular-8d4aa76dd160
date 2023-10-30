@@ -1,0 +1,48 @@
+
+<div *ngIf="url" class="supenova">
+    <iframe [src]="url" frameborder="0" id="supernova" allowfullscreen scrolling="auto"></iframe>
+    </div>
+    <ngx-spinner *ngIf="!url || url == 'null' "
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple"
+    [fullScreen] = "false"
+    [disableAnimation] =" true"
+    >
+    <p style="font-size: 12px; color: white ; padding-top: 12px;">Loading...</p>
+    </ngx-spinner>
+  
+    <ng-container *ngIf="!url">
+  <!-- <div class="gamehall-wrap-simple"> 
+  
+          <div class="col-12 p-0">
+            <div class="gametopnav englishcasino engmenusub " 
+            id="myTopnav" style="color: rgb(255, 255, 255);">
+  
+        <ng-container *ngFor="let data of dreamProductCategoryList; let i = index">
+            <a (click)="getGameList(data.category,product);addActiveClass(i) " [ngClass]="{'active': i===activeClass}" >
+              {{data.category}}</a>
+            
+        </ng-container>
+  
+  
+  </div>
+  </div>
+  </div> -->
+  
+  
+    <div class="row mt-4 mb-2 featured-game1">
+      <ng-container *ngFor="let data of dreamCasinoProductList">
+      <div class="col-6 col-sm-3 col-md-3 col-lg-2 col-xl-2 featuregames2" (click)="getdreamcasinoGamesUrl(data.code,data.providerCode)">
+        <div class="img-pos">
+          <img alt="" *ngIf="data?.thumb" [src]="data?.thumb" class="img-fluid">
+          <img alt="" *ngIf="!data?.thumb" src="https://images.staticcontents.com/ecasino/2147.evo_salonpriveroulette1.jpg" class="img-fluid">
+        </div>
+        <div class="text-center game-title-main">{{data.name}}</div>
+      </div>
+      </ng-container>
+      
+    </div>
+  
+    </ng-container>

@@ -1,0 +1,106 @@
+<div class="">
+    <section class="card">
+      <header class="card-header">
+        <h2 class="card-title">Sessions</h2>
+      </header>
+      <table width="100%" class="table table-striped table-hover table-bordered">
+        <tbody>
+          <tr>
+            <td width="15%" class="TableHeading">Sport Name</td>
+            <td width="15%" class="TableHeading">Series Name</td>
+            <td width="15%" height="25" class="TableHeading">Match Name</td>
+            <td width="15%" height="25" class="TableHeading"></td>
+
+          </tr>
+          <tr>
+            <td><select name="AgentName" id="AgentName"
+              (change)="onChange($event.target.value )" [(ngModel)]="sportId">
+              <option value="0">All</option>
+              <option *ngFor="let sport of sportList" [value]="sport.sport_id">
+                  {{sport.name}}
+              </option>
+          </select></td>
+            <td><select name="AgentName" id="AgentName"
+              (change)="onSeriesSelect($event.target.value)"
+              [(ngModel)]="seriesId">
+              <option value="0">All</option>
+              <option *ngFor="let series of seriesList"
+                  [value]="series.series_id">
+                  {{series.name}}
+              </option>
+          </select></td>
+            <td height="30"><select name="Collection" id="Collection"
+              style="width: 100%;" [(ngModel)]="matchId" (change)="changeMatch($event.target.value)">
+              <option value="0">All</option>
+              <option  *ngFor="let match of MatchList" [value]="match.match_id">{{match?.name}}</option>
+           
+          </select></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card-body">
+        <div class="usertable_area">
+            <div class="widget-body form form-inline">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table class="table table-bordered table-hover dataTable no-footer">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting_asc"> Serial No.</th>
+                        <th class="sorting"> Market Id</th>
+                        <th class="sorting"> Match Name</th>
+                        <th class="sorting"> Match Date</th>
+
+                        <th class="sorting"> RunnerName</th>
+                        <th class="sorting"> Status</th>
+                        <th class="sorting"> Result</th>
+                        <th class="sorting"> Abandon</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let fancy of fancyList;let i = index">
+
+                      <tr role="row" class="odd">
+                        <td class="sorting_1">{{i + 1}}
+                          <input type="hidden" name="" id="" value=""></td>
+                        <td>{{fancy?.fancy_id}}</td>
+                        <td>{{fancy?.match_name}}</td>
+                        <td>{{fancy?.match_date}}</td>
+
+                        <td><div class="fancy-message"> <span>{{fancy?.name}}</span> &nbsp; <span> <i class="fa fa-pencil" id="" title=""></i> </span> </div>
+                          <div id="div_fancy_message">
+                            <div class="form-group">
+                              <input type="text" [id]="i" class="form-control"  placeholder="Message"  [value]="fancy?.super_admin_message">
+                            </div>
+                            <div class="form-group">
+                              <button type="button" class="btn btn-primary" (click)="updateFancymessage(fancy?.fancy_id,i)" id="">Update</button>
+                            </div>
+                          </div></td>
+                        <td><select id="change_status_22816359" [value]='fancy?.active' (change)="updateFancyStatus(fancy?.fancy_id, $event.target.value)">
+                            <option value="">Select Status</option>
+                            <option value="0">Inactive</option>
+                            <option value="1" >Active</option>
+                            <option value="2">Close</option>
+                          </select></td>
+                        
+                        <td><form action="" method="post" id="">
+                          <div  class="result-update">
+                            <input type="text" [id]="'result'+ i" class="form-control"  placeholder=""  value="">
+
+                            <button type="submit" (click)="resultDeclare(fancy,i)"  class="btn btn-primary">Update</button>
+                          </div>
+                          <div   class="result-update">{{fancy?.result}}</div>
+                        </form></td>
+                        <td><button  type="button" class="btn btn-primary" (click)="fancyAbandon(fancy)"  id="">Abandon</button></td>
+                      </tr>
+                    </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>

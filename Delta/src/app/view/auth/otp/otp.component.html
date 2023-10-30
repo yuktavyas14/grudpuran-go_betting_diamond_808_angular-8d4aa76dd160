@@ -1,0 +1,30 @@
+
+<body class="login otp">
+  <div class="wrapper">
+          <div class=" row">
+              <div class="main col-md-12">
+                      <div class="loginInner1 authentication">
+                        <div class="log-logo m-b-20 text-center">
+                          <img
+                            src="{{logo}}"
+                            class="logo-login"
+                          />
+                        </div>
+                        <div class="featured-box-login featured-box-secundary default">
+                          <h3 class="text-center">Security Code Verification Using Telegram App</h3>
+                          <div class="my-3 text-center">
+                           <p class="code_text"> Enter 6-digit code from your telegram bot
+                            <span><a href="javascript:void(0)" (click)="resendLoginOtp()">Resend Code</a></span></p>
+                          </div>
+                          
+                          <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)"
+                           *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
+                          
+                        </div>
+                      </div>
+                    </div>
+          </div>
+      </div>
+</body>
+
+

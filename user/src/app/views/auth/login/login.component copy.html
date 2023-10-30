@@ -1,0 +1,61 @@
+<div class="login">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class=" row">
+                <div class="main col-md-12">
+
+
+                    <div class="loginInner1">
+                        <div class="login-logo"><img src="{{logo}}"></div>
+                        <!-- <div class="login-logo"><img src="/assets/images/gods-logo.png"></div> -->
+                        <!-- <div class="login-logo"><img src="/assets/images/diamond999-logo.png"></div> -->
+
+                        <div class="featured-box-login featured-box-secundary default">
+                            <h4 class="text-center">LOGIN <i class="fas fa-hand-point-down"></i></h4>
+                            <form [formGroup]="loginForm" id="frm_lgn" method="POST" (ngSubmit)="Login(loginForm.value)">
+                                <div class="form-group m-b-20">
+                                    <input name="inputUserid" formControlName="user_name" placeholder="User Name" class="form-control" required type="text">
+                                    <i class="fas fa-user"></i>
+                                    <span *ngIf="loginForm.controls['user_name'].invalid && (loginForm.controls['user_name'].dirty || loginForm.controls['user_name'].touched)" class="alert">
+                  <span  class="errorMessage" *ngIf="loginForm.controls['user_name'].errors?.required">
+                  Please enter username
+                  </span>
+                                    </span>
+                                </div>
+                                <div class="form-group m-b-20">
+                                    <input name="inputPassword" formControlName="password" id="inputPassword" placeholder="Password  " class="form-control" required autocomplete="off" type="password">
+                                    <i class="fas fa-key"></i>
+                                    <span *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert">
+                  <span class="errorMessage" *ngIf="loginForm.controls['password'].errors?.required">
+                  Please enter password
+                  </span>
+                                    </span>
+                                </div>
+                                <!-- <div id="div_msg" style="display: none;"> -->
+
+                                <!-- </div> -->
+                                <div class="form-group text-center">
+                                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" value="">
+                                    <input type="hidden" name="_token" value="">
+                                    <button type="submit" class="btn btn-submit btn-login">Login<i class="fas fa-sign-in-alt"></i></button>
+                                </div>
+                                <small class="recaptchaTerms">This site is protected by reCAPTCHA and the Google
+                  <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                  <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+              </small>
+                                 <div class="form-group text-center" *ngIf="isSignUp =='1'">
+                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" value="">
+                <input type="hidden" name="_token" value="">
+                <button type="button" class="btn btn-submit btn-login" routerLink="/auth/signup">Signup<i class="fas fa-user-plus"></i></button>
+              </div>  
+                                <div *ngIf="isApk =='1'" class="m-t-20 text-center download-apk">
+                                    <a class="blinking btn btn-submit btn-login"> <span><i class="fab fa-android"></i><b>Download Apk</b></span> </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

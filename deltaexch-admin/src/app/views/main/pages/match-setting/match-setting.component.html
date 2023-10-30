@@ -1,0 +1,240 @@
+<div class="col-md-12 report-main-content m-t-20">
+  <div class="">
+    <section class="card">
+      <header class="card-header">
+        <h2 class="card-title">Match Setting</h2>
+      </header>
+      <div class="card-body">
+        <div class="widget-body">
+          <div class="portlet-body">
+            <form name="BetPlayer" method="post" action="CollectionLedgerDateWise.html">
+              <table width="100%" class="table table-striped table-hover table-bordered">
+                  <tbody>
+                      <tr>
+                          <td width="15%" height="25" class="TableHeading">Status</td>
+                          <td width="15%" class="TableHeading">Sport Name</td>
+                          <td width="15%" class="TableHeading">Match Name</td>
+                          <td width="10%" class="TableHeading">&nbsp;</td>
+                      </tr>
+                      <tr>
+                          <td height="30"><select name="Collection" id="Collection"
+                                  style="width: 100%;" [(ngModel)]="status">
+                                  <option value="">All</option>
+                                  <option value="1">Active</option>
+                                  <option value="0">Inactive</option>
+                              </select></td>
+                          <td><select name="AgentName" id="AgentName"
+                                  (change)="onChage($event.target.value)" [(ngModel)]="sportId">
+                                  <option value="0">All</option>
+                                  <option *ngFor="let sport of sportList" [value]="sport.sport_id">
+                                      {{sport.name}}
+                                  </option>
+                              </select></td>
+                          <td><input type="text" id="" name="" value="" class="m-ctrl-medium"
+                                  style="width: 100%;"></td>
+                          <td align="center"><button type="button" class="btn btn-success"
+                                  (click)="SearchMatch()">Search</button></td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br>
+              <br>
+              <br>
+              <table width="100%" class="table table-striped table-hover table-bordered">
+                  <tbody>
+                      <tr>
+                          <td width="4%" height="25" class="TableHeading"><strong>Sr.No.</strong></td>
+                          <td width="25%" class="TableHeading"><strong>Match Name </strong></td>
+                          <td width="15%" class="TableHeading"><strong>Date</strong></td>
+                          <td class="TableHeading"><strong>Setting</strong></td>
+                          <td class="TableHeading"><strong>Action</strong></td>
+                          <td class="TableHeading"><strong>IS Cup</strong></td>
+
+                      </tr>
+                      <tr bgcolor="#FFFFFF" *ngFor="let match of MatchList;let i = index">
+                          <td height="20" class="FontText">{{i + 1}}.</td>
+                          <td class="FontText">{{match.name}}</td>
+                          <td class="FontText">{{match.match_date}}</td>
+                          <td class="FontText"><button type="button" class="btn btn-success"
+                                  (click)="scoreKeypop(match)">Setting</button></td>
+                          <td class="FontText">
+                              <ui-switch (change)="onTogalChange(match.match_id, $event)" size="small"
+                                  color="green" [checked]="match.is_active == 1"></ui-switch>
+                          </td>
+
+                          <td class="FontText">
+                            <ui-switch (change)="onTogalChange1(match.match_id, $event)" size="small"
+                                color="green" [checked]="match.is_cup == '1'"></ui-switch>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td colspan="5" style="text-align: center;" *ngIf="MatchList.length == 0">No
+                              Records Found !</td>
+                      </tr>
+
+                  </tbody>
+              </table>
+              <br>
+              <h4>Score Board Key</h4>
+              <br>
+              <table width="100%" class="table table-striped table-hover table-bordered">
+                  <thead>
+                      <tr>
+                          <th scope="col" style="width:50px;">Sr.No.</th>
+                          <th scope="col">Match key</th>
+                          <th scope="col"> Date &amp; Time </th>
+                          <th scope="col"> Match Name </th>
+                          <th scope="col">Venue </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let score of scoreMatchList;let i = index">
+                          <td width="1%" scope="row">{{i+1}}.</td>
+                          <td width="10%">{{score?.match_id}}</td>
+                          <td width="25%">{{score?.match_date}}</td>
+                          <td width="25%">{{score?.teams[0]?.name}} v {{score?.teams[1].name}}</td>
+                          <td width="25%">{{score?.venue}}</td>
+                      </tr>
+                      <tr *ngIf="!scoreMatchList">
+                          <td colspan="5" style="text-align: center;">No Record Found !</td>
+                      </tr>
+
+                  </tbody>
+              </table>
+              <input name="From" type="hidden" id="From" value="0">
+              <input name="To" type="hidden" id="To" value="">
+              <input name="FromID" type="hidden" id="FromID" value="">
+              <input name="DeleteChk" type="hidden" id="DeleteChk" value="">
+              <input name="AddInvoiceChk" type="hidden" id="AddInvoiceChk" value="">
+              <input name="InvNo" type="hidden" id="InvNo" value="">
+              <input name="SaveChk" type="hidden" id="SaveChk" value="">
+              <input name="AgentShowChk" type="hidden" id="AgentShowChk" value="">
+              <input name="CollectionAgentShowChk" type="hidden" id="CollectionAgentShowChk" value="">
+              <input name="CollectionShowChk" type="hidden" id="CollectionShowChk" value="">
+              <input name="UnVerifiedChk" type="hidden" id="UnVerifiedChk" value="">
+              <input name="DeleteRecChk" type="hidden" id="DeleteRecChk" value="">
+              <input name="AutoNo" type="hidden" id="AutoNo" value="">
+              <br>
+              <br>
+          </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal fade scoreKeyupdate" id="scoreKeyupdate" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Match Settings</h5><button _ngcontent-ndk-c48="" type="button"
+                  data-dismiss="modal" aria-label="Close" class="close"><span _ngcontent-ndk-c48=""
+                      aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body popup-form">
+              <form [formGroup]='updateSet' class="ng-untouched ng-pristine ng-valid">
+                  <div class="form-group"><label for="scoreType">Score
+                          Type:</label><br _ngcontent-ndk-c48="">
+                      <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio"
+                              id="ballByball" name="score_type" value="0" formControlName="score_type"
+                              class="custom-control-input ng-untouched ng-pristine ng-valid"><label
+                              for="ballByball" class="custom-control-label">Ball by
+                              Ball</label>
+                            
+                            </div>
+                      <div class="custom-control custom-radio custom-control-inline"><input type="radio"
+                              id="betfair" name="score_type" value="1" formControlName="score_type"
+                              class="custom-control-input ng-untouched ng-pristine ng-valid"><label for="betfair"
+                              class="custom-control-label">Betfair</label>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group"><label for="scorekey">Score
+                              Key:</label><input type="text" id="scorekey" formControlName="score_key"
+                              class="form-control ng-untouched ng-pristine ng-valid">
+                           </div>    
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group"><label for="scorekey">Match Max Limit:</label><input type="number" id="scorekey" formControlName="matchMax"
+                              class="form-control ng-untouched ng-pristine ng-valid">
+                           </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group"><label for="scorekey">Match Min Limit:</label><input type="number" id="scorekey" formControlName="matchMin"
+                              class="form-control ng-untouched ng-pristine ng-valid">
+                           </div>    
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group"><label for="scorekey">Session Max Limit:</label><input type="number" id="scorekey" formControlName="sessionMax"
+                              class="form-control ng-untouched ng-pristine ng-valid">
+                           </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group"><label for="scorekey">Session Min Limit:</label><input type="number" id="scorekey" formControlName="sessionMin"
+                              class="form-control ng-untouched ng-pristine ng-valid">
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group"><label for="scorekey">Bookmaker Max Stack:</label><input type="number" id="scorekey" formControlName="bookmaker_max_stack"
+                            class="form-control ng-untouched ng-pristine ng-valid">
+                         </div>
+                    </div>
+                      <div class="col-sm-6">
+                          <div class="form-group"><label for="scorekey">Tv Url:</label><input type="text" id="scorekey" formControlName="tv_url"
+                              class="form-control ng-untouched ng-pristine ng-valid">
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer"><button data-dismiss="modal" class="btn btn-danger">Cancel</button><button
+                  _ngcontent-ndk-c48="" class="btn btn-success" (click)="updateSetting()">Update</button></div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+
+ <!-- Popup -->
+ <div class="modal fade" id="modal-cup" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Cup Name</h4>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+        </div>
+        <form  id="DepositForm" autocomplete="off">
+          <div class="modal-body">
+            <div class="container-fluid">
+              
+              
+              
+              
+              <div class="row m-b-20">
+                <div class="col-md-4">
+                  <label>Update Cup Name</label>
+                </div>
+                <div class="col-md-8">
+                  <input [(ngModel)]="updateCupName" type="text" name="mpassword" id="mpassword"
+                    >
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="uid" id="uid">
+            <button type="button" class="btn btn-back" data-dismiss="modal"><i
+                class="fas fa-undo"></i>Back</button>
+            <button type="submit" class="btn btn-submit" (click)="updateCupNamee()">submit<i
+                class="fas fa-sign-in-alt"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+.add-btn {
+    background: #5b396e;
+    border: solid 1px #5b396e;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 10px 1px;
+  }
+  .delete-coupon {
+    width: 20px;
+    position: absolute;
+    top: 28px;
+    cursor: pointer;
+  }
+  .error-text{
+      color: red;
+  }
+  

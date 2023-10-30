@@ -1,0 +1,667 @@
+<header class="header">
+  <div class="row">
+    <div class="col-5 text-left">
+      <div class="header-left">
+        <a routerLink="/main"><i class="fa fa-home"></i></a>
+        <a routerLink="/main"><img src="{{logo}}" alt /></a>
+        <!-- <a routerLink="/main"><img src="assets/images/logo.png" alt></a> -->
+      </div>
+    </div>
+    <div class="col-7 text-right">
+      <div class="header-right">
+        <p class="mb-0" *ngIf="isPaymentShow == '1'">
+          <i class="fas fa-wallet mr-1"></i>
+          <a
+            routerLink="/main/crypto-payment"
+            class=" crypto-wallet rules-link m-r-5"
+             
+          >
+            <b>Crypto Wallet</b>
+          </a>
+        </p>
+        <p class="mb-0" *ngIf="isPaymentShow == '1'">
+          <i class="fas fa-wallet mr-1"></i>
+          <a
+            data-toggle="modal"
+            data-target="#withdraw"
+            data-backdrop="static"
+            class="rules-link m-r-5"
+            (click)="onDepositeWithdraw()"
+          >
+            <b>Deposit/Withdraw wallet</b>
+          </a>
+        </p>
+        <p class="mb-0" *ngIf="flagBalance">
+          <i class="fas fa-landmark mr-1"></i>
+          <b>{{ getUserBalanceDecimal(userDetail?.total_chip) }}</b>
+        </p>
+
+        <!-- <p class="mb-0" *ngIf="flagBalance"><i class="fas fa-landmark mr-1"></i> <b>{{userDetail?.total_chip ?userDetail?.total_chip : '0'}}</b></p> -->
+
+        <div class="">
+          <span class="mr-1"
+            ><u *ngIf="flagExposure" (click)="getExposureDetails()">
+              Exp:{{ getUserBalanceDecimal(userDetail?.liability) }}</u
+            >
+          </span>
+          <div class="navbar">
+            <div class="dropdown d-inline-block">
+              <a
+                data-toggle="dropdown"
+                class="dropdown-toggle"
+                aria-expanded="false"
+                ><u>{{
+                  userDetails?.user_name ? userDetails?.user_name : "N/A"
+                }}</u></a
+              >
+              <div class="dropdown-menu" style="">
+                <!-- router-link-exact-active router-link-active -->
+                <a class="dropdown-item" routerLink="/main/inPlay">Home</a>
+                <a class="dropdown-item" routerLink="/main/account-statement"
+                  >Account Statement</a
+                >
+                <a
+                  *ngIf="isPaymentShow == '1'"
+                  class="dropdown-item"
+                  routerLink="/main/payment-statement"
+                  >Payment Statement</a
+                >
+                <a class="dropdown-item" routerLink="/main/profit-loss"
+                  >Profit Loss Report</a
+                >
+                <a class="dropdown-item" routerLink="/main/bet-history"
+                  >Bet History</a
+                >
+                <a class="dropdown-item" routerLink="/main/casino-bets"
+                  >Casino Bet</a
+                >
+                <a class="dropdown-item" routerLink="/main/unsettledbet"
+                  >Unsetteled Bet</a
+                >
+                <a class="dropdown-item" routerLink="/main/casino-result"
+                  >Casino Report History</a
+                >
+                <a class="dropdown-item" routerLink="/main/set-buttonval"
+                  >Set Button Values</a
+                >
+                <a class="dropdown-item" routerLink="/main/security-auth"
+                  >Security Auth Verification</a
+                >
+                <a (click)="navigateToChangePassword()" class="dropdown-item"
+                  >Change Password</a
+                >
+                <a class="dropdown-item">
+                  Balance
+                  <div class="custom-control custom-checkbox float-right">
+                    <input
+                      type="checkbox"
+                      id="customCheck"
+                      class="custom-control-input"
+                      #customCheck
+                      [checked]="flagBalance"
+                      (change)="toggleBalance(customCheck.checked)"
+                    />
+                    <label
+                      for="customCheck"
+                      class="custom-control-label"
+                    ></label>
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  Exposure
+                  <div class="custom-control custom-checkbox float-right">
+                    <input
+                      type="checkbox"
+                      id="customCheck1"
+                      class="custom-control-input"
+                      [checked]="flagExposure"
+                      (change)="toggleExposure($event)"
+                    />
+                    <label
+                      for="customCheck1"
+                      class="custom-control-label"
+                    ></label>
+                  </div>
+                </a>
+                <a class="dropdown-item" routerLink="/main/rules">Rules</a>
+                <a class="dropdown-item mt-2 text-danger" (click)="logout()"
+                  ><b>Logout</b></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <form class="search-box">
+      <input type="text" placeholder=" "/>
+      <button type="reset"></button>
+     </form> -->
+  <div class="expSearchBox">
+    <div class="expSearchFrom">
+      <input
+        type="text"
+        (focus)="show($event)"
+        #device
+        (ngModelChange)="searchByMatchNameHeader(device.value)"
+        [(ngModel)]="serchevents"
+        id="game_keyword"
+        name="game_keyword"
+        placeholder="All Events"
+        autocomplete="off"
+      />
+      <!-- <i class="fa fa-search"></i>   -->
+      <div class="close">
+        <span class="front"><i class="fa fa-search"></i></span>
+        <span class="back"><i class="fa fa-times"></i></span>
+      </div>
+    </div>
+    <ul
+      id="allGamesList"
+      class="search-game-ul"
+      [ngStyle]="{ display: isDispaly == true ? 'block' : 'none' }"
+      *ngIf="eventsDataheader?.length > '0'"
+      [ngClass]="eventsDataheader?.length > '0' ? '' : ''"
+    >
+      <li id="test" *ngFor="let data of eventsDataheader">
+        <a
+          (click)="navigateToMatchdetail()"
+          [routerLink]="['/main/matchdetails', data.match_id, data?.MarketId]"
+        >
+          <div class="search-game-name" style="margin-bottom: 7px">
+            <b>{{ data?.sport_name }}</b> <b> | MATCH_OODS</b>
+          </div>
+          <div class="game-teams">{{ data?.match_name }}</div>
+          <div class="game-date text-right">{{ data?.match_Date }}</div>
+        </a>
+      </li>
+
+      <li *ngIf="!eventsDataheader" style="text-decoration: black">
+        No real-time records found
+      </li>
+    </ul>
+  </div>
+  <div class="marquee">
+    <marquee>{{ siteMessage ? siteMessage : "N/A" }}</marquee>
+  </div>
+</header>
+
+<div id="casinoGameModal" class="modal fade show" style="height: 100vh">
+  <div
+    id="marketbetspopup"
+    class="modal fade show"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-modal="true"
+    style="display: block"
+  >
+    <div class="modal-dialog modal-sm modal-dialog-centered encasino">
+      <div class="modal-content">
+        <div class="modal-body engcasinomodalbgimg">
+          <div class="casinoinfo text-white text-center gamemodal">
+            Live Casino Info
+            <button
+              type="button"
+              class="close text-white ecasinobtnclose"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              ×
+            </button>
+          </div>
+          <div class="f-18 text-white text-center">
+            WELCOME TO NEW CASINO LOBBY
+          </div>
+          <div class="f-18 text-white text-center">
+            Please note (1 Point = 100 Points)
+          </div>
+          <div class="hirizontal-line"></div>
+          <div class="f-18 text-white text-center">
+            नई कैसीनो लॉबी में आपका स्वागत है
+          </div>
+          <div class="f-18 text-white text-center">
+            कृपया ध्यान दें (1 अंक = 100 अंक)
+          </div>
+          <div class="text-center ecasinobtn">
+            <button
+              type="button"
+              class="btn place-bet-btn waves-effect mx-auto ecasinoclose"
+              data-dismiss="modal"
+            >
+              Okay I Agree
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=""></div>
+  </div>
+</div>
+
+<div id="modalDepositWithdraw" class="modal fade show">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Deposit/Withdraw wallet</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="container-fluid clearfix mt-1">
+          <div class="custom_radio text-center">
+            <input
+              type="radio"
+              id="featured-1"
+              name="featured"
+              checked
+              (change)="onChange('Deposit')"
+            /><label for="featured-1">Deposit</label>
+            <input
+              type="radio"
+              id="featured-2"
+              name="featured"
+              (change)="onChange('Withdraw')"
+            /><label for="featured-2">Withdraw</label>
+          </div>
+          <div *ngIf="isDesposit">
+            <div class="mb-1 row">
+              <label for="inputPassword" class="col-sm-3 col-form-label"
+                >Amount <span class="text-danger"><sup>*</sup></span
+                >:</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputPassword"
+                  name="payAmount"
+                  [(ngModel)]="payAmount"
+                  appNumberOnly
+                  maxlength="10"
+                />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button data-dismiss="modal" class="btn btn-danger">
+                Cancel
+              </button>
+              <button class="btn btn-success" (click)="onPayment()">
+                Submit
+              </button>
+            </div>
+          </div>
+          <div *ngIf="isWithdraw">
+            <form
+              [formGroup]="withDrawForm"
+              id="frm_lgn"
+              method="POST"
+              (ngSubmit)="onWithdraw()"
+              autocomplete
+              novalidate
+            >
+              <div class="mb-0 row">
+                <div class="col-sm-6">
+                  <label for="banckacn" class="form-label"
+                    >Bank Account No.<span class="text-danger"
+                      ><sup>*</sup></span
+                    >:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="account_number"
+                    placeholder="Please Enter Bank Account No"
+                    required
+                    appNumberOnly
+                  />
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                  <span
+                    *ngIf="
+                      withDrawForm.controls['account_number'].invalid &&
+                      (withDrawForm.controls['account_number'].dirty ||
+                        withDrawForm.controls['account_number'].touched)
+                    "
+                    class="alert"
+                  >
+                    <span
+                      class="errorMessage"
+                      *ngIf="
+                        withDrawForm.controls['account_number'].errors?.required
+                      "
+                    >
+                      Account number is required
+                    </span>
+                  </span>
+                </div>
+                <div class="col-sm-6">
+                  <label for="banckacn" class="form-label"
+                    >Branch IFSC.<span class="text-danger"><sup>*</sup></span
+                    >:</label
+                  >
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ifsc"
+                    placeholder="Please Enter Branch IFSC"
+                    required
+                  />
+                  <span
+                    *ngIf="
+                      withDrawForm.controls['ifsc'].invalid &&
+                      (withDrawForm.controls['ifsc'].dirty ||
+                        withDrawForm.controls['ifsc'].touched)
+                    "
+                    class="alert"
+                  >
+                    <span
+                      class="errorMessage"
+                      *ngIf="withDrawForm.controls['ifsc'].errors?.required"
+                    >
+                      Ifsc Code is required
+                    </span>
+                  </span>
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+              </div>
+              <div class="mb-0 row">
+                <div class="col-sm-6">
+                  <label for="banckacn" class="form-label"
+                    >Baneficiary Name.<span class="text-danger"
+                      ><sup>*</sup></span
+                    >:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="name"
+                    placeholder="Please Enter Baneficiary Name"
+                    required
+                  />
+                  <span
+                    *ngIf="
+                      withDrawForm.controls['name'].invalid &&
+                      (withDrawForm.controls['name'].dirty ||
+                        withDrawForm.controls['name'].touched)
+                    "
+                    class="alert"
+                  >
+                    <span
+                      class="errorMessage"
+                      *ngIf="withDrawForm.controls['name'].errors?.required"
+                    >
+                      Name is required
+                    </span>
+                  </span>
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="col-sm-6">
+                  <label for="banckacn" class="form-label"
+                    >Mobile No.<span class="text-danger"><sup>*</sup></span
+                    >:</label
+                  >
+
+                  <input
+                    type="text"
+                    formControlName="phone"
+                    class="form-control"
+                    placeholder="Please Enter Mobile No"
+                    required
+                    appNumberOnly
+                  />
+                  <span
+                    *ngIf="
+                      withDrawForm.controls['phone'].invalid &&
+                      (withDrawForm.controls['phone'].dirty ||
+                        withDrawForm.controls['phone'].touched)
+                    "
+                    class="alert"
+                  >
+                    <span
+                      class="errorMessage"
+                      *ngIf="withDrawForm.controls['phone'].errors?.required"
+                    >
+                      Phone number is required
+                    </span>
+
+                    <span
+                      class="errorMessage"
+                      *ngIf="withDrawForm.controls['phone'].errors?.minlength"
+                    >
+                      please enter minimum 10 digits
+                    </span>
+                    <span
+                      class="errorMessage"
+                      *ngIf="withDrawForm.controls['phone'].errors?.maxlength"
+                    >
+                      Mobile no can't be greater then sixteen digit
+                    </span>
+                  </span>
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+              </div>
+              <div class="mb-0 row">
+                <div class="col-sm-6">
+                  <label for="banckacn" class="form-label"
+                    >E-Mail<span class="text-danger"><sup>*</sup></span
+                    >:</label
+                  >
+
+                  <input
+                    type="text"
+                    formControlName="email"
+                    class="form-control"
+                    placeholder="Please Enter email"
+                    required
+                  />
+                  <span
+                    *ngIf="
+                      withDrawForm.controls['email'].invalid &&
+                      (withDrawForm.controls['email'].dirty ||
+                        withDrawForm.controls['email'].touched)
+                    "
+                    class="alert"
+                  >
+                    <span
+                      class="errorMessage"
+                      *ngIf="withDrawForm.controls['email'].errors?.required"
+                    >
+                      Email is required
+                    </span>
+                  </span>
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="col-sm-6">
+                  <label for="banckacn" class="form-label"
+                    >Withdrawal Amount<span class="text-danger"
+                      ><sup>*</sup></span
+                    >:</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="amount"
+                    class="form-control"
+                    placeholder="Withdrawal Amount"
+                    required
+                    appNumberOnly
+                  />
+                  <span
+                    *ngIf="
+                      withDrawForm.controls['amount'].invalid &&
+                      (withDrawForm.controls['amount'].dirty ||
+                        withDrawForm.controls['amount'].touched)
+                    "
+                    class="alert"
+                  >
+                    <span
+                      class="errorMessage"
+                      *ngIf="withDrawForm.controls['amount'].errors?.required"
+                    >
+                      Amount is required
+                    </span>
+                  </span>
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+              </div>
+              <div class="mb-0 row">
+                <div class="col-sm-12">
+                  <label for="banckacn" class="form-label"
+                    >Descrption<span class="text-danger"><sup>*</sup></span
+                    >:</label
+                  >
+                  <textarea
+                    name="Descrption"
+                    id=""
+                    formControlName="description"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Descrption"
+                    required
+                  ></textarea>
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                  <span
+                    *ngIf="
+                      withDrawForm.controls['description'].invalid &&
+                      (withDrawForm.controls['description'].dirty ||
+                        withDrawForm.controls['description'].touched)
+                    "
+                    class="alert"
+                  >
+                    <span
+                      class="errorMessage"
+                      *ngIf="
+                        withDrawForm.controls['description'].errors?.required
+                      "
+                    >
+                      Description is required
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">
+                  Withdrawal Request
+                </button>
+
+                <button data-dismiss="modal" class="btn btn-danger">
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="paymentGetway" class="modal fade show">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+              <h4 class="modal-title"> Deposit/Withdraw wallet</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div> -->
+      <div class="modal-body p-0">
+        <div class="container-fluid clearfix mt-1">
+          <iframe [src]="paymenyUrl" id="video-canvas"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalExposureDetail" class="modal fade show">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">My Market</h4>
+        <button type="button" class="close" data-dismiss="modal"> &times;</button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="container-fluid clearfix mt-1">
+          <div class="table-responsive table-responsive-sm table-responsive-md table-responsive-lg">
+            <table role="table" aria-busy="false" aria-colcount="6" id="" class="table b-table table-striped table-pad table-bordered">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th class="sorting" style="width: 50px">Event Type</th>
+                  <th class="sorting" style="width: 50px">Event Name</th>
+                  <th class="sorting" style="width: 50px">Match Name</th>
+                  <th class="sorting" style="width: 50px">Trade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="exposureDetailList != null && exposureDetailList.length != 0;else NoData">
+                  <ng-container
+                    *ngFor="let item of exposureDetailList;trackBy: trackByFn;let i = index">
+                    <tr class="odd">
+                      <td>{{ item.Event_type }}</td>
+                      <td (click)="gotoMatchDetail(item)">
+                        <a href="javascript:void(0)">{{ item.event_name }}</a>
+                        </td>
+                      <td (click)="gotoMatchDetail(item)">  <a href="javascript:void(0)">{{ item.match_name }}</a></td>
+                      <td>{{ item.trade }}</td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                <ng-template #NoData>
+                  <tr>
+                    <td valign="top" colspan="10" class="dataTables_empty">
+                      No data available in table
+                    </td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal withdrawal_modal_design fade" id="onwithdrawmodal" tabindex="-1" role="dialog" aria-labelledby="onwithdrawmodalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+          <div class="modal-body ">
+              <div>
+                  <iframe
+                  id="fp_embed_player"
+                  [src]="paymentUrl"
+                  marginwidth="0"
+                  frameborder="0"
+                  width="100%"
+                  scrolling="no"
+                  allowfullscreen="allowfullscreen"
+                class="iframe_withdraw"></iframe>
+              </div>
+                      </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="payment_custome_model "  *ngIf="isPayment==true ">
+  <div class="iframme_headrer">
+      <a href="javascript:void(0)" class="Icon_minimize" (click)="onminimizePayment()" *ngIf="this.isminimizePayment"><i class="fa fa-minus" ></i></a>
+      <a href="javascript:void(0)" class="Icon_maximize" (click)="onmaximizePayment()" *ngIf="this.ismaximizePayment"><i class="fa fa-window-maximize"></i></a>
+      <a href="javascript:void(0)" class="payment_custome_model_close" (click)="onClosePyment()"><i class="fa fa-times" aria-hidden="true"></i></a>
+  </div>
+  <div class="iframe_div">
+      <iframe
+                id="ifr"
+                  [src]="paymentUrl"
+                  marginwidth="0"
+                  frameborder="0"
+                width="100%"
+                   scrolling="no"
+                allowfullscreen="allowfullscreen"
+                class="iframe_withdraw"></iframe>
+  </div>
+</div> 

@@ -1,0 +1,71 @@
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN EXAMPLE TABLE widget-->
+        <div class="widget">
+            <div class="widget-body">
+                <div class="portlet-body">
+                    <div class="">
+                        <h2>Online User</h2>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-4 col-sm-2">
+                          <div class="form-group search_cls">
+                            <label>User Name</label>
+                            <input class="form-control ng-pristine ng-valid ng-touched" [(ngModel)]="searchKey" placeholder="Search By User name or user Id" type="text">
+                            <button class="btn-success btn" (click)="getOnlineUsers()">Search</button> 
+                          </div>
+                        </div>
+                       
+                        <div class="col-lg-2 col-sm-4">
+                          <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button class="btn-success btn-success2 " (click)="logoutAll()">All User Logout</button>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4">
+                          <div class="form-group">
+                            <label>&nbsp;</label>
+                            <!-- <button class="btn-success btn-success2">Refresh</button> -->
+                          </div>
+                        </div>
+                      </div>
+                    <form name="BetPlayer" method="post" action="CollectionLedgerDateWise.html">
+                        <table width="100%" class="table table-striped table-hover table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>S No.</th>
+                                    <th>UserName</th>
+                                    <th>Login Time</th>
+                                    <th>ip Address</th>
+                                    <th>Browser Info</th>
+                                    <!-- <th>Action</th> -->
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngFor="let user of onlineUserList;let i = index">
+                                  <tr>
+                                    <td>{{i + 1}}</td>
+                                    <td>{{user?.user_name}}({{user?.name}}) </td>
+                                    <td> {{user?.login_date_time}} </td>
+                                    <td>{{user?.ip_address}} </td>
+                                    <td>{{user?.browser_info}} </td>
+                                    <!-- <td><button class="btn-info">logout</button></td> -->
+                                  </tr>
+                                </ng-container>
+                                
+                                </tbody>
+                              </table>
+                      
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE widget-->
+    </div>
+</div>
+</div>
+</div>

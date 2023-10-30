@@ -1,0 +1,484 @@
+<div class="tab-content">
+    <div class="tab-pane active casino-tables">
+
+
+            <!-- <ul class="nav nav-tabs game-nav-bar livecasinos">
+
+
+                <ng-container >
+                  <li class="nav-item text-center" (click) ="flagCasino = true" >
+                    <a data-toggle="tab" class="nav-link"  >
+                        <div>Live casino</div>
+                    </a>
+                </li>
+                  <li class="nav-item text-center" (click) ="flagCasino = false" >
+                      <a data-toggle="tab" class="nav-link"  >
+                          <div>casino</div>
+                      </a>
+                  </li>
+
+
+                  <li class="nav-item text-center" (click) ="flagCasino = false" >
+                    <a data-toggle="tab" class="nav-link"  >
+                        <div>casino</div>
+                    </a>
+                </li>
+
+                <li class="nav-item text-center" (click) ="flagCasino = false" >
+                  <a data-toggle="tab" class="nav-link"  >
+                      <div>casino</div>
+                  </a>
+              </li>
+
+              <li class="nav-item text-center" (click) ="flagCasino = false" >
+                <a data-toggle="tab" class="nav-link"  >
+                    <div>casino</div>
+                </a>
+            </li>
+
+            <li class="nav-item text-center" (click) ="flagCasino = false" >
+              <a data-toggle="tab" class="nav-link"  >
+                  <div>casino</div>
+              </a>
+          </li>
+          <li class="nav-item text-center" (click) ="flagCasino = false" >
+            <a data-toggle="tab" class="nav-link"  >
+                <div>casino</div>
+            </a>
+        </li>
+              </ng-container>
+
+            </ul> -->
+
+
+            <ul class="nav nav-tabs bs slot-nav-bar livecasinos1">
+              <li class="nav-item">
+                <a data-toggle="tab"  class="nav-link" (click) ="flagCasino = 'Live Casino'" >Live Casino</a>
+              </li>
+              <!-- <li class="nav-item"><a data-toggle="tab" (click) ="flagCasino = 'Casino'" class="nav-link">
+                <span class="blink-menu">Casino</span>
+              </a></li>  -->
+              <li class="nav-item" *ngIf="isActiveLiveCasino">
+                <a data-toggle="tab" (click) ="openmodal();flagCasino = 'NEW CASINO'" class="nav-link"> CASINO</a>
+              </li>
+              <!-- <li class="nav-item"  *ngFor="let  game of casinoSportsList">
+                <a data-toggle="tab"  *ngIf=" game.sport_id=='brinocasino' && isActiveLiveCasino"  class="nav-link" (click) ="openmodal1();flagCasino = 'BrinoCasino'" >{{game.name}}</a>
+              </li> -->
+              <li class="nav-item"  *ngFor="let  game of casinoSportsList">
+                <a data-toggle="tab"  *ngIf=" game.sport_id=='brinocasino' && isActiveLiveCasino"  class="nav-link" (click) ="openmodal1();flagCasino = 'NewBrinoCasino'" >New Brino Casino</a>
+              </li>
+              <li class="nav-item">
+                <a data-toggle="tab"  class="nav-link" (click) ="flagCasino = 'NEWLY_RELEASED_GAMES'">HOT GAMES</a></li>
+                <li class="nav-item"><a data-toggle="tab" (click) ="flagCasino = 'NEWLY_RELEASED_GAMES'" class="nav-link">SLOTS</a></li>
+                <li class="nav-item"><a data-toggle="tab" (click) ="flagCasino = 'NEWLY_RELEASED_GAMES'" class="nav-link">TABLE GAMES</a></li>
+                <li class="nav-item"><a data-toggle="tab" (click) ="flagCasino = 'NEWLY_RELEASED_GAMES'" class="nav-link">SHOOTING GAMES</a></li>
+                <li class="nav-item"><a data-toggle="tab" (click) ="flagCasino = 'NEWLY_RELEASED_GAMES'" class="nav-link">Instant WIN</a></li>
+                <li class="nav-item"><a data-toggle="tab" (click) ="flagCasino = 'NEWLY_RELEASED_GAMES'" class="nav-link">SCRATCH CARD</a></li>
+                <li class="nav-item"><a data-toggle="tab" (click) ="flagCasino = 'NEWLY_RELEASED_GAMES'" class="nav-link">PUSH GAMING</a></li>
+              </ul>
+
+
+
+        <div *ngIf="flagCasino == 'Live Casino'" class="container-fluid">
+            <div class="row row5">
+                <div class="col-12">
+                    <h4 class="text-uppercase mt-3">Live Casino</h4>
+                </div>
+            </div>
+            <div class="row row5 mt-2">
+
+
+                <div class="col-4 text-center" (click)="gotoCasinoMatchDetails('-1025')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/fivecricket.png" class="img-fluid">
+                            <div class="casino-name">
+                                <span>Super Over</span>
+                            </div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoCasinoMatchDetails('-1021')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/andar-bahar2.png" class="img-fluid">
+                            <div class="casino-name"><span>Andar Bahar 2</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoCasinoMatchDetails('-1024')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/dt202-transparent.png" class="img-fluid">
+                            <div class="casino-name"><span>20-20  Dragon Tiger 2</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/baccarat2.png" class="img-fluid">
+                            <div class="casino-name"><span>Baccarat 2 </span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/baccarat1.png" class="img-fluid">
+                            <div class="casino-name"><span>Baccarat </span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/teen2-0.jpg" class="img-fluid">
+                            <div class="casino-name"><span>Teenpatti 2.0  </span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1022')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/lucky7B.png" class="img-fluid">
+                            <div class="casino-name"><span>Lucky 7 B</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1020')">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/cc-20.png" class="img-fluid">
+                            <div class="casino-name"><span> 20-20 Cricket Match</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/meter.png" class="img-fluid">
+                            <div class="casino-name"><span>Casino Meter </span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/war.png" class="img-fluid">
+                            <div class="casino-name"><span>Casino War </span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/dtl.png" class="img-fluid">
+                            <div class="casino-name"><span>20-20 DTL</span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/teenpatti.png" class="img-fluid">
+                            <div class="casino-name"><span> 20-20 teenpatti</span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-3')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/teenpatti.png" class="img-fluid">
+                            <div class="casino-name">
+                                <span>Test teenpatti</span>
+                            </div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-2')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/teenpatti.png" class="img-fluid">
+                            <div class="casino-name"> <span>1 Day teenpatti</span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoCasinoMatchDetails('-1023')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/teenpatti.png" class="img-fluid">
+                            <div class="casino-name"><span> open teenpatti</span></div>
+
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-4')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/poker.png" class="img-fluid">
+                            <div class="casino-name"><span>20-20 Poker</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-5')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/poker.png" class="img-fluid">
+                            <div class="casino-name"><span> Day 1 Poker</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/poker.png" class="img-fluid">
+                            <div class="casino-name"><span>6 Player Poker</span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1012')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/32cards.png" class="img-fluid">
+                            <div class="casino-name"><span>32 Cards A</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1010')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/32cards.png" class="img-fluid">
+                            <div class="casino-name"><span>32 Cards B</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1011')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/dt.png" class="img-fluid">
+                            <div class="casino-name"><span>20-20  Dragon Tiger</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1014')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/dt.png" class="img-fluid">
+                            <div class="casino-name"><span>1 Day Dragon Tiger</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-145')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/lucky7.png" class="img-fluid">
+                            <div class="casino-name"><span>Lucky 7 A</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1016')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/bollywood.png" class="img-fluid">
+                            <div class="casino-name"><span>AMAR AKBAR ANTHONY</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1015')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/bollywood.png" class="img-fluid">
+                            <div class="casino-name"><span>BOLLYWOOD TABLE</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-7')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/andar-bahar.png" class="img-fluid">
+                            <div class="casino-name"><span>Andar Bahar</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/worli.png" class="img-fluid">
+                            <div class="casino-name"><span>Worli Matka</span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1013')">
+                    <div class="casinoicons">
+                        <a href="javascript:void(0)" class=""><img src="assets/images/games-icon/casino-slot/worli.png" class="img-fluid">
+                            <div class="casino-name"><span>INSTANT WORLI</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/3cardj.png" class="img-fluid">
+                            <div class="casino-name"><span>3 Cards Judgement </span></div>
+
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/casino-slot/lottery.png" class="img-fluid">
+                            <div class="casino-name"><span>Lottery</span></div>
+
+                        </a>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1019')">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/race20.png" class="img-fluid">
+                            <div class="casino-name"><span>20 20 Race</span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/queen.jpg" class="img-fluid">
+                            <div class="casino-name"><span>Casino Queen</span></div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 text-center" (click)="gotoMatchDetails('-1018')">
+                    <div class="casinoicons">
+                        <a class=""><img src="assets/images/games-icon/cricketv3.jpg" class="img-fluid">
+                            <div class="casino-name"><span>5Five Cricket</span></div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="flagCasino == 'Casino' && casinoSports" class="container-fluid">
+            <div class="gamehall-wrap-simple1">
+
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 mb-2">
+
+                      <ng-container  *ngFor="let data of casinoSports">
+
+                        <a *ngIf="data?.name != 'Brino Fantasy' && data?.sport_id != 'matka' && data?.is_active == '1'" (click)="navigateToGame(data.name , data.show_chip_value_popup)">
+                            <div class="d-inline-block m-t-10 m-b-10">
+                              <img src="assets/images/casino/{{data.sport_id}}.png" class="img-fluid" />
+                              <div class="casinoicons-title">{{data.name}}1</div>
+                            </div>
+                          </a>
+                      </ng-container>
+                      <a >
+                        <div class="d-inline-block m-t-10 m-b-10">
+                          <img src="assets/images/casino/evolution-game-img.jpg" class="img-fluid" />
+                          <div class="casinoicons-title">evolution</div>
+                        </div>
+                      </a>
+                      <a >
+                        <div class="d-inline-block m-t-10 m-b-10">
+                          <img src="assets/images/casino/gamepool-gmae-img.jpg" class="img-fluid" />
+                          <div class="casinoicons-title">Gamepool</div>
+                        </div>
+                      </a>
+                      <a >
+                        <div class="d-inline-block m-t-10 m-b-10">
+                          <img src="assets/images/casino/livecasinogaming super.jpg" class="img-fluid" />
+                          <div class="casinoicons-title">livecasinogaming</div>
+                        </div>
+                      </a>
+
+                      <a >
+                        <div class="d-inline-block m-t-10 m-b-10">
+                          <img src="assets/images/casino/Fawk.jpg" class="img-fluid" />
+                          <div class="casinoicons-title">Live casino</div>
+                        </div>
+                      </a>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+          </div>
+
+          <div *ngIf="flagCasino == 'BrinoCasino' && casinoSports" class="container-fluid">
+            <div *ngIf="url" class="supenova">
+                <iframe id="Brino_Iframe" [src]="url" frameborder="0" allowfullscreen scrolling="no" class="virtual"></iframe>
+                </div>
+          </div>
+
+          <div *ngIf="flagCasino == 'NewBrinoCasino' && casinoSports" class="container-fluid">
+            <div *ngIf="url1" class="supenova super_nova_brino">
+                <iframe id="Brino_Iframe" [src]="url1" frameborder="0" allowfullscreen scrolling="yes" class="virtual"></iframe>
+                </div>
+          </div>
+
+          <div *ngIf="flagCasino == 'NEW CASINO' && dreamCasinoProductList" class="container-fluid">
+            <div class="gamehall-wrap-simple1">
+
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 mb-4">
+
+                      <ng-container  *ngFor="let data of dreamCasinoProductList">
+
+                        <a *ngIf="data?.is_active == '1'" (click)="navigateTocategory(data?.provider_code)" class="my-4">
+                            <div class="d-inline-block m-t-10 m-b-10">
+                                <img src="assets/images/casino/{{data.provider_code.toLowerCase()}}.jpg" onError="this.src='assets/images/casino/livecasino.jpg'" class="img-fluid" />
+                              <!-- <img src="assets/images/casino/{{data.name}}.png" class="img-fluid" /> -->
+                              <div class="casinoicons-title">{{data?.provider_name}}</div>
+                            </div>
+                          </a>
+                      </ng-container>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+          </div>
+
+          <div *ngIf="flagCasino != 'Casino' && flagCasino != 'Live Casino' && flagCasino != 'BrinoCasino' && flagCasino != 'NewBrinoCasino' " class=" no-record">
+
+            <div class="card">
+              <div class="card-body no-record" style="text-align: center;">
+                No records found !
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+<div id="casinoGameModal" class="modal" style="height: 100vh;">
+
+    <div id="marketbetspopup" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-modal="true" style="display: block;">
+      <div class="modal-dialog  encasino">
+        <div class="modal-content">
+          <div class="modal-body engcasinomodalbgimg">
+            <div class="casinoinfo text-white text-center">Live Casino Info
+              <button type="button" class="close text-white ecasinobtnclose" data-dismiss="modal" aria-hidden="true">
+                ×</button></div><div class="f-18 text-white text-center">
+                  WELCOME TO NEW CASINO LOBBY</div>
+                  <div class="f-18 text-white text-center">
+                    Please note (1 Point = 100 Points)</div>
+                    <div class="hirizontal-line"></div>
+                    <div class="f-18 text-white text-center"
+                    >नई कैसीनो लॉबी में आपका स्वागत है</div>
+                    <div class="f-18 text-white text-center">
+                      कृपया ध्यान दें (1 अंक = 100 अंक)</div>
+                      <div class="text-center ecasinobtn">
+                        <button type="button" class="btn place-bet-btn waves-effect mx-auto ecasinoclose" data-dismiss="modal">
+                          Okay I Agree</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    <div >
+
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,65 @@
+<div class="col-md-12cd report-main-content m-t-20">
+  <div class="">
+    <section class="card">
+      <header class="card-header">
+        <h2 class="card-title">Manage Series Matches</h2>
+      </header>
+      <div class="card-body">
+        <div id="horizontalTab">
+          <ul class="resp-tabs-list">
+            <li [class.active]="selectedIndex === i" *ngFor="let sport of sportList;let i = index" (click)="getSeriesList(sport.sport_id,sport.name);setIndex(i)">
+              {{sport.name}}
+            </li>
+
+          </ul>
+          <div class="resp-tabs-container">
+            <div class="tabing-part">
+              <h3 class="active">{{sportName}}</h3>
+              <div class="usertable_area">
+                <div class="table-responsive">
+                  <table width="100%" class="table table-striped table-hover table-bordered">
+                    <tbody>
+                      <tr>
+                        <th>S No.</th>
+                        <th>Series ID</th>
+                        <th>Series Name</th>
+                        <th>Action</th>
+                      </tr>
+                      <ng-container *ngFor="let series of this.seriesList;let i = index">
+                        <tr>
+                          <td>{{i + 1}}</td>
+                          <td>{{series.series_id}}</td>
+                          <td>
+                          <span *ngIf="series.is_active == '1'"
+                            [routerLink]="['/main/online-matches',sportId,series.series_id]"
+                            style="cursor: pointer;">{{series.series_name}}</span>
+                          <span *ngIf="series.is_active == '0'">{{series.series_name}}</span>
+                          </td>
+                          <td>
+                            <span *ngIf="series.is_active == '0'">
+                              <button type="button" (click)="SaveSeries(series)" title="add series to missing sites"
+                                class="btn btn-success">Add</button>
+                            </span>
+                            <span *ngIf="series.is_active == '1'">
+                              <button type="button" title="add series to missing sites" class="btn btn-success"
+                                disabled>Added</button>
+                            </span>
+
+                          </td>
+                        </tr>
+
+
+                      </ng-container>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

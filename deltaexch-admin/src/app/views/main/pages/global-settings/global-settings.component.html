@@ -1,0 +1,220 @@
+<div class="col-md-12 main-container">
+    <div class="detail-row">
+      <h2>Globel Setting</h2>
+    </div>
+    <form [formGroup]="globalSetting">
+    <div class="listing-grid">
+      <div class="table-box">
+        <h3 class="heading-text">Commission</h3>
+        <div class="table-responsive data-table" id="tbldata">
+          <div id="example_wrapper" class="dataTables_wrapper no-footer">
+            <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+              <thead>
+                <tr role="row">
+                  <th width="25%" class="sorting_asc" rowspan="1" colspan="1" aria-label="Date">&nbsp;</th>
+                  <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Odds">Odds</th>
+                  <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Session">Session</th>
+                  <th width="25%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Bookmaker">Bookmaker</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr role="row" class="odd">
+                  <td>Cricket</td>
+                  <td><input formControlName="cricket_odds_commission" type="number" id="" name="" class="table-input" placeholder="Odds"></td>
+                  <td> <input formControlName="cricket_fancy_commission" type="number" id="" name="" class="table-input" placeholder="Session"> </td>
+                  <td><input formControlName="cricket_bookmaker_commission" type="text" id="" name="" class="table-input" placeholder="Bookmaker"></td>
+                </tr>
+                <tr role="row" class="even">
+                  <td>Soccer</td>
+                  <td><input type="number"  formControlName="soccer_odds_commission" id="" name="" class="table-input" placeholder="Odds"></td>
+                  <td> <input type="number" formControlName="soccer_fancy_commission" id="" name="" class="table-input" placeholder="Session"> </td>
+                  <td><input type="text" formControlName="soccer_bookmaker_commission" id="" name="" class="table-input" placeholder="Bookmaker"></td>
+                </tr>
+                <tr role="row" class="even">
+                  <td>Tennis</td>
+                  <td><input type="number" formControlName="tennis_odds_commission" id="" name="" class="table-input" placeholder="Odds"></td>
+                  <td> <input type="number" formControlName="tennis_fancy_commission" id="" name="" class="table-input" placeholder="Session"> </td>
+                  <td><input type="text" formControlName="tennis_bookmaker_commission" id="" name="" class="table-input" placeholder="Bookmaker"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="table-box">
+        <h3 class="heading-text">Stack Button</h3>
+        <div class="table-responsive data-table" id="tbldata">
+          <div id="example_wrapper" class="dataTables_wrapper no-footer">
+            <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+              <tbody>
+                <tr role="row" class="odd">
+                  <td valign="middle">Stack</td>
+                  <td><input type="text" formControlName="match_stack" id="" name="" class="table-input" placeholder="Odds"></td>
+                  <td> <input type="text" formControlName="fancy_stack" id="" name="" class="table-input" placeholder="Session"> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="table-box">
+        <h3 class="heading-text">Sports Setting</h3>
+        <div class="table-responsive data-table" id="tbldata">
+          <div id="example_wrapper" class="dataTables_wrapper no-footer">
+            <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+              <thead>
+                <tr role="row">
+                  <th width="20%" class="sorting_asc" rowspan="1" colspan="1" aria-label="Date">&nbsp;</th>
+                  <th width="20%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Min">Min</th>
+                  <th width="20%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Max">Max</th>
+                  <th width="20%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Delay">Odd Delay</th>
+                  <th width="20%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Delay">Session Delay</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr role="row" class="odd">
+                  <td valign="middle">Cricket</td>
+                  <td><input type="number" formControlName="cricket_min_bet" id="" name="" class="table-input" placeholder="Min"></td>
+                  <td> <input type="number" formControlName="cricket_max_bet" id="" name="" class="table-input" placeholder="Max"> </td>
+                  <td><input type="number" formControlName="cricket_odds_delay" id="" name="" class="table-input" placeholder="In Seconds"></td>
+                  <td><input type="number" formControlName="cricket_fancy_delay" id="" name="" class="table-input" placeholder="In Seconds"></td>
+                </tr>
+                <tr role="row" class="even">
+                  <td valign="middle">Soccer</td>
+                  <td><input type="number" formControlName="soccer_min_bet" id="" name="" class="table-input" placeholder="Min"></td>
+                  <td> <input type="number" formControlName="soccer_max_bet" id="" name="" class="table-input" placeholder="Max"> </td>
+                  <td><input type="number" formControlName="soccer_odds_delay" id="" name="" class="table-input" placeholder="In Seconds"></td>
+                  <td><input type="number" formControlName="soccer_fancy_delay" id="" name="" class="table-input" placeholder="In Seconds"></td>
+                </tr>
+                <tr role="row" class="even">
+                  <td valign="middle">Tennis</td>
+                  <td><input type="number" formControlName="tennis_min_bet" id="" name="" class="table-input" placeholder="Min"></td>
+                  <td> <input type="number" formControlName="tennis_max_bet" id="" name="" class="table-input" placeholder="Max"> </td>
+                  <td><input type="number" formControlName="tennis_odds_delay" id="" name="" class="table-input" placeholder="In Seconds"></td>
+                  <td><input type="number" formControlName="tennis_fancy_delay" id="" name="" class="table-input" placeholder="In Seconds"></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="table-box">
+        <h3 class="heading-text">Session and Bookmaker Limit</h3>
+        <div class="table-responsive data-table" id="tbldata">
+          <div id="example_wrapper" class="dataTables_wrapper no-footer">
+            <table id="example" class="table table-striped table-bordered datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+              <tbody>
+                <tr role="row" class="odd">
+                  <td valign="middle">Session Min limit</td>
+                  <td><input type="text" formControlName="session_min_bet" id="" name="" class="table-input" placeholder="Session min limit"></td>
+                  <td valign="middle">Session Max limit</td>
+                 
+                  <td> <input type="text" formControlName="session_max_bet" id="" name="" class="table-input" placeholder="Session max limit"> </td>
+                </tr>
+                <tr role="row" class="odd">
+                   <td valign="middle">Bookmaker Max limit</td>
+                 
+                  <td> <input type="text" formControlName="bookmaker_max_stack" id="" name="" class="table-input" placeholder="Bookmaker limit"> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+         <!-- //images -->
+
+         <div class="change_passadmin bdrtop" >
+          <div class="row">
+            <div class="col-sm-9 form-group">
+         <div class="row">
+          <div class="col-sm-8">
+          <label for="file">Site Logo </label>
+          <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+          </div>
+          <div class="col-sm-4">
+             <label for="file">Ex:(185*45, PNG) </label>
+          <div class="logo-img"><img [src]="url + '?cache=' + cacheBust"> </div>
+          </div>
+         </div>
+            </div>
+            <div class="col-sm-3 form-group text-right submit-btn">
+              <button type="submit" class="btn btn-primary" (click)="uploadSiteLogo()">Submit</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- favicon -->
+        <div class="change_passadmin bdrtop" >
+          <div class="row">
+            <div class="col-sm-9 form-group">
+         <div class="row">
+          <div class="col-sm-8">
+          <label for="file">Fav Icon </label>
+          <input type="file" id="file" (change)="handleFileInput1($event.target.files)">
+          </div>
+          <div class="col-sm-4">
+            <label for="file">Ex:(32*32, ICO) </label>
+            <div class="logo-img"><img [src]="favurl + '?cache=' + cacheBust"> </div>
+          </div>
+         </div>
+            </div>
+            <div class="col-sm-3 form-group text-right submit-btn">
+              <button type="submit" class="btn btn-primary" (click)="uploadSiteFavIcon()">Submit</button>
+            </div>
+          </div>
+        </div>
+        <!-- images -->
+        <div class="change_passadmin bdrtop" >
+          <div class="row">
+            <div class="col-sm-12 form-group">
+         <div class="row">
+           
+          <div class="col-sm-4">
+            <label for="file">Sign Up </label>
+
+            <select class="form-select"  formControlName="sign_up">
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          
+          </div>
+          <div class="col-sm-4">
+            <label for="file">Payment Gateway </label>
+          
+            <select class="form-select"  formControlName="payment_gateway">
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <label for="file">show user setting</label>
+          
+            <select class="form-select"  formControlName="show_user_setting">
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+         
+         </div>
+            </div>
+            
+          </div>
+        </div>
+      <div id="example_filter" class="dataTables_filter">
+        <label class="clearfix">
+              <input type="search" formControlName="site_message" class="form-control datatable-search float-left" placeholder="Site Message" aria-controls="example">
+          <input type="password" formControlName="transaction_password" class="form-control datatable-search float-right" placeholder="Transaction" aria-controls="example">
+        </label>
+      </div>
+      <div id="example_filter" class="dataTables_filter">
+        <label class="clearfix">
+          <button type="submit" class="btn btn-diamond" id="" (click)="setGlobalSetting()" [disabled]="globalSetting.invalid">Submit</button>
+        </label>
+      </div>     
+    </div>
+  </form>
+  </div>

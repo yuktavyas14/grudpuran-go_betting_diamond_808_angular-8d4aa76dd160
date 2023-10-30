@@ -1,0 +1,67 @@
+<div class="widget">
+    <header  class="card-header"><h2 _ngcontent-hlc-c118="" class="card-title">Manage Matches</h2></header>
+    <div class="widget-body form">
+
+        <!-- <h3>{{sportName}}</h3> -->
+        <div class="usertable_area">
+            <div class="table-responsive">
+                <table *ngIf="matchList != null && matchList.length != 0" width="100%" class="table table-striped table-hover table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>S No.</th>
+                            <th>MATCH ID</th>
+                            <th>MATCH NAME</th>
+                            <th>OPEN DATE</th>
+                            <th>ACTION</th>
+                        </tr>
+                        <ng-container *ngFor="let match of matchList  let j=index">
+                            <tr>
+                                <td>{{j+1}}</td>
+                                <td>{{match.match_id}}</td>
+                                <td>{{match.match_name}}</td>
+                                <td>{{match.openDate  |formateDate | date:"medium"}}
+                                </td>
+                                <td>
+                                    <!-- <span class="table_icon">
+                                        <input type="checkbox"
+                                            [checked]="match.is_active =='0'?false:true"
+                                            (click)="createMatch(match)">
+                                    </span> -->
+                                    <span *ngIf="match.is_active == '0'">
+                                        <button type="button" (click)="createMatch(match)" title="add series to missing sites"
+                                          class="btn btn-success">Add</button>
+                                      </span>
+                                      <span *ngIf="match.is_active == '1'">
+                                        <button type="button" title="add series to missing sites" class="btn btn-success"
+                                          disabled>Added</button>
+                                      </span>
+                                    <!-- <span [hidden]="match.is_active =='0'">
+
+                                        <span (click)="hideme[j] = !hideme[j];isExpend=j"><img alt="img"
+                                                src="/assets/images/fancy.png"></span></span> -->
+                                                <div class="view-btn">                                                        
+                                                  <a [routerLink]="['/main/betfairmarket',sportId,seriesId,match.match_id]" class="btn btn-primary view-btn">View Markets</a>
+                                                  <a href="bookmaker.html" class="btn btn-primary view-btn">Bookmaker</a>
+                                                  <a [routerLink]="['/main/indianfancy',sportId,seriesId,match.match_id]" class="btn btn-primary">View Sessions</a>           
+                                              </div>
+                                </td>
+                            </tr>
+                            <tr *ngIf="hideme[j]==true && isExpend == j" class="fancybolds">
+                                <td class="text-center" colspan="3">
+                                    <a [routerLink]="['/main/indianfancy',sportId,seriesId,match.match_id]">Indian
+                                        Fancy</a></td>
+                                <td><a routerLink='/main/sessionfancy'>Session
+                                        Fancy</a></td>
+                                <td><a  [routerLink]="['/main/betfairmarket',sportId,seriesId,match.match_id]">Betfair
+                                        Market</a></td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <div *ngIf="matchList == null || matchList.length === 0" style="text-align: center;">No Records Found !</div>
+            </div>
+        </div>
+       
+        
+    </div>
+</div> 

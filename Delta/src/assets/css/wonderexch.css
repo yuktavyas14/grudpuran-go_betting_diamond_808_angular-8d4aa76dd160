@@ -1,0 +1,252 @@
+.login {
+    background-image: linear-gradient(#000000, #ee6c4d)!important;
+}
+.login-logo img {
+    width: 150px !important;
+}
+.btn-submit {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #fff !important;
+}
+
+.featured-box-login h4 {
+    color: #000000;
+}
+
+.modal-header, .popup21white .modal-header {
+    background: #000000;
+}
+.header.header {
+    background-color: #000000;
+}
+.header-bottom {
+    background-color: #000000;
+}
+.main-content .nav-tabs {
+    background-color: #000000;
+}
+.main-content .nav-tabs .nav-link {
+    border-top: 3px solid #000000 !important;
+}
+.main-content .nav-tabs .nav-item:after {
+    background: #ffffff;
+    top: 12px;
+    width: 1px;
+    content:none;
+}
+.andar-bahar2 .first-bet > div:first-child, .andar-bahar2 .second-bet > div:first-child {
+    border: 3px solid #000000 !important;
+    background-color: #000000 !important;
+}
+.andar-bahar2 .sa > div:first-child {
+    border: 3px solid #000000 !important;
+}
+.baccarat .statistics-title {
+    background-color: #000000 !important;
+}
+.baccarat-container .bet-odds {
+    background-color: #000000 !important;
+}
+.fa.fa-info-circle{
+    color: #000000 !important;
+}
+.place-bet .stakeactionplus, .place-bet .stakeactionminus {
+    background: #ee6c4d !important;
+}
+.place-bet .btn-secondary {
+    background-color: #ee6c4d !important;
+    border-color: #ee6c4d !important;
+    color: #fff;
+}
+.main-content .sports .nav-tabs {
+    background-color: #000000;
+}
+.sports .nav-tabs {
+    background-color: #000000;
+}
+.bs {
+    box-shadow: 0px -5px 5px -5px rgb(0 0 0 / 50%);
+    position: relative;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+}
+.sports .nav-tabs .nav-link.active, .sports .nav-tabs .nav-link:hover {
+    background-color: #000000;
+    border-bottom: solid 3px #fff !important;
+}
+.livecasinos ,.livecasinos1{
+    background-color: #000000 !important;
+    }
+.main-content .nav-tabs .nav-link {
+    border-top: 0;
+}
+.casinoicons .casino-name {
+    background-image: linear-gradient(#000000, #ee6c4d); color: #fff; font-size: 11px;
+}
+.sidebar-title {
+    background: #000000;
+}
+.casinoicons-title {
+    background-image: linear-gradient(#000000, #000000);
+}
+.btn-theme {
+    background-image: linear-gradient(to right, #000000, #000000) !important;
+}
+.card-header {
+    background-color: #000000;
+}
+.game-heading {
+    background-color: #000000;
+}
+.lastResultPart h3 {
+    background-color:#000000;
+}
+ul.other-table-box li {
+    background: linear-gradient(90deg,#000000,#000000);
+    background-image: linear-gradient(90deg,#000000,#000000)!important;
+}
+.game-heading {
+    background-color: #000000;
+}
+.market-title {
+    background-color: #ee6c4d;
+}
+.game-page .nav-tabs .nav-link {
+    /* background-color: #000000; */
+}
+.game-page .nav-tabs .nav-link.active {
+    background-color: #000000;
+}
+
+.featured-box .nav-tabs li a {
+    background-color: #000000 !important;
+}
+.fancy-nav ul li.active a,
+.fancy-nav ul li a,
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    background-color: #000000!important;
+}
+button.time-btn {
+    background-color: #000000 !important;
+    color: #fff !important;
+  }
+.tab-pane.sports ul {
+    background-color: #ee6c4d;
+}
+.featured-box-login.featured-box-secundary .btn.btn-submit.btn-login{
+margin: 5px 0px !important;
+}
+.featured-box-login.featured-box-secundary  .form-control  {
+    padding: 0.575rem 0.75rem 0.575rem  0.75rem !important;
+}
+.main-content ul.nav.nav-tabs.game-nav-bar li.nav-item.text-center {
+    background-color: #bb1919;
+}
+.lastResultPart h3, .fancy-marker-title h4 {
+    background-color: #ee6c4d !important;
+}
+.low-high-btn, ul.other-table-box li, .btn-theme {
+    background-image: linear-gradient(90deg,#000000,#000000) !important;
+}
+footer {
+    background-color: #000000;
+    border-top: 2px solid #000000;
+}
+
+.game-page .nav-tabs .nav-link {
+    border-top:3px solid #000000;
+    font-size: 12px;
+    font-weight: bold;
+  /* background-color: #000000; */
+}
+
+
+.login .form-group i.fa.fa-android{color: #fff !important;}
+.loginInner1 input.form-control{border-bottom: 1px solid #000000 !important;}
+.header.header{color: #0a0a0a;}
+
+
+.fancy-markets .fancy-nav.nav-tabs .nav-item{background-color: #000000;}
+.game-page .fancy-markets .nav-tabs .nav-link.active{background-color: #ee6c4d !important;}
+.main-content .nav-tabs .nav-item.active .nav-link {
+    border-top: 3px solid #ee6c4d !important;
+    background-color: #ee6c4d !important
+}
+.modal-header{background-color: #000000 !important}
+
+
+#backpopup .btn-primary {
+  color: #fff;
+  background-color: #000000;
+  border-color: #000000;
+}
+.card-header:first-child {
+  border-radius:   0 !important;
+}
+.theme-blue .bs-datepicker-head {
+    background-color: #1284e7 !important;
+}
+.theme-blue .bs-datepicker-body table td span.selected, .theme-blue .bs-datepicker-body table td.selected span, .theme-blue .bs-datepicker-body table td span[class*="select-"]:after, .theme-blue .bs-datepicker-body table td[class*="select-"] span:after {
+    background-color: #1284e7 !important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{background-color: #000000 !important;}
+
+.btn-primary{background-color: #000000; color: #fff;  border-color: #000000;}
+
+.card-header, .report-container .table thead tr{background-color: #ee6c4d !important;}
+
+#modalBookmarker .card-title, #rules-container .card-title {color: #fff !important;}
+
+
+
+
+.match-title {
+  background-color: #ee6c4d;
+
+}
+
+.header-bottom marquee {
+  /* width: 97%;
+  position: absolute;
+  margin-top: 5px;
+  padding-left: 5px;
+  font-weight: bold;
+  right: 0; */
+}
+.five-cricket .market-title {
+    background-color: #a7d8fd !important;
+}
+.five-cricket .card .market-title {
+    background-color: #ee6c4d !important;
+}
+.cc-rules .card .card-header {
+    color: #000;
+    background-color:transparent !important;
+    
+}
+.marque, marquee {
+  /* display: block;
+  height: 24px;
+  padding-left: 45px;
+  padding-top: 12px; */
+  width: 97% !important;
+  position: absolute !important;
+  margin-top: 5px !important;
+  padding-left: 5px !important;
+  font-weight: bold !important;
+  right: 0 !important;
+  color: #fff !important;
+}
+
+
+.casinoicons .new-launch-casino {
+    background-color: #000000 !important;
+}
+.header-right {
+    color: #fff !important;
+}

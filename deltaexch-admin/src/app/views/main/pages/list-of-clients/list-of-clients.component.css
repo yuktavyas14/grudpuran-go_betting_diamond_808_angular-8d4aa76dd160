@@ -1,0 +1,17 @@
+.dropdownacount{
+display: inline-block !important;
+}
+
+.uname{
+  border: none !important;
+}
+
+ #clientListTable thead th{font-weight: bold;
+  font-size: 14px; border-bottom: 2px solid #000 !important;}
+  .data-table table td a{padding: 4px 6px;}
+
+
+  .btn-diamond {
+    font-weight: bold;
+    color: #424242;
+}

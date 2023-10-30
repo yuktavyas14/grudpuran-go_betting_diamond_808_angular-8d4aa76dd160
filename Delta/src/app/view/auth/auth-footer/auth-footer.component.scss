@@ -1,0 +1,236 @@
+
+footer {
+  background-color: #3e3d3a;
+    padding: 50px 0px;
+    border-top: 10px solid #0839ee;
+    height: auto;
+    display: inline-block;
+    width: 100%;
+}
+footer h5 a{color:#7c7a7a;}
+.brands-logo ul {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+@media only screen and (max-width:1140px){
+  .sp-img {
+          padding: 0px 20px;
+  }
+  .brands-logo ul li {
+      margin-right: 22px;
+      padding-bottom: 6px;
+  } 
+  .brands-logo ul li:last-child {margin:0px;}
+  .casion-itm h4 {
+      padding: 14px 7px;
+      font-size: 14px;
+  }
+  .brands-logo ul {
+      justify-content: inherit;
+      white-space: nowrap;
+      overflow-y: hidden;
+      overflow-x: scroll;
+  }
+  h2 {
+      font-size: 40px;
+  }
+  .sports-item h4 {
+      margin-top: 18px;
+      font-size: 24px;
+  }
+  
+  }
+  
+  @media only screen and (max-width:991px){
+      .main-navbar .navbar-brand img {
+          width: 200px;
+      }
+      .main-navbar .form-control {
+          width: 145px;
+      }
+      .btn1 {
+          font-size: 16px;
+          padding: 3px 15px;
+      }
+      .sp-img {
+          padding: 0px 0;
+      }
+      .casion-itm {margin-bottom:15px;}
+      .welcome_section {
+          padding: 45px 0px 40px 0px;
+          background: #fff;
+      }
+  }
+  
+  @media only screen and (max-width:767px){
+      
+      .main-navbar .navbar-brand img {
+          width: 166px;
+      }
+      header.main-navbar {
+          padding: 0px;
+      }
+      .btn1 {
+          font-size: 14px;
+          padding: 2px 14px;
+          height: 32px;
+      }
+      h3 {
+          font-size: 18px;
+      }
+      h2 {
+          font-size: 24px;
+      }
+      .sp-img {
+          padding: 0px 44px;
+      }
+      .sports-item {
+          margin-bottom: 10px;
+      }
+      footer {
+          padding: 30px 0px;
+      }
+      .casino-section {
+          margin-top: 35px;
+      }
+      .signup-form .form-control {
+          height: 40px;
+      }
+    .signup-form .btn1 {
+          height: 40px;
+      }
+      .signup-form .form-group {
+          margin-bottom: 12px;
+      }
+  }
+      
+  @media only screen and (max-width:340px){
+      .btn1.signup {
+          margin-left: 4px;
+      }
+      .btn1 {
+          padding: 0px 9px;
+      }
+      .main-navbar .navbar-brand img {
+          width: 140px;
+      }
+      footer h5 {
+          font-size: 16px;
+      }
+      footer h5 a img {
+          width: 22px;
+      }
+  
+  }
+  @media only screen and (max-width:1140px){
+    .sp-img {
+            padding: 0px 20px;
+    }
+    .brands-logo ul li {
+        margin-right: 22px;
+        padding-bottom: 6px;
+    } 
+    .brands-logo ul li:last-child {margin:0px;}
+    .casion-itm h4 {
+        padding: 14px 7px;
+        font-size: 14px;
+    }
+    .brands-logo ul {
+        justify-content: inherit;
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    h2 {
+        font-size: 40px;
+    }
+    .sports-item h4 {
+        margin-top: 18px;
+        font-size: 24px;
+    }
+    
+    }
+    
+    @media only screen and (max-width:991px){
+        .main-navbar .navbar-brand img {
+            width: 200px;
+        }
+        .main-navbar .form-control {
+            width: 145px;
+        }
+        .btn1 {
+            font-size: 16px;
+            padding: 3px 15px;
+        }
+        .sp-img {
+            padding: 0px 0;
+        }
+        .casion-itm {margin-bottom:15px;}
+        .welcome_section {
+            padding: 45px 0px 40px 0px;
+            background: #fff;
+        }
+    }
+    
+    @media only screen and (max-width:767px){
+        
+        .main-navbar .navbar-brand img {
+            width: 166px;
+        }
+        header.main-navbar {
+            padding: 0px;
+        }
+        .btn1 {
+            font-size: 14px;
+            padding: 2px 14px;
+            height: 32px;
+        }
+        h3 {
+            font-size: 18px;
+        }
+        h2 {
+            font-size: 24px;
+        }
+        .sp-img {
+            padding: 0px 44px;
+        }
+        .sports-item {
+            margin-bottom: 10px;
+        }
+        footer {
+            padding: 30px 0px;
+        }
+        .casino-section {
+            margin-top: 35px;
+        }
+        .signup-form .form-control {
+            height: 40px;
+        }
+      .signup-form .btn1 {
+            height: 40px;
+        }
+        .signup-form .form-group {
+            margin-bottom: 12px;
+        }
+    }
+        
+    @media only screen and (max-width:340px){
+        .btn1.signup {
+            margin-left: 4px;
+        }
+        .btn1 {
+            padding: 0px 9px;
+        }
+        .main-navbar .navbar-brand img {
+            width: 140px;
+        }
+        footer h5 {
+            font-size: 16px;
+        }
+        footer h5 a img {
+            width: 22px;
+        }
+    
+    }

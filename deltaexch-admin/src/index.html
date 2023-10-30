@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.3">
+
+
+    <title></title>
+  <base href="/">
+  <!-- <base href="/admin/"> -->
+  <!-- <link rel="icon" type="image/x-icon" id="faviconIcon" > -->
+  <!-- <link rel="icon" id="appIcon" type="image/x-icon" > -->
+  <!-- <link rel="icon" id="favIcon" type="image/x-icon" href="assets/favicon.png" /> -->
+  <link rel="icon"id="faviconIcon"  type="image/x-icon" href="favicon.ico + '?cache=' + cacheBust"/>
+
+
+
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9">
+    </script>
+    <script>
+       var cacheBust = Date.now();
+
+// Create a new favicon link element
+var newFavicon = document.createElement('link');
+newFavicon.rel = 'icon';
+newFavicon.type = 'image/ico';
+newFavicon.href = window.location.origin+'/api/upload/image/favicon.ico?cache=' + cacheBust;
+
+// Find the existing favicon link element
+var oldFavicon = document.querySelector("link[rel='icon']");
+
+// Replace the existing favicon with the new one
+if (oldFavicon) {
+  oldFavicon.parentNode.replaceChild(newFavicon, oldFavicon);
+} else {
+  document.head.appendChild(newFavicon);
+}
+
+
+
+
+
+
+
+        var global = global || window;
+    </script>
+</head>
+
+
+<body oncontextmenu="return true;">
+    <app-root></app-root>
+</body>
+
+</html>
+
+
+<script>
+
+  document.addEventListener('contextmenu', event => event.preventDefault());
+     document.onkeydown=function(e){
+        if(event.keyCode == 123){
+            localStorage.clear();
+            return false;
+        }
+        if(e.ctrlKey &&e.shiftKey && e.keyCode =='I'.charCodeAt(0)){
+            localStorage.clear();
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+            localStorage.clear();
+            return false;
+        }
+        if(e.ctrlKey  && e.keyCode == 'U'.charCodeAt(0)){
+            localStorage.clear();
+            return false;
+        }
+    }
+    document.title=window.location.hostname;
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText)
+            console.log(data.data,'fdghjkl;jhgfd')
+                var element=  document.getElementById('theme').href = 'assets/css/' + data.data.theam_code + '.css';
+
+            if (data.data.site_title != undefined && data.data.site_title != null && data.data.site_title != '') {
+                document.title = data.data.site_title;
+               // console.log( data.data.favicon," data.data.favicon")
+            }else{
+                document.title = window.location.hostname;
+            }
+             //document.getElementById('faviconIcon').href = 'https://diamond808.xyz/api/upload/image/' + data.data.favicon;
+           
+            // document.getElementById('faviconIcon').href = 'https://skyexchangge.com/api/upload/image/' + data.data.favicon;
+        }
+        
+
+    };
+
+   
+    //  xhttp.open("GET", `https://skyexchangge.com/api/globalSetting/getSetting`, true);
+    xhttp.open("GET", window.location.origin+`/api/globalSetting/getSetting`, true);
+    //xhttp.open("GET",window.location.origin.replace('m.','' )+':3003/api/v1/globalConstant', true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+
+</script>

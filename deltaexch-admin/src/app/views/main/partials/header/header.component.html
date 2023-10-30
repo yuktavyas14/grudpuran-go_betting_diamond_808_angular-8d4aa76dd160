@@ -1,0 +1,832 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<form>
+  <div class="header-bottom whiteColor">
+    <div class="container-fluid">
+      <!-- <a class="logo" routerLink="/main/marketAnalysis"> <img src="assets/images/godslogo.png"> </a> -->
+
+      <a  class="logo" (click)="onLogo()" >
+        <img src="{{ url }}" />
+      </a>
+      <div (click)="runJquery()" class="side-menu-button" id="12355">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <nav class="navbar navbar-expand-md btco-hover-menu">
+        <div class="collapse navbar-collapse">
+          <ul class="list-unstyled navbar-nav whiteColor" id="main">
+            <li class="nav-item" (click)="refresh()">
+              <a [routerLink]="['/main/listOfclients', 'undefined']">
+                <b>List of clients</b>
+              </a>
+            </li>
+            <ng-container *ngFor="let sport of sportListCup">
+              <li class="nav-item">
+                <a
+                  class="blinking"
+                  [routerLink]="['/main/matchdetails', sport?.match_id, 'cup']"
+                >
+                  <span
+                    ><b>{{ sport?.match_name }} </b></span
+                  >
+                </a>
+              </li>
+            </ng-container>
+            <li class="nav-item">
+              <a routerLink="/main/marketAnalysis"> <b>Market Analysis</b> </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="blinking">
+                <span><b>Live Market</b> <i class="fa fa-caret-down"></i></span>
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <ng-container *ngFor="let series of seriesListAll">
+                  <li *ngIf="series.is_active == '1'">
+                    <a
+                      href="javascript:void(0)"
+                      (click)="onLiveGame(series)"
+                      class="dropdown-item"
+                    >
+                      <span
+                        ><b>{{ series.name }}</b></span
+                      >
+                      <div class="lineanimation"></div>
+                    </a>
+                  </li>
+                </ng-container>
+                <!-- <li>
+                                    <a routerLink="/main/worli" class="dropdown-item"> <span><b>Worli</b></span>
+                                        <div class="lineanimation"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink='/main/three-cards-judgement' class="dropdown-item"> <span><b>3 Cards
+                        Judgement</b></span>
+                                        <div class="lineanimation"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class=" dropdown-item"> <span><b>32 Cards Casino</b></span>
+                                        <div class="lineanimation"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class=" dropdown-item"> <span><b>Live TeenPatti</b></span> </a>
+                                </li>
+                                <li>
+                                    <a class=" dropdown-item"> <span><b>Live Poker</b></span> </a>
+                                </li>
+                                <li>
+                                    <a class=" dropdown-item"> <span><b>Andar Bahar</b></span> </a>
+                                </li>
+                                <li>
+                                    <a class=" dropdown-item"> <span><b>Lucky 7</b></span> </a>
+                                </li>
+                                <li>
+                                    <a class=" dropdown-item"> <span><b>Dragon Tiger</b></span> </a>
+                                </li>
+                                <li>
+                                    <a class="blinking dropdown-item"> <span><b>Bollywood Casino</b></span> </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"> <span><b>Cricket Casino</b></span> </a>
+                                </li> -->
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a> <b>Reports</b> <i class="fa fa-caret-down"></i> </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a routerLink="/main/account-statement" class="dropdown-item">
+                    <b>Account's Statement</b>
+                  </a>
+                </li>
+                <li *ngIf="isPaymentShow == '1' && (useradmininfo.user_type_id == 1 || useradmininfo.user_type_id == 3)">
+                  <a
+                    routerLink="/main/withdraw-statement"
+                    class="dropdown-item"
+                  >
+                    <b>withdraw's Statement</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/exposur-details" class="dropdown-item">
+                    <b> Exposur details</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/current-bets" class="dropdown-item">
+                    <b>Current Bets</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/general-report" class="dropdown-item">
+                    <b>General Report</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/game-report" class="dropdown-item">
+                    <b>Game Report</b>
+                  </a>
+                </li>
+                <li *ngIf="useradmininfo.user_type_id == 1">
+                  <a
+                    routerLink="/main/delete-bet-history"
+                    class="dropdown-item"
+                  >
+                    <b>Delete Bet History </b>
+                  </a>
+                </li>
+                <li *ngIf="useradmininfo.user_type_id == 1 || useradmininfo.user_type_id == 3">
+                  <a
+                    routerLink="/main/deposit-history"
+                    class="dropdown-item"
+                  >
+                    <b>Deposit Payment History </b>
+                  </a>
+                </li>
+                <li *ngIf="useradmininfo.user_type_id == 1">
+                  <a
+                    routerLink="/main/user-login-history"
+                    class="dropdown-item"
+                  >
+                    <b>User Login History </b>
+                  </a>
+                </li>
+                <li *ngIf="useradmininfo.user_type_id == 1">
+                  <a routerLink="/main/ggr-report" class="dropdown-item">
+                    <b>GGR Report</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/casino-report" class="dropdown-item">
+                    <b>Casino Report</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/profit-loss" class="dropdown-item">
+                    <b>Profit And Loss</b>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    routerLink="/main/casino-result-report"
+                    class="dropdown-item"
+                  >
+                    <b>Casino Result Report</b>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li *ngIf="user_type_id == 1" class="nav-item dropdown">
+              <a> <b>Market Setting</b> <i class="fa fa-caret-down"></i> </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <!-- <li> <a routerLink="/main/markets" class="dropdown-item"> <b>Markets</b> </a>  </li> -->
+                <li>
+                  <a routerLink="/main/marketSetting" class="dropdown-item">
+                    <b>Market Settings</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/matchSetting" class="dropdown-item">
+                    <b>Match Settings</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/marketRollback" class="dropdown-item">
+                    <b>Market Rollback</b>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    routerLink="/main/manageSeries"
+                    class="dropdown-item"
+                  >
+                    <b>Manage Series</b>
+                  </a>
+                </li>
+                <li *ngIf="gloabalData?.show_user_setting == '1'">
+                  <a routerLink="/main/sportSetting" class="dropdown-item">
+                    <b>Sports Setting</b>
+                  </a>
+                </li>
+
+                <li>
+                  <a routerLink="/main/casinoSetting" class="dropdown-item">
+                    <b>Casino Setting</b>
+                  </a>
+                </li>
+
+                <li>
+                  <a routerLink="/main/seriesSetting" class="dropdown-item">
+                    <b>Series Setting</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/online-user" class="dropdown-item">
+                    <b>Online User</b>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/main/global-settings" class="dropdown-item">
+                    <b>Global settings</b>
+                  </a>
+                </li>
+                <!-- <li> <a routerLink="/main/currency-setting" class="dropdown-item"> <b>Currency settings</b> </a> </li> -->
+                <li>
+                  <a routerLink="/main/fancy-setting" class="dropdown-item">
+                    <b>Fancy setting</b>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="user-search list-unstyled">
+        <li class="username">
+          <span
+            >{{ useradmininfo?.user_name }} <i class="fa fa-caret-down"></i
+          ></span>
+          <!-- <ul   [ngStyle]="{'display':getToggle()}"> -->
+          <ul class="user-settingdrop"   style="display:none">
+            <!-- <li> <a routerLink="/main/user-list"><b>Signup Users</b></a> </li> -->
+
+            <li (click)="onToggle()"
+              *ngIf="
+                useradmininfo.user_type_id == '1' ||
+                useradmininfo.user_type_id == '2' ||
+                useradmininfo.user_type_id == '3'
+              "
+            >
+              <a routerLink="/main/user-list"><b>SignUp User List</b></a>
+            </li>
+            <!-- <li *ngIf=" useradmininfo.user_type_id =='1' ||  useradmininfo.user_type_id =='2' ||  useradmininfo.user_type_id =='3'"> <a routerLink="/main/bouns-history"><b> Bonus History</b></a> </li>
+            <li *ngIf=" useradmininfo.user_type_id =='1' ||  useradmininfo.user_type_id =='2' ||  useradmininfo.user_type_id =='3'"> <a routerLink="/main/affiliate-code"><b>Affiliate Code List</b></a> </li>
+            <li *ngIf=" useradmininfo.user_type_id =='1' ||  useradmininfo.user_type_id =='2' ||  useradmininfo.user_type_id =='3'"> <a routerLink="/main/add-bonus"><b>Add Bonus</b></a> </li>
+            <li *ngIf=" useradmininfo.user_type_id =='1' ||  useradmininfo.user_type_id =='2' ||  useradmininfo.user_type_id =='3'"> <a routerLink="/main/add-affiliate"><b>Add Affiliate</b></a> </li> -->
+            <li (click)="onToggle()">
+              <a routerLink="/main/security-auth"
+                ><b>Security Auth Verification</b></a
+              >
+            </li>
+            <li (click)="onToggle()" *ngIf="useradmininfo.user_type_id == 1 || useradmininfo.user_type_id == 3"> 
+              <a routerLink="/main/account-setting"
+                ><b>Account Details</b></a
+              >
+            </li>
+
+            <li (click)="onToggle()">
+              <a routerLink="/main/changePassword"><b>Change Password</b></a>
+            </li>
+            <li (click)="logout()">
+              <a><b>Logout</b></a>
+            </li>
+          </ul>
+        </li>
+        <li class="search">
+          <input
+            id="tags"
+            type="text"
+            list="AmountList"
+            name="list"
+            placeholder="All Client"
+            class="ui-autocomplete-input"
+            [formControl]="searchKey"
+            autocomplete="off"
+          />
+          <datalist id="AmountList">
+            <option *ngFor="let user of userlist" [value]="user">
+              {{ user }}
+            </option>
+          </datalist>
+          <a
+            id="clientList"
+            (click)="getUserDetails()"
+            data-toggle="modal"
+            data-target="#UserDetails"
+            href="javascript:void(0)"
+          >
+            <i class="fas fa-search-plus"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar" style="display: none; margin-top: 9px">
+      <nav *ngIf="menuList.length != 0">
+        <div class="sidebar-top-title">
+          <h2>Sports</h2>
+          <span class=" " (click)="removeClass()">  <i class="fas fa-times"></i></span>
+
+        </div>
+        <!-- <i class="fa fa-times side-menu-button"></i> -->
+        <div class="mtree-main">
+          <ul class="mtree transit bubba">
+            <ng-container *ngFor="let sport of menuList; trackBy: trackByFn">
+              <li class="mtree-node mtree-closed">
+                <a style="cursor: pointer">{{ sport?.sport_name }}</a>
+                <ul
+                  class="mtree-level-1"
+                  style="overflow: hidden; height: auto"
+                >
+                  <ng-container
+                    *ngFor="
+                      let series of sport?.series_list;
+                      trackBy: trackByFn
+                    "
+                  >
+                    <li class="mtree-node mtree-closed">
+                      <a style="cursor: pointer">{{ series?.series_name }}</a>
+                      <ul
+                        class="mtree-level-2"
+                        style="overflow: hidden; height: auto"
+                      >
+                        <li
+                          *ngFor="let matchdate of series?.match_dates"
+                          class="mtree-node mtree-closed"
+                        >
+                          <a style="cursor: pointer">{{
+                            matchdate?.match_date
+                          }}</a>
+                          <ul
+                            class="mtree-level-3"
+                            style="overflow: hidden; height: auto"
+                          >
+                            <li
+                              *ngFor="let match of matchdate?.matches"
+                              class="mtree-node mtree-active mtree-closed"
+                            >
+                              <a style="cursor: pointer">{{
+                                match?.match_name
+                              }}</a>
+                              <ul
+                                class="mtree-level-4"
+                                style="overflow: hidden; height: auto"
+                              >
+                                <li
+                                  *ngFor="let market of match?.markets"
+                                  (click)="removeClass()"
+                                >
+                                  <a
+                                    [routerLink]="[
+                                      '/main/matchdetails',
+                                      match.match_id,
+                                      market?.market_id
+                                    ]"
+                                    [state]="{ id: 1 }"
+                                    >{{ market?.market_name }}</a
+                                  >
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ng-container>
+                </ul>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="modal fade UserDetails" id="UserDetails">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">User Details</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Game Lock</h3>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">EventName</th>
+                        <th scope="col">UserName</th>
+                        <th scope="col">UserActive</th>
+                        <th scope="col">BetActive</th>
+                        <th scope="col">FancyActive</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let game of userDetails?.game_lock">
+                        <tr>
+                          <td>{{ game?.event_name }}</td>
+                          <td>{{ game?.user_name }}</td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="customCheck1"
+                                [checked]="game?.user_active"
+                                disabled
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="customCheck1"
+                                >&nbsp;</label
+                              >
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="customCheck2"
+                                [checked]="game?.bet_active"
+                                disabled
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="customCheck2"
+                                >&nbsp;</label
+                              >
+                            </div>
+                          </td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="customCheck3"
+                                [checked]="game?.fancy_active"
+                                disabled
+                              />d 4
+                              <label
+                                class="custom-control-label"
+                                for="customCheck3"
+                                >&nbsp;</label
+                              >
+                            </div>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6">
+                  <h3>User Lock</h3>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">UserName</th>
+                        <th scope="col">AccountType</th>
+                        <th scope="col">UserActive</th>
+                        <th scope="col">BetActive</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let user of userDetails?.user_lock">
+                        <tr>
+                          <td>{{ user?.user_name }}</td>
+                          <td>{{ getAcType(user?.user_type_id) }}</td>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="customCheck1"
+                                [checked]="user?.user_active"
+                                disabled
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="customCheck1"
+                                >&nbsp;</label
+                              >
+                            </div>
+                          </td>
+
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="customCheck3"
+                                [checked]="user?.bet_active"
+                                disabled
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="customCheck3"
+                                >&nbsp;</label
+                              >
+                            </div>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-12">
+                  <h3>Game Book</h3>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Gametype</th>
+                        <th scope="col">EventName</th>
+                        <th scope="col">BookA</th>
+                        <th scope="col">NationA</th>
+                        <th scope="col">BookB</th>
+                        <th scope="col">NationB</th>
+                        <th scope="col">BookC</th>
+                        <th scope="col">NationC</th>
+                        <th scope="col">NoOrBet</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let item of userDetails?.game_book">
+                        <tr>
+                          <td>{{ item?.game_type }}</td>
+                          <td>{{ item?.event_name }}</td>
+                          <ng-container
+                            *ngFor="let selection of item?.event_selection"
+                          >
+                            <td
+                              [ngClass]="
+                                selection?.win_loss < 0
+                                  ? 'red-text'
+                                  : 'green-text'
+                              "
+                            >
+                              {{ selection?.win_loss }}
+                            </td>
+                            <td>{{ selection?.selection_name }}</td>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="item?.event_selection.length != 3"
+                          >
+                            <td>-</td>
+                            <td>-</td>
+                          </ng-container>
+                          <td>{{ item?.bet_count }}</td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6">
+                  <h3>User Details</h3>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">UserName</th>
+                        <th scope="col">Exposer</th>
+                        <th scope="col">Creditref</th>
+                        <th scope="col">ExpoLimits</th>
+                        <th scope="col">General</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ userDetails?.user_details?.user_name }}</td>
+                        <td>{{ userDetails?.user_details?.liability }}</td>
+                        <td>
+                          {{ userDetails?.user_details?.credit_referance }}
+                        </td>
+                        <td>
+                          {{ userDetails?.user_details?.liability_limit }}
+                        </td>
+                        <td>{{ userDetails?.user_details?.free_chip }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Fancy Book</h3>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">EventName</th>
+                        <th scope="col">Book</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container
+                        *ngFor="let fancy of userDetails?.fancy_book"
+                      >
+                        <tr>
+                          <td>{{ fancy?.event_name }}</td>
+                          <td>{{ fancy?.book }}</td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="change-pass" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Change Password</h4>
+          <!-- <button type="button" class="close" data-backdrop="" data-dismiss="modal"><i class="fa fa-times"></i></button> -->
+        </div>
+        <form [formGroup]="updateForm" action="" method="post">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="password" class="text-black">New Password</label>
+                <input
+                  type="password"
+                  formControlName="new_password"
+                  name="password"
+                  class="form-control"
+                  required
+                />
+                <span
+                  class="FontTextBlack10px"
+                  *ngIf="
+                    updateForm.get('new_password').hasError('required') &&
+                    updateForm.controls.new_password.touched
+                  "
+                >
+                  Password is required !
+                </span>
+                <span
+                  class="FontTextBlack10px"
+                  *ngIf="
+                    !updateForm.get('new_password').hasError('required') &&
+                    updateForm.controls.new_password.touched &&
+                    updateForm.controls.new_password.errors
+                  "
+                >
+                  Password Minimum eight characters, at least one letter and one
+                  number and special char !
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="confirm_password" class="text-black"
+                  >Confirm Password</label
+                >
+
+                <input
+                  type="password"
+                  formControlName="confirm_password"
+                  name="password_confirmation"
+                  class="form-control"
+                  required
+                />
+                <p
+                  class="FontTextBlack10px"
+                  *ngIf="
+                    updateForm.get(['new_password']).value !=
+                      updateForm.get(['confirm_password']).value &&
+                    updateForm.get('confirm_password').touched
+                  "
+                >
+                  password does not match
+                </p>
+                <span class="error"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="master_password" class="text-black"
+                  >Transaction Password</label
+                >
+                <input
+                  type="password"
+                  formControlName="master_password"
+                  name="master_password"
+                  class="form-control"
+                  required
+                />
+                <span
+                  class="FontTextBlack10px"
+                  *ngIf="
+                    updateForm.get('master_password').hasError('required') &&
+                    updateForm.controls.master_password.touched
+                  "
+                >
+                  Transaction Password is required !
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label>&nbsp;</label>
+              <br />
+              <input
+                type="hidden"
+                name="_token"
+                value="t5k0O6g16P11QCLBcFfbFlvtrx91KngxGFaHhFwx"
+              />
+              <button
+                type="submit"
+                class="btn btn-diamond"
+                (click)="updatePassword()"
+              >
+                Load
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="change-pass1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h4 class="modal-title">User Book</h4> -->
+          <button type="button" class="close" data-dismiss="modal">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="userBookContainer">
+            <div class="cp-success-box">
+              <div class="text-center container">
+                <h1>
+                  <span class="text-success"
+                    >Success! Your password has been updated successfully.</span
+                  >
+                </h1>
+                <h1>
+                  Your transaction password is
+                  <span class="text-info token-box">{{changePassData}}</span
+                  >.
+                </h1>
+                <h2>
+                  Please remember this transaction password, from now on all
+                  transcation of the website can be done only with this password
+                  and keep one thing in mind, do not share this password with
+                  anyone.
+                </h2>
+                <h2 class="mt-3 text-dark">Thank you, Team {{webUrl}}</h2>
+                <div class="font-hindi">
+                  <h1 class="mt-5">
+                    <span class="text-success"
+                      >Success! आपका पासवर्ड बदला जा चुका है।</span
+                    >
+                  </h1>
+                  <h1>
+                    आपका लेनदेन पासवर्ड
+                    <span class="text-info token-box">{{
+                      changePassData?.transaction_password
+                    }}</span>
+                    है।
+                  </h1>
+                  <h2>
+                    कृपया इस लेन-देन के पासवर्ड को याद रखें, अब से वेबसाइट के
+                    सभी हस्तांतरण केवल इस पासवर्ड से किए जा सकते हैं और एक बात
+                    का ध्यान रखें, इस पासवर्ड को किसी के साथ साझा न करें।
+                  </h2>
+                  <h2 class="mt-3 text-dark">धन्यवाद, टीम {{webUrl}}</h2>
+                </div>
+                <a
+                  class="btn btn-dark btn-lg mt-5 router-link-active"
+                  data-dismiss="modal"
+                  style="min-width: 200px"
+                  ><i class="fas fa-arrow-left mr-3"></i>Back</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <div class="passwordChange" *ngIf="useradmininfo?.is_change_password === '0' ">
+
+
+</div> -->

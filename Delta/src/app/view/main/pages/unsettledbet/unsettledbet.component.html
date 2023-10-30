@@ -1,0 +1,91 @@
+  <div class="main-content"> 
+  
+    <div class="report-container">
+    <div class="card">
+      <div class="card-header page-header-sab">
+        <h4 class="mb-0">UnSetteled Bet</h4>
+      </div>
+      <div class="card-body container-fluid container-fluid-5">
+        <div class="row-fluid">
+        <div class="span12">
+          <section class="panel">
+            <div class="pull-out tester">
+              <div class="form-group">
+                <div class="radio-inline radio-custom ">
+                  <input type="radio" name="radioExample" id="matched" checked="" (click)="getUnsettledbet('M')">
+                  <label for="radioExample1">Matched</label>
+                  <input type="radio" name="radioExample" id="un_dmatch" (click)="getUnsettledbet('U')">
+                  <label for="radioExample1">Un Matched</label>
+                  <input type="radio" name="radioExample" id="deleted" (click)="getUnsettledbet('D')">
+                  <label for="radioExample1">Deleted</label>
+                </div>
+              </div>
+              <div id="withoutdepth" style="overflow:auto">
+                <table class="tbldsk table table-bordered m-b-none table-pad text-small" *ngIf="betList != null && betList.length != 0;else NoData">
+                  <thead>
+                    <tr>
+                      <th style="min-width:20px;"> No</th>
+                      <th style="min-width:100px;" class="text-center">Event Name</th>
+                      <th style="min-width:100px;" class="text-center">Nation</th>
+                      <th style="min-width:50px;" class="text-center">Event Type</th>
+                      <th class="text-center">Market Name</th>
+                      <th style="min-width:20px" class="text-center">Side</th>
+                      <th style="min-width:20px" class="text-center">Rate</th>
+                      <th style="min-width:70px" class="text-right">Amount</th>
+                      <th style="min-width:100px" class="text-center">Placed Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngIf="betList != null && betList.length != 0;else NoData">
+                      <ng-container *ngFor="let bet of betList | paginate: config;trackByFn:let i=index;">
+                    <tr class="odd">
+                      <td>{{i + 1}}</td>
+                      <td>{{bet?.match_name}}</td>
+                      <td>{{bet?.selection_name}}</td>
+                      <td>{{bet?.sport_name}}</td>
+                      <td>{{bet?.market_name}}</td>
+                      <td>{{bet?.is_back == 0 ? 'Lay': 'Back'}}</td>
+                      <td>{{bet?.odds}}</td>
+                      <td>{{bet?.stack}}</td>
+                      <td>{{bet?.placed}}</td>
+                      <!-- <td>{{bet?.bet_matched_at}}</td> -->
+
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                  <ng-template #NoData>
+                    <tr>
+                      <td valign="top" colspan="9">No records found</td>
+                    </tr>
+                  </ng-template>
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+
+                  <ng-container *ngIf="totalrecored && (betList != null && betList.length != 0)">
+                    <div class="col-sm-12">
+
+                    <pagination-controls  
+
+                    (pageChange)="pageChange($event)"    class="my-pagination"> </pagination-controls>
+                  </div>
+                  </ng-container>
+                
+                 </div>
+                <ng-template #NoData>
+                  <tr>
+                    <td valign="top" colspan="9">No records found</td>
+                  </tr>
+                </ng-template>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  
+</div>

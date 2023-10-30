@@ -1,0 +1,181 @@
+<div id="modalGmaeRules" class="modal fade show"  >
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Rules</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          (click)="closeRulesModal()"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="modal-body nopading modal-scroll">
+        <div class="container-fluid">
+          <div class="row" id="rules-container" data-typeid="">
+            <div class="col-md-12 nopading rules-description">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">{{ matchDetails?.match_name }}</h4>
+                </div>
+                <div class="card-body">
+                  <div
+                    id="rules-loading"
+                    class="loading"
+                    style="display: none; height: 400px"
+                  >
+                    <img
+                      src="images/loader.gif"
+                      alt=""
+                      class="mCS_img_loaded"
+                    />
+                  </div>
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1'"
+                    class="img-fluid"
+                    src="assets/images/tp-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-2'"
+                    class="img-fluid"
+                    src="assets/images/tp-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-3'"
+                    class="img-fluid"
+                    src="assets/images/tp-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-4'"
+                    class="img-fluid"
+                    src="assets/images/poker-rules.jpeg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-5'"
+                    class="img-fluid"
+                    src="assets/images/poker-rules.jpeg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-7'"
+                    class="img-fluid"
+                    src="assets/images/lucky7-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-145'"
+                    class="img-fluid"
+                    src="assets/images/lucky7-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1010'"
+                    class="img-fluid"
+                    src="assets/images/tt_cards_ruleB.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1011'"
+                    class="img-fluid"
+                    src="assets/images/dragon-tiger-20-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1012'"
+                    class="img-fluid"
+                    src="assets/images/tt32_cards_rule.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1013'"
+                    class="img-fluid"
+                    src="assets/images/lucky7-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1014'"
+                    class="img-fluid"
+                    src="assets/images/dragon-tiger-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1015'"
+                    class="img-fluid"
+                    src="assets/images/bollywoodtable-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1016'"
+                    class="img-fluid"
+                    src="assets/images/aaaRules.png"
+                  />
+                 
+
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1020'"
+                    class="img-fluid"
+                    src="assets/images/20-20cricketrules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1019'"
+                    class="img-fluid"
+                    src="assets/images/race20Rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1021'"
+                    class="img-fluid"
+                    src="assets/images/ab2-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1022'"
+                    class="img-fluid"
+                    src="assets/images/lucky7-rules.jpg"
+                  />
+
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1024'"
+                    class="img-fluid"
+                    src="assets/images/dragon-tiger-20-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1025'"
+                    class="img-fluid"
+                    src="assets/images/superoverRules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-6'"
+                    class="img-fluid"
+                    src="assets/images/poker-rules.jpeg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1017'"
+                    class="img-fluid"
+                    src="assets/images/cmeter-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1018'"
+                    class="img-fluid"
+                    src="assets/images/5fivecricktrules.jpeg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1026'"
+                    class="img-fluid"
+                    src="assets/images/dtl20-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1027'"
+                    class="img-fluid"
+                    src="assets/images/baccarat1rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1028'"
+                    class="img-fluid"
+                    src="assets/images/baccarat2-rules.jpg"
+                  />
+                  <img
+                    *ngIf="matchDetails?.match_id == '-1029'"
+                    class="img-fluid"
+                    src="assets/images/war-rules.jpg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

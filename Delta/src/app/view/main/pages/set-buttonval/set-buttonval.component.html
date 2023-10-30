@@ -1,0 +1,104 @@
+  
+  <div class="main-content"> 
+  
+    <div class="report-container">
+    <div class="card">
+      <div class="card-header page-header-sab">
+        <h4 class="mb-0">Set Buttonval</h4>
+      </div>
+      <div class="card-body container-fluid container-fluid-5">
+        <div class="row-fluid">
+          <div class="span12">
+          <section class="panel">
+            <div class="pull-out tester">
+              <div id="withoutdepth" style="overflow:auto">
+                <!-- <form method="post" action=""> -->
+                  <form [formGroup]="updateForm" method="post" >
+
+                  <input type="hidden" name="_token" value="">
+                  <table class="tbldsk table table-bordered m-b-none text-small">
+                   
+
+                    <thead>
+                      <tr>
+                        <th style="width:10%">ID</th>
+                        <th style="width:45%">Button Value</th>
+                        <th style="width:45%">Button Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container formArrayName="value1">
+                      <tr *ngFor="let p of value1.controls;let i=index">
+                        <ng-container [formGroupName]="i">
+                        <td>{{i + 1}}</td>
+                        <td><input  formControlName="button_value" style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098981" value="1000" required></td>
+                        <td><input formControlName="button_name" style="width:100%" type="text" maxlength="7" name="name_10098981" value="1000" required></td>
+                      </ng-container>
+                      </tr>
+                      </ng-container>
+                      <!-- <tr> -->
+                        <!-- <td>2</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098982" value="5000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098982" value="5000" required></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098983" value="10000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098983" value="10000" required></td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098984" value="25000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098984" value="25000" required></td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098985" value="50000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098985" value="50000" required></td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098986" value="100000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098986" value="100000" required></td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098987" value="200000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098987" value="200000" required></td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098988" value="500000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098988" value="500000" required></td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098989" value="1000000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098989" value="1000000" required></td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td><input style="width:100%" type="number" min="1" max="99999999" maxlength="9" name="val_10098990" value="2500000" required></td>
+                        <td><input style="width:100%" type="text" maxlength="7" name="name_10098990" value="2500000" required></td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                  <div class="row">
+                    <div class="col-sm-12 text-center mt-3 mb-3">
+                      <button class="btn btn-primary" (click)="setButtonValue()" type="submit">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div id="test"></div>
+            </div>
+          </section>
+        </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  
+  </div>

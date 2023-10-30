@@ -1,0 +1,149 @@
+<div class="col-md-12 main-container">
+    <div class="col-md-12 main-container">
+        <div class="listing-grid">
+            <div class="detail-row">
+                <h2>Account Details</h2>
+                <div class="m-t-20">
+                    <div class="col-md-12">
+                        <form [formGroup]="globalSetting" action="" method="post">
+                             
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="an" class="text-black">Account Number</label>
+                                        <input type="number" formControlName="account_number" name="Account Number" class="form-control" >
+                                     </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="bn" class="text-black">Bank Name</label>
+                                        <input type="text" formControlName="bank_name" name="Bank Name" class="form-control" >
+                                     </div>
+                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="ifsc" class="text-black">IFSC</label>
+                                        <input type="text" formControlName="ifsc" name="IFSC" class="form-control" >
+                                     </div>
+                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="holder_name" class="text-black">Account Holder Name</label>
+                                        <input type="text" formControlName="holder_name" name="holder_name" class="form-control" >
+                                     </div>
+                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="upi" class="text-black">UPI</label>
+                                        <input type="text" formControlName="upi" name="upi" class="form-control" >
+                                     </div>
+                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="phone_pay" class="text-black">Phone Pay Number</label>
+                                        <input type="number" formControlName="phone_pay" name="phone_pay" class="form-control" >
+                                     </div>
+                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="gpay" class="text-black">Google Pay Number</label>
+                                        <input type="number" formControlName="gpay" name="gpay" class="form-control" >
+                                     </div>
+                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="master_password" class="text-black">Transation Password</label>
+                                        <input type="text" formControlName="master_password" name="master_password" class="form-control" >
+                                     </div>
+                                     
+                                </div>
+                            </div>
+                       
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>&nbsp;</label>
+                                    <br>
+                                    
+                                    <button type="submit" class="btn btn-diamond py-2 px-4" (click)="updateAccountDetails()">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive data-table"> </div>
+        </div>
+    </div>
+    <div class="col-md-12 main-container">
+        <div class="listing-grid">
+            <div class="detail-row">
+                <h2>Upload QRCode</h2>
+                <div class="m-t-20">
+                    <div class="col-md-12">
+                        <form >
+                             
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="an" class="text-black">UPI QR </label>
+                                        <input type="file"    class="form-control"  (change)="onFileSelectedUpi($event)" >
+                                        <div class="d-flex justify-content-start my-4">
+                                            <img src="{{urlUpi}}" class="img-fluid table-qr-image">
+                                          </div>
+                                     </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="bn" class="text-black">Google Pay QR</label>
+                                        <input type="file"    class="form-control"  (change)="onFileSelectedGpay($event)">
+                                        <div class="d-flex justify-content-start my-4">
+                                            <img src="{{urlGpay}}" class="img-fluid table-qr-image">
+                                          </div>
+                                     </div>
+                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="ifsc" class="text-black">Phone Pay QR</label>
+                                        <input type="file"  class="form-control"  (change)="onFileSelectedPpay($event)" >
+                                        <div class="d-flex justify-content-start my-4">
+                                            <img src="{{urlPpay}}" class="img-fluid table-qr-image">
+                                          </div>
+                                     </div>
+                                     
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="ifsc" class="text-black">Transation Password</label>
+                                        <input type="text"  class="form-control"  name="masterPassword"  [(ngModel)]="masterPassword" >
+                                        
+                                     </div>
+                                     
+                                </div> -->
+                               
+                            </div>
+                       
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>&nbsp;</label>
+                                    <br>
+                                    
+                                    <button type="submit" class="btn btn-diamond py-2 px-4" (click)="uploadQRCode()">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive data-table"> </div>
+        </div>
+    </div>
+</div>

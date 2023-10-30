@@ -1,0 +1,82 @@
+/*Blue-Green Theme*/
+
+
+.login {
+    /*background-image:linear-gradient(#c86a6a, #33656a);*/
+    background-image: linear-gradient(#c86a6a, #33656a);
+    background-image: linear-gradient(#c86a6a, #33656a) !important;
+}
+.header {
+    background-color: #c86a6a;
+}
+.sidebar-title {
+    background-color: #c86a6a;
+}
+.home-tabs .nav-tabs .nav-link {
+    border-right: 1px solid #33656a;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #33656a;
+}
+.header-bottom {
+    background-color: #33656a;
+}
+.casinoicons-title {
+    background-image:linear-gradient(#c86a6a, #33656a);
+}
+.card-header {
+    background-color: #33656a;
+}
+.game-heading {
+    background-color: #33656a;
+}
+.market-title {
+    background-color: #3fad9d;
+}
+.game-page .nav-tabs .nav-link {
+    background-color: #33656a;
+}
+.game-page .nav-tabs .nav-link.active {
+    background-color: #c86a6a;
+}
+.btn-submit {
+    background-color: #c16a6a !important;
+    border-color: #bc6a6a !important;
+    color: #fff;
+}
+.featured-box-login h4 {
+    color: #c16a6a !important;
+}
+.popup21white .modal-header {
+    background-color: #c16a6a !important;
+}
+button.time-btn {
+    background-color: #33656a !important;
+    color: #fff !important;
+  }
+  button.time-btn:hover {
+    background-color: #c86a6a !important;
+    color: #FFF !important;
+  }
+.featured-box .nav-tabs li a {
+    /* background-color: #33656a !important; */
+}
+.fancy-nav ul li.active a, .fancy-nav ul li a, .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #33656a !important;
+}
+.lastResultPart h3, .fancy-marker-title h4 {
+    background-color: #33656ad9 !important;
+}
+.low-high-btn, ul.other-table-box li, .btn-theme {
+    background-image: linear-gradient(90deg,#c86a6a,#33656a) !important;
+}
+.modal-header {
+    background: #c86a6a;
+}
+footer {
+    background-color: #c86a6a;
+    border-top: 2px solid #33656a;
+}
+.game-heading {
+    background-color: #33656a !important;
+}

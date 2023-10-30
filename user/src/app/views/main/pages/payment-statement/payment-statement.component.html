@@ -1,0 +1,94 @@
+<div class="featured-box">
+
+    <div class="">
+      <section class="card">
+        <header class="card-header">
+          <h2 class="card-title">Account Statement</h2>
+        </header>
+        <div class="card-body">
+          <form method="POST" action="" accept-charset="UTF-8">
+            <input name="_token" type="hidden" value="">
+            
+            <div class="select-report d-inline-block m-l-20 form-group">
+              <select id="bind_opt_select" class="form-control" name="q" [(ngModel)]="type">
+                <option value="">All</option>
+                  <option value="pending">Pending</option>
+                  <option value="completed">Completed</option>
+                  <option value="rejected">Rejected</option>
+                  <option value="processing">Processing</option>
+                  <option value="failed">Failed</option>
+              </select>
+            </div>
+            <div class="d-inline-block m-l-20">
+              <input type="hidden" name="_token" value="">
+              <button class="btn btn-primary" value="submit" (click)="getAccountStatment()" type="submit">Submit</button>
+            </div>
+            <table id="example" class="table table-bordered datatable dataTable table-pad no-footer" style="width:100%" role="grid"
+              aria-describedby="example_info">
+              <thead>
+                <tr role="row">
+  
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Event Name: activate to sort column ascending" style="width: 50px;">Date</th>
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="item Type: activate to sort column ascending" style="width: 50px;">Account number</th>
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="User Rate: activate to sort column ascending" style="width: 50px;">Ifsc</th>
+                    <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 50px;">Amount</th>
+                  <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 146px;">Phone</th>
+                    <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 146px;">Email</th>
+                    <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 146px;">Status</th>
+                    <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 146px;">Description</th>
+                    <th class="sorting" tabindex="0" aria-controls="example"
+                    aria-label="Amount: activate to sort column ascending" style="width: 146px;">Remark</th>
+  
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="accountReportList != null && accountReportList .length != 0;else NoData">
+                    
+                  <ng-container *ngFor="let item of accountReportList | paginate: config;trackBy: trackByFn;let i=index;">
+                    <tr class="odd">
+                      
+                        <td>{{item?.created_at|  formatDate: 'MMMM Do YYYY, h:mm a'}}
+                        </td>
+                        <td>{{item?.account_number}}</td>
+                        <td>{{item?.ifsc}}</td>
+                        <td>{{item?.amount}}</td>
+                        <td>{{item?.phone}}</td>
+                        <td>{{item?.email}}</td>
+                        <td>
+                            <span [ngClass]="getStatusClass(item?.status)">
+                              {{item?.status}}
+                            </span>
+                        </td>
+                        <td>{{item?.description}}</td>
+                        <td>
+                          <a href="javascript:void(0)"   
+                          class="open-clickmodal">
+                    {{item?.reject_reason ? item?.reject_reason : 'N/A' }}</a>
+                          </td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                <ng-template #NoData>
+                  <tr>
+                    <td valign="top" colspan="10" class="dataTables_empty">No data available in table</td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+  
+ 
+  

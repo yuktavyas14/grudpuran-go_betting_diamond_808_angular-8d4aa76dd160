@@ -1,0 +1,90 @@
+<div class="col-md-12 main-container">
+    <div class="listing-grid">
+        <div class="detail-row">
+            <h2>Casino Report</h2>
+            <div class="m-t-20">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="casinoreport" action="" method="post">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fromdate" class="text-black">From</label>
+                                        <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [ngModelOptions]="{standalone: true}" [(ngModel)]="toDate">
+
+                                        <!-- <input type="text" id="fromdate" name="fromdate" class="form-control datepicker" value="2019-12-23" readonly> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="todate" class="text-black">To</label>
+                                        <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [ngModelOptions]="{standalone: true}" [(ngModel)]="fromDate">
+
+                                        <!-- <input type="text" name="todate" id="todate" class="form-control datepicker" value="2019-12-30" readonly> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="type" class="text-black">Game Type</label>
+                                        <select name="type" class="form-control" id="type">
+                    <option value="slot">Slot Game</option>
+                    <option value="live">Live Casino</option>
+                    <option value="live1">Live Casino 1</option>
+                  </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="hidden" name="_token" value="">
+                                    <label>&nbsp;</label>
+                                    <br>
+                                    <input type="submit" value="Submit" class="btn btn-diamond">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive data-table" style="overflow: hidden">
+                <div id="example_wrapper" class="dataTables_wrapper no-footer">
+                    <!-- <div class="dataTables_length" id="example_length">
+                        <label>Show
+              <select name="example_length" aria-controls="example" class="">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+              entries</label>
+                    </div> -->
+                    <div id="example_filter" class="dataTables_filter">
+                        <label>Search:
+              <input type="search" class="form-control datatable-search" placeholder="" aria-controls="example">
+            </label>
+                    </div>
+                    <table id="example" class="custom-table table table-striped datatable dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="User Name: activate to sort column ascending" style="width: 222px;">User Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Casino Type: activate to sort column ascending" style="width: 237px;">Casino Type</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Game Name: activate to sort column ascending" style="width: 246px;">Game Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Transaction Id: activate to sort column ascending" style="width: 279px;">Transaction Id</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Transaction Type: activate to sort column ascending" style="width: 327px;">Transaction Type</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Game Id: activate to sort column ascending" style="width: 177px;">Game Id</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Amount: activate to sort column ascending" style="width: 163px;">Amount</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 103px;">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td valign="top" colspan="8" class="dataTables_empty">No data available in table</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div>
+                    <div class="dataTables_paginate paging_simple_numbers" id="example_paginate"><a class="button btn btn-diamond primary_button datatable-pagebuttons previous disabled" aria-controls="example" data-dt-idx="0" tabindex="0" id="example_previous">Previous</a><span></span><a class="button btn btn-diamond primary_button datatable-pagebuttons next disabled"
+                            aria-controls="example" data-dt-idx="1" tabindex="0" id="example_next">Next</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
